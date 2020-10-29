@@ -95,7 +95,6 @@ Shader "Wrld/StencilReflectionFloor"
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature _ _GLOSSYREFLECTIONS_OFF
             #pragma shader_feature _PARALLAXMAP
-			#pragma shader_feature _VERTEXCOLOR_OFF _VERTEXCOLOR _VERTEXCOLOR_LERP
 
             #pragma multi_compile_fwdbase
             #pragma multi_compile_fog
@@ -136,7 +135,6 @@ Shader "Wrld/StencilReflectionFloor"
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature ___ _DETAIL_MULX2
             #pragma shader_feature _PARALLAXMAP
-            #pragma shader_feature _VERTEXCOLOR
 
             #pragma multi_compile_fwdadd_fullshadows
             #pragma multi_compile_fog
@@ -165,8 +163,6 @@ Shader "Wrld/StencilReflectionFloor"
 
             // -------------------------------------
 
-            #pragma shader_feature _VERTEXCOLOR
-			#pragma shader_feature _VERTEXCOLOR_LERP
             #pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
             #pragma shader_feature _METALLICGLOSSMAP
             #pragma shader_feature _PARALLAXMAP
@@ -204,7 +200,6 @@ Shader "Wrld/StencilReflectionFloor"
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature ___ _DETAIL_MULX2
             #pragma shader_feature _PARALLAXMAP
-            #pragma shader_feature _VERTEXCOLOR_OFF _VERTEXCOLOR _VERTEXCOLOR_LERP
 
             #pragma multi_compile_prepassfinal
             #pragma multi_compile_instancing

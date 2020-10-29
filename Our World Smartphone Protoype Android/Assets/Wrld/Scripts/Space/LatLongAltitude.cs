@@ -188,6 +188,11 @@ namespace Wrld.Space
             return new LatLongAltitude(ll.m_latitudeInDegrees, ll.m_longitudeInDegrees, 0.0);
         }
 
+        public override string ToString()
+        {
+            return string.Format("[{0}, {1}]", m_latitudeInDegrees, m_longitudeInDegrees);
+        }
+
         [DllImport(NativePluginRunner.DLL)]
         private static extern double EstimateGreatCircleDistance(
             ref LatLong a,
@@ -339,6 +344,10 @@ namespace Wrld.Space
                 from.GetLatitude() + ((to.GetLatitude() - from.GetLatitude()) * time),
                 from.GetLongitude() + ((to.GetLongitude() - from.GetLongitude()) * time),
                 from.GetAltitude() + ((to.GetAltitude() - from.GetAltitude()) * time));
+        }
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}", m_latLong.ToString(), m_altitude);
         }
 
         private LatLong m_latLong;

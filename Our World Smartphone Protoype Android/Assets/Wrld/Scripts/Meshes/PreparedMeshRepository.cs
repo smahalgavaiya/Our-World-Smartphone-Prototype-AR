@@ -28,6 +28,14 @@ namespace Wrld.Meshes
             }
         }
 
+        public bool TryRemovePreparedMesh(string id)
+        {
+            lock (m_meshRecords)
+            {
+                return m_meshRecords.Remove(id);
+            }
+        }
+
         public bool TryGetUnityMeshesForID(string id, out Mesh[] meshes, out DoubleVector3 originECEF, out string materialName)
         {
             meshes = null;
@@ -40,11 +48,6 @@ namespace Wrld.Meshes
             lock (m_meshRecords)
             {
                 foundRecord = m_meshRecords.TryGetValue(id, out record);
-
-                if (foundRecord)
-                {
-                    m_meshRecords.Remove(id);
-                }
             }
 
             if (foundRecord)
@@ -61,7 +64,7 @@ namespace Wrld.Meshes
             }
             else
             {
-                Debug.LogFormat("Error! Could not find mesh with id {0}", DLogType.Log, id);
+                Debug.LogFormat("Error! Could not find mesh with id {0}", id);
             }
 
             return foundRecord;

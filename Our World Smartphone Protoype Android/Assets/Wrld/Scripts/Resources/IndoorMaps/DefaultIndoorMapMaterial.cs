@@ -134,7 +134,7 @@ namespace Wrld.Resources.IndoorMaps
         {
             int baseTransparentIndex = ((int)RenderQueue.Transparent) + floorIndex * (int)DrawOrder.Count;
 
-            material.renderQueue = (!requiresStrictDrawOrder) ? ((int)RenderQueue.Geometry) : baseTransparentIndex + (int)drawOrder;
+            material.renderQueue = (!requiresStrictDrawOrder) ? ((int)RenderQueue.Transparent) : baseTransparentIndex + (int)drawOrder;
         }
 
         private static void UpdateZState(MeshRenderer meshRenderer, Material material, bool isOpaque)

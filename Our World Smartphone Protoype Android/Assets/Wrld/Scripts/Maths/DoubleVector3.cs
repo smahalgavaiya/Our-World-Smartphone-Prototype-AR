@@ -213,7 +213,7 @@ namespace Wrld.Common.Maths
         /// <param name="to">Ending vector position.</param>
         /// <param name="time">Current time to interpolate from.</param>
         /// <returns></returns>
-        public static DoubleVector3 Lerp(DoubleVector3 from, DoubleVector3 to, float time)
+        public static DoubleVector3 Lerp(DoubleVector3 from, DoubleVector3 to, double time)
         {
             return new DoubleVector3
                 (

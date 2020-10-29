@@ -94,7 +94,7 @@ namespace Wrld.Space
                                             
                 m_positioner = Api.Instance.PositionerApi.CreatePositioner(positionerOptions);
 
-                m_positioner.OnPositionerPositionChangedDelegate += UpdateECEFLocation;
+                m_positioner.OnTransformedPointChanged += UpdateECEFLocation;
 
                 Api.Instance.GeographicApi.RegisterGeographicTransform(this);
                 m_hasEverBeenRegistered = true;
@@ -107,7 +107,7 @@ namespace Wrld.Space
             {
                 if (m_positioner != null)
                 {
-                    m_positioner.OnPositionerPositionChangedDelegate -= UpdateECEFLocation;
+                    m_positioner.OnTransformedPointChanged -= UpdateECEFLocation;
                     m_positioner.Discard();
                     m_positioner = null;
                 }
@@ -132,8 +132,7 @@ namespace Wrld.Space
         {
             if (m_geolocatedParent != null)
             {
-                transform.SetParent(m_geolocatedParent.transform.parent, false);
-                GameObject.Destroy(m_geolocatedParent);
+                Destroy(m_geolocatedParent);
                 m_geolocatedParent = null;
             }
         }
@@ -236,7 +235,7 @@ namespace Wrld.Space
         /// <summary>
         /// Set the desired ElevationMode of this transform. See the ElevationMode documentation for details.
         /// </summary>
-        /// <param name="elevation">The desired ElevationMode of the transform.</param>
+        /// <param name="elevationMode">The desired ElevationMode of the transform.</param>
         public void SetElevationMode(ElevationMode elevationMode)
         {
             m_positioner.SetElevationMode(elevationMode);

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Wrld.MapCamera
 {
     [StructLayout(LayoutKind.Sequential)]
-    public class CameraState
+    public struct CameraState
     {
         public DoubleVector3 LocationEcef;
         public DoubleVector3 InterestPointEcef;

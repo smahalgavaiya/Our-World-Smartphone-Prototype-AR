@@ -8,6 +8,7 @@ using Wrld.Resources.Buildings;
 using Wrld.Resources.IndoorMaps;
 using Wrld.Resources.Labels;
 using Wrld.Space.Positioners;
+using Wrld.Transport;
 
 // Disable "Private field is assigned but never used" warning spam, as these are used by native library interop.
 #pragma warning disable 0414
@@ -20,12 +21,14 @@ namespace Wrld
             IntPtr _labelServiceHandle,
             LabelServiceInternal.AddLabelDelegate _addLabel,
             LabelServiceInternal.UpdateLabelDelegate _updateLabel,
-            LabelServiceInternal.RemoveLabelDelegate _removeLabel)
+            LabelServiceInternal.RemoveLabelDelegate _removeLabel,
+            LabelServiceInternal.AddIconTexturePageDelegate _addIconTexturePage)
         {
             labelServiceHandle = _labelServiceHandle;
             addLabel = _addLabel;
             updateLabel = _updateLabel;
             removeLabel = _removeLabel;
+            addIconTexturePage = _addIconTexturePage;
         }
 
         public static LabelCallbacks Create(IntPtr labelServiceHandle)
@@ -34,13 +37,15 @@ namespace Wrld
                 labelServiceHandle,
                 LabelServiceInternal.AddLabel,
                 LabelServiceInternal.UpdateLabel,
-                LabelServiceInternal.RemoveLabel);
+                LabelServiceInternal.RemoveLabel,
+                LabelServiceInternal.AddIconTexturePage);
         }
 
         IntPtr labelServiceHandle;
         LabelServiceInternal.AddLabelDelegate addLabel;
         LabelServiceInternal.UpdateLabelDelegate updateLabel;
         LabelServiceInternal.RemoveLabelDelegate removeLabel;
+        LabelServiceInternal.AddIconTexturePageDelegate addIconTexturePage;
     }
 
     internal struct TextureCallbacks
@@ -144,6 +149,7 @@ namespace Wrld
             IntPtr _sceneServiceHandle,
             MeshUploader.AllocateUnpackedMeshCallback _allocateUnpackedMesh,
             MeshUploader.UploadUnpackedMeshCallback _uploadUnpackedMesh,
+            MeshUploader.RemoveUnpackedMeshCallback _removeUnpackedMesh,
             MapGameObjectScene.AddMeshCallback _addMesh,
             MapGameObjectScene.DeleteMeshCallback _deleteMesh,
             MapGameObjectScene.VisibilityCallback _setVisible)
@@ -151,6 +157,7 @@ namespace Wrld
             sceneServiceHandle = _sceneServiceHandle;
             allocateUnpackedMesh = _allocateUnpackedMesh;
             uploadUnpackedMesh = _uploadUnpackedMesh;
+            removeUnpackedMesh = _removeUnpackedMesh;
             addMesh = _addMesh;
             deleteMesh = _deleteMesh;
             setVisible = _setVisible;
@@ -162,6 +169,7 @@ namespace Wrld
                 sceneServiceHandle,
                 MeshUploader.AllocateUnpackedMesh,
                 MeshUploader.UploadUnpackedMesh,
+                MeshUploader.RemoveUnpackedMesh,
                 MapGameObjectScene.AddMesh,
                 MapGameObjectScene.DeleteMesh,
                 MapGameObjectScene.SetVisible);
@@ -170,6 +178,7 @@ namespace Wrld
         IntPtr sceneServiceHandle;
         MeshUploader.AllocateUnpackedMeshCallback allocateUnpackedMesh;
         MeshUploader.UploadUnpackedMeshCallback uploadUnpackedMesh;
+        MeshUploader.RemoveUnpackedMeshCallback removeUnpackedMesh;
         MapGameObjectScene.AddMeshCallback addMesh;
         MapGameObjectScene.DeleteMeshCallback deleteMesh;
         MapGameObjectScene.VisibilityCallback setVisible;
@@ -260,21 +269,25 @@ namespace Wrld
     {
         private PositionerCallbacks(
             IntPtr _positionerApiHandle,
-            PositionerApiInternal.PositionerProjectionChangedDelegate _positionerChanged)
+            PositionerApiInternal.PositionerTransformedPointChangedDelegate _positionerTranformedPointChanged,
+            PositionerApiInternal.PositionersProjectionChangedDelegate _positionersProjectionChanged)
         {
             positionerApiHandle = _positionerApiHandle;
-            positionerChanged = _positionerChanged;
+            positionerTranformedPointChanged = _positionerTranformedPointChanged;
+            positionersProjectionChanged = _positionersProjectionChanged;
         }
 
         public static PositionerCallbacks Create(IntPtr _positionerApiHandle)
         {
             return new PositionerCallbacks(
                 _positionerApiHandle,
-                PositionerApiInternal.OnPositionerUpdated);
+                PositionerApiInternal.OnNativePositionerTransformedPointChanged,
+                PositionerApiInternal.OnNativePositionersProjectionChanged);
         }
 
         IntPtr positionerApiHandle;
-        PositionerApiInternal.PositionerProjectionChangedDelegate positionerChanged;
+        PositionerApiInternal.PositionerTransformedPointChangedDelegate positionerTranformedPointChanged;
+        PositionerApiInternal.PositionersProjectionChangedDelegate positionersProjectionChanged;
     }
 
     internal struct CameraCallbacks
@@ -341,6 +354,81 @@ namespace Wrld
         PrecacheApiInternal.PrecacheOperationCompletedHandler precacheOperationCompleted;
     }
 
+    internal struct TransportCallbacks
+    {
+        private TransportCallbacks(
+            IntPtr _transportApiHandle,
+            TransportApiInternal.TransportPositionerPointOnGraphChangedDelegate _transportPositionerPointOnGraphChanged,
+            TransportApiInternal.TransportPositionerGraphChangedDelegate _transportPositionerGraphChanged
+            )
+        {
+            transportApiHandle = _transportApiHandle;
+            transportPositionerPointOnGraphChanged = _transportPositionerPointOnGraphChanged;
+            transportPositionerGraphChanged = _transportPositionerGraphChanged;
+        }
+
+        public static TransportCallbacks Create(IntPtr transportApiHandle)
+        {
+            return new TransportCallbacks(
+                transportApiHandle,
+                TransportApiInternal.OnTransportPositionerPointOnGraphChanged,
+                TransportApiInternal.OnTransportGraphChanged
+                );
+        }
+
+        IntPtr transportApiHandle;
+        TransportApiInternal.TransportPositionerPointOnGraphChangedDelegate transportPositionerPointOnGraphChanged;
+        TransportApiInternal.TransportPositionerGraphChangedDelegate transportPositionerGraphChanged;
+    }
+
+
+    internal struct IndoorMapEntityInformationCallbacks
+    {
+        private IndoorMapEntityInformationCallbacks(
+            IntPtr _indoorMapEntityInformationApiInternalHandle,
+            IndoorMapEntityInformationApiInternal.NativeIndoorMapEntityInformationChangedDelegate _nativeIndoorMapEntityInformationChanged
+            )
+        {
+            indoorMapEntityInformationApiInternalHandle = _indoorMapEntityInformationApiInternalHandle;
+            nativeIndoorMapEntityInformationChanged = _nativeIndoorMapEntityInformationChanged;
+        }
+
+        public static IndoorMapEntityInformationCallbacks Create(IntPtr indoorMapEntityInformationApiInternalHandle)
+        {
+            return new IndoorMapEntityInformationCallbacks(
+                indoorMapEntityInformationApiInternalHandle,
+                IndoorMapEntityInformationApiInternal.OnNativeIndoorMapEntityInformationChanged
+                );
+        }
+
+        IntPtr indoorMapEntityInformationApiInternalHandle;
+        IndoorMapEntityInformationApiInternal.NativeIndoorMapEntityInformationChangedDelegate nativeIndoorMapEntityInformationChanged;
+    }
+
+    internal struct StreamingCallbacks
+    {
+        private StreamingCallbacks(
+            IntPtr _mapApiInternalHandle,
+            ApiImplementation.NativeOnInitialStreamingCompleteDelegate _nativeOnInitialStreamingComplete
+            )
+        {
+            mapApiInternalHandle = _mapApiInternalHandle;
+            nativeOnInitialStreamingComplete = _nativeOnInitialStreamingComplete;
+        }
+
+        public static StreamingCallbacks Create(IntPtr mapApiInternalHandle)
+        {
+            return new StreamingCallbacks(
+                mapApiInternalHandle,
+                ApiImplementation.OnNativeInitialStreamingComplete
+                );
+        }
+
+        IntPtr mapApiInternalHandle;
+        ApiImplementation.NativeOnInitialStreamingCompleteDelegate nativeOnInitialStreamingComplete;
+    }
+
+    // This must be manually maintained to match C++ Eegeo::Unity::UnityCallbacks
     internal struct ApiCallbacks
     {
         public ApiCallbacks(
@@ -354,7 +442,10 @@ namespace Wrld
             IntPtr sceneServiceHandle, 
             IntPtr labelServiceHandle, 
             IntPtr positionerApiHandle,
-            IntPtr precacheApiHandle)
+            IntPtr precacheApiHandle,
+            IntPtr transportApiHandle,
+            IntPtr indoorEntityInformationApiInternalHandle,
+            IntPtr mapApiInternalHandle)
         {
             meshCallbacks = MeshCallbacks.Create(sceneServiceHandle);
             cameraCallbacks = CameraCallbacks.Create(cameraApiHandle);
@@ -368,6 +459,9 @@ namespace Wrld
             positionerCallbacks = PositionerCallbacks.Create(positionerApiHandle);
             labelCallbacks = LabelCallbacks.Create(labelServiceHandle);
             precacheCallbacks = PrecacheCallbacks.Create(precacheApiHandle);
+            transportCallbacks = TransportCallbacks.Create(transportApiHandle);
+            indoorMapEntityInformationCallbacks = IndoorMapEntityInformationCallbacks.Create(indoorEntityInformationApiInternalHandle);
+            streamingCallbacks = StreamingCallbacks.Create(mapApiInternalHandle);
         }
 
         MeshCallbacks meshCallbacks;
@@ -382,6 +476,9 @@ namespace Wrld
         PositionerCallbacks positionerCallbacks;
         LabelCallbacks labelCallbacks;
         PrecacheCallbacks precacheCallbacks;
+        TransportCallbacks transportCallbacks;
+        IndoorMapEntityInformationCallbacks indoorMapEntityInformationCallbacks;
+        StreamingCallbacks streamingCallbacks;
     }
 }
 

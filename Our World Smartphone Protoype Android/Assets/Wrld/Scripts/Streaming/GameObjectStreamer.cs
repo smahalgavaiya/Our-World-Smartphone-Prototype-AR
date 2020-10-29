@@ -12,13 +12,15 @@ namespace Wrld.Streaming
         GameObjectFactory m_gameObjectCreator;
 
         private CollisionStreamingType m_collisions;
+        private bool m_shouldUploadToGPU;
 
-        public GameObjectStreamer(string rootObjectName, MaterialRepository materialRepository, Transform parentForStreamedObjects, CollisionStreamingType collisions, bool supportsFlattening)
+        public GameObjectStreamer(string rootObjectName, MaterialRepository materialRepository, Transform parentForStreamedObjects, CollisionStreamingType collisions, bool supportsFlattening, bool shouldUploadToGPU)
         {
             m_materialRepository = materialRepository;
             m_gameObjectRepository = new GameObjectRepository(rootObjectName, parentForStreamedObjects, materialRepository, supportsFlattening);
             m_gameObjectCreator = new GameObjectFactory();
             m_collisions = collisions;
+            m_shouldUploadToGPU = shouldUploadToGPU;
         }
 
         public void Destroy()
@@ -37,7 +39,7 @@ namespace Wrld.Streaming
             var material = m_materialRepository.LoadOrCreateMaterial(objectID, materialName);
             var parent = new GameObject(objectID);
             parent.transform.SetParent(m_gameObjectRepository.Root.transform, false);
-            var gameObjects = m_gameObjectCreator.CreateGameObjects(meshes, material, parent.transform, m_collisions);
+            var gameObjects = m_gameObjectCreator.CreateGameObjects(meshes, material, parent.transform, m_collisions, m_shouldUploadToGPU);
 
             m_gameObjectRepository.Add(objectID, originECEF, translationOffsetECEF, rotationECEF, parent);
 

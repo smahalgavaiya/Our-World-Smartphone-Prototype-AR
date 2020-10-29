@@ -9,13 +9,17 @@ namespace Wrld.Demo.IndoorMaps
     {
         private LatLong m_indoorMapLocation = LatLong.FromDegrees(56.460143, -2.978325);
         private Slider m_floorSlider;
+
+        private string IndoorMapmaterialDirectory;
         
         private void OnEnable()
         {
             m_floorSlider = FindObjectOfType<Slider>();
 
+            IndoorMapmaterialDirectory = "WrldMaterials/Archetypes";
+
             Api.Instance.IndoorMapsApi.IndoorMapTextureFetcher = new CustomIndoorMapTextureFetcher();
-            Api.Instance.IndoorMapsApi.IndoorMapMaterialFactory = new CustomIndoorMapMaterialFactory();
+            Api.Instance.IndoorMapsApi.IndoorMapMaterialFactory = new CustomIndoorMapMaterialFactory(IndoorMapmaterialDirectory);
 
             Api.Instance.IndoorMapsApi.OnIndoorMapEntered += IndoorMapsApi_OnIndoorMapEntered;
             Api.Instance.IndoorMapsApi.OnIndoorMapExited += IndoorMapsApi_OnIndoorMapExited;

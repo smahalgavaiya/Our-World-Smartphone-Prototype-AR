@@ -65,7 +65,7 @@ public class MovingWithSlider : MonoBehaviour
 
     private void IndoorMapsApi_OnIndoorMapFloorChanged(int newFloorId)
     {
-        Debug.LogFormat("Switched to floor {0}!", DLogType.Log, newFloorId);
+        Debug.LogFormat("Switched to floor {0}!", newFloorId);
 
         var map = Api.Instance.IndoorMapsApi.GetActiveIndoorMap();
 

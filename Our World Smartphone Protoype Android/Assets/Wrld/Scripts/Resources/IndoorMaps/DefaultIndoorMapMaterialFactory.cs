@@ -11,8 +11,11 @@ namespace Wrld.Resources.IndoorMaps
         Material m_prepassMaterial;
         Dictionary<string, Material> m_materialArchtypesByType = new Dictionary<string, Material>();
 
-        public DefaultIndoorMapMaterialFactory()
+        private string m_indoorMapMaterialDirectory = null;
+
+        public DefaultIndoorMapMaterialFactory(string indoorMapMaterialDirectory)
         {
+            m_indoorMapMaterialDirectory = indoorMapMaterialDirectory;
             m_templateMaterial = GetOrLoadMaterialArchetype("InteriorsDiffuseTexturedMaterial");
             m_highlightTemplateMaterial = GetOrLoadMaterialArchetype("InteriorsHighlightMaterial");
             m_prepassMaterial = GetOrLoadMaterialArchetype("InteriorsStencilMirrorMaskMaterial");
@@ -95,12 +98,34 @@ namespace Wrld.Resources.IndoorMaps
 
         private Material GetOrLoadMaterialArchetype(string materialType)
         {
-            if (!m_materialArchtypesByType.ContainsKey(materialType))
+            if (!string.IsNullOrEmpty(m_indoorMapMaterialDirectory))
             {
-                m_materialArchtypesByType[materialType] = (Material)UnityEngine.Resources.Load(Path.Combine("WrldMaterials/Archetypes", materialType), typeof(Material));
+                if (!m_materialArchtypesByType.ContainsKey(materialType))
+                {
+                    m_materialArchtypesByType[materialType] = (Material)UnityEngine.Resources.Load(Path.Combine(m_indoorMapMaterialDirectory, materialType), typeof(Material));
+                }
+
+                if (m_materialArchtypesByType[materialType] == null)
+                {
+                    RandomGrayColorMaterial(materialType);
+                }
+            }
+            else
+            {
+                RandomGrayColorMaterial(materialType);
             }
 
             return m_materialArchtypesByType[materialType];
+        }
+
+        void RandomGrayColorMaterial(string materialType)
+        {
+            Debug.LogWarning("Could not find material named : " + materialType + ". In directory : " + m_indoorMapMaterialDirectory);
+
+            m_materialArchtypesByType[materialType] = new Material(Shader.Find("Standard"));
+
+            var value = UnityEngine.Random.value;
+            m_materialArchtypesByType[materialType].SetColor("_Color", new Color(value, value, value));
         }
     }
 }

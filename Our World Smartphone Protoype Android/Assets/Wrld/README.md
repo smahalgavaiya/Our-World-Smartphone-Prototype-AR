@@ -3,7 +3,9 @@
 This Unity package demonstrates basic use of the Wrld SDK to display beautiful 3D maps via Unity. [Click here](https://docs.wrld3d.com/unity/latest/docs/api/) to access the full documentation.
 
 ## API Key
-To use the Unity SDK, you will first need to acquire a [Wrld API Key](https://www.wrld3d.com/apikeys/) by [signing up](https://www.wrld3d.com/register/) for a free account. The API Key is a 32 length string consisting of alpha numeric characters.
+To use the Unity SDK, you will need to [sign up for a WRLD account](https://accounts.wrld3d.com/users/sign_up?utm_source=unity&utm_medium=referral&utm_campaign=unity-editor-wrld&utm_content=unity-sdk-readme-signing-up).
+You will then need to [create a WRLD API Key](https://accounts.wrld3d.com/users/sign_in?service=https%3A%2F%2Faccounts.wrld3d.com%2F%23apikeys&utm_source=unity&utm_medium=referral&utm_campaign=unity-editor-wrld&utm_content=unity-sdk-readme-wrld-api-key).
+The API Key is a 32 length string consisting of alpha numeric characters.
 
 ### Quickstart
 1. Create a new empty 3D Unity Project.
@@ -11,13 +13,13 @@ To use the Unity SDK, you will first need to acquire a [Wrld API Key](https://ww
 3. Import the Wrld SDK Unity Package into the editor.
 4. Navigate to Assets/Wrld/Scenes/ and open the UnityWorld scene.
 5. Click on the WrldMap game object and expand the WrldMap script in the Inspector window.
-6. Paste your API key in the box provided.
+6. Paste your API key in the box provided. By default, this API Key will also be used in the EcefSpace and Example scenes. If you wish to use a different API Key for another scene you can set it in the Inspector for the relevant GameObject.
 7. In the Unity Editor, click Play and wait a few seconds for the map to stream in. Use the left and right mouse buttons to pan and rotate the map respectively.
 
 To deploy to other platforms checkout the full [documentation website](https://docs.wrld3d.com/unity/latest/docs/api/).
 
 ### Requirements & Supported Platforms
-*   A [Unity](https://unity3d.com/get-unity/download) version between 5.5.0f3 and 2018.1.0f2
+*   A [Unity](https://unity3d.com/get-unity/download) version between 2019.4.3f1 and 2020.1.3f1
 *   Android
     *   [Android SDK](https://docs.unity3d.com/Manual/android-sdksetup.html) downloaded and installed
     *   API 23 (Android 6.0) & SDK Tools >= 24.0.3\. Both can be downloaded using the [SDK Manager](https://developer.android.com/studio/intro/update.html#sdk-manager)

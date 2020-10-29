@@ -8,9 +8,9 @@ namespace Wrld.Demo.IndoorMaps
     {
         private Material m_sourceMaterial;
 
-        public CustomIndoorMapMaterialFactory()
+        public CustomIndoorMapMaterialFactory(string indoorMapMaterialsDirectory)
         {
-            m_sourceMaterial = (Material)UnityEngine.Resources.Load(Path.Combine("WrldMaterials/Archetypes", "InteriorsDiffuseUntexturedMaterial"), typeof(Material));
+            m_sourceMaterial = (Material)UnityEngine.Resources.Load(Path.Combine(indoorMapMaterialsDirectory, "InteriorsDiffuseUntexturedMaterial"), typeof(Material));
         }
 
         public IIndoorMapMaterial CreateMaterialFromDescriptor(IndoorMaterialDescriptor descriptor)

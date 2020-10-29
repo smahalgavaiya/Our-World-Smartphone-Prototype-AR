@@ -116,6 +116,7 @@ namespace Wrld.Meshes
 
         public delegate IntPtr AllocateUnpackedMeshCallback(int vertexCount, [MarshalAs(UnmanagedType.I1)] bool hasUvs, [MarshalAs(UnmanagedType.I1)] bool hasUV2s, [MarshalAs(UnmanagedType.I1)] bool hasNormals, [MarshalAs(UnmanagedType.I1)] bool hasColours, int indexCount, IntPtr meshName, IntPtr materialName);
         public delegate void UploadUnpackedMeshCallback(IntPtr meshBuffer);
+        public delegate void RemoveUnpackedMeshCallback([MarshalAs(UnmanagedType.LPStr)]string id);
 
         static PreparedMeshRepository m_preparedMeshes = new PreparedMeshRepository();
 
@@ -145,6 +146,12 @@ namespace Wrld.Meshes
             m_preparedMeshes.AddPreparedMeshRecord(CreatePreparedMeshRecordFromUnpackedMesh(result));
         }
 
+        [MonoPInvokeCallback(typeof(RemoveUnpackedMeshCallback))]
+        public static void RemoveUnpackedMesh([MarshalAs(UnmanagedType.LPStr)]string meshId)
+        {
+            m_preparedMeshes.TryRemovePreparedMesh(meshId);
+        }
+
         private static PreparedMeshRecord CreatePreparedMeshRecordFromUnpackedMesh(UnpackedMesh meshData)
         {
             var meshes = MeshBuilder.CreatePreparedMeshes(meshData.vertices, meshData.uvs, meshData.uv2s, meshData.normals, meshData.colors, meshData.indices, meshData.name, meshData.materialName, meshData.originECEF[0], 65535);
@@ -155,6 +162,11 @@ namespace Wrld.Meshes
         public bool TryGetUnityMeshesForID(string id, out Mesh[] meshes, out DoubleVector3 originECEF, out string materialName)
         {
             return m_preparedMeshes.TryGetUnityMeshesForID(id, out meshes, out originECEF, out materialName);
+        }
+
+        public bool RemoveUploadedMesh(string meshId)
+        {
+            return m_preparedMeshes.TryRemovePreparedMesh(meshId);
         }
     }
 }

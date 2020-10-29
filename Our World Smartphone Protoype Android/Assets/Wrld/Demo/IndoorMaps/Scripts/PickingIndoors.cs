@@ -51,10 +51,11 @@ public class PickingIndoors : MonoBehaviour
     {
         Debug.Log("Clicked on interior object(s)!: " + string.Join(", ", entities.Ids.ToArray()));
 
-        var id = entities.Ids[0];
-        m_entityIdsToColorIndex[id] = m_entityIdsToColorIndex.ContainsKey(id) ? (m_entityIdsToColorIndex[id] + 1) % m_pickColors.Count : 0;
-        var color = m_pickColors[m_entityIdsToColorIndex[id]];
-        Api.Instance.IndoorMapsApi.SetIndoorEntityHighlight(entities.Ids[0], color);
+        foreach(var id in entities.Ids){
+            m_entityIdsToColorIndex[id] = m_entityIdsToColorIndex.ContainsKey(id) ? (m_entityIdsToColorIndex[id] + 1) % m_pickColors.Count : 0;
+            var color = m_pickColors[m_entityIdsToColorIndex[id]];
+            Api.Instance.IndoorMapsApi.SetIndoorEntityHighlight(id, color);
+        }
     }
 
     private void IndoorMapsApi_OnIndoorMapEntered()

@@ -11,7 +11,7 @@ namespace Wrld
         private int m_screenHeight = 0;
 
         [DllImport(NativePluginRunner.DLL)]
-        private static extern void SetCustomStreamingCameraState(IntPtr ptr, CameraState state);
+        private static extern void SetCustomStreamingCameraState(IntPtr ptr, ref CameraState state);
 
         [DllImport(NativePluginRunner.DLL)]
         private static extern void ClearCustomStreamingCamera(IntPtr ptr);
@@ -31,7 +31,7 @@ namespace Wrld
 
             UpdateScreenSize();
 
-            SetCustomStreamingCameraState(NativePluginRunner.API, cameraState);
+            SetCustomStreamingCameraState(NativePluginRunner.API, ref cameraState);
         }
 
         public void UpdateForBuiltInCamera()

@@ -38,39 +38,41 @@ namespace Wrld.MapCamera
             OnTransitionStart += TransitionStarted;
             OnTransitionEnd += TransitionEnded;
             m_cameraApiInternal = cameraApiInternal;
-            m_cameraApiInternal.OnTransitionStartInternal += () => OnTransitionStart(this, m_controlledCamera);
-            m_cameraApiInternal.OnTransitionEndInternal += () => OnTransitionEnd(this, m_controlledCamera);
+            m_cameraApiInternal.OnTransitionStartInternal += () => OnTransitionStart(this, GetControlledCamera());
+            m_cameraApiInternal.OnTransitionEndInternal += () => OnTransitionEnd(this, GetControlledCamera());
             IsCameraDrivenFromInput = true;
         }
 
         /// <summary>
-        /// Sets the camera that is then controlled by the Wrld map.
+        /// By default, the WRLD SDK maintains an internal representation of a rendering camera, and uses this 
+        /// to control a UnityEngine.Camera instance, moving it around in response to user input and CameraApi function calls.
+        /// This function sets which UnityEngine.Camera instance will be controlled by the WRLD SDK.
         /// </summary>
-        /// <param name="camera">A Unity camera that can provide the frustum for streaming and is controlled by the Wrld map.</param>
+        /// <param name="camera">A UnityEngine.Camera instance that will be controlled by the Wrld map.</param>
         public void SetControlledCamera(UnityEngine.Camera camera)
         {
-            m_controlledCamera = camera;
+            m_cameraApiInternal.ControlledCamera = camera;
         }
 
         /// <summary>
-        /// Controls whether or not to update the controlled camera in response to user mouse & touch events.
+        /// This property controls whether or not to update the currently controlled camera (if any) in response to user mouse & touch events.
         /// </summary>
         public bool IsCameraDrivenFromInput { get; set; }
 
         /// <summary>
-        /// Returns the camera that is currently being controlled by the map.
+        /// Returns the camera that is currently being controlled by the WRLD SDK.
         /// </summary>
         public UnityEngine.Camera GetControlledCamera()
         {
-            return m_controlledCamera;
+            return m_cameraApiInternal.ControlledCamera;
         }
 
         /// <summary>
-        /// Removes any Unity camera under control of the Wrld Map.
+        /// Releases any UnityEngine.Camera instance currently being controlled by the WRLD SDK.
         /// </summary>
         public void ClearControlledCamera()
         {
-            m_controlledCamera = null;
+            m_cameraApiInternal.ControlledCamera = null;
         }
 
 
@@ -109,7 +111,7 @@ namespace Wrld.MapCamera
         /// <returns>The transformed geographic LatLongAltitude in viewport space.</returns>
         public Vector3 GeographicToViewportPoint(LatLongAltitude position, Camera camera = null)
         {
-            camera = camera ?? m_controlledCamera;
+            camera = camera ?? m_cameraApiInternal.ControlledCamera;
 
             if (camera == null)
             {
@@ -127,7 +129,7 @@ namespace Wrld.MapCamera
         /// <returns>The transformed viewport space coordinates as a LatLongAltitude.</returns>
         public LatLongAltitude ViewportToGeographicPoint(Vector3 viewportSpacePosition, Camera camera = null)
         {
-            camera = camera ?? m_controlledCamera;
+            camera = camera ?? m_cameraApiInternal.ControlledCamera;
 
             if (camera == null)
             {
@@ -146,7 +148,7 @@ namespace Wrld.MapCamera
         /// <returns>The transformed screen space coordinates as a LatLongAltitude.</returns>
         public LatLongAltitude ScreenToGeographicPoint(Vector3 screenSpacePosition, Camera camera = null)
         {
-            camera = camera ?? m_controlledCamera;
+            camera = camera ?? m_cameraApiInternal.ControlledCamera;
 
             if (camera == null)
             {
@@ -164,7 +166,7 @@ namespace Wrld.MapCamera
         /// <returns>The transformed geographic LatLongAltitude in screen space.</returns>
         public Vector3 GeographicToScreenPoint(LatLongAltitude position, Camera camera = null)
         {
-            camera = camera ?? m_controlledCamera;
+            camera = camera ?? m_cameraApiInternal.ControlledCamera;
 
             if (camera == null)
             {
@@ -175,9 +177,15 @@ namespace Wrld.MapCamera
         }
 
         /// <summary>
-        /// Sets a custom render camera to be used with API points requiring screen space projection & unprojection.
+        /// By default, the WRLD SDK maintains an internal representation of a rendering camera.
+        /// The CameraApi uses this to control a UnityEngine.Camera instance supplied via SetControlledCamera.  
+        /// This allows methods such as CameraApi.MoveTo and CameraApi.AnimateTo to manipulate the map viewpoint.
+        /// However, you may want to use your own camera controls and perspective in Unity; this function allows you
+        /// to provide a UnityEngine.Camera instance that you control yourself to the CameraApi.  
+        /// This "custom render camera" will then be used by the WRLD SDK to update its internal state.
+        /// This is required for certain screen-space calculations to work correctly with Unity Engine Cameras.
         /// </summary>
-        /// <param name="camera"></param>
+        /// <param name="camera">The desired UnityEngine.Camera instance to use as a custom render camera.</param>
         public void SetCustomRenderCamera(Camera camera)
         {
             if (camera == null)
@@ -185,34 +193,27 @@ namespace Wrld.MapCamera
                 throw new ArgumentNullException("camera", "A non-null camera must be supplied.");
             }
 
+            if (camera != m_cameraApiInternal.ControlledCamera && IsCameraDrivenFromInput)
+            {
+                Debug.LogWarning("Calling SetCustomRenderCamera while also using Built-In Camera Controls on a different camera may cause unintentional side effects: "+
+                                 "please disable Built-In Camera Controls, or call CameraApi.SetControlledCamera and pass in your custom rendering camera.");
+            }
+
+            m_cameraApiInternal.CustomRenderCamera = camera;
+
+
             var cameraState = m_apiImplementation.GetStateForCustomCamera(camera);
-            NativeCameraApi_SetCustomRenderCameraState(NativePluginRunner.API, cameraState);
+            m_cameraApiInternal.SetCustomRenderCameraState(cameraState);
         }
 
         /// <summary>
-        /// Unsets the custom render camera to revert screen space API points to their default behaviour
+        /// If SetCustomRenderCamera has previously been called, this resets the CameraApi render camera
+        /// behavior back to its default, where the WRLD SDK controls a UnityEngine.Camera instance supplied via SetControlledCamera.
         /// </summary>
         public void ClearCustomRenderCamera()
         {
-            NativeCameraApi_ClearCustomRenderCamera(NativePluginRunner.API);
-        }
-
-        public void UpdateInput()
-        {
-            if (m_controlledCamera != null && IsCameraDrivenFromInput)
-            {
-                m_inputHandler.Update();
-            }
-        }
-
-
-        public void Update(float deltaTime)
-        {
-            if (m_controlledCamera != null)
-            {
-                var cameraState = GetCurrentCameraState(NativePluginRunner.API);
-                m_apiImplementation.ApplyNativeCameraState(cameraState, m_controlledCamera);
-            }
+            m_cameraApiInternal.CustomRenderCamera = null;
+            m_cameraApiInternal.ClearCustomRenderCamera();
         }
 
         /// <summary>
@@ -230,7 +231,7 @@ namespace Wrld.MapCamera
             double? headingDegrees = null,
             double? tiltDegrees = null)
         {
-            if (m_controlledCamera == null)
+            if (m_cameraApiInternal.ControlledCamera == null)
             {
                 throw new ArgumentNullException("Camera", m_nonNullCameraMessage);
             }
@@ -242,11 +243,7 @@ namespace Wrld.MapCamera
                 .Tilt(tiltDegrees)
                 .Build();
 
-            var cameraUpdateInterop = cameraUpdate.ToCameraUpdateInterop();
-
-            NativeCameraApi_MoveCamera(
-                NativePluginRunner.API,
-                ref cameraUpdateInterop);
+            m_cameraApiInternal.MoveTo(cameraUpdate);
 
             return true;
         }
@@ -261,7 +258,7 @@ namespace Wrld.MapCamera
             LatLong interestPoint,
             LatLongAltitude cameraPosition)
         {
-            if (m_controlledCamera == null)
+            if (m_cameraApiInternal.ControlledCamera == null)
             {
                 throw new ArgumentNullException("Camera", m_nonNullCameraMessage);
             }
@@ -292,7 +289,7 @@ namespace Wrld.MapCamera
             double? transitionDuration = null,
             bool jumpIfFarAway = true)
         {
-            if (m_controlledCamera == null)
+            if (m_cameraApiInternal.ControlledCamera == null)
             {
                 throw new ArgumentNullException("Camera", m_nonNullCameraMessage);
             }
@@ -310,10 +307,7 @@ namespace Wrld.MapCamera
                 .Duration(transitionDuration)
                 .Build();
 
-            var cameraUpdateInterop = cameraUpdate.ToCameraUpdateInterop();
-            var cameraAnimationOptionsInterop = cameraAnimationOptions.ToCameraAnimationOptionsInterop();
-
-            NativeCameraApi_AnimateCamera(NativePluginRunner.API, ref cameraUpdateInterop, ref cameraAnimationOptionsInterop);
+            m_cameraApiInternal.AnimateTo(cameraUpdate, cameraAnimationOptions);
 
             return true;
         }
@@ -343,10 +337,14 @@ namespace Wrld.MapCamera
         /// <summary>
         /// Whether or not a camera has been set via SetControlledCamera.
         /// </summary>
-        public bool HasControlledCamera { get { return m_controlledCamera != null; } }
-        
+        public bool HasControlledCamera { get { return m_cameraApiInternal.ControlledCamera != null; } }
+
         /// <summary>
-        /// Registers a delegate which can control whether or not our built-in camera controls should respond. It is called every frame.
+        /// Sets a delegate to control whether or not our built-in camera controls should respond to input. It is called once a frame for
+        /// mouse interfaces, and once for every active touch when using touch controls.  The pointer id associated with the input event is
+        /// passed as a parameter. 
+        /// 
+        /// This has been deprecated, and SetShouldConsumeInputDelegate should be used instead.
         /// </summary>        
         /// <param name="function">The delegate function to use. Should return a boolean value.</param>
         [Obsolete("Deprecated, please use SetShouldConsumeInputDelegate instead")]
@@ -356,7 +354,10 @@ namespace Wrld.MapCamera
         }
 
         /// <summary>
-        /// Unregisters the delegate which controls whether or not our built-in camera controls should respond.
+        /// Clears any delegate previously supplied to RegisterShouldConsumeInputDelegate, with the result that the camera will always respond to input events
+        /// if one has been supplied to SetControlledCamera.
+        /// 
+        /// This has been deprecated, and ClearShouldConsumeInputDelegate should be used instead.
         /// </summary>        
         /// <param name="function">The delegate function to unregister.</param>
         [Obsolete("Deprecated, please use ClearShouldConsumeInputDelegate instead")]
@@ -366,7 +367,7 @@ namespace Wrld.MapCamera
         }
 
         /// <summary>
-        /// Sets a delegate to can control whether or not our built-in camera controls should respond to input. It is called once a frame for
+        /// Sets a delegate to control whether or not our built-in camera controls should respond to input. It is called once a frame for
         /// mouse interfaces, and once for every active touch when using touch controls.  The pointer id associated with the input event is
         /// passed as a parameter.
         /// 
@@ -387,25 +388,13 @@ namespace Wrld.MapCamera
             m_inputHandler.ClearShouldConsumeInputDelegate();
         }
 
-        [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
-        private static extern void NativeCameraApi_MoveCamera(
-            IntPtr ptr,
-            ref CameraUpdateInterop cameraUpdate);
-
-        [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
-        private static extern void NativeCameraApi_AnimateCamera(
-            IntPtr ptr,
-            ref CameraUpdateInterop cameraUpdate,
-            ref CameraAnimationOptionsInterop cameraAnimationOptions);
-
-        [DllImport(NativePluginRunner.DLL)]
-        private static extern NativeCameraState GetCurrentCameraState(IntPtr ptr);
-
-        [DllImport(NativePluginRunner.DLL)]
-        private static extern void NativeCameraApi_SetCustomRenderCameraState(IntPtr ptr, CameraState cameraState);
-
-        [DllImport(NativePluginRunner.DLL)]
-        private static extern void NativeCameraApi_ClearCustomRenderCamera(IntPtr ptr);
+        internal void UpdateInput()
+        {
+            if (m_cameraApiInternal.ControlledCamera != null && IsCameraDrivenFromInput)
+            {
+                m_inputHandler.Update();
+            }
+        }
 
         private void TransitionStarted(CameraApi controller, UnityEngine.Camera camera)
         {
@@ -426,7 +415,6 @@ namespace Wrld.MapCamera
             tiltDegrees = MathsHelpers.Rad2Deg(Math.PI * 0.5 - Math.Atan2(cameraAltitude, distanceAlongGround));
         }
 
-        private UnityEngine.Camera m_controlledCamera;
         private ApiImplementation m_apiImplementation;
         private CameraInputHandler m_inputHandler;
         private CameraApiInternal m_cameraApiInternal;

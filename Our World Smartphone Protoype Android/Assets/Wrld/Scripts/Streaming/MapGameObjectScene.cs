@@ -109,6 +109,7 @@ namespace Wrld
 
                 if (m_meshUploader.TryGetUnityMeshesForID(id, out meshes, out originECEF, out materialName))
                 {
+                    m_meshUploader.RemoveUploadedMesh(id);
                     var streamer = GetStreamerFromName(id);
                     streamer.AddObjectsForMeshes(id, meshes, originECEF, Vector3.zero, Quaternion.identity, materialName);
                 }

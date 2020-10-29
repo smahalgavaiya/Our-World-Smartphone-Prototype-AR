@@ -25,7 +25,7 @@ public class Position2DViewIndoors : MonoBehaviour
                                         .IndoorMapWithFloorId(m_indoorMapId, m_indoorMapFloorId);
 
         viewPositioner = Api.Instance.PositionerApi.CreatePositioner(positionerOptions);
-        viewPositioner.OnPositionerPositionChangedDelegate += OnPositionerPositionUpdated;
+        viewPositioner.OnScreenPointChanged += OnPositionerPositionUpdated;
 
         StartCoroutine(EnterMap());
     }
@@ -49,7 +49,7 @@ public class Position2DViewIndoors : MonoBehaviour
 	
     private void OnDisable()
     {
-        viewPositioner.OnPositionerPositionChangedDelegate -= OnPositionerPositionUpdated;
+        viewPositioner.OnScreenPointChanged -= OnPositionerPositionUpdated;
         viewPositioner.Discard();
 
         Api.Instance.IndoorMapsApi.OnIndoorMapEntered -= IndoorMapsApi_OnIndoorMapEntered;

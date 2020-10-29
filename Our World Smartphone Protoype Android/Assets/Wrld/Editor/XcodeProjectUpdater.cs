@@ -47,35 +47,49 @@ public class XcodeProjectUpdater
         return originalProjectContent;
     }
 
-    private static void MutateProject(object pbxProject, Type pbxProjectType)
+    private static bool TryRemoveFileFromProject(object pbxProject, Type pbxProjectType, string targetFilePath)
     {
-        string target = (string)CallMethodName(pbxProject, pbxProjectType, "TargetGuidByName", 
-            new [] { typeof(string) }, 
-            "Unity-iPhone");
+        string targetFileGuid = (string)CallMethodName(
+            pbxProject, pbxProjectType, "FindFileGuidByProjectPath",
+            new[] { typeof(string) },
+            targetFilePath);
 
-        AddFrameworks(pbxProject, pbxProjectType, target);
-        AddDylibs(pbxProject, pbxProjectType, target);
+        if (targetFileGuid != null)
+        {
+            CallMethodName(
+                pbxProject, pbxProjectType, "RemoveFile",
+                new[] { typeof(string) },
+                targetFileGuid);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private static void MutateProject(object pbxProject, Type pbxProjectType)
+    {   
+        string mainTarget = (string)CallMethodName(pbxProject, pbxProjectType, "GetUnityMainTargetGuid");
+        string frameworkTarget = (string)CallMethodName(pbxProject, pbxProjectType, "GetUnityFrameworkTargetGuid");
+
+        AddFrameworks(pbxProject, pbxProjectType, frameworkTarget);
+        AddDylibs(pbxProject, pbxProjectType, frameworkTarget);
 
         CallMethodName(
             pbxProject, pbxProjectType, "SetBuildProperty", 
             new[] { typeof(string), typeof(string), typeof(string) }, 
-            target, "ENABLE_BITCODE", "false");
-            
-        string osxBundleGuid = (string)CallMethodName(
-            pbxProject, pbxProjectType, "FindFileGuidByProjectPath", 
-            new [] { typeof(string) }, 
-            "Frameworks/Wrld/Plugins/x86_64/StreamAlpha.bundle");
+            mainTarget, "ENABLE_BITCODE", "false");
+
+        CallMethodName(
+            pbxProject, pbxProjectType, "SetBuildProperty", 
+            new[] { typeof(string), typeof(string), typeof(string) }, 
+            frameworkTarget, "ENABLE_BITCODE", "false");
 
         // Unity will find and copy this x86_64 bundle into the project as a framework, if 
         // it is allowed, preventing it from archiving correctly.  As we're on iOS in this 
         // case we don't need it and can remove it.
-        if (osxBundleGuid != null)
-        {
-            CallMethodName(
-                pbxProject, pbxProjectType, "RemoveFile", 
-                new [] { typeof(string) }, 
-                osxBundleGuid);
-        }
+        TryRemoveFileFromProject(pbxProject, pbxProjectType, "Frameworks/Wrld/Plugins/x86_64/StreamAlpha.bundle");
+        TryRemoveFileFromProject(pbxProject, pbxProjectType, "Frameworks/StreamAlpha.bundle");
     }
 
     private static object CallMethodName(object pbxProject, Type pbxProjectType, string methodName, Type[] parameterTypes, params object[] arguments)
@@ -83,6 +97,13 @@ public class XcodeProjectUpdater
         var method = pbxProjectType.GetMethod(methodName, parameterTypes);
 
         return method.Invoke(pbxProject, arguments);
+    }
+
+    private static object CallMethodName(object pbxProject, Type pbxProjectType, string methodName)
+    {
+        var method = pbxProjectType.GetMethod(methodName);
+
+        return method.Invoke(pbxProject, null);
     }
         
     private static void AddFrameworks(object pbxProject, Type pbxProjectType, string target)
@@ -142,3 +163,4 @@ public class XcodeProjectUpdater
             target, fileGuid);
     }
 }
+

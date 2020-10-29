@@ -4,29 +4,42 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using Wrld.Interop;
+using Wrld.Materials;
 using Wrld.Utilities;
 
 namespace Wrld.Resources.Labels
 {
     internal class LabelServiceInternal
     {
-        private Dictionary<string, UnityEngine.UI.Text> m_screenTextObjects = new Dictionary<string, UnityEngine.UI.Text>();
+        private Dictionary<string, LabelView> m_labelViews = new Dictionary<string, LabelView>();
         private Canvas m_unityCanvas = null;
+        private List<Texture> m_iconTexturePages = new List<Texture>();
+        private TextureLoadHandler m_textureLoadHandler;
 
         private IntPtr m_handleToSelf;
 
         private bool m_enableLabels;
+        private bool m_spawnedCanvas;
 
-        public LabelServiceInternal(GameObject unityCanvas, bool enabled)
+        const string DesiredFontName = "OpenSans-SemiBold";
+        const string IncorrectFontMessage = "Assets/Wrld/Resources/Labels/ScreenTextPrefab.prefab has a non-default font: \"{0}\". Visual artifacts with labels may occur. Please use \"" + DesiredFontName + "\" instead.";
+        const string LabelTextPrefabPath = "Labels/ScreenTextPrefab";
+        const string CanvasName = "WRLDLabelCanvas";
+        const string CanvasPath = "Labels/WRLDLabelCanvas";
+
+        public LabelServiceInternal(GameObject unityCanvas, bool enabled, TextureLoadHandler textureLoadHandler)
         {
             if (unityCanvas == null)
             {
                 if (enabled)
                 {
-                    Debug.LogWarning(
-                        "No canvas was supplied to the label service.  Labels will not be displayed.\n" + 
-                        "If you require labels, please add a canvas called \"Canvas\" to the scene, using \n" + 
-                        "the \"Screen Space - Overlay\" render mode.");
+                    var newUnityCanvas = GameObject.Instantiate(UnityEngine.Resources.Load<GameObject>(CanvasPath));
+                    newUnityCanvas.name = CanvasName;
+                    newUnityCanvas.transform.SetAsFirstSibling();
+                    m_unityCanvas = newUnityCanvas.GetComponent<Canvas>();
+                    m_spawnedCanvas = true;
+
+                    ValidateFont();
                 }
             }
             else
@@ -36,6 +49,7 @@ namespace Wrld.Resources.Labels
 
             m_handleToSelf = NativeInteropHelpers.AllocateNativeHandleForObject(this);
             m_enableLabels = enabled && m_unityCanvas != null;
+            m_textureLoadHandler = textureLoadHandler;
         }
 
         public IntPtr GetHandle()
@@ -43,97 +57,97 @@ namespace Wrld.Resources.Labels
             return m_handleToSelf;
         }
 
-        public void AddLabel(string labelId, string labelText, Color haloColor, int baseFontSize, double fontScale)
+        public void AddLabel(ref LabelCreateOptionsInterop createOptions)
         {
+            var labelID = Marshal.PtrToStringAnsi(createOptions.LabelID);
+
             if (m_enableLabels)
             {
-                UnityEngine.UI.Text newScreenText = GameObject.Instantiate(UnityEngine.Resources.Load<GameObject>("Labels/ScreenTextPrefab")).GetComponent<UnityEngine.UI.Text>();
-
-                if (m_screenTextObjects.ContainsKey(labelId))
+                if (m_labelViews.ContainsKey(labelID))
                 {
-                    DestroyLabel(labelId);
+                    DestroyLabel(labelID);
                 }
 
-                newScreenText.fontSize = baseFontSize;
-                newScreenText.text = labelText;
-                newScreenText.transform.SetParent(m_unityCanvas.transform, false);
+                var labelView = new LabelView(ref createOptions, m_unityCanvas, m_iconTexturePages);
 
-                float fontScaleFactor = (float)fontScale / m_unityCanvas.scaleFactor;
-                newScreenText.transform.localScale = new Vector3(fontScaleFactor, fontScaleFactor, fontScaleFactor);
-
-                var outline = newScreenText.gameObject.GetComponent<UnityEngine.UI.Outline>();
-
-                if (outline != null)
-                {
-                    outline.effectColor = haloColor;
-                }
-
-                // Unity UI - send to back
-                newScreenText.transform.SetAsFirstSibling();
-
-                m_screenTextObjects.Add(labelId, newScreenText);
+                m_labelViews.Add(labelID, labelView);
             }
         }
 
-        void UpdateLabel(string labelId, Color textColor, Vector2 position, float rotationAngleDegrees)
+        void UpdateLabel(ref LabelUpdateStateInterop updateState)
         {
-            UnityEngine.UI.Text label;
+            LabelView labelView;
+            var labelID = Marshal.PtrToStringAnsi(updateState.LabelID);
 
-            if (m_screenTextObjects.TryGetValue(labelId, out label))
+            if (m_labelViews.TryGetValue(labelID, out labelView))
             {
-                float newX = position.x - (m_unityCanvas.pixelRect.width / 2);
-                float newY = (m_unityCanvas.pixelRect.height - position.y) - (m_unityCanvas.pixelRect.height / 2);
-
-                newX /= m_unityCanvas.scaleFactor;
-                newY /= m_unityCanvas.scaleFactor;
-
-                label.color = textColor;
-
-                label.rectTransform.localPosition = new Vector3(newX, newY, 0);
-                label.rectTransform.localRotation = Quaternion.Euler(0, 0, rotationAngleDegrees);
+                labelView.Update(ref updateState, m_unityCanvas);
             }
         }
 
         public void DestroyLabel(string labelId)
         {
-            if (m_screenTextObjects.ContainsKey(labelId))
+            if (m_labelViews.ContainsKey(labelId))
             {
-                if (!m_screenTextObjects[labelId].IsDestroyed())
-                {
-                    UnityEngine.Object.Destroy(m_screenTextObjects[labelId].gameObject);
-                }
-                m_screenTextObjects.Remove(labelId);
+                m_labelViews[labelId].Destroy();
+                m_labelViews.Remove(labelId);
+            }
+        }
+
+        void AddIconTexturePage(UInt32 textureId)
+        {
+            m_textureLoadHandler.Update();
+            var texturePage = m_textureLoadHandler.GetTexture(textureId);
+            if(texturePage != null)
+            {
+                m_iconTexturePages.Add(texturePage);
+            }
+        }
+
+        internal void ValidateFont()
+        {
+            var screenTextPrefab = (GameObject)UnityEngine.Resources.Load(LabelTextPrefabPath, typeof(GameObject));
+            var screenTextElement = screenTextPrefab.GetComponent<UnityEngine.UI.Text>();
+            
+            if(screenTextElement.font.name != DesiredFontName)
+            {
+                Debug.LogWarningFormat(IncorrectFontMessage, screenTextElement.font.name);
             }
         }
 
         internal void Destroy()
         {
-            var keys = new List<string>(m_screenTextObjects.Keys);
+            var keys = new List<string>(m_labelViews.Keys);
 
             foreach (string labelId in keys)
             {
                 DestroyLabel(labelId);
             }
 
+            if(m_spawnedCanvas && m_unityCanvas != null)
+            {
+                GameObject.DestroyImmediate(m_unityCanvas.gameObject);
+            }
+
             NativeInteropHelpers.FreeNativeHandle(m_handleToSelf);
         }
 
-        public delegate void AddLabelDelegate(IntPtr labelServiceHandle, [MarshalAs(UnmanagedType.LPStr)] string labelId, [MarshalAs(UnmanagedType.LPStr)] string labelText, ref ColorInterop color, int baseFontSize, double fontScale);
+        public delegate void AddLabelDelegate(IntPtr labelServiceHandle, ref LabelCreateOptionsInterop createOptions);
 
         [MonoPInvokeCallback(typeof(AddLabelDelegate))]
-        public static void AddLabel(IntPtr labelServiceHandle, [MarshalAs(UnmanagedType.LPStr)] string labelId, [MarshalAs(UnmanagedType.LPStr)] string labelText, ref ColorInterop color, int baseFontSize, double fontScale)
+        public static void AddLabel(IntPtr labelServiceHandle, ref LabelCreateOptionsInterop createOptions)
         {
             var labelService = labelServiceHandle.NativeHandleToObject<LabelServiceInternal>();
-            labelService.AddLabel(labelId, labelText, color.ToColor(), baseFontSize, fontScale);
+            labelService.AddLabel(ref createOptions);
         }
 
-        public delegate void UpdateLabelDelegate(IntPtr labelServiceHandle, [MarshalAs(UnmanagedType.LPStr)] string labelId, ref ColorInterop textColor, ref Vector2 position, float rotationAngleDegrees);
+        public delegate void UpdateLabelDelegate(IntPtr labelServiceHandle, ref LabelUpdateStateInterop updateState);
 
         [MonoPInvokeCallback(typeof(UpdateLabelDelegate))]
-        public static void UpdateLabel(IntPtr labelServiceHandle, [MarshalAs(UnmanagedType.LPStr)] string labelId, ref ColorInterop textColor, ref Vector2 position, float rotationAngleDegrees)
+        public static void UpdateLabel(IntPtr labelServiceHandle, ref LabelUpdateStateInterop updateState)
         {
             var labelService = labelServiceHandle.NativeHandleToObject<LabelServiceInternal>();
-            labelService.UpdateLabel(labelId, textColor.ToColor(), position, rotationAngleDegrees);
+            labelService.UpdateLabel(ref updateState);
         }
         
         public delegate void RemoveLabelDelegate(IntPtr labelServiceHandle, [MarshalAs(UnmanagedType.LPStr)] string labelId);
@@ -143,6 +157,16 @@ namespace Wrld.Resources.Labels
         {
             var labelService = labelServiceHandle.NativeHandleToObject<LabelServiceInternal>();
             labelService.DestroyLabel(labelId);
+        }
+
+        public delegate void AddIconTexturePageDelegate(IntPtr labelServiceHandle, UInt32 textureId);
+
+        [MonoPInvokeCallback(typeof(AddIconTexturePageDelegate))]
+        public static void AddIconTexturePage(IntPtr labelServiceHandle, UInt32 textureId)
+        {
+            var labelService = labelServiceHandle.NativeHandleToObject<LabelServiceInternal>();
+
+            labelService.AddIconTexturePage(textureId);
         }
     }
 }

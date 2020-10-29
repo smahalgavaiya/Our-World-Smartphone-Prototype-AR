@@ -14,6 +14,10 @@ namespace Wrld.Resources.Buildings
 
         /// <summary>
         /// Create a BuildingHighlight object, for displaying graphical highlighting of a building, or for obtaining information about a building on the map.
+        /// The method returns a BuildingHighlight object instance synchronously, but the result may not be initially populated with information about a building.
+        /// Internally, an asynchronous web request may be made to fetch data, though locally cached results are used in some cases.
+        /// Notification of the building information becoming available can be obtained by specifying a handler in the options parameter, via BuildingHighlightOptions.BuildingInformationReceivedHandler.
+        /// BuildingHighlight.HasPopulatedBuildingInformation() can be called to query whether building information has yet been populated.
         /// </summary>
         /// <param name="buildingHighlightOptions">Creation options - see BuildingHighlightOptions for details.</param>
         /// <returns>A new BuildingHighlight object.</returns>
@@ -28,7 +32,7 @@ namespace Wrld.Resources.Buildings
         /// </summary>
         /// <param name="rayEcef">A ray in ECEF coordinates.</param>
         /// <param name="out_intersectionPoint">The point of intersection of the ray and building, if any. The result is only valid if this method returns true.</param>
-        /// <returns>True if the first intersection between the ray and map features is a building; 
+        /// <returns>True if the first intersection between the ray and map features is a building;
         /// false if no intersection is found, or if the ray first intersects with a map feature other than a building (for example, a tree).</returns>
         public bool TryFindIntersectionWithBuilding(DoubleRay rayEcef, out LatLongAltitude out_intersectionPoint)
         {
@@ -42,7 +46,7 @@ namespace Wrld.Resources.Buildings
         /// <param name="rayEcef">A ray in ECEF coordinates.</param>
         /// <param name="out_intersectionPoint">The point of intersection of the ray and building, if any. The result is only valid if this method returns true.</param>
         /// <param name="out_intersectionNormal">The surface normal of the intersection, if any. The result is only valid if this method returns true.</param>
-        /// <returns>True if the first intersection between the ray and map features is a building; 
+        /// <returns>True if the first intersection between the ray and map features is a building;
         /// false if no intersection is found, or if the ray first intersects with a map feature other than a building (for example, a tree).</returns>
         public bool TryFindIntersectionAndNormalWithBuilding(DoubleRay rayEcef, out LatLongAltitude out_intersectionPoint, out DoubleVector3 out_intersectionNormal)
         {
@@ -50,4 +54,3 @@ namespace Wrld.Resources.Buildings
         }
     }
 }
-

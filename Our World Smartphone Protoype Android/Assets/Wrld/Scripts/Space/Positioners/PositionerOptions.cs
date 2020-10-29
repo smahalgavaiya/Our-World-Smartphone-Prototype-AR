@@ -1,4 +1,6 @@
-﻿namespace Wrld.Space.Positioners
+﻿using System;
+
+namespace Wrld.Space.Positioners
 {
     /// <summary>
     /// Defines creation parameters for a Positioner.
@@ -11,17 +13,17 @@
         private ElevationMode m_elevationMode = ElevationMode.HeightAboveGround;
         private string m_indoorMapId = "";
         private int m_indoorMapFloorId;
-        private bool m_usingFloorId = false;
+        private bool m_usingFloorId = true;
 
         public PositionerOptions()
         {
         }
 
         /// <summary>
-        /// Sets the target Latitude of this Positioner.
+        /// Sets the latitude for the Positioner.
         /// </summary>
-        /// <param name="latitudeDegrees">The Latitude, in degrees, to move this Positioner to.</param>
-        /// <returns>This PositionerOptions instance, with the target latitude set.</returns>
+        /// <param name="latitudeDegrees">The latitude, in degrees.</param>
+        /// <returns>This PositionerOptions instance, with the new latitude set.</returns>
         public PositionerOptions LatitudeDegrees(double latitudeDegrees)
         {
             m_latitudeDegrees = latitudeDegrees;
@@ -29,10 +31,10 @@
         }
 
         /// <summary>
-        /// Sets the target Longitude of this Positioner.
+        /// Sets the longitude for the Positioner.
         /// </summary>
-        /// <param name="longitudeDegrees">The Longitude, in degrees, to move this Positioner to.</param>
-        /// <returns>This PositionerOptions instance, with the target longitude set.</returns>
+        /// <param name="longitudeDegrees">The longitude, in degrees.</param>
+        /// <returns>This PositionerOptions instance, with the new longitude set.</returns>
         public PositionerOptions LongitudeDegrees(double longitudeDegrees)
         {
             m_longitudeDegrees = longitudeDegrees;
@@ -40,10 +42,10 @@
         }
 
         /// <summary>
-        /// Sets the target Elevation of this Positioner, relative to the elevation of the terrain.
+        /// Sets the elevation for the Positioner, relative to the altitude of the terrain at the Positioner's LatLong coordinate.
         /// </summary>
-        /// <param name="elevation">The Elevation to move this Positioner to.</param>
-        /// <returns>This PositionerOptions instance, with the target elevation set.</returns>
+        /// <param name="elevation">The elevation, in meters.</param>
+        /// <returns>This PositionerOptions instance, with the elevation set.</returns>
         public PositionerOptions ElevationAboveGround(double elevation)
         {
             m_elevation = elevation;
@@ -52,10 +54,10 @@
         }
 
         /// <summary>
-        /// Sets the target Elevation of this Positioner, relative to sea-level.
+        /// Sets the elevation for the Positioner, relative to sea-level.
         /// </summary>
-        /// <param name="elevation">The Elevation to move this Positioner to.</param>
-        /// <returns>This PositionerOptions instance, with the target elevation set.</returns>
+        /// <param name="elevation">The elevation, in meters.</param>
+        /// <returns>This PositionerOptions instance, with the elevation set.</returns>
         public PositionerOptions ElevationAboveSeaLevel(double elevation)
         {
             m_elevation = elevation;
@@ -64,10 +66,16 @@
         }
 
         /// <summary>
-        /// Sets the Indoor Map of this Positioner, using an Indoor Map Id.
+        /// Sets the indoor map for the Positioner. If this method is not called, or if indoorMapId is an empty string,
+        /// PositionerOptions is initialized to create a positioner for display on an outdoor map.
+        /// As a side-effect, the resultant Positioner object created with these options will treat
+        /// the indoorMapFloorId parameter of Positioner.SetIndoorMap(string indoorMapId, int indoorMapFloorId) as
+        /// an index into the zero-based array of floors for the specified indoor map.
+        /// This method is retained for legacy compatibility reasons only, please use IndoorMapWithFloorId instead.
         /// </summary>
-        /// <param name="indoorMapId">The ID of the Indoor Map to move this Positioner to.</param>
+        /// <param name="indoorMapId">The identifier of the indoor map on which the Positioner should be displayed.</param>
         /// <returns>This PositionerOptions instance, with the Indoor Map Id set.</returns>
+        [Obsolete("Deprecated, please use IndoorMapWithFloorId instead", false)]
         public PositionerOptions IndoorMap(string indoorMapId)
         {
             m_indoorMapId = indoorMapId;
@@ -77,11 +85,13 @@
         }
 
         /// <summary>
-        /// Sets the Indoor Map and current target Floor of this Positioner, using an Indoor Map Id and a Floor Id.
+        /// Sets the indoor map properties for the positioner. If this method is not called, or if indoorMapId is an empty string,
+        /// PositionerOptions is initialized to create a positioner for display on an outdoor map.
         /// </summary>
-        /// <param name="indoorMapId">The ID of the Indoor Map to move this Positioner to.</param>
-        /// <param name="indoorMapFloorId">The ID of the Floor to move this Positioner to.</param>
-        /// <returns>This PositionerOptions instance, with the Indoor Map Id and Floor set.</returns>
+        /// <param name="indoorMapId">The identifier of the indoor map on which the Positioner should be displayed.</param>
+        /// <param name="indoorMapFloorId">The identifier of the indoor map floor on which the Positioner should be displayed.
+        /// In the WRLD Indoor Map Format, this corresponds to the ‘z_order’ field of the Level object.</param>
+        /// <returns>This PositionerOptions instance, with the new indoor map properties set.</returns>
         public PositionerOptions IndoorMapWithFloorId(string indoorMapId, int indoorMapFloorId)
         {
             m_indoorMapId = indoorMapId;

@@ -19,7 +19,7 @@ public class Position2DViewOnMap: MonoBehaviour
                                                 .LongitudeDegrees(targetPosition.GetLongitude());
 
         viewPositioner = Api.Instance.PositionerApi.CreatePositioner(positionerOptions);
-        viewPositioner.OnPositionerPositionChangedDelegate += OnPositionerPositionChanged;
+        viewPositioner.OnScreenPointChanged += OnPositionerPositionChanged;
     }
 
     private void OnPositionerPositionChanged()
@@ -38,7 +38,7 @@ public class Position2DViewOnMap: MonoBehaviour
 
     public void OnDisable()
     {
-        viewPositioner.OnPositionerPositionChangedDelegate -= OnPositionerPositionChanged;
+        viewPositioner.OnScreenPointChanged -= OnPositionerPositionChanged;
         viewPositioner.Discard();
     }
 }
