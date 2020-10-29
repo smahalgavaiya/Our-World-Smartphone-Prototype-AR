@@ -16,12 +16,16 @@ public class WrldStartupEditor : Editor
     SerializedProperty m_coordSystem;
     SerializedProperty m_streamingLodBasedOnDistance;
     SerializedProperty m_materialDirectory;
+    SerializedProperty m_indoorMapMaterialDirectory;
     SerializedProperty m_overrideLandmarkMaterial;
     SerializedProperty m_useBuiltInCameraControls;
     SerializedProperty m_terrainCollisions;
     SerializedProperty m_roadCollisions;
     SerializedProperty m_buildingCollisions;
     SerializedProperty m_enableLabels;
+    SerializedProperty m_enableIndoorEntryMarkerEvents;
+    SerializedProperty m_labelCanvas;
+    SerializedProperty m_uploadMeshes;
 
     bool m_cachedKeyHasBeenRead;
 
@@ -38,12 +42,16 @@ public class WrldStartupEditor : Editor
         m_coordSystem = serializedObject.FindProperty("m_coordSystem");
         m_streamingLodBasedOnDistance = serializedObject.FindProperty("m_streamingLodBasedOnDistance");
         m_materialDirectory = serializedObject.FindProperty("m_materialDirectory");
+        m_indoorMapMaterialDirectory = serializedObject.FindProperty("m_indoorMapMaterialDirectory");
         m_overrideLandmarkMaterial = serializedObject.FindProperty("m_overrideLandmarkMaterial");
         m_useBuiltInCameraControls = serializedObject.FindProperty("m_useBuiltInCameraControls");
         m_terrainCollisions = serializedObject.FindProperty("m_terrainCollisions");
         m_roadCollisions = serializedObject.FindProperty("m_roadCollisions");
         m_buildingCollisions = serializedObject.FindProperty("m_buildingCollisions");
         m_enableLabels = serializedObject.FindProperty("m_enableLabels");
+        m_enableIndoorEntryMarkerEvents = serializedObject.FindProperty("m_enableIndoorEntryMarkerEvents");
+        m_labelCanvas = serializedObject.FindProperty("m_labelCanvas");
+        m_uploadMeshes = serializedObject.FindProperty("m_uploadMeshes");
         m_cachedKeyHasBeenRead = false;
     }
 
@@ -115,6 +123,7 @@ public class WrldStartupEditor : Editor
             EditorGUILayout.PropertyField(m_buildingCollisions, new GUIContent("Building Collisions"));
 
             EditorGUILayout.PropertyField(m_materialDirectory, new GUIContent("Material Directory"));
+            EditorGUILayout.PropertyField(m_indoorMapMaterialDirectory, new GUIContent("Indoor Map Material Directory"));
             EditorGUILayout.PropertyField(m_overrideLandmarkMaterial, new GUIContent("Landmark Override Material"));
 
             m_experimentalFeaturesDisplayed = EditorGUILayout.Foldout(m_experimentalFeaturesDisplayed, "Experimental Features");
@@ -123,6 +132,12 @@ public class WrldStartupEditor : Editor
             {
                 EditorGUILayout.LabelField("Experimental features are subject to change.");
                 EditorGUILayout.PropertyField(m_enableLabels, new GUIContent("Show Text Labels"));
+                if (m_enableLabels.boolValue)
+                {
+                    EditorGUILayout.PropertyField(m_enableIndoorEntryMarkerEvents, new GUIContent("Interactive Indoor Entry Markers"));
+                    EditorGUILayout.PropertyField(m_labelCanvas, new GUIContent("Label Canvas"));
+                }
+                EditorGUILayout.PropertyField(m_uploadMeshes, new GUIContent("Discard Meshes from memory"));
             }
 
             if (GUILayout.Button("Provide Feedback"))
@@ -136,7 +151,8 @@ public class WrldStartupEditor : Editor
 
             if (GUILayout.Button("Get an API key from wrld3d.com"))
             {
-                Application.OpenURL("https://accounts.wrld3d.com/users/sign_up?utm_source=unity&utm_medium=referral&utm_campaign=unity-editor&utm_content=get-api-key-button");
+                var url = UTMParamHelpers.BuildGetApiKeyUrl("get-api-key-button");
+                Application.OpenURL(url);
             }
         }
 

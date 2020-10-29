@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Wrld.Scripts.Utilities;
 using System.IO;
 
 namespace Wrld.Editor
@@ -18,7 +19,8 @@ namespace Wrld.Editor
 
             if (EditorUtility.DisplayDialog("WRLD", message, "Get Key", "Later"))
             {
-                Application.OpenURL("https://accounts.wrld3d.com/users/sign_up?utm_source=unity&utm_medium=referral&utm_campaign=unity-editor&utm_content=get-key-pop-up");
+                var url = UTMParamHelpers.BuildGetApiKeyUrl("get-key-pop-up");
+                Application.OpenURL(url);
             }
         }
 
@@ -39,7 +41,7 @@ namespace Wrld.Editor
                 if (EditorUserBuildSettings.activeBuildTarget != m_desiredBuildTarget)
                 {
                     PlatformHelpers.SwitchActiveBuildTarget(m_desiredBuildTarget);
-                    Debug.LogFormat("Current Settings not supported. Changed Build Target to: {0:G}", DLogType.Log, m_desiredBuildTarget);
+                    Debug.LogFormat("Current Settings not supported. Changed Build Target to: {0:G}", m_desiredBuildTarget);
                     EditorApplication.update -= PerformBuildTargetSwitch;
                 }
             }

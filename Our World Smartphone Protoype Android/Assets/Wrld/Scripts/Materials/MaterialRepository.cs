@@ -123,6 +123,17 @@ namespace Wrld.Materials
 
             return material;
         }
+        
+        private string AdjustMaterialNameForProceduralLandmark(string materialName)
+        {
+            // hack: force assign the buildings material for procedural landmarks that are produced when indoor maps don't specify a landmark id            
+            if (materialName.ToLower().StartsWith("landmark_indoor_"))
+            {
+                return "buildings_01";
+            }
+
+            return materialName;
+        }
 
         public Material LoadOrCreateMaterial(string objectID, string materialName)
         {
@@ -137,6 +148,8 @@ namespace Wrld.Materials
             }
 
             Material material = null;
+            
+            materialName = AdjustMaterialNameForProceduralLandmark(materialName);
             bool requiresTexture = RequiresStreamedTexture(materialName);
 
             if (!string.IsNullOrEmpty(m_materialDirectory))
@@ -156,7 +169,7 @@ namespace Wrld.Materials
                             // Since we do not have appropriate modeling of highlight views on unity yet the highlight material is created in the CreateHighlight method in BuildingsApi.cs
                             if (!materialName.Contains("entity_highlight")) // only send warning if this is not an interior highlight
                             {
-                                UnityEngine.Debug.LogWarningFormat("Highlight material {0} has not been created with the appropriate color. Creating default material.", materialName);
+                                Debug.LogWarningFormat("Highlight material {0} has not been created with the appropriate color. Creating default material.", materialName);
                             }
                             material = CreateHighlightMaterial(new Color(1, 1, 0, 0.5f));
                         }
@@ -201,6 +214,8 @@ namespace Wrld.Materials
 
         public void ReleaseMaterial(string materialName)
         {
+            materialName = AdjustMaterialNameForProceduralLandmark(materialName);
+
             if (!RequiresStreamedTexture(materialName))
             {
                 return;
@@ -223,7 +238,7 @@ namespace Wrld.Materials
             }
             else
             {
-                UnityEngine.Debug.LogWarningFormat("material {0} was not present", materialName);
+                Debug.LogWarningFormat("material {0} was not present", materialName);
             }
         }
 
@@ -244,12 +259,12 @@ namespace Wrld.Materials
                 }
                 else
                 {
-                    UnityEngine.Debug.LogWarningFormat("material {0} was not present", materialName);
+                    Debug.LogWarningFormat("material {0} was not present", materialName);
                 }
             }
             else
             {
-                UnityEngine.Debug.LogWarningFormat("{0} : is not a highlight material. Names must begin with Highight", materialName);
+                Debug.LogWarningFormat("{0} : is not a highlight material. Names must begin with Highight", materialName);
             }
         }
 
@@ -268,7 +283,7 @@ namespace Wrld.Materials
                 MaterialRecord record;
                 if (m_materials.TryGetValue(materialName, out record))
                 {
-                    UnityEngine.Debug.LogWarningFormat("material {0} already exists", materialName);
+                    Debug.LogWarningFormat("material {0} already exists", materialName);
                 }
                 else
                 {
@@ -278,7 +293,7 @@ namespace Wrld.Materials
             }
             else
             {
-                UnityEngine.Debug.LogWarningFormat("{0} : highlight material names must begin with Highight", materialName);
+                Debug.LogWarningFormat("{0} : highlight material names must begin with Highight", materialName);
             }
         }
 
@@ -293,12 +308,12 @@ namespace Wrld.Materials
                 }
                 else
                 {
-                    UnityEngine.Debug.LogWarningFormat("material {0} was not present", materialName);
+                    Debug.LogWarningFormat("material {0} was not present", materialName);
                 }
             }
             else
             {
-                UnityEngine.Debug.LogWarningFormat("{0} : is not a highlight material. Names must begin with Highight", materialName);
+                Debug.LogWarningFormat("{0} : is not a highlight material. Names must begin with Highight", materialName);
             }
         }
 

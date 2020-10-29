@@ -5,7 +5,28 @@ using Wrld.Common.Maths;
 namespace Wrld.Space.Positioners
 {
     /// <summary>
-    /// A Positioner represents a single point on the map.
+    /// A Positioner represents a point at a geographic location on an indoor or outdoor map, and provides a convenient
+    /// means of positioning an object when its absolute altitude may be unknown.
+    /// A Positioner's latitude and longitude are explicitly specified.
+    /// However, its vertical position is defined implicitly, by specifying an elevation relative to one of:
+    /// &lt;br/&gt;
+    ///   - Mean Sea Level.
+    /// &lt;br/&gt;
+    ///   - The ground at the specified latitude and longitude.
+    /// &lt;br/&gt;
+    ///   - An indoor map floor.
+    /// &lt;br/&gt;
+    /// &lt;br/&gt;
+    /// A resultant position is calculated for the specified relative elevation.
+    /// This calculation may depend on streamed map resources being loaded - for example, terrain or indoor maps.
+    /// As dependent map resources become available, the resultant position is re-calculated with an updated vertical component.
+    /// &lt;br/&gt;
+    /// This resultant position is also transformed by any current map animation - for example, when viewing an indoor map in 'expanded' view, or
+    /// when viewing an outdoor map in 'map collapse' view.
+    /// Change to this resultant transformed point is notified via OnTransformedPointChanged.
+    /// &lt;br/&gt;
+    /// In addition, a screen-space projection of the resultant position is provided, which is convenient for positioning a screen-space UI element
+    /// so that it appears anchored relative to a geographic location.
     /// </summary>
     public class Positioner
     {
@@ -15,9 +36,30 @@ namespace Wrld.Space.Positioners
         public int Id { get; private set; }
 
         /// <summary>
-        /// This delegate is called when this Positioner's position is changed or updated. 
+        /// Notification that the resultant transformed point of this Positioner instance has changed.
+        /// An app may hook to this event in order to respond to a change to a Positioner by accessing the
+        /// updated resultant transformed point via Positioner.TryGetECEFLocation or Positioner.TryGetLatLongAltitude.
+        ///
+        /// See also PositionerApi.OnPositionerTransformedPointChanged.
         /// </summary>
+        public Action OnTransformedPointChanged;
+
+        /// <summary>
+        /// Notification that the screen projection of the resultant transformed point of this Positioner instance has changed.
+        /// An app may hook to this event in order to respond to a change to a Positioner by accessing the
+        /// updated projected screen-space point via Positioner.TryGetScreenPoint.
+        ///
+        /// See also PositionerApi.OnPositionerScreenPointChanged
+        /// </summary>
+        public Action OnScreenPointChanged;
+
+        /// <summary>
+        /// Deprecated - synonymous with OnScreenPointChanged. Alternatively, consider using OnTransformedPointChanged
+        /// if responding to changes to the resultant world-space position of this Positioner.
+        /// </summary>
+        [Obsolete("Deprecated, please use OnScreenPointChanged or OnTransformedPointChanged as appropriate instead", false)]
         public Action OnPositionerPositionChangedDelegate;
+
 
         private static int InvalidId = 0;
 
@@ -52,9 +94,12 @@ namespace Wrld.Space.Positioners
             }
 
         /// <summary>
-        /// Try to get the location of this Positioner, in ECEF space.
+        /// Try to get the resultant transformed position of this Positioner as an ECEF coordinate.
+        /// The method returns false if the resultant transformed position is not currently defined - in which
+        /// case IsTransformedPointDefined would also return false.
         /// </summary>
-        /// <param name="out_positionerECEFLocation">The ECEF location of this Positioner. The value is only valid if the returned result is true.</param>
+        /// <param name="out_positionerECEFLocation">If the return value is true, the resultant transformed position of
+        /// this Positioner, represented as an ECEF coordinate; else a zero value.</param>
         /// <returns>True if the Positioner's ECEF location could be determined, false otherwise.</returns>
         public bool TryGetECEFLocation(out DoubleVector3 out_positionerECEFLocation)
         {
@@ -67,7 +112,28 @@ namespace Wrld.Space.Positioners
         }
 
         /// <summary>
-        /// Try to get the on-screen position of this Positioner. 
+        /// Try to get the resultant transformed position of this Positioner as a LatLongAltitude.
+        /// The method returns false if the resultant transformed position is not currently defined - in which
+        /// case IsTransformedPointDefined would also return false.
+        /// To transform out_latLongAlt into a world-space translation, see SpacesApi.GeographicToWorldPoint.
+        /// </summary>
+        /// <param name="out_latLongAlt">If the return value is true, the resultant transformed position of this Positioner,
+        /// represented as a LatLongAltitude; else a zero value</param>
+        /// <returns>True if out_latLongAlt was successfully set; else false.</returns>
+        public bool TryGetLatLongAltitude(out LatLongAltitude out_latLongAlt)
+        {
+            if (m_positionerApiInternal.TryFetchLatLongAltitudeForPositioner(this, out out_latLongAlt))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Try to get the projected screen-space position of the resultant transformed position.
+        /// Try to get the on-screen position of this Positioner.
+        /// Note that the screen point value obtained via this method may change every frame.
         /// </summary>
         /// <param name="out_screenPoint">The screen point of this Positioner. The value is only valid if the returned result is true.</param>
         /// <returns>True if the Positioner's screen point could be determined, false otherwise.</returns>
@@ -77,15 +143,15 @@ namespace Wrld.Space.Positioners
             {
                 return true;
             }
-            
+
             return false;
         }
 
         /// <summary>
-        /// Set the location of this Positioner, at the specified latitude and longitude.
+        /// Set the explicit latitude and longitude coordinates of this Positioner.
         /// </summary>
-        /// <param name="latitudeDegrees">The desired latitude, in degrees.</param>
-        /// <param name="longitudeDegrees">The desired longitude, in degrees.</param>
+        /// <param name="latitudeDegrees">The latitude, in degrees.</param>
+        /// <param name="longitudeDegrees">The longitude, in degrees.</param>
         [Obsolete("Please use Positioner.SetPosition(LatLong position) in the future.")]
         public void SetLocation(double latitudeDegrees, double longitudeDegrees)
         {
@@ -94,9 +160,9 @@ namespace Wrld.Space.Positioners
         }
 
         /// <summary>
-        /// Set the location of this Positioner, at the specified latitude and longitude.
+        /// Set the explicit latitude and longitude coordinates of this Positioner.
         /// </summary>
-        /// <param name="position">The desired position in LatLong form.</param>
+        /// <param name="position">The position as a LatLong.</param>
         public void SetPosition(LatLong position)
         {
             m_position = position;
@@ -104,9 +170,9 @@ namespace Wrld.Space.Positioners
         }
 
         /// <summary>
-        /// Get the target latitude and longitude of this Positioner. Note: This is not the same as TryGetLatLongAltitude.
+        /// Get the explicitly-set latitude and longitude coordinates of this Positioner.
         /// </summary>
-        /// <returns>The target position in LatLong form.</returns>
+        /// <returns>The position as a LatLong.</returns>
         public LatLong GetPosition()
         {
             return m_position;
@@ -115,7 +181,7 @@ namespace Wrld.Space.Positioners
         /// <summary>
         /// Set the elevation of this Positioner, in meters. The behaviour of this depends on the ElevationMode.
         /// </summary>
-        /// <param name="elevation">The desired elevation, in meters.</param>
+        /// <param name="elevation">The elevation, in meters.</param>
         public void SetElevation(double elevation)
         {
             m_positionerApiInternal.SetPositionerElevation(this, elevation);
@@ -134,7 +200,7 @@ namespace Wrld.Space.Positioners
         /// <summary>
         /// Set the ElevationMode of this Positioner. See the ElevationMode documentation for more details.
         /// </summary>
-        /// <param name="elevationMode">The desired ElevationMode of this positioner.</param>
+        /// <param name="elevationMode">The ElevationMode of this positioner.</param>
         public void SetElevationMode(ElevationMode elevationMode)
         {
             m_positionerApiInternal.SetPositionerElevationMode(this, elevationMode);
@@ -153,8 +219,9 @@ namespace Wrld.Space.Positioners
         /// <summary>
         /// Sets the Indoor Map of this Positioner. If this is unset, the Positioner will be outside instead.
         /// </summary>
-        /// <param name="indoorMapId">The Indoor Map id string for the desired Indoor Map. See the IndoorMapApi documentation for more details.</param>
-        /// <param name="indoorMapFloorId">The floor of the Indoor Map that this Positioner should be placed upon.</param>
+        /// <param name="indoorMapId">The identifier of the indoor map on which the positioner should be displayed.
+        /// See the IndoorMapApi documentation for more details.</param>
+        /// <param name="indoorMapFloorId">The identifier of the indoor map floor on which the Positioner should be displayed.</param>
         public void SetIndoorMap(string indoorMapId, int indoorMapFloorId)
         {
             m_positionerApiInternal.SetPositionerIndoorMap(this, indoorMapId, indoorMapFloorId);
@@ -181,22 +248,20 @@ namespace Wrld.Space.Positioners
         }
 
         /// <summary>
-        /// Try to get the transformed position as a LatLongAltitude of this Positioner. This can be used with SpacesApi.GeographicToWorldPoint to calculate a Vector3 translation for this Positioner. It is recommended to use a GeographicTransform for placing GameObjects on the map, however.
+        /// Query whether the resultant transformed point of this positioner is currently defined.
+        /// May return false if, for example, this Positioner is on an indoor map, and the indoor map is not currently being displayed.
+        /// If true, then getting the transformed point via TryGetECEFLocation or TryGetLatLongAltitude will succeed; else they will fail.
         /// </summary>
-        /// <param name="out_latLongAlt">The LatLongAltitude that represents the Positioner's position with the desired elevation and ElevationMode applied. The value is only valid if this function returns true.</param>
-        /// <returns>Whether or not this function was successful.</returns>
-        public bool TryGetLatLongAltitude(out LatLongAltitude out_latLongAlt)
+        /// <returns>True if the resultant transformed point of this positioner is currently defined; else false.</returns>
+        public bool IsTransformedPointDefined()
         {
-            if (m_positionerApiInternal.TryFetchLatLongAltitudeForPositioner(this, out out_latLongAlt))
-            {
-                return true;
-            }
-
-            return false;
+            return m_positionerApiInternal.IsTransformedPointDefined(this);
         }
 
         /// <summary>
-        /// Returns true if the screen projection of this Positioner would appear beyond the horizon for the current viewpoint. For example, when viewing the map zoomed out so that the entire globe is visible, calling this method on a Positioner that is located on the opposite side of the Earth from the camera would return true. 
+        /// Returns true if the screen projection of this Positioner would appear beyond the horizon for the current viewpoint.
+        /// For example, when viewing the map zoomed out so that the entire globe is visible, calling this method on a
+        /// Positioner that is located on the opposite side of the Earth from the camera would return true.
         /// </summary>
         /// <returns>Whether or not this Positioner is beyond the horizon.</returns>
         public bool IsBehindGlobeHorizon()

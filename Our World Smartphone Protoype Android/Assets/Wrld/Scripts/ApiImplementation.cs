@@ -11,7 +11,13 @@ using Wrld.Space.Positioners;
 using Wrld.Resources.Labels;
 using Wrld.Space.EnvironmentFlattening;
 using Wrld.Meshes;
+using Wrld.Paths;
 using Wrld.Precaching;
+using Wrld.Transport;
+using Wrld.Resources.Props;
+using Wrld.Utilities;
+using System;
+using AOT;
 
 namespace Wrld
 {
@@ -21,19 +27,27 @@ namespace Wrld
         private NativePluginRunner m_nativePluginRunner;
         private CoordinateSystem m_coordinateSystem;
         private CameraApiInternal m_cameraApiInternal;
-        private CameraApi m_cameraController;
+        private CameraApi m_cameraApi;
         private BuildingsApi m_buildingsApi;
-        private IndoorMapsApi m_indoorMapsApi;
-        private GeographicApi m_geographicApi;
         private BuildingsApiInternal m_buildingsApiInternal;
+        private IndoorMapsApi m_indoorMapsApi;
         private IndoorMapsApiInternal m_indoorMapsApiInternal;
+        private IndoorMapEntityInformationApi m_indoorMapEntityInformationApi;
+        private IndoorMapEntityInformationApiInternal m_indoorMapEntityInformationApiInternal;
+        private GeographicApi m_geographicApi;
         private SpacesApi m_spacesApi;
         private PositionerApi m_positionerApi;
         private PositionerApiInternal m_positionerApiInternal;
         private EnvironmentFlatteningApi m_environmentFlatteningApi;
+        private PathApi m_pathApi;
+        private PathApiInternal m_pathApiInternal;
         private EnvironmentFlatteningApiInternal m_environmentFlatteningApiInternal;
         private PrecacheApi m_precacheApi;
         private PrecacheApiInternal m_precacheApiInternal;
+        private PropsApi m_propsApi;
+        private PropsApiInternal m_propsApiInternal;
+        private TransportApi m_transportApi;
+        private TransportApiInternal m_transportApiInternal;
         private UnityWorldSpaceCoordinateFrame m_frame;
         private DoubleVector3 m_originECEF;
         private InterestPointProvider m_interestPointProvider;
@@ -46,6 +60,9 @@ namespace Wrld
         private LabelServiceInternal m_labelServiceInternal;
         private ITransformUpdateStrategy m_transformUpdateStrategy;
         private GameObject m_root;
+        private IntPtr m_handleToSelf;
+        public event Action OnInitialStreamingCompleteInternal;
+        public delegate void NativeOnInitialStreamingCompleteDelegate(IntPtr internalApiHandle);
 
         public ApiImplementation(string apiKey, CoordinateSystem coordinateSystem, Transform parentTransformForStreamedObjects, ConfigParams configParams)
         {
@@ -60,25 +77,28 @@ namespace Wrld
 
             m_interestPointProvider = new InterestPointProvider(m_root.transform);
 
-            m_terrainStreamer = new GameObjectStreamer("Terrain", materialRepository, m_root.transform, terrainCollision, true);
-            m_roadStreamer = new GameObjectStreamer("Roads", materialRepository, m_root.transform, roadCollision, true);
-            m_buildingStreamer = new GameObjectStreamer("Buildings", materialRepository, m_root.transform, buildingCollision, true);
-            m_highlightStreamer = new GameObjectStreamer("Highlights", materialRepository, m_root.transform, CollisionStreamingType.NoCollision, false);
-            m_indoorMapStreamer = new GameObjectStreamer("IndoorMaps", materialRepository, m_root.transform, CollisionStreamingType.NoCollision, false);
+            m_terrainStreamer = new GameObjectStreamer("Terrain", materialRepository, m_root.transform, terrainCollision, true, configParams.UploadMeshesToGPU);
+            m_roadStreamer = new GameObjectStreamer("Roads", materialRepository, m_root.transform, roadCollision, true, configParams.UploadMeshesToGPU);
+            m_buildingStreamer = new GameObjectStreamer("Buildings", materialRepository, m_root.transform, buildingCollision, true, configParams.UploadMeshesToGPU);
+            m_highlightStreamer = new GameObjectStreamer("Highlights", materialRepository, m_root.transform, CollisionStreamingType.NoCollision, false, configParams.UploadMeshesToGPU);
+            m_indoorMapStreamer = new GameObjectStreamer("IndoorMaps", materialRepository, m_root.transform, CollisionStreamingType.NoCollision, false, configParams.UploadMeshesToGPU);
 
             var indoorMapMaterialRepository = new IndoorMapMaterialRepository();
             
             var indoorMapStreamedTextureObserver = new IndoorMapStreamedTextureObserver(indoorMapMaterialRepository);
             var indoorMapTextureStreamingService = new IndoorMapTextureStreamingService(textureLoadHandler, indoorMapStreamedTextureObserver);
-            m_indoorMapsApiInternal = new IndoorMapsApiInternal(indoorMapTextureStreamingService);
+            m_indoorMapsApiInternal = new IndoorMapsApiInternal(indoorMapTextureStreamingService, configParams.IndoorMapMaterialsDirectory);
             var indoorMapMaterialService = new IndoorMapMaterialService(indoorMapMaterialRepository, m_indoorMapsApiInternal);
 
             m_indoorMapsApi = new IndoorMapsApi(m_indoorMapsApiInternal);
 
+            m_indoorMapEntityInformationApiInternal = new IndoorMapEntityInformationApiInternal();
+            m_indoorMapEntityInformationApi = new IndoorMapEntityInformationApi(m_indoorMapEntityInformationApiInternal);
+
             var meshUploader = new MeshUploader();
             var indoorMapScene = new IndoorMapScene(m_indoorMapStreamer, meshUploader, indoorMapMaterialService, m_indoorMapsApiInternal);
             m_mapGameObjectScene = new MapGameObjectScene(m_terrainStreamer, m_roadStreamer, m_buildingStreamer, m_highlightStreamer, m_indoorMapStreamer, meshUploader, indoorMapScene);
-            m_labelServiceInternal = new LabelServiceInternal(UnityEngine.GameObject.Find("Canvas"), configParams.EnableLabels);
+            m_labelServiceInternal = new LabelServiceInternal(configParams.LabelCanvas, configParams.EnableLabels, textureLoadHandler);
 
             m_positionerApiInternal = new PositionerApiInternal();
             m_positionerApi = new PositionerApi(m_positionerApiInternal);
@@ -90,6 +110,14 @@ namespace Wrld
 
             m_precacheApiInternal = new PrecacheApiInternal();
             m_precacheApi = new PrecacheApi(m_precacheApiInternal);
+
+            m_propsApiInternal = new PropsApiInternal();
+            m_propsApi = new PropsApi(m_propsApiInternal);
+
+            m_transportApiInternal = new TransportApiInternal();
+            m_transportApi = new TransportApi(m_transportApiInternal);
+
+            m_handleToSelf = NativeInteropHelpers.AllocateNativeHandleForObject(this);
 
             m_nativePluginRunner = new NativePluginRunner(
                 apiKey, 
@@ -104,10 +132,13 @@ namespace Wrld
                 m_positionerApiInternal,
                 m_cameraApiInternal,
                 m_buildingsApiInternal,
-                m_precacheApiInternal
+                m_precacheApiInternal,
+                m_transportApiInternal,
+                m_indoorMapEntityInformationApiInternal,
+                m_handleToSelf
                 );
 
-            m_cameraController = new CameraApi(this, m_cameraApiInternal);
+            m_cameraApi = new CameraApi(this, m_cameraApiInternal);
 
             m_coordinateSystem = coordinateSystem;
             var defaultStartingLocation = LatLongAltitude.FromDegrees(
@@ -126,6 +157,9 @@ namespace Wrld
             
             m_environmentFlatteningApiInternal = new EnvironmentFlatteningApiInternal();
             m_environmentFlatteningApi = new EnvironmentFlatteningApi(m_environmentFlatteningApiInternal);
+
+            m_pathApiInternal = new PathApiInternal();
+            m_pathApi = new PathApi(m_pathApiInternal);
 
             m_spacesApi = new SpacesApi(this);
 
@@ -166,9 +200,9 @@ namespace Wrld
 
             if (m_coordinateSystem == CoordinateSystem.ECEF)
             {
-                if (m_cameraController.HasControlledCamera)
+                if (m_cameraApi.HasControlledCamera)
                 {
-                    m_cameraController.MoveTo(lla.GetLatLong());
+                    m_cameraApi.MoveTo(lla.GetLatLong());
                 }
                 else
                 {   
@@ -296,11 +330,18 @@ namespace Wrld
             m_geographicApi.UpdateTransforms(m_transformUpdateStrategy);
         }
 
+        [MonoPInvokeCallback(typeof(NativeOnInitialStreamingCompleteDelegate))]
+        public static void OnNativeInitialStreamingComplete(IntPtr internalApiHandle)
+        {
+            var apiImplementation = internalApiHandle.NativeHandleToObject<ApiImplementation>();
+            apiImplementation.OnInitialStreamingCompleteInternal();
+        }
+
         public CameraApi CameraApi
         {
             get
             {
-                return m_cameraController;
+                return m_cameraApi;
             }
         }
 
@@ -317,6 +358,14 @@ namespace Wrld
             get
             {
                 return m_indoorMapsApi;
+            }
+        }
+
+        public IndoorMapEntityInformationApi IndoorMapEntityInformationApi
+        {
+            get
+            {
+                return m_indoorMapEntityInformationApi;
             }
         }
 
@@ -352,6 +401,14 @@ namespace Wrld
             }
         }
 
+        public PathApi PathApi
+        {
+            get
+            {
+                return m_pathApi;
+            }
+        }
+
         public PrecacheApi PrecacheApi
         {
             get
@@ -360,11 +417,41 @@ namespace Wrld
             }
         }
 
+        public PropsApi PropsApi
+        {
+            get
+            {
+                return m_propsApi;
+            }
+        }
+
+        public TransportApi TransportApi
+        {
+            get
+            {
+                return m_transportApi;
+            }
+        }
+
+
         public void Update()
         {
-            m_cameraController.UpdateInput();
+            m_cameraApi.UpdateInput();
+
+            if (m_cameraApiInternal.CustomRenderCamera != null)
+            {
+                var cameraState = GetStateForCustomCamera(m_cameraApiInternal.CustomRenderCamera);
+                m_cameraApiInternal.SetCustomRenderCameraState(cameraState);
+            }
+
             m_nativePluginRunner.Update();
-            m_cameraController.Update(Time.deltaTime);
+
+            if (m_cameraApi.HasControlledCamera)
+            {
+                var cameraState = m_cameraApiInternal.GetNativeCameraState();
+                ApplyNativeCameraState(cameraState, m_cameraApi.GetControlledCamera());
+            }
+
             UpdateTransforms();
         }
 
@@ -392,11 +479,13 @@ namespace Wrld
             m_mapGameObjectScene.Destroy();
             m_cameraApiInternal.Destroy();
             m_precacheApiInternal.Destroy();
+            m_transportApiInternal.Destroy();
 
-            DestroyRootObject();
+            GameObject.Destroy(m_root);
+            m_root = null;
         }
 
-        private void DestroyRootObject()
+        public void ResetRootChilds()
         {
             var parent = m_root.transform.parent;
             int childCount = m_root.transform.childCount;
@@ -406,9 +495,6 @@ namespace Wrld
                 var child = m_root.transform.GetChild(childIndex);
                 child.SetParent(parent.transform, false);
             }
-
-            GameObject.Destroy(m_root);
-            m_root = null;
         }
 
         internal Vector3 GeographicToWorldPoint(LatLongAltitude position)
@@ -475,10 +561,9 @@ namespace Wrld
             {
                 finalOriginECEF = m_frame.LocalSpaceToECEF(mapSpaceCameraPosition);
 
-                var mapSpaceCameraRotation = Quaternion.Inverse(mapTransform.rotation) * camera.transform.rotation;
-                camera.transform.rotation = m_frame.LocalToECEFRotation * mapSpaceCameraRotation;
-                camera.transform.position = Vector3.zero;
-                viewMatrixECEF = camera.worldToCameraMatrix;
+                var frameMatrix = Matrix4x4.TRS (Vector3.zero, m_frame.ECEFToLocalRotation, Vector3.one);
+                viewMatrixECEF = camera.worldToCameraMatrix * mapTransform.localToWorldMatrix * frameMatrix;
+                viewMatrixECEF.SetColumn (3, new Vector4 (0.0f, 0.0f, 0.0f, 1.0f));
             }
 
             DoubleVector3 interestPointECEF = m_interestPointProvider.CalculateInterestPoint(camera, finalOriginECEF);

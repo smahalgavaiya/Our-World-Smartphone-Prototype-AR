@@ -7,7 +7,10 @@ using System;
 using UnityEngine;
 using Wrld.Space.Positioners;
 using Wrld.Space.EnvironmentFlattening;
+using Wrld.Paths;
 using Wrld.Precaching;
+using Wrld.Transport;
+using Wrld.Resources.Props;
 
 namespace Wrld
 {
@@ -77,6 +80,8 @@ namespace Wrld
                     throw;
                 }
             }
+
+            m_implementation.OnInitialStreamingCompleteInternal += () => { if (OnInitialStreamingComplete != null) OnInitialStreamingComplete(); };
         }
 
         /// <summary>
@@ -125,6 +130,11 @@ namespace Wrld
             m_implementation.SetEnabled(enabled);
         }
 
+        internal void ResetRootChilds()
+        {
+            m_implementation.ResetRootChilds();
+        }
+
         /// <summary>
         /// Uninitializes the API instance. This frees up any resources allocated by the plugins including all streamed meshes in the scene. Preferably, this should be called from within the OnApplicationQuit() method.
         /// </summary>
@@ -154,6 +164,11 @@ namespace Wrld
         {
             m_implementation.OnApplicationResumed();
         }
+
+        /// <summary>
+        ///  This event is raised when the initial map scene has completed streaming all resources.
+        /// </summary>
+        public event Action OnInitialStreamingComplete;
         
         /// <summary>
         ///  Allows accessing the camera API endpoints to interact with the map.
@@ -185,6 +200,17 @@ namespace Wrld
             get
             {
                 return m_implementation.IndoorMapsApi;
+            }
+        }
+
+        /// <summary>
+        /// Obtain information about features on indoor maps.
+        /// </summary>
+        public IndoorMapEntityInformationApi IndoorMapEntityInformationApi
+        {
+            get
+            {
+                return m_implementation.IndoorMapEntityInformationApi;
             }
         }
 
@@ -234,6 +260,17 @@ namespace Wrld
         }
 
         /// <summary>
+        /// Get accessor for the path API
+        /// </summary>
+        public PathApi PathApi
+        {
+            get
+            {
+                return m_implementation.PathApi;
+            }
+        }
+
+        /// <summary>
         /// Get accessor for the data precaching API
         /// </summary>
         public PrecacheApi PrecacheApi
@@ -241,6 +278,28 @@ namespace Wrld
             get
             {
                 return m_implementation.PrecacheApi;
+            }
+        }
+
+        /// <summary>
+        /// Get accessor for the props API
+        /// </summary>
+        public PropsApi PropsApi
+        {
+            get
+            {
+                return m_implementation.PropsApi;
+            }
+        }
+
+        /// <summary>
+        /// Get accessor for the transport network API
+        /// </summary>
+        public TransportApi TransportApi
+        {
+            get
+            {
+                return m_implementation.TransportApi;
             }
         }
 

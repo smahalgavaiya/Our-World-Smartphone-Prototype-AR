@@ -18,10 +18,16 @@ namespace Wrld
             public double m_longitudeDegrees;
             public double m_distanceToInterest;
             public double m_headingDegrees;
+            [MarshalAs(UnmanagedType.I1)]
             public bool m_streamingLodBasedOnDistance;
             public double m_viewportWidth;
             public double m_viewportHeight;
+
+            [MarshalAs(UnmanagedType.I1)]
             public bool m_enableLabels;
+            [MarshalAs(UnmanagedType.I1)]
+            public bool m_enableIndoorEntryMarkerEvents;
+            public int m_resourceWebRequestTimeoutSeconds;
         }
 
         NativeConfig m_nativeConfig;
@@ -84,6 +90,11 @@ namespace Wrld
         /// Default materials lookup directory with existing semantically named materials required for runtime assignment.
         /// </summary>
         public string MaterialsDirectory;
+
+        /// <summary>
+        /// Default interiors materials lookup directory with existing semantically named materials required for runtime assignment.
+        /// </summary>
+        public string IndoorMapMaterialsDirectory;
 
         /// <summary>
         /// Default material to be assigned to Wrld Landmarks.
@@ -158,6 +169,37 @@ namespace Wrld
         }
 
         /// <summary>
+        /// This is the Unity UI Canvas that Labels will be drawn upon, if enabled.
+        /// This is set automatically from the Unity Inspector panel for the WrldMap object; if left blank, a new one will be instantiated automatically.
+        /// </summary>
+        public GameObject LabelCanvas;
+
+        /// <summary>
+        /// This controls whether or not Indoor Entry Markers can be clicked or tapped on to enter a building.
+        /// This is set automatically from the Unity Inspector panel for the WrldMap object.
+        /// </summary>
+        public bool EnableIndoorEntryMarkerEvents
+        {
+            get { return m_nativeConfig.m_enableIndoorEntryMarkerEvents; }
+            set { m_nativeConfig.m_enableIndoorEntryMarkerEvents = value; }
+        }
+
+        /// <summary>
+        /// Allows configuration of the timeout for obtaining response for map tile resource web requests.
+        /// </summary>
+        public int ResourceWebRequestTimeoutSeconds
+        {
+            get { return m_nativeConfig.m_resourceWebRequestTimeoutSeconds; }
+            set { m_nativeConfig.m_resourceWebRequestTimeoutSeconds = value; }
+        }
+
+        /// <summary>
+        /// Defines whether the meshes generated at runtime should be uploaded to the GPU and discarded from RAM. Only applied for meshes with collision disabled.
+        /// </summary>
+        public bool UploadMeshesToGPU;
+
+
+        /// <summary>
         /// Create and return a default configuration which sets up all parameters to default values.
         /// The map starts up at San Francisco (37.771092, -122.468385) at an altitude above sea level of
         /// 1781 meters while facing North (0 degrees heading). The default directory is set to WrldMaterials, which
@@ -176,6 +218,7 @@ namespace Wrld
             config.StreamingLodBasedOnDistance = false;
 
             config.MaterialsDirectory = "WrldMaterials/";
+            config.IndoorMapMaterialsDirectory = "WrldMaterials/Achetypes";
             config.OverrideLandmarkMaterial = null;
 
             config.CoverageTreeManifestUrl = "";
@@ -187,6 +230,11 @@ namespace Wrld
             config.ViewportHeight = UnityEngine.Screen.height;
 
             config.EnableLabels = false;
+            config.EnableIndoorEntryMarkerEvents = true;
+            config.LabelCanvas = null;
+            config.ResourceWebRequestTimeoutSeconds = 60;
+
+            config.UploadMeshesToGPU = false;
 
             return config;
         }

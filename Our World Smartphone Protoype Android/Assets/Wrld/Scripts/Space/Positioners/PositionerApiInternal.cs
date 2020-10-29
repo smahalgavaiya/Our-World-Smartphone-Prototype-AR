@@ -12,6 +12,11 @@ namespace Wrld.Space.Positioners
 {
     internal class PositionerApiInternal
     {
+        public delegate void PositionerChangedHandler(Positioner positioner);
+
+        public event PositionerChangedHandler OnPositionerTransformedPointChanged;
+        public event PositionerChangedHandler OnPositionerScreenPointChanged;
+
         private IDictionary<int, Positioner> m_positionerIdToObject = new Dictionary<int, Positioner>();
         private IntPtr m_handleToSelf;
 
@@ -51,8 +56,6 @@ namespace Wrld.Space.Positioners
                 positionerOptions.GetElevationMode());
 
             m_positionerIdToObject.Add(positionerId, positioner);
-
-            NotifyPositionerProjectionsChanged();
 
             return positioner;
         }
@@ -106,16 +109,48 @@ namespace Wrld.Space.Positioners
             return false;
         }
 
-        public void NotifyPositionerProjectionsChanged()
+        private void NotifyPositionerTransformedPointChanged(int positionerId)
         {
-            foreach(int positionerId in m_positionerIdToObject.Keys)
+            Positioner positioner;
+            if (!m_positionerIdToObject.TryGetValue(positionerId, out positioner))
+            {
+                return;
+            }
+
+            if (OnPositionerTransformedPointChanged != null)
+            {
+                OnPositionerTransformedPointChanged(positioner);
+            }
+
+            if (positioner.OnTransformedPointChanged != null)
+            {
+                positioner.OnTransformedPointChanged();
+            }
+        }
+
+        private void NotifyPositionersProjectionsChanged()
+        {
+            foreach (int positionerId in m_positionerIdToObject.Keys)
             {
                 var positioner = m_positionerIdToObject[positionerId];
+                if (OnPositionerScreenPointChanged != null)
+                {
+                    OnPositionerScreenPointChanged(positioner);
+                }
+
+                if (positioner.OnScreenPointChanged != null)
+                {
+                    positioner.OnScreenPointChanged();
+                }
+
+#pragma warning disable 618
+                // call deprecated event
                 if (positioner.OnPositionerPositionChangedDelegate != null)
                 {
                     positioner.OnPositionerPositionChangedDelegate();
                 }
-            }            
+#pragma warning restore 618
+            }
         }
 
         public void DestroyPositioner(Positioner positioner)
@@ -168,19 +203,35 @@ namespace Wrld.Space.Positioners
             NativePositionerApi_SetIndoorMap(NativePluginRunner.API, positioner.Id, indoorMapId, indoorMapFloorId);
         }
 
+        public bool IsTransformedPointDefined(Positioner positioner)
+        {
+            return NativePositionerApi_IsTransformedPointDefined(NativePluginRunner.API, positioner.Id);
+        }
+
         public bool IsPositionerBehindGlobeHorizon(Positioner positioner)
         {
             return NativePositionerApi_IsBehindGlobeHorizon(NativePluginRunner.API, positioner.Id);
         }
 
-        public delegate void PositionerProjectionChangedDelegate(IntPtr positionerApiHandle);
+        public delegate void PositionerTransformedPointChangedDelegate(IntPtr positionerApiHandle, int positionerId);
 
-        [MonoPInvokeCallback(typeof(PositionerProjectionChangedDelegate))]
-        public static void OnPositionerUpdated(IntPtr positionerApiHandle)
+        [MonoPInvokeCallback(typeof(PositionerTransformedPointChangedDelegate))]
+        public static void OnNativePositionerTransformedPointChanged(IntPtr positionerApiHandle, int positionerId)
         {
             var positionerApiInternal = positionerApiHandle.NativeHandleToObject<PositionerApiInternal>();
 
-            positionerApiInternal.NotifyPositionerProjectionsChanged();
+            positionerApiInternal.NotifyPositionerTransformedPointChanged(positionerId);
+        }
+
+
+        public delegate void PositionersProjectionChangedDelegate(IntPtr positionerApiHandle);
+
+        [MonoPInvokeCallback(typeof(PositionersProjectionChangedDelegate))]
+        public static void OnNativePositionersProjectionChanged(IntPtr positionerApiHandle)
+        {
+            var positionerApiInternal = positionerApiHandle.NativeHandleToObject<PositionerApiInternal>();
+
+            positionerApiInternal.NotifyPositionersProjectionsChanged();
         }
 
         [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
@@ -209,6 +260,9 @@ namespace Wrld.Space.Positioners
 
         [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
         private static extern bool NativePositionerApi_SetIndoorMap(IntPtr ptr, int positionerId, [MarshalAs(UnmanagedType.LPStr)] string indoorMapId, int indoorMapFloorId);
+
+        [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
+        private static extern bool NativePositionerApi_IsTransformedPointDefined(IntPtr ptr, int positionerId);
 
         [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
         private static extern bool NativePositionerApi_IsBehindGlobeHorizon(IntPtr ptr, int positionerId);

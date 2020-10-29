@@ -89,7 +89,6 @@
     <Compile Include="Assets\UnityFileDebug\Lib\Editor\PackageAsset.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\ARCoreAnalyticsGUI.cs" />
     <Compile Include="Assets\Wrld\Editor\PlatformHelpers.cs" />
-    <Compile Include="Assets\Wrld\Editor\FirstInstallActionsRunner.cs" />
     <Compile Include="Assets\Wrld\Editor\CameraJumpEditor.cs" />
     <Compile Include="Assets\Wrld\Editor\WrldStartupEditor.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\LogRequestUtils.cs" />
@@ -98,12 +97,13 @@
     <Compile Include="Assets\Wrld\Editor\XcodeProjectUpdater.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\CloudAnchorPreprocessBuild.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\ExamplePreprocessBuild.cs" />
-    <Compile Include="Assets\Wrld\Editor\CopyPlatformResources.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\Analytics\ArcoreClearcut.cs" />
     <Compile Include="Assets\Wrld SDK Samples\ARCore Sample\Editor\WrldARCoreSceneSetupHelper.cs" />
     <Compile Include="Assets\EasyMainMenu\Scripts\Main Menu Scripts\Editor\MainMenuControllerEditor.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\AssetHelper.cs" />
     <Compile Include="Assets\GoogleARCore 1.9\SDK\Scripts\Editor\BackgroundJobExecutor.cs" />
+    <Compile Include="Assets\Wrld\Editor\CopyPlatformResources.cs" />
+    <Compile Include="Assets\Wrld\Editor\FirstInstallActionsRunner.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\PlayServicesResolver\Editor\Google.IOSResolver_v1.2.122.0.dll" />

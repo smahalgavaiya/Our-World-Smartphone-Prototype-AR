@@ -99,13 +99,13 @@ namespace Wrld.Resources.IndoorMaps
             indoorMapsApiInternal.OnIndoorMapEntitiesClickedInternal(entityIds);            
         }     
 
-        public IndoorMapsApiInternal(IIndoorMapTextureStreamingService textureStreamingService)
+        public IndoorMapsApiInternal(IIndoorMapTextureStreamingService textureStreamingService, string indoorMapMaterialDirectory)
         {
             m_handleToSelf = NativeInteropHelpers.AllocateNativeHandleForObject(this);
 
             IndoorMapTextureStreamingService = textureStreamingService;
             IndoorMapTextureFetcher = new DefaultIndoorMapTextureFetcher(IndoorMapTextureStreamingService);
-            IndoorMapMaterialFactory = new DefaultIndoorMapMaterialFactory();
+            IndoorMapMaterialFactory = new DefaultIndoorMapMaterialFactory(indoorMapMaterialDirectory);
         }
 
         public IntPtr GetHandle()
@@ -190,10 +190,6 @@ namespace Wrld.Resources.IndoorMaps
 
         public IndoorMap GetActiveIndoorMap()
         {
-            var floorIds = new List<string>();
-            var floorNames = new List<string>();
-            var floorNumbers = new List<int>();
-
             string mapId = GetActiveIndoorMapId();
 
             if (string.IsNullOrEmpty(mapId))
@@ -205,18 +201,22 @@ namespace Wrld.Resources.IndoorMaps
             string userData = GetActiveIndoorMapUserData();
             int floorCount = NativeIndoorMapsApi_GetActiveIndoorMapFloorCount(NativePluginRunner.API);
 
+            string[] floorIds = new string[floorCount];
+            string[] floorNames = new string[floorCount];
+            int[] floorNumbers = new int[floorCount];
+
             for (int floorIndex = 0; floorIndex < floorCount; ++floorIndex)
             {
                 string floorId = GetActiveIndoorMapFloorId(floorIndex);
                 string floorName = GetActiveIndoorMapFloorName(floorIndex);
                 int floorNumber = NativeIndoorMapsApi_GetActiveIndoorMapFloorNumber(NativePluginRunner.API, floorIndex);
 
-                floorIds.Add(floorId);
-                floorNames.Add(floorName);
-                floorNumbers.Add(floorNumber);
+                floorIds [floorIndex] = floorId;
+                floorNames [floorIndex] = floorName;
+                floorNumbers [floorIndex] = floorNumber;
             }
 
-            return new IndoorMap(mapId, mapName, floorCount, floorIds.ToArray(), floorNames.ToArray(), floorNumbers.ToArray(), userData);
+            return new IndoorMap(mapId, mapName, floorCount, floorIds, floorNames, floorNumbers, userData);
         }
 
         public void SetEntityHighlights(string[] highlightEntityIds, UnityEngine.Color color, string indoorMapId = null)

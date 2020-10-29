@@ -81,7 +81,6 @@ Shader "Wrld/StandardWithVertexColor"
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature _ _GLOSSYREFLECTIONS_OFF
             #pragma shader_feature _PARALLAXMAP
-			#pragma shader_feature _VERTEXCOLOR_OFF _VERTEXCOLOR _VERTEXCOLOR_LERP
 
             #pragma multi_compile_fwdbase
             #pragma multi_compile_fog
@@ -122,7 +121,6 @@ Shader "Wrld/StandardWithVertexColor"
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature ___ _DETAIL_MULX2
             #pragma shader_feature _PARALLAXMAP
-            #pragma shader_feature _VERTEXCOLOR
 
             #pragma multi_compile_fwdadd_fullshadows
             #pragma multi_compile_fog
@@ -151,8 +149,6 @@ Shader "Wrld/StandardWithVertexColor"
 
             // -------------------------------------
 
-            #pragma shader_feature _VERTEXCOLOR
-			#pragma shader_feature _VERTEXCOLOR_LERP
             #pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
             #pragma shader_feature _METALLICGLOSSMAP
             #pragma shader_feature _PARALLAXMAP
@@ -190,7 +186,6 @@ Shader "Wrld/StandardWithVertexColor"
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature ___ _DETAIL_MULX2
             #pragma shader_feature _PARALLAXMAP
-            #pragma shader_feature _VERTEXCOLOR_OFF _VERTEXCOLOR _VERTEXCOLOR_LERP
 
             #pragma multi_compile_prepassfinal
             #pragma multi_compile_instancing
@@ -233,7 +228,6 @@ Shader "Wrld/StandardWithVertexColor"
             #pragma shader_feature _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
             #pragma shader_feature _ _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature _ _GLOSSYREFLECTIONS_OFF
-            #pragma shader_feature _VERTEXCOLOR_OFF _VERTEXCOLOR _VERTEXCOLOR_LERP
             // SM2.0: NOT SUPPORTED shader_feature ___ _DETAIL_MULX2
             // SM2.0: NOT SUPPORTED shader_feature _PARALLAXMAP
 
@@ -273,7 +267,6 @@ Shader "Wrld/StandardWithVertexColor"
             #pragma shader_feature ___ _DETAIL_MULX2
             // SM2.0: NOT SUPPORTED shader_feature _PARALLAXMAP
             #pragma skip_variants SHADOWS_SOFT
-            #pragma shader_feature _VERTEXCOLOR
 
             #pragma multi_compile_fwdadd_fullshadows
             #pragma multi_compile_fog
@@ -298,8 +291,6 @@ Shader "Wrld/StandardWithVertexColor"
             #pragma exclude_renderers d3d11_9x
             #pragma target 2.0
 
-            #pragma shader_feature _VERTEXCOLOR
-			#pragma shader_feature _VERTEXCOLOR_LERP
             #pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
             #pragma shader_feature _METALLICGLOSSMAP
             #pragma skip_variants SHADOWS_SOFT

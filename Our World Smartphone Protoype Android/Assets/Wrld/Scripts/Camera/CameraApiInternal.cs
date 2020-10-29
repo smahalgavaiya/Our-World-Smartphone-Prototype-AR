@@ -1,5 +1,6 @@
 using AOT;
 using System;
+using System.Runtime.InteropServices;
 using Wrld.Utilities;
 
 namespace Wrld.MapCamera
@@ -30,8 +31,12 @@ namespace Wrld.MapCamera
             TransitionEnd
         };
 
-        internal event Action OnTransitionStartInternal;
-        internal event Action OnTransitionEndInternal;
+        public event Action OnTransitionStartInternal;
+        public event Action OnTransitionEndInternal;
+        private IntPtr m_handleToSelf;
+
+        public UnityEngine.Camera ControlledCamera { get; set; }
+        public UnityEngine.Camera CustomRenderCamera { get; set; }
 
         internal CameraApiInternal()
         {
@@ -41,7 +46,7 @@ namespace Wrld.MapCamera
         internal delegate void CameraEventCallback(IntPtr cameraApiInternalHandle, CameraEventType eventId);
 
         [MonoPInvokeCallback(typeof(CameraEventCallback))]
-        internal static void OnCameraEvent(IntPtr cameraApiInternalHandle, CameraEventType eventID)
+        public static void OnCameraEvent(IntPtr cameraApiInternalHandle, CameraEventType eventID)
         {
             var cameraApiInternal = cameraApiInternalHandle.NativeHandleToObject<CameraApiInternal>();
 
@@ -66,16 +71,65 @@ namespace Wrld.MapCamera
             // :TODO: handle other events
         }
 
-        internal IntPtr GetHandle()
+        public IntPtr GetHandle()
         {
             return m_handleToSelf;
         }
 
-        internal void Destroy()
+        public void Destroy()
         {
             NativeInteropHelpers.FreeNativeHandle(m_handleToSelf);
         }
 
-        private IntPtr m_handleToSelf;
+        public void SetCustomRenderCameraState(CameraState cameraState)
+        {
+            NativeCameraApi_SetCustomRenderCameraState(NativePluginRunner.API, ref cameraState);
+        }
+
+        public void ClearCustomRenderCamera()
+        {
+            NativeCameraApi_ClearCustomRenderCamera(NativePluginRunner.API);
+        }
+
+
+        public void MoveTo(CameraUpdate cameraUpdate)
+        {
+            var cameraUpdateInterop = cameraUpdate.ToCameraUpdateInterop();
+
+            NativeCameraApi_MoveCamera(NativePluginRunner.API, ref cameraUpdateInterop);
+        }
+
+        public void AnimateTo(CameraUpdate cameraUpdate, CameraAnimationOptions cameraAnimationOptions)
+        {
+            var cameraUpdateInterop = cameraUpdate.ToCameraUpdateInterop();
+            var cameraAnimationOptionsInterop = cameraAnimationOptions.ToCameraAnimationOptionsInterop();
+
+            NativeCameraApi_AnimateCamera(NativePluginRunner.API, ref cameraUpdateInterop, ref cameraAnimationOptionsInterop);
+        }
+
+        public NativeCameraState GetNativeCameraState()
+        {
+            return NativeCameraApi_GetCurrentCameraState(NativePluginRunner.API);
+        }
+
+        [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
+        private static extern void NativeCameraApi_MoveCamera(
+            IntPtr ptr,
+            ref CameraUpdateInterop cameraUpdate);
+
+        [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
+        private static extern void NativeCameraApi_AnimateCamera(
+            IntPtr ptr,
+            ref CameraUpdateInterop cameraUpdate,
+            ref CameraAnimationOptionsInterop cameraAnimationOptions);
+
+        [DllImport(NativePluginRunner.DLL)]
+        private static extern NativeCameraState NativeCameraApi_GetCurrentCameraState(IntPtr ptr);
+
+        [DllImport(NativePluginRunner.DLL)]
+        private static extern void NativeCameraApi_SetCustomRenderCameraState(IntPtr ptr, ref CameraState cameraState);
+
+        [DllImport(NativePluginRunner.DLL)]
+        private static extern void NativeCameraApi_ClearCustomRenderCamera(IntPtr ptr);
     }
 }

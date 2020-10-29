@@ -11,13 +11,14 @@ using Wrld.Space.Positioners;
 using Wrld.Resources.Labels;
 using System.Text;
 using Wrld.Precaching;
+using Wrld.Transport;
 
 namespace Wrld
 {
     public class NativePluginRunner
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        public const string DLL = "eegeo-stream-app";
+        public const string DLL = "wrld-unity-android";
 #elif UNITY_IOS && !UNITY_EDITOR
         public const string DLL = "__Internal";
 #else
@@ -87,7 +88,11 @@ namespace Wrld
             PositionerApiInternal positionerApiInternal,
             CameraApiInternal cameraApiInternal,
             BuildingsApiInternal buildingsApiInternal,
-            PrecacheApiInternal precacheApiInternal)
+            PrecacheApiInternal precacheApiInternal,
+            TransportApiInternal transportApiInternal,
+            IndoorMapEntityInformationApiInternal indoorMapEntityInformationApiInternal,
+            IntPtr apiHandle
+            )
         {
             m_threadService = new ThreadService();
             m_textureLoadHandler = textureLoadHandler;
@@ -113,7 +118,11 @@ namespace Wrld
                 mapGameObjectScene.GetHandle(), 
                 labelServiceInternal.GetHandle(), 
                 positionerApiInternal.GetHandle(),
-                precacheApiInternal.GetHandle());
+                precacheApiInternal.GetHandle(),
+                transportApiInternal.GetHandle(),
+                indoorMapEntityInformationApiInternal.GetHandle(),
+                apiHandle
+                );
 
             Initialize(Screen.width, Screen.height, Screen.dpi,
                 apiKey,

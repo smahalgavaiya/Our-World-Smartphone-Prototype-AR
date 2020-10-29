@@ -51,9 +51,7 @@ void vertShadowCaster_VC(VertexInput_VC v,
 		TRANSFER_SHADOW_CASTER_NOPOS(o, opos)
 	#if defined(UNITY_STANDARD_USE_SHADOW_UVS)
 		o.tex = TRANSFORM_TEX(v.uv0, _MainTex);
-		#if defined(_VERTEXCOLOR) || defined(_VERTEXCOLOR_LERP)
-			o.color = v.color;
-		#endif
+		o.color = v.color;
 	#endif
 }
 
@@ -68,12 +66,7 @@ half4 fragShadowCaster_VC(
 {
 	#if defined(UNITY_STANDARD_USE_SHADOW_UVS)
 		half alpha = tex2D(_MainTex, i.tex).a * _Color.a;
-		#if defined(_VERTEXCOLOR)
-			alpha *= i.color.a;
-		#endif
-		#if defined(_VERTEXCOLOR_LERP)
-			alpha *= lerp(1, i.color.a, _IntensityVC);
-		#endif
+		alpha *= i.color.a;
 
 		#if defined(_ALPHATEST_ON)
 			clip(alpha - _Cutoff);

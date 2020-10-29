@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using Wrld.Utilities;
 using Wrld.Interop;
+using Wrld.Common.Maths;
 
 namespace Wrld.Space
 {
@@ -65,11 +66,25 @@ namespace Wrld.Space
             return m_apiImplementation.WorldToGeographicPoint(position);
         }
 
+        /// <summary>
+        /// Calculates the absolute heading angle of a direction at a geographic coordinate.
+        /// </summary>
+        /// <param name="directionEcef">A unit direction vector in ECEF coordinates.</param>
+        /// <param name="pointEcef">A point in ECEF coordinates.</param>
+        /// <returns>The absolute heading angle in degrees clockwise from North of directionEcef at pointEcef.</returns>
+        public double HeadingDegreesFromDirectionAtPoint(DoubleVector3 directionEcef, DoubleVector3 pointEcef)
+        {
+            return NativeSpacesApi_HeadingDegreesFromDirectionAtPoint(NativePluginRunner.API, ref directionEcef, ref pointEcef);
+        }
+
         [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
         private static extern DoubleRay NativeSpacesApi_ScreenPointToRay(IntPtr ptr, ref Vector2 screenPoint);
 
         [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
         private static extern DoubleRay NativeSpacesApi_LatLongToVerticallyDownRay(IntPtr ptr, ref LatLongInterop latLongInterop);
+
+        [DllImport(NativePluginRunner.DLL, CallingConvention = CallingConvention.StdCall)]
+        private static extern double NativeSpacesApi_HeadingDegreesFromDirectionAtPoint(IntPtr ptr, ref DoubleVector3 directionEcef, ref DoubleVector3 pointEcef);
 
     }
 }

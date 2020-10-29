@@ -50,6 +50,10 @@ public class WrldMap : MonoBehaviour
     [SerializeField]
     private string m_materialDirectory = "WrldMaterials/";
 
+    [Tooltip("Directory within the Resources folder to look for interior materials during runtime. Default is provided with the package")]
+    [SerializeField]
+    private string m_indoorMapMaterialDirectory = "WrldMaterials/Archetypes";
+
     [Tooltip("The material to override all landmarks with. Uses standard diffuse if null.")]
     [SerializeField]
     private Material m_overrideLandmarkMaterial = null;
@@ -76,8 +80,20 @@ public class WrldMap : MonoBehaviour
     [SerializeField]
     private bool m_enableLabels = false;
 
-    private Api m_api;
+    [Tooltip("Set to true to allow the user to tap or click on an Interior Entry Marker to enter its associated Indoor Map.")]
+    [SerializeField]
+    private bool m_enableIndoorEntryMarkerEvents = true;
 
+    [Tooltip("Provide a Unity UI Canvas object for text labels to be drawn upon. If this is blank, a new canvas will be instantiated instead.")]
+    [SerializeField]
+    private GameObject m_labelCanvas = null;
+
+    [Tooltip("Set to false if you require read/write access to the meshes")]
+    [SerializeField]
+    private bool m_uploadMeshes = false;
+
+    private Api m_api;
+    private bool m_isExitingApp = false;
     void Awake()
     {
         SetupApi();
@@ -91,11 +107,17 @@ public class WrldMap : MonoBehaviour
         }
 
         m_api.SetEnabled(true);
+#if UNITY_EDITOR
+        EditorApplication.playModeStateChanged += EditorPlayModeChanged;
+#endif
     }
 
     void OnDisable()
     {
         m_api.SetEnabled(false);
+#if UNITY_EDITOR
+        EditorApplication.playModeStateChanged -= EditorPlayModeChanged;
+#endif
     }
 
     string GetApiKey()
@@ -126,11 +148,15 @@ public class WrldMap : MonoBehaviour
         config.HeadingDegrees = m_headingDegrees;
         config.StreamingLodBasedOnDistance = m_streamingLodBasedOnDistance;
         config.MaterialsDirectory = m_materialDirectory;
+        config.IndoorMapMaterialsDirectory = m_indoorMapMaterialDirectory;
         config.OverrideLandmarkMaterial = m_overrideLandmarkMaterial;
         config.Collisions.TerrainCollision = m_terrainCollisions;
         config.Collisions.RoadCollision = m_roadCollisions;
         config.Collisions.BuildingCollision = m_buildingCollisions;
         config.EnableLabels = m_enableLabels;
+        config.EnableIndoorEntryMarkerEvents = m_enableIndoorEntryMarkerEvents;
+        config.LabelCanvas = m_labelCanvas;
+        config.UploadMeshesToGPU = m_uploadMeshes;
 
         try
         {
@@ -154,9 +180,13 @@ public class WrldMap : MonoBehaviour
         {
             m_api.CameraApi.SetControlledCamera(m_streamingCamera);
         }
+
+        // Ensure that Camera API input handler uses the initial value given by the Unity Inspector.
+        // This can be changed later by a developer, but should start off consistent with other Inspector properties.
+        m_api.CameraApi.IsCameraDrivenFromInput = m_useBuiltInCameraControls;
     }
 
-    void Update ()
+    void LateUpdate()
     {
         if (m_useBuiltInCameraControls && (m_streamingCamera == m_api.CameraApi.GetControlledCamera()))
         {
@@ -174,6 +204,10 @@ public class WrldMap : MonoBehaviour
     {
         if (m_api != null)
         {
+            if (!m_isExitingApp)
+            {
+                m_api.ResetRootChilds();
+            }
             m_api.Destroy();
             m_api = null;
         }
@@ -200,4 +234,23 @@ public class WrldMap : MonoBehaviour
             m_api.OnApplicationResumed();
         }
     }
+
+#if !UNITY_EDITOR
+    void OnApplicationQuit()
+    {
+        m_isExitingApp = true;
+        m_api.ResetRootChilds();
+    }
+#endif
+
+#if UNITY_EDITOR
+    void EditorPlayModeChanged(PlayModeStateChange playModeState)
+    {
+        if (playModeState == PlayModeStateChange.ExitingPlayMode)
+        {
+            m_isExitingApp = true;
+            m_api.ResetRootChilds();
+        }
+    }
+#endif
 }

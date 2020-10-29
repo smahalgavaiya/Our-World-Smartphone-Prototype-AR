@@ -9,7 +9,7 @@ namespace Wrld.Streaming
             return string.Format("{0}_INDEX{1}", baseName, meshIndex);
         }
 
-        private GameObject CreateGameObject(Mesh mesh, Material material, string objectName, Transform parentTransform, CollisionStreamingType collisionType)
+        private GameObject CreateGameObject(Mesh mesh, Material material, string objectName, Transform parentTransform, CollisionStreamingType collisionType, bool shouldUploadToGPU)
         {
             var gameObject = new GameObject(objectName);
             gameObject.SetActive(false);
@@ -31,6 +31,16 @@ namespace Wrld.Streaming
 
             switch (collisionType)
             {
+                case CollisionStreamingType.NoCollision:
+                {
+                    if(shouldUploadToGPU)
+                    {
+                        mesh.UploadMeshData(true);
+                    }
+
+                    break;
+                }
+
                 case CollisionStreamingType.SingleSidedCollision:
                 {
                     gameObject.AddComponent<MeshCollider>().sharedMesh = mesh;
@@ -45,14 +55,14 @@ namespace Wrld.Streaming
             return gameObject;
         }
 
-        public GameObject[] CreateGameObjects(Mesh[] meshes, Material material, Transform parentTransform, CollisionStreamingType collisionType)
+        public GameObject[] CreateGameObjects(Mesh[] meshes, Material material, Transform parentTransform, CollisionStreamingType collisionType, bool shouldUploadToGPU)
         {
             var gameObjects = new GameObject[meshes.Length];
 
             for (int meshIndex = 0; meshIndex < meshes.Length; ++meshIndex)
             {
                 var name = CreateGameObjectName(meshes[meshIndex].name, meshIndex);
-                gameObjects[meshIndex] = CreateGameObject(meshes[meshIndex], material, name, parentTransform, collisionType);
+                gameObjects[meshIndex] = CreateGameObject(meshes[meshIndex], material, name, parentTransform, collisionType, shouldUploadToGPU);
             }
 
             return gameObjects;

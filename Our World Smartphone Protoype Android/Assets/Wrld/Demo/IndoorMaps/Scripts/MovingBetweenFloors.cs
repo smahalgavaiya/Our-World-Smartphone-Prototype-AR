@@ -57,8 +57,7 @@ public class MovingBetweenFloors : MonoBehaviour
 
     private void IndoorMapsApi_OnIndoorMapFloorChanged(int newFloorId)
     {
-        //Debug.LogFormat("Switched to floor {0}!", newFloorId);
-        Debug.LogFormat("Switched to floor {0}!", DLogType.Log, newFloorId);
+        Debug.LogFormat("Switched to floor {0}!", newFloorId);
     }
 
 
