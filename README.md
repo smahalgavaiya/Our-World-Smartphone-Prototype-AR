@@ -14,7 +14,7 @@ http://oasisplatform.world/swagger
 
 **NOTES:** use git config --global core.longpaths true for long paths error
 
-**Summary**
+## Summary
 
 This uses the Unity 3D Game Engine with C# back-end code, this is a geo-location AR game similar to Pokemon Go but much more evolved and has been in R&D, planning, design phase since 2013...
 
