@@ -60,7 +60,7 @@ The console/desktop version is a fully immersive VR experience, which will fully
 
 The whole world is the Our World team, hence the name... ;-) It is not our project; it is all of humanities...
 
-We also offer FREE training and apprenticeship program with the NextGen Developer Training Programmes.  We will teach you all we know over time and you get to work on this real live commercial codebase rather than wasting time working on throw away dummy apps as most training offers. No previous skills/experience required and is open to everyone, but especially for all disadvantaged people including special needs, homeless, unemployed, prison inmates, kids on the streets etc. We want to help the people the world has forgotten and for people who have stopped believing in themselves, we BELIEVE IN YOU and in time you will again too. Everyone has a gift for the world, and we will help you find yours… Find out more by checking out the links below:
+We also offer FREE training and apprenticeship program with the NextGen Developer Training Programmes.  We will teach you all we know over time and you get to work on this real live commercial codebase rather than wasting time working on throw away dummy apps as most training offers. No previous skills/experience required and is open to everyone, but especially for all disadvantaged people including special needs, homeless, unemployed, prison inmates, kids on the streets etc. We want to help the people the world has forgotten and for people who have stopped believing in themselves, we **BELIEVE IN YOU** and in time you will again too. Everyone has a gift for the world, and we will help you find yours… Find out more by checking out the links below:
 
 <a href="https://c8119036-8b0a-4498-ab07-331841f19b4b.filesusr.com/ugd/4280d8_ad8787bd42b1471bae73003bfbf111f7.pdf">NextGen Developer Training Programme</a><br>
 <a href="https://c8119036-8b0a-4498-ab07-331841f19b4b.filesusr.com/ugd/4280d8_999d98ba615e4fa6ab4383a415ee24c5.pdf">NextGen Junior Developer Training Programme</a>
@@ -79,13 +79,13 @@ https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.
 http://www.gofundme.com/ourworldthegame<br><br>
 
 http://www.nextgensoftware.co.uk<br>
-http://www.yoga4autism.com<br><br>
+http://www.yoga4autism.com<br>
 
 https://youtu.be/wdYa5wQUfrg<br>
 https://www.youtube.com/watch?v=2oY4_LZBW4M&t=3s<br>
 https://www.youtube.com/watch?v=rvNJ6poMduo&t=5s<br>
 https://www.youtube.com/watch?v=zyVmciqD9rs<br>
-https://www.youtube.com/watch?v=SB97mvzJiRg&t=3s<br><br>
+https://www.youtube.com/watch?v=SB97mvzJiRg&t=3s<br>
 
 **Want to make a difference in the world? What will be your legacy? Ready to be a hero?**
 
