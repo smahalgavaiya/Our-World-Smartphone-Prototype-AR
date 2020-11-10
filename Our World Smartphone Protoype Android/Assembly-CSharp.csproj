@@ -862,6 +862,17 @@
      <Compile Include="Assets\UMA\Examples\Physics Examples\Scripts\ClothHelper.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\Scripts\DynamicDNAConverterBehaviour.cs" />
      <Compile Include="Assets\GoogleARCore\SDK\Scripts\VersionInfo.cs" />
+     <Compile Include="Assets\ParkAPI\Objects\GeoLocation.cs" />
+     <Compile Include="Assets\ParkAPI\JsonObjects\GoogleJsonObjects\DistanceMatrixResult.cs" />
+     <Compile Include="Assets\ParkAPI\Objects\Distance.cs" />
+     <Compile Include="Assets\ParkAPI\Objects\Place.cs" />
+     <Compile Include="Assets\ParkAPI\Objects\ParkRequestSettings.cs" />
+     <Compile Include="Assets\ParkAPI\Managers\GoogleLocationAPIProvider.cs" />
+     <Compile Include="Assets\ParkAPI\GetNearbyParks.cs" />
+     <Compile Include="Assets\ParkAPI\Managers\LocationAPIManager.cs" />
+     <Compile Include="Assets\ParkAPI\JsonObjects\GoogleJsonObjects\NearbySearchResult.cs" />
+     <Compile Include="Assets\ParkAPI\Objects\Duration.cs" />
+     <Compile Include="Assets\ParkAPI\Interfaces\IParkProvider.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\Wrld\3rd Party Licenses\fonts\OpenSans.txt" />
      <None Include="Assets\GoogleARCore\Examples\AugmentedFaces\Materials\Shaders\AugmentedFaceOccluder.shader" />
@@ -1611,6 +1622,21 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.Addressables">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.DOTween">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.TextMeshPro">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.Linq">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
