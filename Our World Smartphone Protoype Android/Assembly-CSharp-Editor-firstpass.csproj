@@ -36,15 +36,50 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreIOSSupportHelper.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabasePreprocessBuild.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreUnitySDKManifest.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabaseContextMenu.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreAndroidSupportPreprocessBuild.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\Examples\Common\Scripts\Editor\PointcloudVisualizerEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsProvider.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\Analytics\ArcoreSdkLog.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureBaseEditor.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureEditorWindow.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreUnitySDKPreprocessBuild.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsPreferences.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AndroidDependenciesHelper.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalytics.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreIOSSupportPreprocessBuild.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureFromCamera360ODSEditor.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureFromTextureEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsProvider.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsGUI.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\RequiredOptionalPreprocessBuild.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ExampleBuildHelper.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreSupportedPreprocessBuild.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureFromScreenEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\PreprocessBuildBase.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabaseInspector.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureFromCameraEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AndroidManifestMerger.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsGUI.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\LogRequestUtils.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsWindow.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\CloudAnchorPreprocessBuild.cs" />
      <Compile Include="Assets\Plugins\DynamicPanels\Editor\DynamicPanelsCanvasEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\InstantPreview\Scripts\Editor\InstantPreviewBugReport.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AndroidKeylessProcessBuild.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ExamplePreprocessBuild.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\EditorUtils.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\Analytics\ArcoreClearcut.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\AssetHelper.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\ManifestModificationPreprocessBuild.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\HelpAttributeDrawer.cs" />
      <Compile Include="Assets\Plugins\RenderHeads\AVProMovieCapture\Scripts\Editor\CaptureFromCamera360Editor.cs" />
+     <Compile Include="Assets\Plugins\GoogleARCore\SDK\Scripts\Editor\BackgroundJobExecutor.cs" />
+     <None Include="Assets\Plugins\GoogleARCore\Editor\ARCoreiOSDependencies.template" />
+     <None Include="Assets\Plugins\GoogleARCore\Editor\ARCoreAndroidKeylessDependencies.template" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -243,21 +278,6 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.122.0">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.122.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver_v1.2.122.0">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.122.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandlerImpl_v1.2.122.0">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.122.0.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/OASIS API/Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -284,6 +304,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -675,8 +698,17 @@
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
+    <Reference Include="UniTask.Addressables">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.Addressables.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.DOTween">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
@@ -692,6 +724,12 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.TextMeshPro">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.Linq">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

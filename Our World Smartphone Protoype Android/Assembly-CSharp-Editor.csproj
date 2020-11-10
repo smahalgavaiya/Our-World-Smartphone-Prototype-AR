@@ -38,32 +38,22 @@
   <ItemGroup>
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAEvaluationGraphPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAClothPropertiesInspector.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreIOSSupportHelper.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabasePreprocessBuild.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreUnitySDKManifest.cs" />
      <Compile Include="Assets\Editor\Example.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\UMAAssetBundleManager\AssetbundlesMenuItems.cs" />
-     <Compile Include="Assets\UnityARKitPlugin\Plugins\iOS\UnityARKit\Editor\UnityARBuildPostprocessor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\CachedReorderableList.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\SlotLibraryEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAEvaluationGraphPresetLibraryInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DictionaryCustomFormatter.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DCARendererManagerEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAGeneratorEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabaseContextMenu.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreAndroidSupportPreprocessBuild.cs" />
-     <Compile Include="Assets\GoogleARCore\Examples\Common\Scripts\Editor\PointcloudVisualizerEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicCharacterSystemEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsProvider.cs" />
      <Compile Include="Assets\Wrld\Editor\ExitPlayModeOnScriptCompile.cs" />
      <Compile Include="Assets\Radial Menu Framework\Scripts\Editor\RFM_RadialMenu_Editor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\Analytics\ArcoreSdkLog.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\UMAPhysics\UMAPhysicsElementEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\TreeElement.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAGeneratorBaseEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMABonePoseUtilities.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\CharacterBaseEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreUnitySDKPreprocessBuild.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAConverterListPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\CreateCleanAnimationMenu.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNARangeInspector.cs" />
@@ -71,15 +61,11 @@
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMADNAToBonePoseWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\BuildPreprocessor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAAvatarLoadSaveMenuItems.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsPreferences.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\GeometryUVEditorWindow.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AndroidDependenciesHelper.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\RaceAnimatorListPropertyDrawer.cs" />
      <Compile Include="Assets\Editor\EditorScripts.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicCharacterAvatarEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicRaceLibraryEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalytics.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreIOSSupportPreprocessBuild.cs" />
      <Compile Include="Assets\Wrld\Editor\WillPlayInEditorListener.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAConverterFieldPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\pDCSRecipeEditor.cs" />
@@ -91,32 +77,25 @@
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAEditorUtilities.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAExpressionSetInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\MeshHideInspector.cs" />
-     <Compile Include="Assets\UnityARKitPlugin\Examples\UnityParticlePainter\HSVPicker\Editor\BoxSliderEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\UmaBoneBuilderWindow.cs" />
      <Compile Include="Assets\UMA\Examples\Editor\Legacy\BRDFLookupTextureInspector.cs" />
      <Compile Include="Assets\Wrld\Editor\ActiveBuildTargetChangedListener.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\AssetTreeElement.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAEvaluatorListPropertyDrawer.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsProvider.cs" />
      <Compile Include="Assets\UMA\Core\Editor\DNAPlugins\SkeletonDNAConverterPluginInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAAddressablesSupport.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\TreeViewWithTreeModel.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAGeneratorBuiltinEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAMaterialInspector.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsGUI.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\RequiredOptionalPreprocessBuild.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\UMAAssetBundleManager\ReadOnlyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\MorphSetDnaAssetInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAAnimationTargetRenamer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DynamicDNAPluginMasterWeightDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\SlotDataAssetInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAEvaluationGraphPresetsPopupContent.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ExampleBuildHelper.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreSupportedPreprocessBuild.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\Timeline\UmaColorTrackEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMABonePoseEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMABonePoseMixerWindow.cs" />
-     <Compile Include="Assets\EasyMainMenu\Scripts\Editor\EMM_AddCanvases.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicSlotLibraryEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\CodeGenTemplate.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMASlotProcessingUtil.cs" />
@@ -131,16 +110,12 @@
      <Compile Include="Assets\UMA\Core\Editor\Extensions\Timeline\UmaRaceClipEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMABonePoseEditorContext.cs" />
      <Compile Include="Assets\UMA\Examples\Editor\DynamicCharacterSystem Examples\PhotoBoothInspector.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\PreprocessBuildBase.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabaseInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UmaAboutWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMADNAHelperTools.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\GeometrySelectorWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\UMAPhysics\UMAPhysicsAvatarEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\AddressablePlugins\SingleGroupGenerator.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAGeneratorGLibEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AndroidManifestMerger.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsGUI.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DynamicDNAPluginInspector.cs" />
      <Compile Include="Assets\Wrld\Editor\PlatformHelpers.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Integrations\PowerToolsIntegration\UMALODConversionSetEditor.cs" />
@@ -156,7 +131,6 @@
      <Compile Include="Assets\Wrld\Editor\CopyPlatformResources.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\AssetIndexerWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\OverlayLibraryEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\LogRequestUtils.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\TreeModel.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DNAEvaluatorPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\OverlayDataAssetInspector.cs" />
@@ -165,19 +139,14 @@
      <Compile Include="Assets\UMA\Core\Editor\Scripts\OverlayColorDataPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DynamicDNAConverterControllerPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMABonePosePropertyDrawer.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DynamicDNAConverterControllerInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAMeshDataPropertyDrawer.cs" />
      <Compile Include="Assets\Wrld\Editor\XcodeProjectUpdater.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\CloudAnchorPreprocessBuild.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMAWebGLSetup.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\TreeElementUtility.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\OverlayInspector.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicDnaConverterCustomizerEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\InstantPreview\Scripts\Editor\InstantPreviewBugReport.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMASimpleLODEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AndroidKeylessProcessBuild.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ExamplePreprocessBuild.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\Timeline\UmaWardrobeBehaviourEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\SharedColorTableEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\DNAPlugins\ColorDNAConverterPropertyDrawers.cs" />
@@ -188,19 +157,14 @@
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\WardrobeRecipeListPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\DisplayListWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\LegacyDynamicDNAConverterGUIDrawer.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\Analytics\ArcoreClearcut.cs" />
      <Compile Include="Assets\UMA\Examples\Editor\Physics\UMABoneVisualizerEditor.cs" />
-     <Compile Include="Assets\EasyMainMenu\Scripts\Main Menu Scripts\Editor\MainMenuControllerEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\UMAWardrobeRecipeEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UMADataEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\AssetHelper.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicDNAConverterBehaviourEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\BaseCharacterModifierPropertyDrawer.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UmaSlotBuilderWindow.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ManifestModificationPreprocessBuild.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\UmaRaceUpdaterWindow.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicUMADnaAssetEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\HelpAttributeDrawer.cs" />
      <Compile Include="Assets\UMA\Examples\Editor\Legacy\EnvPresetChooserEd.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\DynamicOverlayLibraryEditor.cs" />
      <Compile Include="Assets\UMA\Examples\Editor\Physics\ClothHelperEditor.cs" />
@@ -208,18 +172,16 @@
      <Compile Include="Assets\UMA\Core\Editor\Scripts\GUIHelper.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\RecipeEditor.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Extensions\DynamicCharacterSystem\pWardrobeRecipeEditor.cs" />
-     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\BackgroundJobExecutor.cs" />
      <Compile Include="Assets\Wrld\Editor\FirstInstallActionsRunner.cs" />
      <Compile Include="Assets\UMA\Core\Editor\Scripts\RaceInspector.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Editor\WrldARCoreSceneSetupHelper.cs" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDna_GetType_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDna_GetNames_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_Byte_ToDna_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_GetIndex_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_Byte_FromDna_Fragment.cs.txt" />
-     <None Include="Assets\GoogleARCore\Editor\ARCoreiOSDependencies.template" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_GetValue_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_Byte_Fields_Fragment.cs.txt" />
-     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.122.0.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDna_Save_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_Template.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_GetNames_Fragment.cs.txt" />
@@ -228,7 +190,6 @@
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDnaChild_SetIndex_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDna_Load_Fragment.cs.txt" />
      <None Include="Assets\UMA\Core\Editor\Scripts\Templates\UmaDna_GetTypes_Fragment.cs.txt" />
-     <None Include="Assets\GoogleARCore\Editor\ARCoreAndroidKeylessDependencies.template" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -427,21 +388,6 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.122.0">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.122.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver_v1.2.122.0">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.122.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandlerImpl_v1.2.122.0">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.122.0.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/OASIS API/Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -468,6 +414,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -859,8 +808,17 @@
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
+    <Reference Include="UniTask.Addressables">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.Addressables.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.DOTween">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
@@ -876,6 +834,12 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.TextMeshPro">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.Linq">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UniTask.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
