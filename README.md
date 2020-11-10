@@ -2,19 +2,19 @@
 
 Welcome to the codebase for the Our World Smartphone Prototype AR. More documentation will be coming soon...
 
-For more info on this project check out the main repo here:
+For more info on this project check out the main repo here:<br>
 https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK
 
-Also check out the main website:
+Also check out the main website:<br>
 http://www.ourworldthegame.com
 
-This is built on top of the OASIS API, which can be found here:
+This is built on top of the OASIS API, which can be found here:<br>
 http://oasisplatform.world/swagger
 
 
 **NOTES:** use git config --global core.longpaths true for long paths error
 
-** Summary **
+**Summary**
 
 This uses the Unity 3D Game Engine with C# back-end code, this is a geo-location AR game similar to Pokemon Go but much more evolved and has been in R&D, planning, design phase since 2013...
 
@@ -73,23 +73,23 @@ Thank you and we hope we find interest from people to join us on this exciting i
 
 Dev Requirements To Join The Our World Tribe
 The Our World Mission (Summary)
-http://www.ourworldthegame.com
-http://oasisplatform.world/swagger
-https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK
-http://www.gofundme.com/ourworldthegame
+http://www.ourworldthegame.com<br>
+http://oasisplatform.world/swagger<br>
+https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK<br>
+http://www.gofundme.com/ourworldthegame<br><br>
 
-http://www.nextgensoftware.co.uk
-http://www.yoga4autism.com
+http://www.nextgensoftware.co.uk<br>
+http://www.yoga4autism.com<br><br>
 
-https://youtu.be/wdYa5wQUfrg
-https://www.youtube.com/watch?v=2oY4_LZBW4M&t=3s
-https://www.youtube.com/watch?v=rvNJ6poMduo&t=5s
-https://www.youtube.com/watch?v=zyVmciqD9rs
-https://www.youtube.com/watch?v=SB97mvzJiRg&t=3s
+https://youtu.be/wdYa5wQUfrg<br>
+https://www.youtube.com/watch?v=2oY4_LZBW4M&t=3s<br>
+https://www.youtube.com/watch?v=rvNJ6poMduo&t=5s<br>
+https://www.youtube.com/watch?v=zyVmciqD9rs<br>
+https://www.youtube.com/watch?v=SB97mvzJiRg&t=3s<br><br>
 
-**Want to make a difference in the world? What will be your legacy? Ready to be a hero? **
+**Want to make a difference in the world? What will be your legacy? Ready to be a hero?**
 
 **TOGETHER WE CAN CREATE A BETTER WORLD**
 
-In Love, Light & Hope,
+In Love, Light & Hope,<br>
 The Our World Tribe
