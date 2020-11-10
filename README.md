@@ -76,7 +76,7 @@ Thank you and we hope we find interest from people to join us on this exciting i
 http://www.ourworldthegame.com<br>
 http://oasisplatform.world/swagger<br>
 https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK<br>
-http://www.gofundme.com/ourworldthegame<br><br>
+http://www.gofundme.com/ourworldthegame<br><
 
 http://www.nextgensoftware.co.uk<br>
 http://www.yoga4autism.com<br>
