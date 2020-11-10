@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace UMA
 {
@@ -10,12 +11,28 @@ namespace UMA
 	[System.Serializable]
 	public class OverlayColorData : System.IEquatable<OverlayColorData>
 	{
+		public static Color EmptyAdditive = new Color(0, 0, 0, 0);
+
 		public const string UNSHARED = "-";
 		public string name;
 		public Color[] channelMask;
 		public Color[] channelAdditiveMask;
 		public Color color { get { return channelMask[0]; } set { channelMask[0] = value; } }
 		public int channelCount { get { return channelMask.Length; } }
+		public bool isDefault(int Channel)
+		{
+			if (Channel <= channelCount)
+			{
+				if (channelMask[Channel] == Color.white)
+				{
+					if (channelAdditiveMask[Channel] == EmptyAdditive)
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 
 		/// <summary>
 		/// Default constructor
@@ -177,6 +194,16 @@ namespace UMA
 		public override int GetHashCode()
 		{
 			return base.GetHashCode();
+		}
+
+		public void SetChannels(int channels)
+		{
+			EnsureChannels(channels);
+			if (channelMask.Length > channels)
+			{
+				Array.Resize(ref channelMask, channels);
+				Array.Resize(ref channelAdditiveMask, channels);
+			}
 		}
 
         public void EnsureChannels(int channels)

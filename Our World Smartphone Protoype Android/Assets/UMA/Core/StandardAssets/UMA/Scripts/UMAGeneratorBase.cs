@@ -28,6 +28,8 @@ namespace UMA
 			get { return _defaultOverlayData; }
 		}
 
+		public static HashSet<int> CreatedAvatars = new HashSet<int>();
+
         /// <summary>
         /// returns true if the UMAData is in the update queue.
         /// Note that this will return false if the UMA is currently being processed!
@@ -92,19 +94,24 @@ namespace UMA
 			private int[] stateHashes = new int[0];
 			private float[] stateTimes = new float[0];
 			AnimatorControllerParameter[] parameters;
+			private Dictionary<int, float> layerWeights = new Dictionary<int, float>();
 
-			public void SaveAnimatorState(Animator animator)
+			public void SaveAnimatorState(Animator animator, UMAData umaData)
 			{
+				umaData.FireAnimatorStateSavedEvent();
+
 				int layerCount = animator.layerCount;
 				stateHashes = new int[layerCount];
 				stateTimes = new float[layerCount];
 				parameters = new AnimatorControllerParameter[animator.parameterCount];
+				layerWeights.Clear();
 
 				for (int i = 0; i < layerCount; i++)
 				{
 					var state = animator.GetCurrentAnimatorStateInfo(i);
 					stateHashes[i] = state.fullPathHash;
 					stateTimes[i] = Mathf.Max(0, state.normalizedTime + Time.deltaTime / state.length);
+					layerWeights.Add(i, animator.GetLayerWeight(i));
 				}
 
 				Array.Copy(animator.parameters, parameters, animator.parameterCount);
@@ -126,13 +133,17 @@ namespace UMA
 				}
 			}
 
-			public void RestoreAnimatorState(Animator animator)
+			public void RestoreAnimatorState(Animator animator, UMAData umaData)
 			{
 				if (animator.layerCount == stateHashes.Length)
 				{
 					for (int i = 0; i < animator.layerCount; i++)
 					{
 						animator.Play(stateHashes[i], i, stateTimes[i]);
+						if (i < layerWeights.Count)
+						{
+							animator.SetLayerWeight(i, layerWeights[i]);
+						}
 					}
 				}
 
@@ -154,6 +165,8 @@ namespace UMA
 						}
 					}
 				}
+
+				umaData.FireAnimatorStateRestoredEvent();
 
                 if (animator.enabled == true)
 				    animator.Update(Time.deltaTime);
@@ -190,20 +203,28 @@ namespace UMA
 						SetAvatar(umaData, animator);
 						animator.runtimeAnimatorController = umaData.animationController;
 						umaData.animator = animator;
+
+						umaTransform.SetParent(oldParent, false);
+						umaTransform.localRotation = originalRot;
+						umaTransform.localPosition = originalPos;
 					}
 					else
 					{
 						AnimatorState snapshot = new AnimatorState();
-						snapshot.SaveAnimatorState(animator);
-						UMAUtils.DestroySceneObject(animator.avatar);
-						SetAvatar(umaData, animator);
-						if(animator.runtimeAnimatorController != null)
-							snapshot.RestoreAnimatorState(animator);
-					}
+						snapshot.SaveAnimatorState(animator,umaData);
+						if (!umaData.KeepAvatar || animator.avatar == null)
+						{
+							UMAUtils.DestroyAvatar(animator.avatar);
+							SetAvatar(umaData, animator);
+						}
 
-					umaTransform.SetParent(oldParent, false);
-					umaTransform.localRotation = originalRot;
-					umaTransform.localPosition = originalPos;
+						umaTransform.SetParent(oldParent, false);
+						umaTransform.localRotation = originalRot;
+						umaTransform.localPosition = originalPos;
+
+						if (animator.runtimeAnimatorController != null)
+							snapshot.RestoreAnimatorState(animator,umaData);
+					}
 				}
 			}
 		}
@@ -272,6 +293,7 @@ namespace UMA
 			HumanDescription description = CreateHumanDescription(umaData, umaTPose);
 			//DebugLogHumanAvatar(umaData.gameObject, description);
 			Avatar res = AvatarBuilder.BuildHumanAvatar(umaData.gameObject, description);
+			CreatedAvatars.Add(res.GetInstanceID());
 			res.name = umaData.name;
 			return res;
 		}
@@ -285,6 +307,7 @@ namespace UMA
 		{
 			Avatar res = AvatarBuilder.BuildGenericAvatar(umaData.gameObject, umaData.umaRecipe.GetRace().genericRootMotionTransformName);
 			res.name = umaData.name;
+			CreatedAvatars.Add(res.GetInstanceID());
 			return res;
 		}
 
