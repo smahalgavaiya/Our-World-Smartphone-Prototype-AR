@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace UMA
 {
 	/// <summary>
@@ -108,9 +109,12 @@ namespace UMA
 		{
 			foreach (var bd in boneHashData.Values)
 			{
-				bd.rotation = bd.boneTransform.localRotation;
-				bd.position = bd.boneTransform.localPosition;
-				bd.scale = bd.boneTransform.localScale;
+				if (bd != null)
+				{
+					bd.rotation = bd.boneTransform.localRotation;
+					bd.position = bd.boneTransform.localPosition;
+					bd.scale = bd.boneTransform.localScale;
+				}
 			}
 			updating = false;
 		}
@@ -152,7 +156,7 @@ namespace UMA
 			}
 			else
 			{
-				if (Debug.isDebugBuild)
+				if (UnityEngine.Debug.isDebugBuild)
 					Debug.LogError("AddBonesRecursive: " + transform.name + " already exists in the dictionary! Consider renaming those bones. For example, `Items` under each hand bone can become `LeftItems` and `RightItems`.");
 			}
 
@@ -221,8 +225,8 @@ namespace UMA
 			}
 			else
 			{
-				if (Debug.isDebugBuild)
-					Debug.LogError("AddBone: " + transform.name + " already exists in the dictionary! Consider renaming those bones. For example, `Items` under each hand bone can become `LeftItems` and `RightItems`.");
+				if (UnityEngine.Debug.isDebugBuild)
+					UnityEngine.Debug.LogError("AddBone: " + transform.name + " already exists in the dictionary! Consider renaming those bones. For example, `Items` under each hand bone can become `LeftItems` and `RightItems`.");
 			}
 		}
 
@@ -251,7 +255,7 @@ namespace UMA
 			}
 			else
 			{
-				if (Debug.isDebugBuild)
+				if (UnityEngine.Debug.isDebugBuild)
 					Debug.LogError("AddBone: " + transform.name + " already exists in the dictionary! Consider renaming those bones. For example, `Items` under each hand bone can become `LeftItems` and `RightItems`.");
 			}
 		}
@@ -691,8 +695,8 @@ namespace UMA
 			BoneData res;
 			if (boneHashData.TryGetValue(umaTransform.hash, out res))
 			{
-				res.accessedFrame = -1;
-				//res.umaTransform.Assign(umaTransform);
+				// res.accessedFrame = -1;  
+				// res.umaTransform.Assign(umaTransform); 
 			}
 			else
 			{
@@ -719,7 +723,7 @@ namespace UMA
 					}
 					else
 					{
-						if (Debug.isDebugBuild)
+						if (UnityEngine.Debug.isDebugBuild)
 							Debug.LogError("EnsureBoneHierarchy: " + entry.umaTransform.name + " parent not found in dictionary!");
 					}
 				}

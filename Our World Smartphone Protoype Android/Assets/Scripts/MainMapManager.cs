@@ -292,7 +292,7 @@ public class MainMapManager : MonoBehaviour
 
     private void MoveCamera()
     {
-        Log("text = " + InputFieldLat.GetComponent<GUIText>().text);
+        Log("text = " + InputFieldLat.GetComponent<Text>().text);
         //Log("text = " + InputFieldLat.GetComponent<Text>().text);
 
         //var startLocation = LatLong.FromDegrees(37.7858, -122.401);

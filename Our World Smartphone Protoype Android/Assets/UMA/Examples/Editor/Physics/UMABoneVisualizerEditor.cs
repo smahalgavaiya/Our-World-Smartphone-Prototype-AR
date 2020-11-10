@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
+namespace UMA.Examples{
 [CustomEditor(typeof(UMABoneVisualizer))]
 public class Example : Editor
 {
@@ -13,4 +14,5 @@ public class Example : Editor
         GUI.Box(labelRect, Warning);
         DrawDefaultInspector();
     }
+}
 }

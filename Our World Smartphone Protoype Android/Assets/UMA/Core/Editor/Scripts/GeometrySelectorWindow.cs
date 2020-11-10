@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
@@ -91,6 +91,7 @@ namespace UMA.Editors
             Tools.hidden = false;
             DestroySceneEditObject();
             EditorApplication.UnlockReloadAssemblies();
+            
             if (restoreScenes != null)
             {
                 foreach (GeometrySelector.SceneInfo s in restoreScenes)
@@ -98,6 +99,14 @@ namespace UMA.Editors
                     if (string.IsNullOrEmpty(s.path))
                         continue;
                     EditorSceneManager.OpenScene(s.path, s.mode);
+                }
+                if (_Source.currentSceneView != null)
+                {
+#if UNITY_2019_1_OR_NEWER
+                    _Source.currentSceneView.sceneLighting = _Source.SceneviewLightingState;
+#else
+                    _Source.currentSceneView.m_SceneLighting = _Source.SceneviewLightingState;
+#endif
                 }
             }
         }
@@ -521,6 +530,7 @@ namespace UMA.Editors
                 int mirrorHit = -1;
 
                 int triangleHit = RayPick(isMirroring,out mirrorHit);
+
                 if (triangleHit >= 0)
                 {
                     _Source.selectedTriangles[triangleHit] = !_Source.selectedTriangles[triangleHit];
@@ -538,6 +548,10 @@ namespace UMA.Editors
                 if (isSelecting)
                 {
                     isSelecting = false;
+                    Rect screenSelectionRect = new Rect();
+                    screenSelectionRect.min = HandleUtility.GUIPointToScreenPixelCoordinate(new Vector2(selectionRect.xMin, selectionRect.yMax));
+                    screenSelectionRect.max = HandleUtility.GUIPointToScreenPixelCoordinate(new Vector2(selectionRect.xMax, selectionRect.yMin));
+
 
                     int[] triangles = _Source.meshAsset.asset.meshData.submeshes[0].triangles;
                     for(int i = 0; i < triangles.Length; i+=3 )
@@ -558,9 +572,8 @@ namespace UMA.Editors
                             centerNormal += normal;
 
                             vertex = SceneView.currentDrawingSceneView.camera.WorldToScreenPoint(vertex);
-                            vertex.y = SceneView.currentDrawingSceneView.camera.pixelHeight - vertex.y;
 
-                            if (selectionRect.Contains( vertex ))
+                            if (screenSelectionRect.Contains( vertex ))
                             {
                                 if (backfaceCull)
                                 {
@@ -575,8 +588,7 @@ namespace UMA.Editors
                         center = center / 3;
                         centerNormal = centerNormal / 3;
                         center = SceneView.currentDrawingSceneView.camera.WorldToScreenPoint(center);
-                        center.y = SceneView.currentDrawingSceneView.camera.pixelHeight - center.y;
-                        if (selectionRect.Contains(center))
+                        if (screenSelectionRect.Contains(center))
                         {
                             if (backfaceCull)
                             {
