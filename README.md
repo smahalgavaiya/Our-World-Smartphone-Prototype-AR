@@ -12,7 +12,13 @@ This is built on top of the OASIS API, which can be found here:<br>
 http://oasisplatform.world/swagger
 
 
-**NOTES:** use git config --global core.longpaths true for long paths error
+**NOTES:** <br>
+
+<ul>
+  <li>This code base was started in 2017/2018, but was not managed within GitHub, hence the version history only starts in 2020.</li>
+  <li>Use git config --global core.longpaths true for long paths error</li>
+ </ul>
+            
 
 ## Summary
 
