@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Objects
+namespace ParkAPI.Objects
 {
      public class Place
      {
@@ -15,5 +15,7 @@ namespace Objects
           public Distance Distance { get; set; }
 
           public Duration Duration { get; set; }
+
+          public string PlaceID { get; set; }
      }
 }

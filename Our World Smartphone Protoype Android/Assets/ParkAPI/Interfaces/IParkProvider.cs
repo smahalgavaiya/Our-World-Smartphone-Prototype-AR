@@ -1,11 +1,11 @@
-﻿using Managers;
-using Objects;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ParkAPI.Objects;
+using ParkAPI.Settings;
 using UnityEngine;
 
-namespace Interfaces
+namespace ParkAPI
 {
      public interface IParkProvider
      {

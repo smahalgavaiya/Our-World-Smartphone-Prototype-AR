@@ -1,4 +1,4 @@
-﻿namespace Objects
+﻿namespace ParkAPI.Objects
 {
      public class Duration
      {

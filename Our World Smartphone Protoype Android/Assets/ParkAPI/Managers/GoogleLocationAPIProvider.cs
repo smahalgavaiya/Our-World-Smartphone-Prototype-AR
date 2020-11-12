@@ -1,8 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
-using Interfaces;
 using JsonModel;
 using Newtonsoft.Json;
-using Objects;
+using ParkAPI.Objects;
+using ParkAPI.Settings;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,9 +14,9 @@ using System.Web;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Managers
+namespace ParkAPI
 {
-     public class GoogleLocationAPIProvider : LocationAPIManager
+    public class GoogleLocationAPIProvider : LocationAPIManager
      {
 
           public GoogleLocationAPIProvider(string apiKey):base(apiKey)
@@ -32,11 +32,9 @@ namespace Managers
                queryParameters.Add("location", settings.Location.ToString());
                queryParameters.Add("radius", settings.Radius.ToString());
                Uri uri = new Uri("https://maps.googleapis.com/maps/api/place/nearbysearch/json?"+ToQueryString(queryParameters));
-               var progress = Progress.Create<float>(x => Debug.Log(x));
 
                var request = await UnityWebRequest.Get(uri.AbsoluteUri)
-                   .SendWebRequest()
-                   .ToUniTask(progress: progress);
+                   .SendWebRequest();
                Debug.Log(request.downloadHandler.text);
                var searchResult = JsonConvert.DeserializeObject<NearbySearchResult>(request.downloadHandler.text);
                foreach (var item in searchResult.Places)
@@ -49,6 +47,7 @@ namespace Managers
                               Lat = item.Geometry.Location.Lat,
                               Lng = item.Geometry.Location.Lng
                          },
+                         PlaceID=item.PlaceId,
                     });
                }
                return places;
@@ -66,12 +65,6 @@ namespace Managers
             WebUtility.UrlEncode(value))
                    ).ToArray();
                return  string.Join("&", array);
-          }
-     }
-     public class GoogleParkRequestSettings : ParkRequestSettings
-     {
-          public GoogleParkRequestSettings(int radius, GeoLocation location) : base(radius, location)
-          {
           }
      }
 }

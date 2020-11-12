@@ -52,7 +52,9 @@
      <Compile Include="Assets\Wrld\Scripts\Utilities\NativeInteropHelpers.cs" />
      <Compile Include="Assets\UMA\Examples\DynamicCharacterSystem Examples\Scripts\Preloader.cs" />
      <Compile Include="Assets\Wrld\Scripts\Resources\Props\PropsApiInternal.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Scripts\WRLDARCoreManager.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\DNAConverterList.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Scripts\WRLDARCoreSetupHelper.cs" />
      <Compile Include="Assets\Wrld\Scripts\Transport\TransportPathfindResult.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\Extensions\DynamicCharacterSystem\Scripts\DynamicCharacterSystemBase.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\DynamicUMADna.cs" />
@@ -67,6 +69,7 @@
      <Compile Include="Assets\Wrld\Demo\Positioning\Position2DViewOnMap.cs" />
      <Compile Include="Assets\Wrld\Scripts\Camera\CameraApiInteropExtensions.cs" />
      <Compile Include="Assets\UMA\Examples\DynamicCharacterSystem Examples\Assets\Resources\Scene1\DNAHandler.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\Common\Scripts\UnityApiExtensions.cs" />
      <Compile Include="Assets\UMA\Examples\Legacy Examples\Scripts\UMASlotVerifyWizard.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\UMAAssetBundleManager\AssetBundleIndex.cs" />
      <Compile Include="Assets\Wrld\Scripts\Resources\Buildings\BuildingsApiInteropExtensions.cs" />
@@ -271,6 +274,7 @@
      <Compile Include="Assets\Wrld\Scripts\Resources\IndoorMaps\StreamedTextureRequest.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\UMAUtils.cs" />
      <Compile Include="Assets\UMA\Content\Example\AdditionalSlots\CapsuleCollider\CapsuleColliderSlotScript.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Scripts\WRLDARCorePositioner.cs" />
      <Compile Include="Assets\Wrld\Scripts\Resources\Buildings\BuildingsApiInternal.cs" />
      <Compile Include="Assets\Wrld\Scripts\Transport\TransportPathfindOptionsBuilder.cs" />
      <Compile Include="Assets\UMA\Content\Core\HumanMale\DNA\LegacyDNA\HumanMaleDNAConverterBehaviour.cs" />
@@ -289,6 +293,7 @@
      <Compile Include="Assets\Wrld\Scripts\Resources\IndoorMaps\IndoorMapStreamedTextureObserver.cs" />
      <Compile Include="Assets\UMA\Examples\Physics Examples\Scripts\UMAGlobalForceApplier.cs" />
      <Compile Include="Assets\Wrld\Scripts\Input\Touch\UnityTouchInputProcessor.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\Common\Scripts\RotateObjectAR.cs" />
      <Compile Include="Assets\Wrld\Demo\IndoorMaps\Scripts\AddPropToIndoorMap.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\OverlayData.cs" />
      <Compile Include="Assets\Wrld\Demo\Streaming\SeparatingStreamingAndRendering.cs" />
@@ -329,7 +334,7 @@
      <Compile Include="Assets\UMA\Core\Extensions\Timeline\UmaDna\UmaDnaClip.cs" />
      <Compile Include="Assets\Wrld\Scripts\Camera\CameraInputHandler.cs" />
      <Compile Include="Assets\Wrld\Demo\Positioning\Position2DViewIndoors.cs" />
-     <Compile Include="Assets\ParkAPI\Objects\ParkRequestSettings.cs" />
+     <Compile Include="Assets\ParkAPI\Settings\ParkRequestSettings.cs" />
      <Compile Include="Assets\Wrld\Scripts\Maths\DoubleVector3.cs" />
      <Compile Include="Assets\Wrld\Scripts\Transport\TransportWayId.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\Timeline\UmaColor\UmaColorClip.cs" />
@@ -384,6 +389,7 @@
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\Scripts\DynamicCharacterSystem.cs" />
      <Compile Include="Assets\Wrld\Scripts\Streaming\IndoorMapScene.cs" />
      <Compile Include="Assets\UMA\Core\Scripts\DNA\Legacy\UMADnaHumanoid_Generated.cs" />
+     <Compile Include="Assets\Wrld\Wrld SDK Samples\Common\Scripts\WRLDARStreamingCameraHandler.cs" />
      <Compile Include="Assets\UMA\Examples\Legacy Examples\Scripts\UMACrowdRandomSet.cs" />
      <Compile Include="Assets\Wrld\Scripts\Camera\InterestPointProvider.cs" />
      <Compile Include="Assets\ParkAPI\GetNearbyParks.cs" />
@@ -537,12 +543,12 @@
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\DNAConverterField.cs" />
      <Compile Include="Assets\UMA\Examples\Physics Examples\Scripts\ClothHelper.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\Scripts\DynamicDNAConverterBehaviour.cs" />
-     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Scripts\WRLDARCoreManager.cs" />
-     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Scripts\WRLDARCoreSetupHelper.cs" />
-     <Compile Include="Assets\Wrld\Wrld SDK Samples\Common\Scripts\UnityApiExtensions.cs" />
-     <Compile Include="Assets\Wrld\Wrld SDK Samples\ARCore Sample\Scripts\WRLDARCorePositioner.cs" />
-     <Compile Include="Assets\Wrld\Wrld SDK Samples\Common\Scripts\RotateObjectAR.cs" />
-     <Compile Include="Assets\Wrld\Wrld SDK Samples\Common\Scripts\WRLDARStreamingCameraHandler.cs" />
+     <Compile Include="Assets\WRLDGPSLocation\Scripts\GPSLocationProvider.cs" />
+     <Compile Include="Assets\WRLDGPSLocation\Scripts\CharacterAvatarBuilder.cs" />
+     <Compile Include="Assets\WRLDGPSLocation\Scripts\WrldAvatarController.cs" />
+     <Compile Include="Assets\Scripts\ParkFindingScripts\ParkButton.cs" />
+     <Compile Include="Assets\Scripts\ParkFindingScripts\Models\ParkButtonModel.cs" />
+     <Compile Include="Assets\ParkAPI\Settings\GoogleParkRequestSettings.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\Wrld\3rd Party Licenses\fonts\OpenSans.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -826,6 +832,9 @@
     <Reference Include="UnityEditor">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf">
+        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/OASIS API/Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -852,9 +861,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
         <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Protobuf">
-        <HintPath>C:/Users/yigit/Desktop/Our World Smartphone Prototype AR - 2020/Our World Smartphone Protoype Android/Assets/Plugins/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.9f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

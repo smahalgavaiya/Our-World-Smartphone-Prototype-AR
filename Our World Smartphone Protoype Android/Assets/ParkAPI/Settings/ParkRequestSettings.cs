@@ -1,4 +1,6 @@
-﻿namespace Managers
+﻿using ParkAPI.Objects;
+
+namespace ParkAPI.Settings
 {
      public class ParkRequestSettings
      {
