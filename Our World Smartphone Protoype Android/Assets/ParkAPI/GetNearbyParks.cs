@@ -11,7 +11,7 @@ using Wrld.Space;
 
 public class GetNearbyParks : MonoBehaviour
 {
-    string apiKey = "AIzaSyAw4JyCQ677K3hlOq94apInAK6To-OjUHs";
+    string apiKey = "";
     LocationAPIManager locationAPIManager;
     [SerializeField]
     private Transform parentObject;
