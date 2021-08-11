@@ -26,6 +26,7 @@
 .consulo
 .svd
 .pdb
+.meta
 .opendb
 
 # Unity3D generated meta files
