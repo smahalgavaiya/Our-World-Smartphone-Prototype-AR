@@ -36,9 +36,7 @@ public class DisplayIndoorMapName : MonoBehaviour
 
     private void IndoorMapsApi_OnIndoorMapEntered()
     {
-        Debug.LogFormat("Indoor Map Name: {0}", Api.Instance.IndoorMapsApi.GetActiveIndoorMap().Name);
-
-
+        Debug.Log($"Indoor Map Name: {Api.Instance.IndoorMapsApi.GetActiveIndoorMap().Name}");
     }
 
 }

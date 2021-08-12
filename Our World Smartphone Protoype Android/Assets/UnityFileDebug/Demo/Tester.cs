@@ -29,6 +29,6 @@ public class Tester : MonoBehaviour
         Debug.LogWarning("Warning");
         Debug.LogError("Error");
         Debug.LogAssertion("Conditionless assertion");
-        Debug.LogFormat("<color=green>This is a green message!</color>");
+        Debug.Log("<color=green>This is a green message!</color>");
     }
 }

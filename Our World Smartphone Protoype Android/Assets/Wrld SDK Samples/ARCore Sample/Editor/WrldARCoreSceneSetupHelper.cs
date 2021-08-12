@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using System.Reflection;
-
-using GoogleARCore; // Please import Google ARCore plugin if you are seeing a compiler error here.
 using Wrld.Space; // Please import WRLD3D plugin if you are seeing a compiler error here.
 
 namespace WRLD.ARCore.Editor
