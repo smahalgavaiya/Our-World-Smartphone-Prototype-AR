@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GoogleARCore;
 using UnityEngine;
-using GoogleARCore; // Please import Google ARCore plugin if you are seeing a compiler error here.
 
 namespace WRLD.ARCore
 {
