@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="485d79aa-ad56-49b3-a111-7a7241bf0da5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/CLI/augmented_image_cli_win.exe.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/Examples/AugmentedImage/Materials/Frame/FrameLowerLeft.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/Examples/AugmentedImage/Materials/Frame/FrameLowerRight.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/Examples/AugmentedImage/Materials/Frame/FrameUpperLeft.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/Examples/AugmentedImage/Materials/Frame/FrameUpperRight.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/Examples/CloudAnchors/Models/Star_01.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/Examples/ObjectManipulation/Materials/footprint.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/SDK/InstantPreview/Plugins/x86_64/arcore_instant_preview_unity_plugin.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/SDK/Plugins/Google.Protobuf.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/SDK/Plugins/unityandroidpermissions.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/GoogleARCore/SDK/Plugins/unityandroidpermissions.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/Newtonsoft.Json.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/NextGenSoftware.Holochain.HoloNET.Client.Core.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/NextGenSoftware.Holochain.HoloNET.Client.Unity.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/NextGenSoftware.OASIS.API.Core.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/NextGenSoftware.OASIS.API.Providers.HoloOASIS.Core.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/NextGenSoftware.OASIS.API.Providers.HoloOASIS.Unity.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/OASIS API/hc.exe.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/RenderHeads/AVProMovieCapture/Plugins/x86/AVProMovieCapture.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/RenderHeads/AVProMovieCapture/Plugins/x86_64/AVProMovieCapture.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/iOS/Unity.iOS.Extensions.Xcode.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Cloth_upgrade_from_UMA28.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Content/Contrib/MaleHairSlick01/Textures/HairCards01DeSat.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Content/Core/HumanFemale/FBX/Female_Unified.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Content/Core/HumanMale/FBX/Male_Unified.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Content/Core/HumanShared/Textures/GeneratedTextures/NotSet.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Content/Core/HumanShared/Textures/GeneratedTextures/NotSetNRM.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Content/Example/HDRPRaces/HDRP-Races.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Core/Editor/Scenes/OverlayAligner/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/Addressables/AddressablesScene/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/Addressables/AddressablesScene/ReflectionProbe-1.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/Blendshape Examples/Blendshape Example/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DNAConverterController Examples/DynamicDNAConverterControllerDemo/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DNAConverterController Examples/DynamicDNAConverterControllerDemo/ReflectionProbe-1.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DynamicDNA/FBX/UMA_HumanFemaleToToon-Blender-269Export.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_AO.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_col.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_disp.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_nrm.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_rgh.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Road07_col.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Road07_disp.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Road07_nrm.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Road07_rgh.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/UMA DCS Demo - UMA Car/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/DynamicCharacterSystem Examples/UMA DCS Demo - UMA Car/ReflectionProbe-1.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Examples/HowTo Examples/How to Load and Save a DCA to a string/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/InternalDataStore/InGame/Resources/PlaceholderAssets/bonemesh.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/UMA Documentation.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/UMAContentCreation.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UMA/Upgrading to 2.10 from a previous version - Read Me Now.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/StreamAlpha.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/libEGL.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/libGLESv2.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/libeay32.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/msvcr110.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/pthreadVC2.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Wrld/Plugins/x86_64/ssleay32.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our World Smartphone Protoype Android.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Our World Smartphone Protoype Android.sln" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="fix/ar-errors" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.arcore@4.1.7/Editor/ARCoreSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7117D168-A9EC-4E51-8E0D-E7D9C98BD09A/03/759c2cf3/AudioSpeakerMode.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/UMA/Core/Extensions/Timeline/UmaColor/UmaColorTrack.cs" />
+        <option value="$PROJECT_DIR$/Assets/UMA/Core/Editor/Scripts/OverlayLibraryEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/RenderHeads/AVProMovieCapture/Scripts/Components/UnityAudioCapture.cs" />
+        <option value="$PROJECT_DIR$/Assets/GoogleARCore 1.9/Examples/CloudAnchors/Scripts/AnchorController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainMapManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/GitHub/Editor/UnityAPIWrapper.cs" />
+        <option value="$PROJECT_DIR$/Assets/UnityARKitPlugin/Plugins/iOS/UnityARKit/Editor/UnityARBuildPostprocessor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Demo/IndoorMaps/Scripts/MovingBetweenFloors.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Demo/IndoorMaps/Scripts/DisplayIndoorMapName.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Demo/IndoorMaps/Scripts/MovingWithSlider.cs" />
+        <option value="$PROJECT_DIR$/Assets/UnityFileDebug/Demo/Tester.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Editor/FirstInstallActionsRunner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Scripts/Resources/Labels/LabelServiceInternal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Scripts/Materials/MaterialRepository.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld SDK Samples/ARCore Sample/Editor/WrldARCoreSceneSetupHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld SDK Samples/ARCore Sample/Scripts/WRLDARCoreManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Demo/Precaching/PrecachingMapData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Demo/Precaching/CancelPrecachingMapData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Scripts/Meshes/PreparedMeshRepository.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld/Scripts/Streaming/GameObjectRepository.cs" />
+        <option value="$PROJECT_DIR$/Assets/ManoMotionARCore/Script/RoomScannerARCore.cs" />
+        <option value="$PROJECT_DIR$/Assets/Wrld SDK Samples/ARCore Sample/Scripts/WRLDARCorePositioner.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1waXlfzu1NBnDCB2TSIYJbueVN2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="485d79aa-ad56-49b3-a111-7a7241bf0da5" name="Default Changelist" comment="" />
+      <created>1628697828620</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628697828620</updated>
+      <workItem from="1628697837810" duration="69000" />
+      <workItem from="1628697944721" duration="534000" />
+      <workItem from="1628698501318" duration="1000" />
+      <workItem from="1628699729614" duration="905000" />
+      <workItem from="1628700711685" duration="255000" />
+      <workItem from="1628701024561" duration="86000" />
+      <workItem from="1628701130946" duration="982000" />
+      <workItem from="1628728438060" duration="3182000" />
+      <workItem from="1628732642250" duration="685000" />
+      <workItem from="1628733359651" duration="3102000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="ar-errors fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="ar-errors fixed" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="556" y="260" key="#Notifications" timestamp="1628740427705">
+      <screen x="0" y="0" width="1603" height="873" />
+    </state>
+    <state x="556" y="260" key="#Notifications/0.0.1603.873@0.0.1603.873" timestamp="1628740427705" />
+    <state x="428" y="149" key="git4idea.branch.GitSmartOperationDialog" timestamp="1628740505317">
+      <screen x="0" y="0" width="1603" height="873" />
+    </state>
+    <state x="428" y="149" key="git4idea.branch.GitSmartOperationDialog/0.0.1603.873@0.0.1603.873" timestamp="1628740505317" />
+  </component>
+</project>
