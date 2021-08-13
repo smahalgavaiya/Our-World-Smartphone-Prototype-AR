@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,26 +47,18 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.9</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.13f1</UnityVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="Assets\_ExternalTools\GoogleARCore\SDK\Plugins\Google.Protobuf.dll" />
-    <Analyzer Include="Assets\UMA\Unity.Timeline.dll" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\Analytics\ArcoreClearcut.cs" />
     <Compile Include="Assets\_ExternalTools\DeviceConsole\Editor\DeviceConsoleEditor.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\AndroidDependenciesHelper.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreUnitySDKPreprocessBuild.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ManifestModificationPreprocessBuild.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\WillPlayInEditorListener.cs" />
+    <Compile Include="Assets\Wrld\Editor\WillPlayInEditorListener.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ExamplePreprocessBuild.cs" />
     <Compile Include="Assets\_ExternalTools\Editor\Example.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsGUI.cs" />
@@ -74,31 +66,32 @@
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\LogRequestUtils.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\Analytics\ArcoreSdkLog.cs" />
     <Compile Include="Assets\_ExternalTools\Wrld SDK Samples\ARCore Sample\Editor\WrldARCoreSceneSetupHelper.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\CopyPlatformResources.cs" />
+    <Compile Include="Assets\Wrld\Editor\CopyPlatformResources.cs" />
     <Compile Include="Assets\_ExternalTools\UnityFileDebug\Lib\Logger\Editor\UnityFileDebugEditor.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\BackgroundJobExecutor.cs" />
     <Compile Include="Assets\_ExternalTools\UnityARKitPlugin\Plugins\iOS\UnityARKit\Editor\UnityARBuildPostprocessor.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\PreprocessBuildBase.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\PlatformHelpers.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\CameraJumpEditor.cs" />
+    <Compile Include="Assets\Wrld\Editor\PlatformHelpers.cs" />
+    <Compile Include="Assets\Wrld\Editor\CameraJumpEditor.cs" />
     <Compile Include="Assets\_ExternalTools\Radial Menu Framework\Scripts\Editor\RFM_RadialMenu_Editor.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\ActiveBuildTargetChangedListener.cs" />
+    <Compile Include="Assets\Wrld\Editor\ActiveBuildTargetChangedListener.cs" />
     <Compile Include="Assets\_ExternalTools\Editor\ReplaceWithPrefab.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\RequiredOptionalPreprocessBuild.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreIOSSupportPreprocessBuild.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\Examples\Common\Scripts\Editor\PointcloudVisualizerEditor.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\FirstInstallActionsRunner.cs" />
+    <Compile Include="Assets\Wrld\Editor\FirstInstallActionsRunner.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsGUI.cs" />
     <Compile Include="Assets\_ExternalTools\UnityFileDebug\Lib\Editor\PackageAsset.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\AssetHelper.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreProjectSettingsWindow.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\HelpAttributeDrawer.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\WrldStartupEditor.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\ExitPlayModeOnScriptCompile.cs" />
+    <Compile Include="Assets\Wrld\Editor\WrldStartupEditor.cs" />
+    <Compile Include="Assets\Wrld\Editor\ExitPlayModeOnScriptCompile.cs" />
+    <Compile Include="Assets\_ExternalTools\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\CloudAnchorPreprocessBuild.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabaseInspector.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreUnitySDKManifest.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\XcodeProjectUpdater.cs" />
+    <Compile Include="Assets\Wrld\Editor\XcodeProjectUpdater.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsPreferences.cs" />
     <Compile Include="Assets\_ExternalTools\UnityFileDebug\Lib\Logger\Editor\OpenInFileBrowser.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreSupportedPreprocessBuild.cs" />
@@ -110,7 +103,7 @@
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\AugmentedImageDatabasePreprocessBuild.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\InstantPreview\Scripts\Editor\InstantPreviewBugReport.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreAndroidSupportPreprocessBuild.cs" />
-    <Compile Include="Assets\_ExternalTools\Wrld\Editor\BuildSucceededListener.cs" />
+    <Compile Include="Assets\Wrld\Editor\BuildSucceededListener.cs" />
     <Compile Include="Assets\_ExternalTools\Editor\EditorScripts.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalyticsProvider.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\SDK\Scripts\Editor\ARCoreAnalytics.cs" />
@@ -373,6 +366,9 @@
     <Reference Include="Google.PackageManagerResolver_v1.2.162">
       <HintPath>Assets\ExternalDependencyManager\Editor\Google.PackageManagerResolver_v1.2.162.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Assets\UMA\Unity.Timeline.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.5.3\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -384,6 +380,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Library\PackageCache\com.unity.analytics@3.5.3\Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>Library\PackageCache\com.unity.render-pipelines.core@10.5.1\Editor\ShaderGenerator\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl_v1.2.162">
       <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandlerImpl_v1.2.162.dll</HintPath>
@@ -402,9 +401,6 @@
     </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Assets\_ExternalTools\GoogleARCore\SDK\Plugins\Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Assets\UMA\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -769,6 +765,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
@@ -777,6 +776,9 @@
     </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
@@ -789,6 +791,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Analytics">
       <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
@@ -805,8 +810,14 @@
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARSubsystems.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.Editor.dll</HintPath>
@@ -814,11 +825,14 @@
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.XR.ARCore">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARCore.dll</HintPath>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARCore">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.ARCore.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARSubsystems">
       <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.dll</HintPath>
@@ -826,14 +840,23 @@
     <Reference Include="Unity.XR.ARFoundation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Management.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
@@ -847,6 +870,9 @@
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Subsystem.Registration">
       <HintPath>Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
@@ -856,11 +882,20 @@
     <Reference Include="com.unity.multiplayer-weaver.Editor">
       <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -880,6 +915,9 @@
     <Reference Include="UnityEngine.Advertisements.Editor">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.ARFoundation">
       <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.dll</HintPath>
     </Reference>
@@ -897,6 +935,14 @@
       <Project>{9AB39FF4-C188-0817-895C-DAFFC753090B}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
+    <ProjectReference Include="UMA_Core_Editor.csproj">
+      <Project>{B3D97A35-258B-CBA3-E13A-8AB9E03CDD84}</Project>
+      <Name>UMA_Core_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Examples_Editor.csproj">
+      <Project>{3F453844-2CDB-8276-0E16-BFF7BBCDA07E}</Project>
+      <Name>UMA_Examples_Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="UMA_Core.csproj">
       <Project>{345D5B23-BFAA-40AE-2CDF-20E427E31384}</Project>
       <Name>UMA_Core</Name>
@@ -908,14 +954,6 @@
     <ProjectReference Include="UMA_Content.csproj">
       <Project>{9AB1A514-110C-5A0E-C7F3-B329CF62C6C7}</Project>
       <Name>UMA_Content</Name>
-    </ProjectReference>
-    <ProjectReference Include="UMA_Core_Editor.csproj">
-      <Project>{B3D97A35-258B-CBA3-E13A-8AB9E03CDD84}</Project>
-      <Name>UMA_Core_Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UMA_Examples_Editor.csproj">
-      <Project>{3F453844-2CDB-8276-0E16-BFF7BBCDA07E}</Project>
-      <Name>UMA_Examples_Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
