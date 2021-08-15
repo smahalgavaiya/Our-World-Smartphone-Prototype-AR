@@ -406,6 +406,9 @@
  <Reference Include="Google.PackageManagerResolver_v1.2.162">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.162.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/UMA/Unity.Timeline.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.5.3/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -417,6 +420,9 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.5.3/Unity.Analytics.Tracker.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.render-pipelines.core@10.5.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="Google.VersionHandlerImpl_v1.2.162">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.162.dll</HintPath>
@@ -435,12 +441,6 @@
  </Reference>
  <Reference Include="Google.Protobuf">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/_ExternalTools/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/UMA/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="ICSharpCode.NRefactory">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.render-pipelines.core@10.5.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>

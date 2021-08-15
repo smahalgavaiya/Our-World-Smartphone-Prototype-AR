@@ -314,6 +314,9 @@
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.5.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/UMA/Unity.Timeline.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.5.3/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -328,9 +331,6 @@
  </Reference>
  <Reference Include="Google.Protobuf">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/_ExternalTools/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/UMA/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -686,6 +686,9 @@
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
@@ -694,6 +697,9 @@
  </Reference>
  <Reference Include="UnityEngine.Purchasing.SecurityStub">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Searcher.Editor">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
@@ -706,6 +712,9 @@
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Analytics">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Analytics.dll</HintPath>
@@ -722,8 +731,14 @@
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Purchasing.Codeless">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Purchasing.Codeless.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARSubsystems.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARSubsystems.Editor.dll</HintPath>
@@ -731,11 +746,14 @@
  <Reference Include="Unity.XR.Management">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
  </Reference>
- <Reference Include="Unity.XR.ARCore">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARCore.dll</HintPath>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Monetization">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.XR.ARCore">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARCore.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.ARSubsystems">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARSubsystems.dll</HintPath>
@@ -743,14 +761,23 @@
  <Reference Include="Unity.XR.ARFoundation.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Editor">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Runtime">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.Management.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
@@ -764,6 +791,9 @@
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Runtime">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Subsystem.Registration">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
  </Reference>
@@ -773,11 +803,20 @@
  <Reference Include="com.unity.multiplayer-weaver.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mathematics">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Purchasing.SecurityCore">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Editor">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.XR.LegacyInputHelpers">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -797,47 +836,24 @@
  <Reference Include="UnityEngine.Advertisements.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/UnityEngine.Advertisements.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.XR.ARFoundation">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Shaders">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Searcher.Editor">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Editor">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics.Editor">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
- </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Runtime">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ <Reference Include="Unity.XR.ARFoundation">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UMA_Core_Editor.csproj">
+      <Project>{B3D97A35-258B-CBA3-E13A-8AB9E03CDD84}</Project>
+      <Name>UMA_Core_Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Examples_Editor.csproj">
+      <Project>{3F453844-2CDB-8276-0E16-BFF7BBCDA07E}</Project>
+      <Name>UMA_Examples_Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="UMA_Core.csproj">
       <Project>{345D5B23-BFAA-40AE-2CDF-20E427E31384}</Project>
       <Name>UMA_Core</Name>
@@ -851,16 +867,6 @@
     <ProjectReference Include="UMA_Content.csproj">
       <Project>{9AB1A514-110C-5A0E-C7F3-B329CF62C6C7}</Project>
       <Name>UMA_Content</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UMA_Core_Editor.csproj">
-      <Project>{B3D97A35-258B-CBA3-E13A-8AB9E03CDD84}</Project>
-      <Name>UMA_Core_Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UMA_Examples_Editor.csproj">
-      <Project>{3F453844-2CDB-8276-0E16-BFF7BBCDA07E}</Project>
-      <Name>UMA_Examples_Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

@@ -559,6 +559,7 @@
     <Compile Include="Assets\Wrld\Demo\Precaching\CancelPrecachingMapData.cs" />
     <Compile Include="Assets\_ExternalTools\GoogleARCore\Examples\AugmentedFaces\Scripts\ARCoreAugmentedFaceMeshFilter.cs" />
     <Compile Include="Assets\_ExternalTools\UnityARKitPlugin\Plugins\iOS\UnityARKit\Helpers\ARPlaneAnchorGameObject.cs" />
+    <Compile Include="Assets\Scripts\StarsLensFlare.cs" />
     <Compile Include="Assets\_ExternalTools\Manomotion\Scripts\appearOnEnable.cs" />
     <Compile Include="Assets\Wrld\Scripts\Input\Mouse\MouseRotateGesture.cs" />
     <Compile Include="Assets\_ExternalTools\LeanTween\Framework\LeanTest.cs" />

@@ -55,10 +55,10 @@
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\UMAMaterial.cs" />
      <Compile Include="Assets\UMA\Core\Scripts\BaseCharacterModifier.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\UmaTPose.cs" />
-     <Compile Include="Assets\UMA\Core\Extensions\Timeline\UmaColor\UmaColorTrack.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\UMAAssetBundleManager\EncryptionUtility.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\MaxRectsBinPack.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\Extensions\DynamicCharacterSystem\Scripts\EnumExtensions.cs" />
+     <Compile Include="Assets\UMA\Core\Extensions\Timeline\UmaColor\UmaColorTrack.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\Extensions\DynamicCharacterSystem\Scripts\DynamicCharacterSystemBase.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\Extensions\DynamicCharacterSystem\Scripts\EnumFlagsAttribute.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\UMAAssetBundleManager\Utility.cs" />
@@ -78,10 +78,10 @@
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\Scripts\DynamicCharacterAvatar.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\UMAAssetBundleManager\GUI\AssetBundleLoadingIndicator.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\SlotDataAsset.cs" />
-     <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\RaceLibraryBase.cs" />
      <Compile Include="Assets\UMA\Core\Scripts\DNAEvaluationGraphPresetLibrary.cs" />
-     <Compile Include="Assets\UMA\Core\Extensions\Timeline\UmaColor\UmaColorClip.cs" />
+     <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\RaceLibraryBase.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\Scripts\UMARandomAvatar.cs" />
+     <Compile Include="Assets\UMA\Core\Extensions\Timeline\UmaColor\UmaColorClip.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\UMAExpressionSet.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\GeometrySelector.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\UMAGenerator.cs" />
@@ -193,8 +193,8 @@
      <Compile Include="Assets\UMA\Core\Scripts\OverlayLibrary.cs" />
      <Compile Include="Assets\UMA\Core\Scripts\DNAEvaluatorList.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\BinaryAssetWrapper.cs" />
-     <Compile Include="Assets\UMA\Core\StandardAssets\Extensions\UMAPhysics\UMAPhysicsSlotDefinition.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\UMAAssetBundleManager\GUI\ReadOnlyAttribute.cs" />
+     <Compile Include="Assets\UMA\Core\StandardAssets\Extensions\UMAPhysics\UMAPhysicsSlotDefinition.cs" />
      <Compile Include="Assets\UMA\Core\StandardAssets\UMA\Scripts\MorphSetDnaAsset.cs" />
      <Compile Include="Assets\UMA\Core\Extensions\DynamicCharacterSystem\Scripts\UMAWardrobeRecipe.cs" />
      <Compile Include="Assets\UMA\Core\Scripts\UMAPackedRecipeBase.cs" />
@@ -456,6 +456,9 @@
  <Reference Include="Google.PackageManagerResolver_v1.2.162">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.162.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/UMA/Unity.Timeline.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.5.3/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -467,6 +470,9 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.analytics@3.5.3/Unity.Analytics.Tracker.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.render-pipelines.core@10.5.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="Google.VersionHandlerImpl_v1.2.162">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.162.dll</HintPath>
@@ -485,12 +491,6 @@
  </Reference>
  <Reference Include="Google.Protobuf">
  <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/_ExternalTools/GoogleARCore/SDK/Plugins/Google.Protobuf.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Assets/UMA/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="ICSharpCode.NRefactory">
- <HintPath>D:/Unity Projects/Our-World-Smartphone-Prototype-AR/Our World Smartphone Protoype Android/Library/PackageCache/com.unity.render-pipelines.core@10.5.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
