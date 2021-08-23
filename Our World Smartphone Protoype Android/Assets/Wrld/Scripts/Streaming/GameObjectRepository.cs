@@ -142,7 +142,7 @@ namespace Wrld.Streaming
             }
             else
             {
-                Debug.LogFormat("Failed to get objects with id {0}", objectID);
+                Debug.LogFormat($"Failed to get objects with id {objectID}");
                 gameObject = null;
             }
 

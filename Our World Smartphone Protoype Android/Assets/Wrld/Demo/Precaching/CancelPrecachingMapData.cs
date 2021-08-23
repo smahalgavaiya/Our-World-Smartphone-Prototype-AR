@@ -13,7 +13,7 @@ public class CancelPrecachingMapData : MonoBehaviour
             2000.0, 
             (_result) =>
             {
-                Debug.LogFormat("Precaching {0}", _result.Succeeded ? "complete" : "cancelled");
+                Debug.LogFormat($"Precaching {(_result.Succeeded ? "complete" : "cancelled")}");
             });
         // cancel the precache operation
         precacheOperation.Cancel();
