@@ -64,7 +64,7 @@ namespace Wrld.Meshes
             }
             else
             {
-                Debug.LogFormat($"Error! Could not find mesh with id {id}");
+                Debug.LogFormat("Error! Could not find mesh with id {0}", id);
             }
 
             return foundRecord;

@@ -111,7 +111,7 @@ namespace Wrld.Resources.Labels
             
             if(screenTextElement.font.name != DesiredFontName)
             {
-                Debug.LogWarning(String.Format(IncorrectFontMessage, screenTextElement.font.name));
+                Debug.LogWarningFormat(IncorrectFontMessage, screenTextElement.font.name);
             }
         }
 

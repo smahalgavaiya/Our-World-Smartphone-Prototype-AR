@@ -169,7 +169,7 @@ namespace Wrld.Materials
                             // Since we do not have appropriate modeling of highlight views on unity yet the highlight material is created in the CreateHighlight method in BuildingsApi.cs
                             if (!materialName.Contains("entity_highlight")) // only send warning if this is not an interior highlight
                             {
-                                Debug.LogWarning($"Highlight material {materialName} has not been created with the appropriate color. Creating default material.");
+                                Debug.LogWarningFormat("Highlight material {0} has not been created with the appropriate color. Creating default material.", materialName);
                             }
                             material = CreateHighlightMaterial(new Color(1, 1, 0, 0.5f));
                         }
@@ -238,7 +238,7 @@ namespace Wrld.Materials
             }
             else
             {
-                Debug.LogWarning($"material {materialName} was not present");
+                Debug.LogWarningFormat("material {0} was not present", materialName);
             }
         }
 
@@ -259,12 +259,12 @@ namespace Wrld.Materials
                 }
                 else
                 {
-                    Debug.LogWarning($"material {materialName} was not present");
+                    Debug.LogWarningFormat("material {0} was not present", materialName);
                 }
             }
             else
             {
-                Debug.LogWarning($"{materialName} : is not a highlight material. Names must begin with Highight");
+                Debug.LogWarningFormat("{0} : is not a highlight material. Names must begin with Highight", materialName);
             }
         }
 
@@ -283,7 +283,7 @@ namespace Wrld.Materials
                 MaterialRecord record;
                 if (m_materials.TryGetValue(materialName, out record))
                 {
-                    Debug.LogWarning($"material {materialName} already exists");
+                    Debug.LogWarningFormat("material {0} already exists", materialName);
                 }
                 else
                 {
@@ -293,7 +293,7 @@ namespace Wrld.Materials
             }
             else
             {
-                Debug.LogWarning($"{materialName} : highlight material names must begin with Highight");
+                Debug.LogWarningFormat("{0} : highlight material names must begin with Highight", materialName);
             }
         }
 
@@ -308,12 +308,12 @@ namespace Wrld.Materials
                 }
                 else
                 {
-                    Debug.LogWarning($"material {materialName} was not present");
+                    Debug.LogWarningFormat("material {0} was not present", materialName);
                 }
             }
             else
             {
-                Debug.LogWarning($"{materialName} : is not a highlight material. Names must begin with Highight");
+                Debug.LogWarningFormat("{0} : is not a highlight material. Names must begin with Highight", materialName);
             }
         }
 

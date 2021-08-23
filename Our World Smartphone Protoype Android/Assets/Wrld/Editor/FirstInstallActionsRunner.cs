@@ -41,7 +41,7 @@ namespace Wrld.Editor
                 if (EditorUserBuildSettings.activeBuildTarget != m_desiredBuildTarget)
                 {
                     PlatformHelpers.SwitchActiveBuildTarget(m_desiredBuildTarget);
-                    Debug.Log($"Current Settings not supported. Changed Build Target to: {m_desiredBuildTarget:G}");
+                    Debug.LogFormat("Current Settings not supported. Changed Build Target to: {0:G}", m_desiredBuildTarget);
                     EditorApplication.update -= PerformBuildTargetSwitch;
                 }
             }
