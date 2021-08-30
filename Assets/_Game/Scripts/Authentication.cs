@@ -203,6 +203,7 @@ public class Authentication : MonoBehaviour
     private IEnumerator SignUpRequest()
     {
         string registerData = GetRegisterDataJson();
+        Debug.Log(registerData);
         using (UnityWebRequest register = UnityWebRequest.Post(OASIS_REGISTER_AVATAR, registerData))
         {
             register.SetRequestHeader("Content-Type", "application/json");
