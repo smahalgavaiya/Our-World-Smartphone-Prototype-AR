@@ -144,6 +144,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Profiling;
 
 public enum TweenAction{
     MOVE_X,
@@ -197,7 +198,7 @@ public enum TweenAction{
     CANVAS_SCALE,
     CANVAS_SIZEDELTA,
     FOLLOW,
-
+    NONE
 }
 
 public enum LeanTweenType{
@@ -319,49 +320,59 @@ public class LeanTween : MonoBehaviour {
     }
         
     public static void init(int maxSimultaneousTweens, int maxSimultaneousSequences){
-        if(tweens==null){
-            maxTweens = maxSimultaneousTweens;
-            tweens = new LTDescr[maxTweens];
-            tweensFinished = new int[maxTweens];
-            tweensFinishedIds = new int[maxTweens];
-            _tweenEmpty = new GameObject();
-            _tweenEmpty.name = "~LeanTween";
-            _tweenEmpty.AddComponent(typeof(LeanTween));
-            _tweenEmpty.isStatic = true;
-            #if !UNITY_EDITOR
-            _tweenEmpty.hideFlags = HideFlags.HideAndDontSave;
-            #endif
-            #if UNITY_EDITOR
-            if(Application.isPlaying)
-                DontDestroyOnLoad( _tweenEmpty );
-            #else
-            DontDestroyOnLoad( _tweenEmpty );
-            #endif
-            for(int i = 0; i < maxTweens; i++){
-                tweens[i] = new LTDescr();
-            }
-
-            #if UNITY_5_4_OR_NEWER
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += onLevelWasLoaded54;
-            #endif
-
-            sequences = new LTSeq[ maxSimultaneousSequences ]; 
-
-            for(int i = 0; i < maxSimultaneousSequences; i++){
-                sequences[i] = new LTSeq();
-            }
+        if (tweens != null)
+        {
+            return;
         }
+
+        Profiler.BeginSample("Init LeanTween");
+        maxTweens = maxSimultaneousTweens;
+        tweens = new LTDescr[maxTweens];
+        tweensFinished = new int[maxTweens];
+        tweensFinishedIds = new int[maxTweens];
+        _tweenEmpty = new GameObject();
+        _tweenEmpty.name = "~LeanTween";
+        _tweenEmpty.AddComponent<LeanTween>();
+        _tweenEmpty.isStatic = true;
+        #if !UNITY_EDITOR
+            _tweenEmpty.hideFlags = HideFlags.HideAndDontSave;
+        #endif
+        #if UNITY_EDITOR
+        if(Application.isPlaying)
+            DontDestroyOnLoad( _tweenEmpty );
+        #else
+            DontDestroyOnLoad( _tweenEmpty );
+        #endif
+        for(i = 0; i < maxTweens; i++){
+            tweens[i] = new LTDescr();
+            tweens[i].reset();
+        }
+
+        #if UNITY_5_4_OR_NEWER
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += onLevelWasLoaded54;
+        #endif
+
+        sequences = new LTSeq[ maxSimultaneousSequences ]; 
+
+        for(i = 0; i < maxSimultaneousSequences; i++){
+            sequences[i] = new LTSeq();
+        }
+        Profiler.EndSample();
     }
 
     public static void reset(){
         if(tweens!=null){
             for (int i = 0; i <= tweenMaxSearch; i++){
                 if(tweens[i]!=null)
-                    tweens[i].toggle = false;
+                    tweens[i].reset();
             }
         }
         tweens = null;
-        Destroy(_tweenEmpty);
+
+        if (_tweenEmpty != null && Application.isPlaying)
+        {
+            Destroy(_tweenEmpty);
+        }
     }
 
     public void Update(){
@@ -427,9 +438,34 @@ public class LeanTween : MonoBehaviour {
 
                 if (tween.id == tweensFinishedIds[i]){
                     //              Debug.Log("removing tween:"+tween);
-                    removeTween(j);
-                    if(tween.hasExtraOnCompletes && tween.trans!=null)
-                        tween.callOnCompletes();
+
+                    if (tween.hasExtraOnCompletes && tween.trans != null)
+                    {
+                        var onComplete = tween._optional.onComplete;
+                        var param = tween._optional.onCompleteParam;
+                        var onCompletObject = tween._optional.onCompleteObject;
+
+                        removeTween(j);
+                        if (onComplete != null){
+                            onComplete();
+                        } else if (onCompletObject != null) {
+                            onCompletObject(param);
+                        }
+                    } else if (tween.type == TweenAction.GUI_ROTATE || tween.type == TweenAction.GUI_ROTATE) {
+                        var ltRect = tween._optional.ltRect;
+                        var onCompleteParam = (AudioClip)tween._optional.onCompleteParam;
+                        var to = tween.to;
+                        var vol = tween.from.x;
+
+                        removeTween(j);
+                        if (tween.type == TweenAction.GUI_ROTATE)
+                            ltRect.rotateFinished = true;
+                        if (tween.type == TweenAction.DELAYED_SOUND)
+                            AudioSource.PlayClipAtPoint(onCompleteParam, to, vol);
+                    }else {
+                        removeTween(j);
+                    }
+                        
                 }
             }
 
@@ -445,22 +481,25 @@ public class LeanTween : MonoBehaviour {
     }
 
     // This method is only used internally! Do not call this from your scripts. To cancel a tween use LeanTween.cancel
-    public static void removeTween( int i ){
+    public static void removeTween( int i, bool shouldReset = true ){
         if(tweens[i].toggle){
-            tweens[i].toggle = false;
-            tweens[i].counter = uint.MaxValue;
+            tween = tweens[i];
+            tween.counter = uint.MaxValue;
             //logError("Removing tween["+i+"]:"+tweens[i]);
-            if(tweens[i].destroyOnComplete){
+            if(tween.destroyOnComplete){
 //              Debug.Log("destroying tween.type:"+tween.type+" ltRect"+(tweens[i]._optional.ltRect==null));
-                if(tweens[i]._optional.ltRect!=null){
+                if(tween._optional.ltRect!=null){
                     //  Debug.Log("destroy i:"+i+" id:"+tweens[i].ltRect.id);
-                    LTGUI.destroy( tweens[i]._optional.ltRect.id );
+                    LTGUI.destroy( tween._optional.ltRect.id );
                 }else{ // check if equal to tweenEmpty
-                    if(tweens[i].trans!=null && tweens[i].trans.gameObject!=_tweenEmpty){
-                        Destroy(tweens[i].trans.gameObject);
+                    if(tween.trans!=null && tween.trans.gameObject!=_tweenEmpty){
+                        Destroy(tween.trans.gameObject);
                     }
                 }
             }
+            if(shouldReset)
+                tween.reset();
+
             //tweens[i].optional = null;
             startSearch = i;
             //Debug.Log("start search reset:"+startSearch + " i:"+i+" tweenMaxSearch:"+tweenMaxSearch);
@@ -532,15 +571,19 @@ public class LeanTween : MonoBehaviour {
     public static void cancel( GameObject gameObject ){
         cancel( gameObject, false);
     }
-    public static void cancel( GameObject gameObject, bool callOnComplete ){
+    public static void cancel( GameObject gameObject, bool callOnComplete, TweenAction matchType = TweenAction.NONE ){
         init();
         Transform trans = gameObject.transform;
         for(int i = 0; i <= tweenMaxSearch; i++){
             LTDescr tween = tweens[i];
-            if(tween!=null && tween.toggle && tween.trans==trans){
-                if (callOnComplete && tween.optional.onComplete != null)
-                    tween.optional.onComplete();
-                removeTween(i);
+            if (matchType == TweenAction.NONE || matchType == tween.type) // only match the type if it is specified to a value other than none
+            {
+                if (tween != null && tween.toggle && tween.trans == trans)
+                {
+                    if (callOnComplete && tween.optional.onComplete != null)
+                        tween.optional.onComplete();
+                    removeTween(i);
+                }
             }
         }
     }
@@ -548,17 +591,6 @@ public class LeanTween : MonoBehaviour {
     public static void cancel( RectTransform rect ){
         cancel( rect.gameObject, false);
     }
-
-//  public static void cancel( GameObject gameObject, int uniqueId ){
-//      if(uniqueId>=0){
-//          init();
-//          int backId = uniqueId & 0xFFFF;
-//          int backCounter = uniqueId >> 16;
-//          // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" counter:"+backCounter + " setCounter:"+ tweens[backId].counter + " tweens[id].type:"+tweens[backId].type);
-//          if(tweens[backId].trans==null || (tweens[backId].trans.gameObject == gameObject && tweens[backId].counter==backCounter))
-//              removeTween((int)backId);
-//      }
-//  }
 
     public static void cancel( GameObject gameObject, int uniqueId, bool callOnComplete = false ){
         if(uniqueId>=0){
@@ -981,7 +1013,6 @@ public class LeanTween : MonoBehaviour {
             logError("no available tween found!");
 
         // Debug.Log("new tween with i:"+i+" counter:"+tweens[i].counter+" tweenMaxSearch:"+tweenMaxSearch+" tween:"+tweens[i]);
-        tweens[i].reset();
 
         global_counter++;
         if(global_counter>0x8000)
@@ -1008,6 +1039,7 @@ public class LeanTween : MonoBehaviour {
         if(gameObject==null || tween==null)
             return null;
 
+        tween.toggle = true;
         tween.trans = gameObject.transform;
         tween.to = to;
         tween.time = time;
@@ -1237,7 +1269,8 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static LTDescr delayedCall( GameObject gameObject, float delayTime, Action callback){
-        return pushNewTween( gameObject, Vector3.zero, delayTime, options().setCallback().setOnComplete(callback) );
+        var opt = options().setCallback().setOnComplete(callback);
+        return pushNewTween( gameObject, Vector3.zero, delayTime, opt );
     }
 
     public static LTDescr delayedCall( GameObject gameObject, float delayTime, Action<object> callback){
@@ -1264,7 +1297,8 @@ public class LeanTween : MonoBehaviour {
     * @example LeanTween.move(gameObject, new Vector3(0f,-3f,5f), 2.0f) .setEase( LeanTweenType.easeOutQuad );
     */
     public static LTDescr move(GameObject gameObject, Vector3 to, float time){
-        return pushNewTween( gameObject, to, time, options().setMove() );
+        var opt = options().setMove();
+        return pushNewTween( gameObject, to, time, opt);
     }
     public static LTDescr move(GameObject gameObject, Vector2 to, float time){
         return pushNewTween( gameObject, new Vector3(to.x, to.y, gameObject.transform.position.z), time, options().setMove() );
@@ -1438,7 +1472,8 @@ public class LeanTween : MonoBehaviour {
     * @return {LTDescr} LTDescr an object that distinguishes the tween
     */
     public static LTDescr moveLocal(GameObject gameObject, Vector3 to, float time){
-        return pushNewTween( gameObject, to, time, options().setMoveLocal() );
+        var opt = options().setMoveLocal();
+        return pushNewTween( gameObject, to, time, opt);
     }
 
     /**

@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{0EEFB493-B82D-F427-E581-1B998E881FCF}</ProjectGuid>
+    <ProjectGuid>{3C57C708-809A-0CCD-0B6D-64D532B1D261}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+    <AssemblyName>com.leantween.editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -48,38 +48,16 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
-    <UnityProjectType>Editor:5</UnityProjectType>
+    <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2020.3.13f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Wrld\Editor\WillPlayInEditorListener.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\HierarchyResources.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\HierarchyLocalDataEditor.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\HierarchyEditor.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\IHierarchyElement.cs" />
-    <Compile Include="Assets\Wrld\Editor\CopyPlatformResources.cs" />
-    <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\UnityFileDebugEditor.cs" />
-    <Compile Include="Assets\Wrld\Editor\PlatformHelpers.cs" />
-    <Compile Include="Assets\Wrld\Editor\CameraJumpEditor.cs" />
-    <Compile Include="Assets\Wrld\Editor\ActiveBuildTargetChangedListener.cs" />
-    <Compile Include="Assets\Wrld\Editor\FirstInstallActionsRunner.cs" />
-    <Compile Include="Assets\UnityFileDebug\Lib\Editor\PackageAsset.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\GroupSelection.cs" />
-    <Compile Include="Assets\Wrld\Editor\WrldStartupEditor.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\InstantInspector.cs" />
-    <Compile Include="Assets\Wrld\Editor\ExitPlayModeOnScriptCompile.cs" />
-    <Compile Include="Assets\Wrld\Editor\XcodeProjectUpdater.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\IHierarchyShelf.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\SceneRenamePopup.cs" />
-    <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\OpenInFileBrowser.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\HierarchyCanvas.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\ObjectCustomization.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\SelectionsRenamePopup.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\HierarchyFolderEditor.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\OpenSettings.cs" />
-    <Compile Include="Assets\Wrld\Editor\BuildSucceededListener.cs" />
-    <Compile Include="Assets\Hierarchy 2\Editor\HierarchySettings.cs" />
+    <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
+    <Compile Include="Assets\LeanTween\Editor\LeanTweenEditorUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\LeanTween\Editor\com.leantween.editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -682,89 +660,23 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.13f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualEffectGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualEffectGraph.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{5685CAB3-97CB-CECD-FDF2-19E3459D19C8}</Project>
-      <Name>Assembly-CSharp</Name>
+    <ProjectReference Include="com.leantween.csproj">
+      <Project>{2DC3703F-C98B-8D2A-AA65-29003544E6D8}</Project>
+      <Name>com.leantween</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

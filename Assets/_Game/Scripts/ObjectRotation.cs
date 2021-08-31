@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ObjectRotation : MonoBehaviour
 {
-    [HideInInspector] public bool _rotate = true;
+    LTDescr rotate;
 
     public float add;
     public float time;
@@ -20,6 +21,7 @@ public class ObjectRotation : MonoBehaviour
     {
         _originalPos = transform.localPosition;
         SetAxis();
+        StartRotation();
     }
 
     public void SetAxis()
@@ -32,10 +34,15 @@ public class ObjectRotation : MonoBehaviour
             _axis = transform.right;
     }
 
-    private void FixedUpdate()
+    public void StartRotation()
     {
-        transform.localPosition = _originalPos;
-        if(_rotate)
-            LeanTween.rotateAroundLocal(gameObject, _axis, add, time);
+        rotate = LeanTween.rotateAroundLocal(gameObject, _axis, add, time).setOnComplete(() => {
+            StartRotation();
+        });
+    }
+
+    public void StopRotation()
+    {
+        LeanTween.cancel(rotate.id);
     }
 }

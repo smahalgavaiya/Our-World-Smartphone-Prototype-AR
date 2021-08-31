@@ -23718,9 +23718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b10b0e0fbda9c946a8ed0020dbd2ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotate: 1
-  add: 1
-  time: 1
+  add: 100
+  time: 100
   Axis: 1
 --- !u!23 &1034387137
 MeshRenderer:
@@ -24368,9 +24367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b10b0e0fbda9c946a8ed0020dbd2ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotate: 1
-  add: 1.5
-  time: 1
+  add: 150
+  time: 100
   Axis: 1
 --- !u!23 &1175792579
 MeshRenderer:
@@ -52379,9 +52377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b10b0e0fbda9c946a8ed0020dbd2ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotate: 1
-  add: -1
-  time: 1
+  add: -100
+  time: 100
   Axis: 1
 --- !u!23 &1944370741
 MeshRenderer:

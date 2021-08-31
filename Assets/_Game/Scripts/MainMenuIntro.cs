@@ -28,8 +28,11 @@ public class MainMenuIntro : MonoBehaviour
     public Material _skyboxMat;
     public Material _earthMat;
 
+    private ObjectRotation[] OR;
+
     private void Start()
     {
+        OR = FindObjectsOfType<ObjectRotation>();
         DoIntro();
     }
 
@@ -63,19 +66,19 @@ public class MainMenuIntro : MonoBehaviour
             _skyboxMat.SetFloat("_Exposure", value);
             _earthMat.SetVector("_EarthBrightness", new Vector4(value, value, value, value));
         });
+        LeanTween.value(0, 1, 3).setOnComplete(() => {
+            LeanTween.moveLocalZ(_gameTitle, 0, 2).setEaseOutSine();
+        });
+        LeanTween.value(0, 1, 4).setOnComplete(() => {
+            LeanTween.moveLocalZ(_gameMotto, 0, 2).setEaseOutSine().setOnComplete(() =>
+            {
+                Invoke("Transition", 3);
+            });
+        });
         LeanTween.value(0, 1, 6).setEaseOutSine().setOnUpdate((float value) =>
         {
             _SunLensFlare1.color = new Color(1, 1, 1, value);
             _SunLensFlare3.color = new Color(1, 1, 1, value);
-            if (value >= 0.5f && _gameTitle.transform.localPosition.z == -1500)
-                LeanTween.moveLocalZ(_gameTitle, 0, 2).setEaseOutSine().setOnUpdate((float value) =>
-                {
-                    if (value >= 0.5f && _gameMotto.transform.localPosition.z == -1500)
-                        LeanTween.moveLocalZ(_gameMotto, 0, 2).setEaseOutSine().setOnComplete(() =>
-                        {
-                            Invoke("Transition", 3);
-                        });
-                });
         });
         LeanTween.moveLocalY(_SunLensFlareHolder, 3.9f, 6).setEaseOutSine().setOnComplete(() =>
         {
@@ -162,10 +165,8 @@ public class MainMenuIntro : MonoBehaviour
 
     private void ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn axis)
     {
-        ObjectRotation[] OR = FindObjectsOfType<ObjectRotation>();
         for (int i = 0; i < OR.Length; i++)
         {
-            OR[i].transform.localPosition = new Vector3(0, 0, 0);
             OR[i].Axis = axis;
             OR[i].SetAxis();
         }
@@ -173,10 +174,12 @@ public class MainMenuIntro : MonoBehaviour
 
     private void ObjectRotationState(bool state)
     {
-        ObjectRotation[] OR = FindObjectsOfType<ObjectRotation>();
         for (int i = 0; i < OR.Length; i++)
         {
-            OR[i]._rotate = state;
+            if (state)
+                OR[i].StartRotation();
+            else
+                OR[i].StopRotation();
         }
     }
     #endregion
@@ -203,19 +206,19 @@ public class MainMenuIntro : MonoBehaviour
             _skyboxMat.SetFloat("_Exposure", value);
             _earthMat.SetVector("_EarthBrightness", new Vector4(value, value, value, value));
         });
+        LeanTween.value(0, 1, 3).setOnComplete(() => {
+            LeanTween.moveLocalZ(_gameTitle, 0, 2).setEaseOutSine();
+        });
+        LeanTween.value(0, 1, 4).setOnComplete(() => {
+            LeanTween.moveLocalZ(_gameMotto, 0, 2).setEaseOutSine().setOnComplete(() =>
+            {
+                Invoke("Transition", 3);
+            });
+        });
         LeanTween.value(0, 1, 6).setEaseOutSine().setOnUpdate((float value) =>
         {
             _SunLensFlare1.color = new Color(1, 1, 1, value);
             _SunLensFlare3.color = new Color(1, 1, 1, value);
-            if (value >= 0.5f && _gameTitle.transform.localPosition.z == -1500)
-                LeanTween.moveLocalZ(_gameTitle, 0, 2).setEaseOutSine().setOnUpdate((float value) =>
-                {
-                    if (value >= 0.5f && _gameMotto.transform.localPosition.z == -1500)
-                        LeanTween.moveLocalZ(_gameMotto, 0, 2).setEaseOutSine().setOnComplete(() =>
-                        {
-                            Invoke("Transition2", 3);
-                        });
-                });
         });
         LeanTween.moveLocalY(_SunLensFlareHolder, 3.9f, 6).setEaseOutSine().setOnComplete(() =>
         {
@@ -260,7 +263,11 @@ public class MainMenuIntro : MonoBehaviour
         ObjectRotationState(false);
         SwapLensFlareSprite(_newLensFlare, false);
         LeanTween.rotateLocal(_sceneHolder, new Vector3(26.7f, 173.5f, -4.36f), 2).setEaseOutSine();
-        LeanTween.rotateLocal(_earthModel, new Vector3(0f, 0f, 0f), 3).setEaseOutSine();
+        LeanTween.rotateLocal(_earthModel, new Vector3(0f, 0f, 0f), 3).setEaseOutSine().setOnComplete(() =>
+        {
+            ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.UP);
+            ObjectRotationState(true);
+        });
         LeanTween.moveLocal(_earth, new Vector3(-0.65f, -0.4f, -1.57f), 3).setEaseOutSine();
         LeanTween.moveLocalZ(_stars, -45, 3).setEaseOutSine();
         LeanTween.moveLocalZ(_starFlare, 0, 3).setEaseOutSine();
@@ -276,9 +283,6 @@ public class MainMenuIntro : MonoBehaviour
         {
             _introVolume.weight = value;
             _finalVolume.weight = 1 - value;
-        }).setOnComplete(() => {
-            ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.UP);
-            ObjectRotationState(true);
         });
     }
     #endregion
