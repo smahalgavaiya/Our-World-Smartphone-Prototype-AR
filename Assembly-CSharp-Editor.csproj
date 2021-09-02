@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{0EEFB493-B82D-F427-E581-1B998E881FCF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -53,23 +54,14 @@
     <UnityVersion>2020.3.13f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Wrld\Editor\WillPlayInEditorListener.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\HierarchyResources.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\HierarchyLocalDataEditor.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\HierarchyEditor.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\IHierarchyElement.cs" />
-    <Compile Include="Assets\Wrld\Editor\CopyPlatformResources.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\UnityFileDebugEditor.cs" />
-    <Compile Include="Assets\Wrld\Editor\PlatformHelpers.cs" />
-    <Compile Include="Assets\Wrld\Editor\CameraJumpEditor.cs" />
-    <Compile Include="Assets\Wrld\Editor\ActiveBuildTargetChangedListener.cs" />
-    <Compile Include="Assets\Wrld\Editor\FirstInstallActionsRunner.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Editor\PackageAsset.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\GroupSelection.cs" />
-    <Compile Include="Assets\Wrld\Editor\WrldStartupEditor.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\InstantInspector.cs" />
-    <Compile Include="Assets\Wrld\Editor\ExitPlayModeOnScriptCompile.cs" />
-    <Compile Include="Assets\Wrld\Editor\XcodeProjectUpdater.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\IHierarchyShelf.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\SceneRenamePopup.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\OpenInFileBrowser.cs" />
@@ -78,7 +70,6 @@
     <Compile Include="Assets\Hierarchy 2\Editor\SelectionsRenamePopup.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\HierarchyFolderEditor.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\OpenSettings.cs" />
-    <Compile Include="Assets\Wrld\Editor\BuildSucceededListener.cs" />
     <Compile Include="Assets\Hierarchy 2\Editor\HierarchySettings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -748,11 +739,11 @@
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
@@ -765,6 +756,34 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{5685CAB3-97CB-CECD-FDF2-19E3459D19C8}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Siccity.GLTFUtility.Editor.csproj">
+      <Project>{2AF69B3A-5793-F03D-A56E-2064B6345FF6}</Project>
+      <Name>Siccity.GLTFUtility.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.leantween.csproj">
+      <Project>{2DC3703F-C98B-8D2A-AA65-29003544E6D8}</Project>
+      <Name>com.leantween</Name>
+    </ProjectReference>
+    <ProjectReference Include="Wolf3D.ReadyPlayerMe.csproj">
+      <Project>{A34709FD-639F-BD27-E3D7-FB3C06483F65}</Project>
+      <Name>Wolf3D.ReadyPlayerMe</Name>
+    </ProjectReference>
+    <ProjectReference Include="Wolf3D.ReadyPlayerMe.Editor.csproj">
+      <Project>{2B2FA4F0-21FA-CDFC-1196-8C4FFDCFA3F8}</Project>
+      <Name>Wolf3D.ReadyPlayerMe.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Wolf3D.ReadyPlayerMe.Extras.Editor.csproj">
+      <Project>{EEBED33C-30F8-0836-1703-3DC089AE90BB}</Project>
+      <Name>Wolf3D.ReadyPlayerMe.Extras.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.leantween.editor.csproj">
+      <Project>{3C57C708-809A-0CCD-0B6D-64D532B1D261}</Project>
+      <Name>com.leantween.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Webview.csproj">
+      <Project>{D2159D37-AEC2-C45E-7CC4-8E1851B557BC}</Project>
+      <Name>Webview</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
