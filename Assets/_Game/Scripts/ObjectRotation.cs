@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObjectRotation : MonoBehaviour
 {
@@ -16,10 +15,9 @@ public class ObjectRotation : MonoBehaviour
     public AxisToRotateIn Axis;
 
     private Vector3 _axis;
-    private Vector3 _originalPos;
+
     private void Start()
     {
-        _originalPos = transform.localPosition;
         SetAxis();
         StartRotation();
     }

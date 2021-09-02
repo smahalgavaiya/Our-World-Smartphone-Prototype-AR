@@ -8,26 +8,21 @@ public class RPMWebView : MonoBehaviour
 
     [SerializeField] private GameObject loadingLabel = null;
 
-    // Create and initialize WebView
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         webview = new Webview();
         webview.OnAvatarCreated = OnAvatarCreated;
         webview.SetScreenPadding(0, 0, 0, 0);
         webview.CreateWebview(this);
-    }
-
-    // Set WebView visible.
-    public void DisplayWebView()
-    {
         webview.SetVisible(true);
     }
 
-    // WebView callback for retrieving avatar url
     private void OnAvatarCreated(string url)
     {
         if (avatar) Destroy(avatar);
 
+        Screen.orientation = ScreenOrientation.Landscape;
         loadingLabel.SetActive(true);
         webview.SetVisible(false);
 
@@ -35,12 +30,11 @@ public class RPMWebView : MonoBehaviour
         avatarLoader.LoadAvatar(url, OnAvatarLoaded);
     }
 
-    // AvatarLoader callback for retrieving loaded avatar game object
     private void OnAvatarLoaded(GameObject avatar, AvatarMetaData metaData)
     {
         this.avatar = avatar;
         loadingLabel.SetActive(false);
-
-        Debug.Log("Loaded");
+        avatar.transform.position = new Vector3(0, 0, 0);
+        avatar.transform.localEulerAngles = new Vector3(0, 180, 0);
     }
 }
