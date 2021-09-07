@@ -1,3 +1,4 @@
+using SimpleJSON;
 using System.Collections;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -11,6 +12,7 @@ public class Authentication : MonoBehaviour
     private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/avatar/GetTerms";
     private const string OASIS_AUTHENTICATE = "https://api.oasisplatform.world/api/avatar/authenticate";
 
+    [Header("Authentication")]
     public TMP_InputField _signUpFirstName;
     public TMP_InputField _signUpLastName;
     public TMP_InputField _signUpEmail;
@@ -33,6 +35,16 @@ public class Authentication : MonoBehaviour
     public TextMeshProUGUI _signInEmailWarning;
     public TextMeshProUGUI _signInPasswordWarning;
 
+    [Header("Warning/Info")]
+    public GameObject _warningInfoHolder;
+    public GameObject _authenticationHolder;
+    public GameObject _laodingText;
+    public GameObject _loadingHolder;
+    public GameObject _infoHolder;
+    public TextMeshProUGUI _3BEText;
+    public TextMeshProUGUI _headerText;
+    public TextMeshProUGUI _bodyText;
+
     private struct RegisterData
     {
         public string title;
@@ -49,6 +61,13 @@ public class Authentication : MonoBehaviour
     {
         public string email;
         public string password;
+    }
+    private enum ShowWarning
+    {
+        SignUpFail,
+        SignUpSuccess,
+        SignInFail,
+        SignInSuccess
     }
 
     #region UI/UX
@@ -68,7 +87,8 @@ public class Authentication : MonoBehaviour
             _signUpConfirmPassword.text = "";
             _termsToggle.isOn = false;
             _termsAgree.isOn = false;
-            LeanTween.rotateY(_signInPanel, 90, 0.5f).setEaseInSine().setOnComplete(() => {
+            LeanTween.rotateY(_signInPanel, 90, 0.5f).setEaseInSine().setOnComplete(() =>
+            {
                 _signInPanel.SetActive(false);
                 _signUpPanel.transform.localEulerAngles = new Vector3(0, -90, 0);
                 _signUpPanel.SetActive(true);
@@ -81,7 +101,8 @@ public class Authentication : MonoBehaviour
             _signInPasswordWarning.gameObject.SetActive(false);
             _signInEmail.text = "";
             _signInPassword.text = "";
-            LeanTween.rotateY(_signUpPanel, 90, 0.5f).setEaseInSine().setOnComplete(() => {
+            LeanTween.rotateY(_signUpPanel, 90, 0.5f).setEaseInSine().setOnComplete(() =>
+            {
                 _signUpPanel.SetActive(false);
                 _signInPanel.transform.localEulerAngles = new Vector3(0, -90, 0);
                 _signInPanel.SetActive(true);
@@ -121,6 +142,62 @@ public class Authentication : MonoBehaviour
         }
     }
     #endregion
+    #region Warning/Info
+    private void ShowWarningInfoPanel(bool value)
+    {
+        _warningInfoHolder.SetActive(value);
+        _authenticationHolder.SetActive(!value);
+    }
+    private void SetInfo(ShowWarning value, string body = "")
+    {
+        SetLogoTop();
+        if (value == ShowWarning.SignUpFail)
+        {
+            _headerText.text = "Fail";
+            _bodyText.text = body;
+        }
+        else if (value == ShowWarning.SignUpSuccess)
+        {
+            _headerText.text = "Success";
+            _bodyText.text = body;
+        }
+        else if (value == ShowWarning.SignInFail)
+        {
+            _headerText.text = "Fail";
+            _bodyText.text = body;
+        }
+        else if (value == ShowWarning.SignInSuccess)
+        {
+            //SaveInfoAndChangeScene
+        }
+
+        LeanTween.value(0, 1, 0.5f).setEaseOutSine().setOnComplete(() =>
+        {
+            _infoHolder.SetActive(true);
+            LeanTween.value(0, 1, 0.5f).setEaseOutSine().setOnUpdate((float value) =>
+            {
+                _headerText.alpha = value;
+                _bodyText.alpha = value;
+            });
+        });
+    }
+    private void SetLogoTop()
+    {
+        _laodingText.SetActive(false);
+        LeanTween.moveLocalY(_loadingHolder, 225, 1).setEaseOutSine();
+        LeanTween.value(250, 200, 1).setEaseOutSine().setOnUpdate((float value) => _3BEText.fontSize = value);
+    }
+    public void Continue()
+    {
+        _laodingText.SetActive(true);
+        _loadingHolder.transform.localPosition = new Vector3(0, 0, 0);
+        _3BEText.fontSize = 250;
+        _infoHolder.SetActive(false);
+        _headerText.alpha = 0;
+        _bodyText.alpha = 0;
+        ShowWarningInfoPanel(false);
+    }
+    #endregion
 
     private void Start()
     {
@@ -128,36 +205,27 @@ public class Authentication : MonoBehaviour
     }
     private IEnumerator GetTerms()
     {
-        using (UnityWebRequest register = UnityWebRequest.Get(OASIS_GET_TERMS))
-        {
-            yield return register.SendWebRequest();
+        using UnityWebRequest request = UnityWebRequest.Get(OASIS_GET_TERMS);
+        yield return request.SendWebRequest();
 
-            if (register.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(register.error);
-            }
-            else
-            {
-                Debug.Log("Form upload complete!");
-            }
-        }
+        if (request.result != UnityWebRequest.Result.Success)
+            Debug.Log(request.error);
+        else
+            Debug.Log(request.downloadHandler.text);
     }
 
     //Sign Up
-    public void SignUp()
-    {
-        CheckInformationInSignUpPage();
-    }
+    public void SignUp() => CheckInformationInSignUpPage();
     private void CheckInformationInSignUpPage()
     {
-        bool errosInInput = false;
-        Regex checkEmailRegex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+        bool errorsInInput = false;
+        var checkEmailRegex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
         if (string.IsNullOrWhiteSpace(_signUpFirstName.text))
         {
             _firstNameWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _firstNameWarning.gameObject.SetActive(false);
@@ -165,7 +233,7 @@ public class Authentication : MonoBehaviour
         if (string.IsNullOrWhiteSpace(_signUpLastName.text))
         {
             _lastNameWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _lastNameWarning.gameObject.SetActive(false);
@@ -173,7 +241,7 @@ public class Authentication : MonoBehaviour
         if (string.IsNullOrWhiteSpace(_signUpEmail.text) || !checkEmailRegex.IsMatch(_signUpEmail.text))
         {
             _emailWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _emailWarning.gameObject.SetActive(false);
@@ -181,7 +249,7 @@ public class Authentication : MonoBehaviour
         if (string.IsNullOrWhiteSpace(_signUpPassword.text) || _signUpPassword.text.Length < 6)
         {
             _passwordWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _passwordWarning.gameObject.SetActive(false);
@@ -189,67 +257,62 @@ public class Authentication : MonoBehaviour
         if (string.IsNullOrWhiteSpace(_signUpConfirmPassword.text) || _signUpConfirmPassword.text != _signUpPassword.text)
         {
             _confirmPasswordWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _confirmPasswordWarning.gameObject.SetActive(false);
 
-        if (errosInInput)
+        if (errorsInInput)
             return;
 
         StartCoroutine(SignUpRequest());
     }
-
     private IEnumerator SignUpRequest()
     {
-        string registerData = GetRegisterDataJson();
-        Debug.Log(registerData);
-        using (UnityWebRequest register = UnityWebRequest.Post(OASIS_REGISTER_AVATAR, registerData))
-        {
-            register.SetRequestHeader("Content-Type", "application/json");
-            yield return register.SendWebRequest();
+        byte[] registerData = GetRegisterDataJsonBytes();
+        using var request = new UnityWebRequest(OASIS_REGISTER_AVATAR);
+        request.method = UnityWebRequest.kHttpVerbPOST;
+        request.uploadHandler = new UploadHandlerRaw(registerData);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        ShowWarningInfoPanel(true);
+        yield return request.SendWebRequest();
 
-            if (register.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(register.error);
-            }
-            else
-            {
-                Debug.Log("Form upload complete!");
-            }
-        }
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        if (data["status"].Value.StartsWith("4") || data["status"].Value.StartsWith("4"))
+            SetInfo(ShowWarning.SignUpFail, data["title"].Value);
+        else
+            SetInfo(ShowWarning.SignUpSuccess, data["message"].Value);
     }
-
-    private string GetRegisterDataJson()
+    private byte[] GetRegisterDataJsonBytes()
     {
-        RegisterData registerData = new RegisterData();
-        registerData.title = "";
-        registerData.firstName = _signUpFirstName.text;
-        registerData.lastName = _signUpLastName.text;
-        registerData.avatarType = "User";
-        registerData.email = _signUpEmail.text;
-        registerData.password = _signUpPassword.text;
-        registerData.confirmPassword = _signUpConfirmPassword.text;
-        registerData.createdOASISType = 7;
-        registerData.acceptTerms = _termsToggle.isOn;
-        return JsonUtility.ToJson(registerData);
+        var registerData = new RegisterData
+        {
+            title = "Mr.",
+            firstName = _signUpFirstName.text,
+            lastName = _signUpLastName.text,
+            avatarType = "User",
+            email = _signUpEmail.text,
+            password = _signUpPassword.text,
+            confirmPassword = _signUpConfirmPassword.text,
+            createdOASISType = 7,
+            acceptTerms = _termsToggle.isOn
+        };
+        return System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(registerData));
     }
 
     //Sign In
-    public void SignIn()
-    {
-        CheckInformationSignInPage();
-    }
+    public void SignIn() => CheckInformationSignInPage();
     private void CheckInformationSignInPage()
     {
-        bool errosInInput = false;
-        Regex checkEmailRegex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+        bool errorsInInput = false;
+        var checkEmailRegex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
             RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
         if (string.IsNullOrWhiteSpace(_signInEmail.text) || !checkEmailRegex.IsMatch(_signInEmail.text))
         {
             _signInEmailWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _signInEmailWarning.gameObject.SetActive(false);
@@ -257,41 +320,40 @@ public class Authentication : MonoBehaviour
         if (string.IsNullOrWhiteSpace(_signInPassword.text) || _signInPassword.text.Length < 6)
         {
             _signInPasswordWarning.gameObject.SetActive(true);
-            errosInInput = true;
+            errorsInInput = true;
         }
         else
             _signInPasswordWarning.gameObject.SetActive(false);
 
-        if (errosInInput)
+        if (errorsInInput)
             return;
 
         StartCoroutine(SignInRequest());
     }
-
     private IEnumerator SignInRequest()
     {
-        string authenticateData = GetAuthenticateDataJson();
-        using (UnityWebRequest register = UnityWebRequest.Post(OASIS_AUTHENTICATE, authenticateData))
-        {
-            register.SetRequestHeader("Content-Type", "application/json");
-            yield return register.SendWebRequest();
+        byte[] authenticateData = GetAuthenticateDataJsonByte();
+        using var request = new UnityWebRequest(OASIS_AUTHENTICATE);
+        request.method = UnityWebRequest.kHttpVerbPOST;
+        request.uploadHandler = new UploadHandlerRaw(authenticateData);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        ShowWarningInfoPanel(true);
+        yield return request.SendWebRequest();
 
-            if (register.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(register.error);
-            }
-            else
-            {
-                Debug.Log("Form upload complete!");
-            }
-        }
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        if (data["isError"].Value == "true")
+            SetInfo(ShowWarning.SignInFail, data["message"].Value);
+        else
+            SetInfo(ShowWarning.SignInSuccess);
     }
-
-    private string GetAuthenticateDataJson()
+    private byte[] GetAuthenticateDataJsonByte()
     {
-        AuthenticateData authenticateData = new AuthenticateData();
-        authenticateData.email = _signInEmail.text;
-        authenticateData.password = _signInPassword.text;
-        return JsonUtility.ToJson(authenticateData);
+        var authenticateData = new AuthenticateData
+        {
+            email = _signInEmail.text,
+            password = _signInPassword.text
+        };
+        return System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(authenticateData));
     }
 }
