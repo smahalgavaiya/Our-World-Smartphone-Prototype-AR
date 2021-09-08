@@ -59,7 +59,8 @@ namespace Amar
 		private float Difference;
 
 		public bool OnUI, Recording;
-		private bool _three,_four;
+		private bool _three, _four;
+		public Camera _camera;
 
 
 		private void Awake()
@@ -84,7 +85,7 @@ namespace Amar
 		void Update()
 		{
 			GetTouch();
-			MoveByFinger();
+			//MoveByFinger();
 			//Debug.Log("On object" + !EventSystem.current.IsPointerOverGameObject(-1));
 		}
 
@@ -97,7 +98,7 @@ namespace Amar
 		{
 			if (select)
 			{
-				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
 
 				if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -130,7 +131,7 @@ namespace Amar
 				if (!OnUI && !Recording)
 				{
 					startpos = _touch.position;
-					Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+					Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 					RaycastHit hit;
 					if (Physics.Raycast(ray, out hit, Mathf.Infinity))
 					{
@@ -357,7 +358,7 @@ namespace Amar
 
 		public void ObjectPosition(GameObject SelectedObj)
 		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+			Ray ray = _camera.ScreenPointToRay(Input.GetTouch(0).position);
 			RaycastHit hit;
 			LayerMask Base = LayerMask.GetMask("Base");
 

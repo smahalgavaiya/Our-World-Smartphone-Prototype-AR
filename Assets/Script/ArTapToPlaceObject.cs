@@ -24,6 +24,9 @@ public class ArTapToPlaceObject : MonoBehaviour
 	public bool HideObject;
 	public GameObject CheckMark;
 	private bool check = true;
+	public Text _checktext;
+	public Text _test;
+	public Camera _camera;
 
 
 	private bool first;
@@ -92,6 +95,7 @@ public class ArTapToPlaceObject : MonoBehaviour
 		{
 			objectToPlace.SetActive(true);
 			objectToPlace.transform.position = placementPose.position;
+			objectToPlace.transform.rotation = placementPose.rotation;
 		}
 			//_placedObj = Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
 			
@@ -143,17 +147,18 @@ public class ArTapToPlaceObject : MonoBehaviour
 	private void UpdatePlacementPose()
 	{
 
-		var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
+		var screenCenter =_camera.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
 		var hits = new List<ARRaycastHit>();
 
 		arRaycastManager.Raycast(screenCenter, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
 
+		///_checktext.text = hits.Count.ToString();
 		placementPoseIsValid = hits.Count > 0;
 		if (placementPoseIsValid)
 		{
 			placementPose = hits[0].pose;
 
-			var cameraForward = Camera.current.transform.forward;
+			var cameraForward = _camera.transform.forward;
 			var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
 			placementPose.rotation = Quaternion.LookRotation(cameraBearing);
 		}
