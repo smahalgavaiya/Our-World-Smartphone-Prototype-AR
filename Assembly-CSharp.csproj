@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
-    <Compile Include="Assets\_Game\Scripts\ShottingStar.cs" />
+    <Compile Include="Assets\_Game\Scripts\Intro Animations\ShottingStar.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Scripts\UnityFileDebug.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
@@ -62,25 +62,25 @@
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Scripts\DebugWrapper.cs" />
-    <Compile Include="Assets\_Game\Scripts\RotateLogo.cs" />
+    <Compile Include="Assets\_Game\Scripts\Intro Animations\RotateLogo.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
-    <Compile Include="Assets\_Game\Scripts\ShottingStarSpawner.cs" />
+    <Compile Include="Assets\_Game\Scripts\Intro Animations\ShottingStarSpawner.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
     <Compile Include="Assets\UnityFileDebug\Demo\Tester.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\VisualElementExstensions.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\Texture2DExtensions.cs" />
-    <Compile Include="Assets\_Game\CharacterCreator\Scripts\ColourPIcker.cs" />
+    <Compile Include="Assets\CharacterCreator\Scripts\ColourPIcker.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
-    <Compile Include="Assets\_Game\CharacterCreator\Scripts\CharacterCreatorScript.cs" />
+    <Compile Include="Assets\CharacterCreator\Scripts\CharacterCreatorScript.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
-    <Compile Include="Assets\_Game\Scripts\Authentication.cs" />
+    <Compile Include="Assets\_Game\Scripts\Authentication\Authentication.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
-    <Compile Include="Assets\_Game\Scripts\ObjectRotation.cs" />
+    <Compile Include="Assets\_Game\Scripts\Intro Animations\ObjectRotation.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
@@ -98,16 +98,18 @@
     <Compile Include="Assets\SimpleJSON.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\CustomRowItem.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\UIElements.cs" />
-    <Compile Include="Assets\_Game\Scripts\StarsLensFlare.cs" />
+    <Compile Include="Assets\_Game\Scripts\Intro Animations\StarsLensFlare.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
-    <Compile Include="Assets\_Game\Scripts\MainMenuIntro.cs" />
+    <Compile Include="Assets\_Game\Scripts\Intro Animations\MainMenuIntro.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
-    <Compile Include="Assets\_Game\CharacterCreator\Scripts\CameraController.cs" />
+    <Compile Include="Assets\CharacterCreator\Scripts\CameraController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
-    <Compile Include="Assets\_Game\CharacterCreator\Scripts\setTextToTMP.cs" />
+    <Compile Include="Assets\CharacterCreator\Scripts\setTextToTMP.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
+    <Compile Include="Assets\_Game\Scripts\Avatar Info\AvatarInfoManager.cs" />
+    <Compile Include="Assets\_Game\Scripts\Avatar Info\MainMenuAvatarInfoManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -777,25 +779,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Addressable_Editor.csproj">
-      <Project>{A93F7737-D7E3-D6F9-106E-13D32ECF5034}</Project>
-      <Name>Addressable_Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="UMA_Examples_Editor.csproj">
       <Project>{DF4F070A-3B5C-37C0-4A22-42156942874A}</Project>
       <Name>UMA_Examples_Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UMA_Examples.csproj">
-      <Project>{19CFD48C-BDEE-0D34-1A64-9F1BDA4DDB81}</Project>
-      <Name>UMA_Examples</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Content.csproj">
       <Project>{1F668E0E-B5E4-4AEA-1F1D-C0061C20BD20}</Project>
       <Name>UMA_Content</Name>
     </ProjectReference>
+    <ProjectReference Include="UMA_Examples.csproj">
+      <Project>{19CFD48C-BDEE-0D34-1A64-9F1BDA4DDB81}</Project>
+      <Name>UMA_Examples</Name>
+    </ProjectReference>
     <ProjectReference Include="UMA_Core.csproj">
       <Project>{08EFFA24-63A4-15E4-CB4B-8EFBCAA0E525}</Project>
       <Name>UMA_Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Addressable_Editor.csproj">
+      <Project>{A93F7737-D7E3-D6F9-106E-13D32ECF5034}</Project>
+      <Name>Addressable_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Core_Editor.csproj">
       <Project>{4C5A1F24-12B0-1DE0-B578-087F1183B65A}</Project>

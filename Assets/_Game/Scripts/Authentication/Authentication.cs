@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Authentication : MonoBehaviour
@@ -168,7 +169,8 @@ public class Authentication : MonoBehaviour
         }
         else if (value == ShowWarning.SignInSuccess)
         {
-            //SaveInfoAndChangeScene
+            LeanTween.cancelAll();
+            SceneManager.LoadScene("Menu 3D");
         }
 
         LeanTween.value(0, 1, 0.5f).setEaseOutSine().setOnComplete(() =>
@@ -345,7 +347,10 @@ public class Authentication : MonoBehaviour
         if (data["isError"].Value == "true")
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
+        {
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["avatar"]["fullName"].Value, data["avatar"]["level"].Value);
             SetInfo(ShowWarning.SignInSuccess);
+        }
     }
     private byte[] GetAuthenticateDataJsonByte()
     {
