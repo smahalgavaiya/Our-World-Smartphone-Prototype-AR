@@ -30,10 +30,10 @@ public class AvatarInfoManager : MonoBehaviour
             return _avatarLevel;
         }
     }
+
     public void SetAvatarNameAndLevel(string name, string level)
     {
         _avatarName = name;
         _avatarLevel = level;
     }
-
 }

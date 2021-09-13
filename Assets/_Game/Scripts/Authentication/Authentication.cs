@@ -203,17 +203,18 @@ public class Authentication : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(GetTerms());
+        StartCoroutine(GetTerms());
     }
     private IEnumerator GetTerms()
     {
-        using UnityWebRequest request = UnityWebRequest.Get(OASIS_GET_TERMS);
+        using var request = UnityWebRequest.Get(OASIS_GET_TERMS);
         yield return request.SendWebRequest();
 
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
         if (request.result != UnityWebRequest.Result.Success)
             Debug.Log(request.error);
         else
-            Debug.Log(request.downloadHandler.text);
+            Debug.Log(data);
     }
 
     //Sign Up
@@ -290,7 +291,7 @@ public class Authentication : MonoBehaviour
     {
         var registerData = new RegisterData
         {
-            title = "Mr.",
+            title = "",
             firstName = _signUpFirstName.text,
             lastName = _signUpLastName.text,
             avatarType = "User",
