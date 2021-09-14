@@ -23,7 +23,7 @@ public class MainMenuIntro : MonoBehaviour
     public Sprite _introLensFlare;
     public GameObject _canvas;
     public Transform _ourWorldNameCanvas;
-    public TextMeshPro _ourWorldNameCanvasText;
+    public TextMeshProUGUI _ourWorldNameCanvasText;
     public GameObject _3DCanvas;
     public Material _skyboxMat;
     public Material _earthMat;
@@ -66,10 +66,12 @@ public class MainMenuIntro : MonoBehaviour
             _skyboxMat.SetFloat("_Exposure", value);
             _earthMat.SetVector("_EarthBrightness", new Vector4(value, value, value, value));
         });
-        LeanTween.value(0, 1, 3).setOnComplete(() => {
+        LeanTween.value(0, 1, 3).setOnComplete(() =>
+        {
             LeanTween.moveLocalZ(_gameTitle, 0, 2).setEaseOutSine();
         });
-        LeanTween.value(0, 1, 4).setOnComplete(() => {
+        LeanTween.value(0, 1, 4).setOnComplete(() =>
+        {
             LeanTween.moveLocalZ(_gameMotto, 0, 2).setEaseOutSine().setOnComplete(() =>
             {
                 Invoke("Transition", 3);
@@ -127,13 +129,13 @@ public class MainMenuIntro : MonoBehaviour
         LeanTween.moveLocal(_gameTitle, new Vector3(0, 0, 0), 2).setEaseOutSine();
         LeanTween.scale(_gameTitle, new Vector3(1, 1, 1), 2).setEaseOutSine();
         LeanTween.rotateLocal(_gameTitle, new Vector3(0, 0, 0), 2).setEaseOutSine();
-        LeanTween.value(190, 90, 2).setEaseOutSine().setOnUpdate((float value) =>
+        LeanTween.value(190, 100, 2).setEaseOutSine().setOnUpdate((float value) =>
         {
             _gameTitleText.fontSize = value;
         }).setOnComplete(() =>
         {
             _3DCanvas.SetActive(false);
-            _ourWorldNameCanvasText.GetComponent<TextMeshPro>().text = "OUR WORLD";
+            _ourWorldNameCanvasText.text = "OUR WORLD";
         });
     }
 
@@ -206,10 +208,12 @@ public class MainMenuIntro : MonoBehaviour
             _skyboxMat.SetFloat("_Exposure", value);
             _earthMat.SetVector("_EarthBrightness", new Vector4(value, value, value, value));
         });
-        LeanTween.value(0, 1, 3).setOnComplete(() => {
+        LeanTween.value(0, 1, 3).setOnComplete(() =>
+        {
             LeanTween.moveLocalZ(_gameTitle, 0, 2).setEaseOutSine();
         });
-        LeanTween.value(0, 1, 4).setOnComplete(() => {
+        LeanTween.value(0, 1, 4).setOnComplete(() =>
+        {
             LeanTween.moveLocalZ(_gameMotto, 0, 2).setEaseOutSine().setOnComplete(() =>
             {
                 Invoke("Transition", 3);
@@ -246,20 +250,20 @@ public class MainMenuIntro : MonoBehaviour
         LeanTween.moveLocal(_gameTitle, new Vector3(0, 0, 0), 2).setEaseOutSine();
         LeanTween.scale(_gameTitle, new Vector3(1, 1, 1), 2).setEaseOutSine();
         LeanTween.rotateLocal(_gameTitle, new Vector3(0, 0, 0), 2).setEaseOutSine();
-        LeanTween.value(190, 90, 2).setEaseOutSine().setOnUpdate((float value) =>
+        LeanTween.value(190, 100, 2).setEaseOutSine().setOnUpdate((float value) =>
         {
             _gameTitleText.fontSize = value;
         }).setOnComplete(() =>
         {
             _3DCanvas.SetActive(false);
-            _ourWorldNameCanvasText.GetComponent<TextMeshPro>().text = "OUR WORLD";
+            _ourWorldNameCanvasText.text = "OUR WORLD";
         });
     }
     #endregion
 
     #region Design 2 To 1
     public void Design2To1()
-    { 
+    {
         ObjectRotationState(false);
         SwapLensFlareSprite(_newLensFlare, false);
         LeanTween.rotateLocal(_sceneHolder, new Vector3(26.7f, 173.5f, -4.36f), 2).setEaseOutSine();
@@ -309,7 +313,8 @@ public class MainMenuIntro : MonoBehaviour
         {
             _introVolume.weight = 1 - value;
             _finalVolume.weight = value;
-        }).setOnComplete(() => {
+        }).setOnComplete(() =>
+        {
             ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.RIGHT);
             ObjectRotationState(true);
         });
