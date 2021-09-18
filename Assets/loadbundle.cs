@@ -42,11 +42,12 @@ public class loadbundle : MonoBehaviour
 
 		//Begin download
 
+		WWW www = new WWW("");
 #if UNITY_IOS
-		WWW www = WWW.LoadFromCacheOrDownload(ModellinkiOS, 10); // iOS
+		www = WWW.LoadFromCacheOrDownload(ModellinkiOS, 10); // iOS
 #endif
 #if UNITY_ANDROID
-		WWW www = WWW.LoadFromCacheOrDownload(ModelLinkAndroid, 10);
+		www = WWW.LoadFromCacheOrDownload(ModelLinkAndroid, 10);
 #endif
 
 		yield return www;
