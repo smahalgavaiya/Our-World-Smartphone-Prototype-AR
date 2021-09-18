@@ -14,9 +14,9 @@
 [Uu]serSettings
 
 # Auto-generated Visual Studio or MonoDevelop solution and project files
-.csproj
+*.csproj
 .unityproj
-.sln
+*.sln
 .suo
 .tmp
 .user
