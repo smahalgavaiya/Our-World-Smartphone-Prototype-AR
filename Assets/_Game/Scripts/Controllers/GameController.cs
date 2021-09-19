@@ -1,16 +1,27 @@
+using OurWorld.Scripts.DataModels.Geolocation;
 using OurWorld.Scripts.Utilities;
 using UnityEngine;
-
-public class GameController : MonoBehaviour
+namespace OurWorld.Scripts.Controllers
 {
 
-#if UNITY_EDITOR
-    private void Update()
+    public class GameController : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.O))
-            CrossfadeTransition.Instance.FadeIn(null);
-        if (Input.GetKeyDown(KeyCode.P))
-            CrossfadeTransition.Instance.FadeOut(null);
-    }
+
+        private void Awake()
+        {
+            var bb = new MapPoint(32.70690685783961d,39.995918554330984d).GetBoundingBox(0.5d);
+
+            Debug.Log(bb.ToString());
+        }
+#if UNITY_EDITOR
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+                CrossfadeTransition.Instance.FadeIn(null);
+            if (Input.GetKeyDown(KeyCode.P))
+                CrossfadeTransition.Instance.FadeOut(null);
+        }
 #endif
+    }
+
 }
