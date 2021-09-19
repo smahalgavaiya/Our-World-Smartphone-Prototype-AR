@@ -9,7 +9,7 @@ namespace OurWorld.Scripts.DataModels.Geolocation
         private const double WGS84_b = 6356752.3; // Minor semiaxis [m]
 
         // 'halfSideInKm' is the half length of the bounding box you want in kilometers.
-        public static BoundingBox GetBoundingBox(this MapPoint point, double halfSideInKm)
+        public static BoundingBox GetBoundingBox(this Geolocation point, double halfSideInKm)
         {
             // Bounding box surrounding the point at given coordinates,
             // assuming local approximation of Earth surface as a sphere
@@ -30,8 +30,8 @@ namespace OurWorld.Scripts.DataModels.Geolocation
 
             return new BoundingBox
             {
-                MinPoint = new MapPoint { Latitude = Rad2deg(latMin), Longitude = Rad2deg(lonMin) },
-                MaxPoint = new MapPoint { Latitude = Rad2deg(latMax), Longitude = Rad2deg(lonMax) }
+                MinPoint = new Geolocation { Latitude = Rad2deg(latMin), Longitude = Rad2deg(lonMin) },
+                MaxPoint = new Geolocation { Latitude = Rad2deg(latMax), Longitude = Rad2deg(lonMax) }
             };
         }
 

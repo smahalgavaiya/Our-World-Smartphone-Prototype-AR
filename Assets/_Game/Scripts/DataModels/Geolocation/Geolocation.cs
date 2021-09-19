@@ -2,16 +2,16 @@ using System.Globalization;
 
 namespace OurWorld.Scripts.DataModels.Geolocation
 {
-    public class MapPoint
+    public class Geolocation
     {
         public double Longitude { get; set; } // In Degrees
         public double Latitude { get; set; } // In Degrees
 
-        public MapPoint()
+        public Geolocation()
         {
 
         }
-        public MapPoint(double longtitude, double latitude)
+        public Geolocation(double longtitude, double latitude)
         {
             Longitude = latitude;
             Latitude = latitude;

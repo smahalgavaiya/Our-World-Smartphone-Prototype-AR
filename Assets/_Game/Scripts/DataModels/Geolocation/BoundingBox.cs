@@ -5,8 +5,8 @@ namespace OurWorld.Scripts.DataModels.Geolocation
 {
     public class BoundingBox
     {
-        public MapPoint MinPoint { get; set; }
-        public MapPoint MaxPoint { get; set; }
+        public Geolocation MinPoint { get; set; }
+        public Geolocation MaxPoint { get; set; }
 
         public override string ToString()
         {

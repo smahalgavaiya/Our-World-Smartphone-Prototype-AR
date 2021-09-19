@@ -9,7 +9,7 @@ namespace OurWorld.Scripts.Controllers
 
         private void Awake()
         {
-            var bb = new MapPoint(32.70690685783961d,39.995918554330984d).GetBoundingBox(0.5d);
+            var bb = new Geolocation(32.70690685783961d,39.995918554330984d).GetBoundingBox(0.5d);
 
             Debug.Log(bb.ToString());
         }
