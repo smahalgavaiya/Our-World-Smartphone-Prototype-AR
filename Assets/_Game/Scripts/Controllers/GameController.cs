@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using OurWorld.Scripts.Utilities;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    
+
 #if UNITY_EDITOR
     private void Update()
     {
