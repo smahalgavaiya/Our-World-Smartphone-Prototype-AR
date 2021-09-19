@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using OurWorld.Scripts.Interfaces.Serialization;
 
-namespace OurWorld.Scripts.Utilities
+namespace OurWorld.Scripts.Utilities.DataSerializers
 {
     public class NewtonsoftJsonSerializerOption : ISerializationOption
     {
