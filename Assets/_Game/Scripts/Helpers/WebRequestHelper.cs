@@ -1,11 +1,12 @@
 using System;
 using Cysharp.Threading.Tasks;
+using OurWorld.Scripts.Interfaces;
 using OurWorld.Scripts.Interfaces.Serialization;
 using UnityEngine.Networking;
 
 namespace OurWorld.Scripts.Helpers
 {
-    public class WebRequestHelper
+    public class WebRequestHelper : IWebRequestHelper
     {
         private readonly ISerializationOption _serializationOptions;
         public WebRequestHelper(ISerializationOption serializationOptions)

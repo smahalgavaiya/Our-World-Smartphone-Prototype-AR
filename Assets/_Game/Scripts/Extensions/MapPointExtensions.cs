@@ -1,6 +1,7 @@
 using System;
+using OurWorld.Scripts.DataModels.GeolocationData;
 
-namespace OurWorld.Scripts.DataModels.Geolocation
+namespace OurWorld.Scripts.Extensions
 {
     public static class MapPointExtensions
     {

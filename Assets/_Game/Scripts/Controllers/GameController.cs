@@ -1,4 +1,5 @@
-using OurWorld.Scripts.DataModels.Geolocation;
+using OurWorld.Scripts.DataModels.GeolocationData;
+using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Utilities;
 using UnityEngine;
 namespace OurWorld.Scripts.Controllers
@@ -7,11 +8,11 @@ namespace OurWorld.Scripts.Controllers
     public class GameController : MonoBehaviour
     {
 
-        private void Awake()
+        private async void Awake()
         {
-            var bb = new Geolocation(32.70690685783961d,39.995918554330984d).GetBoundingBox(0.5d);
+           var apiProvider = new MapboxAPIProvider();
 
-            Debug.Log(bb.ToString());
+           await apiProvider.GetNearbyParksAsync(new Geolocation(32.707270,39.995767),1f);
         }
 #if UNITY_EDITOR
         private void Update()

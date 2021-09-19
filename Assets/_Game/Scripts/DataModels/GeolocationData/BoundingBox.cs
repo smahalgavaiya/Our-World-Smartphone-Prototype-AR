@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace OurWorld.Scripts.DataModels.Geolocation
+namespace OurWorld.Scripts.DataModels.GeolocationData
 {
     public class BoundingBox
     {

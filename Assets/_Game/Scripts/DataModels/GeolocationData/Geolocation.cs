@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace OurWorld.Scripts.DataModels.Geolocation
+namespace OurWorld.Scripts.DataModels.GeolocationData
 {
     public class Geolocation
     {
@@ -13,7 +13,7 @@ namespace OurWorld.Scripts.DataModels.Geolocation
         }
         public Geolocation(double longtitude, double latitude)
         {
-            Longitude = latitude;
+            Longitude = longtitude;
             Latitude = latitude;
         }
 
