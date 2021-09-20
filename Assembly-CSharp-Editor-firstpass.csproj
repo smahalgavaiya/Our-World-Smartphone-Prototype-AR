@@ -813,6 +813,30 @@
       <Project>{3FC14E3D-F759-CA18-EC5E-1D2BF8F028A1}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
+    <ProjectReference Include="UMA_Examples_Editor.csproj">
+      <Project>{DF4F070A-3B5C-37C0-4A22-42156942874A}</Project>
+      <Name>UMA_Examples_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Content.csproj">
+      <Project>{1F668E0E-B5E4-4AEA-1F1D-C0061C20BD20}</Project>
+      <Name>UMA_Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Examples.csproj">
+      <Project>{19CFD48C-BDEE-0D34-1A64-9F1BDA4DDB81}</Project>
+      <Name>UMA_Examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Core.csproj">
+      <Project>{08EFFA24-63A4-15E4-CB4B-8EFBCAA0E525}</Project>
+      <Name>UMA_Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Addressable_Editor.csproj">
+      <Project>{A93F7737-D7E3-D6F9-106E-13D32ECF5034}</Project>
+      <Name>Addressable_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Core_Editor.csproj">
+      <Project>{4C5A1F24-12B0-1DE0-B578-087F1183B65A}</Project>
+      <Name>UMA_Core_Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

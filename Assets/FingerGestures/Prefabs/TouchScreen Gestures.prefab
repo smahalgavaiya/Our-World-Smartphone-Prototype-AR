@@ -57,11 +57,11 @@ MonoBehaviour:
     globalGestures:
       enabled: 1
       longPress: 1
-      drag: 1
-      swipe: 1
+      drag: 0
+      swipe: 0
       tap: 1
       doubleTap: 1
-      pinch: 1
+      pinch: 0
       rotation: 1
       twoFingerLongPress: 1
       twoFingerDrag: 1
