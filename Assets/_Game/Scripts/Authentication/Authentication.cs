@@ -21,6 +21,7 @@ public class Authentication : MonoBehaviour
     public TMP_InputField _signUpConfirmPassword;
     public TMP_InputField _signInEmail;
     public TMP_InputField _signInPassword;
+    public TextMeshProUGUI _termsText;
     public Toggle _termsToggle;
     public Toggle _termsAgree;
     public Button _signUpContinue;
@@ -214,7 +215,7 @@ public class Authentication : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
             Debug.Log(request.error);
         else
-            Debug.Log(data);
+            _termsText.text = data["termsText"].Value;
     }
 
     //Sign Up
