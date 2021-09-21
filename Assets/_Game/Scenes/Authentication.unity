@@ -9940,6 +9940,7 @@ MonoBehaviour:
   _signUpConfirmPassword: {fileID: 1868087112}
   _signInEmail: {fileID: 793835808}
   _signInPassword: {fileID: 1876286934}
+  _termsText: {fileID: 1682370882}
   _termsToggle: {fileID: 1680188461}
   _termsAgree: {fileID: 1352106423}
   _signUpContinue: {fileID: 1397263338}
