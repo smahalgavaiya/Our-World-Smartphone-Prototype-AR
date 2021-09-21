@@ -49,8 +49,16 @@ namespace Mapbox.Examples
 			_resource = new ForwardGeocodeResource("");
 		}
 
+		private void OnEnable()
+		{
+			_inputField = GetComponent<InputField>();
+			if (ViewController.Instance != null)
+				_inputField.text = ViewController.Instance._currentSearch;
+		}
+
 		void HandleUserInput(string searchString)
 		{
+			ViewController.Instance._currentSearch = searchString;
 			_hasResponse = false;
 			if (!string.IsNullOrEmpty(searchString))
 			{
