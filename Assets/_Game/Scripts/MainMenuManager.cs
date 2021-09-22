@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject _videoMenu;
     public GameObject _audioMenu;
     public MainMenuIntro _mainMenuIntro;
+    public GameObject _sceneHolder;
 
     [Header("Gameplay Panel Settings")]
     public Toggle _autoSwitchToggle;
@@ -49,7 +50,10 @@ public class MainMenuManager : MonoBehaviour
         else if (name == "NewGame")
             NewGame();
         else if (name == "UMACC")
-            SceneManager.LoadScene("UMACC");
+        {
+            _sceneHolder.SetActive(false);
+            SceneManager.LoadScene("UMACC", LoadSceneMode.Additive);
+        }
         else if (name == "Settings")
         {
             MainMenuTransition(_mainMenu, _settingsMenu);
@@ -60,6 +64,12 @@ public class MainMenuManager : MonoBehaviour
         }
         else if (name == "Quit")
             Quit();
+    }
+
+    public void GetSceneBack()
+    {
+        _sceneHolder.SetActive(true);
+        SceneManager.UnloadSceneAsync("UMACC");
     }
 
     public void SettingsButtonPressed(string name)

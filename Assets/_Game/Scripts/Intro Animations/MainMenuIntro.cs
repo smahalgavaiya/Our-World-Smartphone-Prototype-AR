@@ -27,6 +27,7 @@ public class MainMenuIntro : MonoBehaviour
     public GameObject _3DCanvas;
     public Material _skyboxMat;
     public Material _earthMat;
+    public MainMenuManager _mMM;
 
     private ObjectRotation[] OR;
 
@@ -125,6 +126,7 @@ public class MainMenuIntro : MonoBehaviour
     private void OurWorldLogoCanvas()
     {
         _canvas.SetActive(true);
+        _mMM.enabled = true;
         _gameTitle.transform.SetParent(_ourWorldNameCanvas);
         LeanTween.moveLocal(_gameTitle, new Vector3(0, 0, 0), 2).setEaseOutSine();
         LeanTween.scale(_gameTitle, new Vector3(1, 1, 1), 2).setEaseOutSine();
@@ -243,6 +245,7 @@ public class MainMenuIntro : MonoBehaviour
     private void OurWorldLogoCanvas2()
     {
         _canvas.SetActive(true);
+        _mMM.enabled = true;
         _gameTitle.transform.SetParent(_ourWorldNameCanvas);
         LeanTween.scale(_SunLensFlare1.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 2f).setEaseOutSine();
         LeanTween.scale(_SunLensFlare2.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 2f).setEaseOutSine();
