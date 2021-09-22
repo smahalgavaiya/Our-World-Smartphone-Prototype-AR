@@ -25,6 +25,7 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public List<Slider> DNAModuleSliders;
     public List<Slider> DNAModuleSlidersTMP;
+    public List<float> DNASliderValuesTMP;
 
     public List<string> DNAModuleStrings;
 
@@ -110,6 +111,20 @@ public class CharacterCreatorScript : MonoBehaviour
         }
     }
 
+    public void RecognizeGender()
+    {
+        if (dynamicCharacterAvatarScript.activeRace.name == maleRaceName)
+        {
+            genderMale = true;
+            cameraControllerScript.genderMale = true;
+        }
+        else if (dynamicCharacterAvatarScript.activeRace.name == femaleRaceName)
+        {
+            genderMale = false;
+            cameraControllerScript.genderMale = false;
+        }
+    }
+
     private void OnEnable()
     {
         dynamicCharacterAvatarScript.CharacterUpdated.AddListener(UpdateCheck);
@@ -160,6 +175,23 @@ public class CharacterCreatorScript : MonoBehaviour
         }
     }
 
+    private void DNAmoduleSliderMatch()
+    {
+
+        for (int i = 0; i < DNAModuleSlidersTMP.Count; i++)
+        {
+            DNAModuleSlidersTMP[i].value = DNASliderValuesTMP[i];
+        }
+
+    }
+
+    private void DNAmodulesSliderUpdate()
+    {
+        for (int i = 0; i < DNAModuleSlidersTMP.Count; i++)
+        {
+            DNASliderValuesTMP[i] = DNAModuleSlidersTMP[i].value;
+        }
+    }
 
     #endregion
 
@@ -1040,16 +1072,30 @@ public class CharacterCreatorScript : MonoBehaviour
 
     #endregion
 
+
     #region Save/Load
 
     public void SaveCharacter()
     {
         CharacterData = dynamicCharacterAvatarScript.GetCurrentRecipe();
+        DNAmodulesSliderUpdate();
+        Debug.Log(CharacterData);
+
+        // you have all the slider values here below
+
+        //DNASliderValuesTMP[];
     }
 
     public void LoadCharacter()
     {
         dynamicCharacterAvatarScript.LoadFromRecipeString(CharacterData);
+        RecognizeGender();
+        DNAmoduleSliderMatch();
+    }
+
+    public void GoBack()
+    {
+        FindObjectOfType<MainMenuManager>().GetSceneBack();
     }
 
     #endregion
