@@ -177,7 +177,6 @@ public class CharacterCreatorScript : MonoBehaviour
 
     private void DNAmoduleSliderMatch()
     {
-
         for (int i = 0; i < DNAModuleSlidersTMP.Count; i++)
         {
             DNAModuleSlidersTMP[i].value = DNASliderValuesTMP[i];
