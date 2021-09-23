@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C5E67AF9-B827-B853-DFA4-3301871F6415}</ProjectGuid>
+    <ProjectGuid>{5685CAB3-97CB-CECD-FDF2-19E3459D19C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -53,125 +53,71 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Annotation.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\HersheyFonts.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\objdetect\Enum\HaarDetectionType.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\LocationStatus.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TerrainColliderOptions.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\SimpleAutomaticSynchronizationContext.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\LogisticRegression.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyleAtlasWithColorPallete.cs" />
-    <Compile Include="Assets\_Game\Scripts\Tree Detection\Text to Speech\VoiceChangerFilter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_MSER.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapboxDataProperty.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\photo\SeamlessCloneMethods.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_calib3d.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\FingerEventsSamplePart1.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\MemoryCache.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\Feature.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_objdetect.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\VideoPlayerManager.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\RectanglesIntersectTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ShapeMatchModes.cs" />
-    <Compile Include="Assets\Mapbox\Unity\Location\ILocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\DontDestroyOnLoad.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\InterpolationFlags.cs" />
+    <Compile Include="Assets\Mapbox\Unity\Location\ILocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\PrefabModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfRect.cs" />
     <Compile Include="Assets\_Game\Scripts\Intro Animations\ShottingStar.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\IImageryLayer.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Scripts\UnityFileDebug.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerRealisticStyle.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SnapTerrainRaycastModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\DisposableObject.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\SQLiteCache\Tilesets.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerStyle.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyleAtlas.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\FundamentalMatMethod.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\text\TextRecognition.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\xfeatures2d\FREAK.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_ml.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\face\NativeMethods_face_BasicFaceRecognizer.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\PoiLabelTextSetter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\OpticalFlowFlags.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\ObjectPool.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TileProcessFinishedEventArgs.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyleTiled.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_xfeatures2d.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\FeatureBehaviour.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Point2f.cs" />
     <Compile Include="Assets\Mapbox\Unity\MapboxAccess.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_stdvector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfDouble.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapLocationOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\SVM.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\Map.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\SavedIndexParams.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_Boost.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\BboxToGeoCoordinateBoundsConverter.cs" />
     <Compile Include="Assets\FingerGestures\Utils\GestureStateTracker.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\StructurePointer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\KMeansIndexParams.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\GeneralizedHoughGuil.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfKeyPoint.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\objdetect\SimilarRects.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\MapboxStylesColorModifier.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\SimpleAutomaticSynchronizationContextBehaviour.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\AngleSmoothingAverage.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\HeroBuildingSelectionUserInput.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryAndroid.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Leg.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\CvObject.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\CameraScaler.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\IndexParams.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_DTrees.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\AngleSmoothingEMA.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_superres.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARTabletop\Scripts\ARPlaneHandler.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\OutputArrayOfStructList.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\CacheItem.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\MakiHelper.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\OneFingerGestureSample.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\ElevationBasedTerrainStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\AKAZE.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Tracking\TrackingScript.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\LogLocationProviderData.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\LineSegmentDetector.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationProviderFactory.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\MeshData.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IMapScalingStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_ANN_MLP.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\SingletonScriptableObject.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\MatDiagType.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\text\TextDetection.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorDMatch.cs" />
+    <Compile Include="Assets\Mapbox\Examples\8_VoxelMap\Scripts\VoxelTile.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\Internal\SampleUI.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\FeatureSelectionDetector.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\LocationPrefabCategoryOptions.cs" />
-    <Compile Include="Assets\Mapbox\Examples\8_VoxelMap\Scripts\VoxelTile.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARTabletop\Scripts\ARTableTopCameraMovement.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\LonLatToGeoCoordinateConverter.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\UIZoomImage.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\TileErrorHandler.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationArrayEditorLocationProvider.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Point.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\FlatSphereTerrainStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\ReduceDimension.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_StatModel.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\OutputArrayOfMatList.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\PlayerSizeFromLocationAccuracy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\SortFlags.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVec3f.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Identifiy_Contours_by_Shape\ContoursByShapeScript.cs" />
     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Scripts\DebugWrapper.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\Internal\StartMenu.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\PoiMarkerHelper.cs" />
@@ -180,290 +126,151 @@
     <Compile Include="Assets\Mapbox\Examples\Scripts\LabelTextSetter.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\ISynchronizationContext.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Strategies\MapScalingAtWorldScaleStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Document_Scanner\Scripts\DocumentScannerLobby.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerColorStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\DctFlags.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryEditor.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\InitializeMapWithLocationProvider.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\SearchParams.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\FloodFillFlags.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\Location.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\MapboxLocationInfoUnityWrapper.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\LayerVisualizers\VectorLayerVisualizer.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyleAtlasWithColorPallete.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfERStat.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Point2d.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\LayerProperties.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\LoftModifier.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\BehaviousController.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\MatExpr_CvMethods.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\objdetect\HOGDescriptor.cs" />
     <Compile Include="Assets\_Game\Scripts\Intro Animations\RotateLogo.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\MatProxy.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\Utilities\PlotRoute.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ILayer.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\Misc\TBPinchZoom.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\DebugTools\SceneData.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\UnityLayerOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfByte.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Point3d.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\Index.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\RNG_MT19937.cs" />
     <Compile Include="Assets\_Game\Scripts\Avatar Info\AvatarInfoManager.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\FlannCentersInit.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Size2d.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfFloat4.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\TileErrorEventArgs.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Enum\DrawMatchesFlags.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\TrafficUvAnimator.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSONReponse.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\IAsyncRequest.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBFingerDown.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\ScopedGCHandle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\AdaptiveThresholdTypes.cs" />
-    <Compile Include="Assets\_Game\Scripts\Tree Detection\FACEDETECTION.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfDouble.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\FindCirclesGridFlags.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\Singleton.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MapMatchingParameters.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\FlannBasedMatcher.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\TileCover.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\ToolboxFingerEventsSample.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\AbstractTileFactory.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\UpdateMapPosByARPlaneY.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ColorConversionCodes.cs" />
     <Compile Include="Assets\Mapbox\Examples\4_ReplaceFeatures\Scripts\BlinkLight.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ThresholdTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\CompositeIndexParams.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ColormapTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgcodecs\Enum\ImwriteFlags.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\ForwardGeocodeResource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\StereoMatcher.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\DenseOpticalFlow.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerSimpleStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\TermCriteria.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\core\NativeMethods_core_Classes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\core\NativeMethods_core_Mat.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Intersection.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\photo\NativeMethods_photo.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\CpuFeatures.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\Logging\LocationLogReader.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\imgproc\NativeMethods_imgproc.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_bgsegm.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Marker_Detector\MarkerDetector.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerModeling.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\ToolboxDragDropSample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\shape\ShapeDistanceExtractor.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_imgcodecs.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\shape\NativeMethods_shape_ShapeDistanceExtractor.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\Internal\SampleBase.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\stitching\Stitcher.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\xfeatures2d\SURF.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\StringArrayAddress.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\LayerModifierOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\ClassicRetinaRasterTile.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\ORB.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Delegate\CvErrorCallback.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\HTTPRequestThreaded.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\TimeMeasurer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\LineSegmentDetectorModes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Vecw.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARTabletop\Scripts\PlaceMapOnARPlane.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerTexturing.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\VectorTileExample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Point3f.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\CameraBoundsTileProviderOptions.cs" />
     <Compile Include="Assets\_Game\Scripts\Intro Animations\ShottingStarSpawner.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\DebugTools\ScenesList.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_stitching.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Delegate\MatForeachFunction.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\IReplaceable.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\DistanceTransformLabelTypes.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainFactoryBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerLightStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\core\NativeMethods_core_MatExpr.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBSwipe.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\ICache.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\ImageryLayerProperties.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\QuadTreeMapVisualizer.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerModeling.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorPoint2f.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\CanonicalTileId.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\RotateWithLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerLightStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVec4i.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\calib3d\NativeMethods_calib3d_StereoMatcher.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Lobby\LobbyScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\IStdVector.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\TextureSideWallModifier.cs" />
-    <Compile Include="Assets\_Game\Scripts\Tree Detection\Text to Speech\TextToSpeech.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\KalmanFilter.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\StyleSearchAttribute.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryDummy.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\ForwardGeocoderExample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\face\FaceRecognizer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Face_Detector\FaceDetectorScene.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\photo\CalibrateDebevec.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\MapboxLocationServiceUnityWrapper.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\Camera\TouchCamera.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\DistanceFunctions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\SimpleBlobDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_text.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\NormTypes.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ImageryLayer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_BOW.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\ParamGrid.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\xfeatures2d\StarDetector.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\Tracepoint.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\TerrainLayer.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\ModifierStack.cs" />
+    <Compile Include="Assets\_Game\Scripts\MapBox\RotationController.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\AddMonoBehavioursModifierType.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\TerrainStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\StereoSGBM.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSON.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\Mat.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\IMapboxLocationInfo.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\Mat_CvMethods.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\photo\CalibrateCRF.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\DisableMeshRendererModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\VectorDataFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Interfaces\IFeaturePropertySettable.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfPoint2f.cs" />
     <Compile Include="Assets\Mapbox\Examples\7_Globe\Scripts\SpawnOnGlobeExample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_AgastFeatureDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_video.cs" />
     <Compile Include="Assets\UnityFileDebug\Demo\Tester.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\shape\HausdorffDistanceExtractor.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\VisualElementExstensions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\PolylineUtils.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\ConnectedComponent.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\BRISK.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TileStatsFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\EditorLocationProviderLocationLog.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerDarkStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_GFTTDetector.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ReverseGeocodeUserInput.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Enum\KAZEDiffusivity.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\TileResource.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\Texture2DExtensions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_SVM.cs" />
     <Compile Include="Assets\CharacterCreator\Scripts\ColourPIcker.cs" />
     <Compile Include="Assets\Mapbox\Examples\2_AstronautGame\AstronautGame\Astronaut\AstronautMouseController.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Rangef.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\LowPolyTerrainStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\IntervalHeap.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\face\NativeMethods_face_FaceRecognizer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\RetrievalModes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\superres\SuperResolution.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\superres\FrameSource.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerColliderOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_KeyPointsFilter.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ChangeShadowDistance.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\HistCompMethods.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\HTTPRequest.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\RangeAroundTransformTileProviderOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\DeviceLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultImagery.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\BorderTypes.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\AtlasInfo.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
     <Compile Include="Assets\Mapbox\Examples\8_VoxelMap\Scripts\VoxelData.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\core\NativeMethods_core.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfUShort.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\AbstractAlignmentStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\BOWImgDescriptorExtractor.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\PresetSubLayerPropertiesFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\VectorTileFactory.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_ORB.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\PositionWithLocationProvider.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfMat.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\FileNode.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Algorithm.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\MorphShapes.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBDrag.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\CalibrationFlags.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\OCR.Alphabet\AlphabetOCR.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_FastFeatureDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Model\CircleSegment.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\Tile.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\SceneController.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Strategies\MapPlacementAtLocationCenterStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Vecd.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\StereoBM.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\aruco\Enum\PredefinedDictionaryName.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\ElevationLayerProperties.cs" />
     <Compile Include="Assets\CharacterCreator\Scripts\CharacterCreatorScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorFloat.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\MarkerStyle.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tokens\MapboxToken.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\Template.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Interfaces\LayerVisualizerBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\VectorSubLayerProperties.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_xphoto.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Route.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\GameObjectExtensions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\DenseFeatureDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_NormalBayesClassifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\Compression.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\CoreVectorLayerProperties.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\VectorFeatureUnity.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\VectorTile.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_DescriptorExtractor.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\AngleSmoothingAbstractBase.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_face.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_photo.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TileStats.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVec2f.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Geocoder.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBComponent.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\KNearest.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorPoint.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgcodecs\Enum\ConvertImageModes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_face.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\FeatureCollectionBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\MaterialModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\DumpFormat.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\Internal\MenuNode.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_core.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\GeneralizedHoughBallard.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MapMatcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\LayerSourceOptions.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\RotateOnYTargetTransform.cs" />
     <Compile Include="Assets\_Game\Scripts\Avatar Info\MainMenuAvatarInfoManager.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\tracking\Tracker.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\LineIterator.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AbstractLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultVector.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AbstractEditorLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapPlacementOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_EM.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Feature2D.cs" />
     <Compile Include="Assets\Mapbox\Examples\6_ZoomableMap\Scripts\SpawnOnMap.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\NodeEditorElementAttribute.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfPoint.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfFloat.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\MatExprRowColIndexer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_LogisticRegression.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\MatType.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\PInvokeHelper.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\Internal\BasicSample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\DLib\ShapePredictor.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Model\Line2D.cs" />
     <Compile Include="Assets\_Game\Scripts\Authentication\Authentication.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\BOWKMeansTrainer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\NormalBayesClassifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\VertexDebuggerGizmo.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\DetectedFace.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\DftFlags.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\SQLiteCache\Tiles.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Filters\TypeFilter.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerSimpleStyle.cs" />
@@ -471,141 +278,81 @@
     <Compile Include="Assets\Mapbox\Unity\Map\Strategies\MapPlacementAtTileCenterStrategy.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\ArTapToPlaceObject.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\ITileProvider.cs" />
-    <Compile Include="Assets\_Game\Scripts\Tree Detection\Text to Speech\SetupMicrophone.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\TrainData.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\AgastFeatureDetector.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerExtrusionOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\core\NativeMethods_core_Algorithm.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\SpawnInsideModifier.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\TagModifier.cs" />
     <Compile Include="Assets\_Game\Scripts\Intro Animations\ObjectRotation.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\face\BasicFaceRecognizer.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\GeocodeResponse.cs" />
     <Compile Include="Assets\FingerGestures\Utils\MoveToFinger.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Model\LineSegmentPoint.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\TwoFingerGestureSample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\RotatedRect.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfByte.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
     <Compile Include="Assets\Mapbox\Examples\8_VoxelMap\Scripts\TextureScaler.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\DistanceMaskSize.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBInputManager.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\FollowTargetTransform.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\IObserver.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARTabletop\Scripts\SnapMapToTargetTransform.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\GeocodeAttribute.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfPoint.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\ImageryRasterOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MatchObject.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\PixelConnectivity.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\SQLite\SQLite.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerRealisticStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\DenseOpticalFlowImpl.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\imgproc\NativeMethods_imgproc_Subdiv2D.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\Enum\WindowMode.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\AbstractTileProvider.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ProjectionType.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\IObservable.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\BFMatcher.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfRect.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Filters\FilterBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Strategies\MapScalingAtUnityScaleStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\MorphTypes.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\IFileSource.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\Logging\LocationLogAbstractBase.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_DescriptorMatcher.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_flann.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\ReverseGeocodeResource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\FlipMode.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\AverageHeadingAlignmentStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationSmoothing\KalmanFilter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\tracking\Enum\TrackerTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\DMatch.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyle.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\PlayerManager.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Delegate\CvMouseCallback.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\HTTPRequestNonThreaded.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\bgsegm\BackgroundSubtractorMOG.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\superres\DenseOpticalFlowExt.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\NearestNeighbour.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Response.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\OpenCVException.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\Vector2d\Vector2d.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\MatExpr.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\Constants.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\KDNode.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Model\Line3D.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Enum\ORBScore.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\objdetect\CascadeClassifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainDataFetcher.cs" />
     <Compile Include="Assets\Mapbox\Examples\3_POIPlacement\POIPlacementScriptExample.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\VertexDebugger.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Filters\HeightFilter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\Enum\WindowProperty.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\superres\DenseOpticalFlowExtImpl.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\IReplacementCriteria.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MergedModifierStack.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\GeometryMaterialOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorKeyPoint.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerDarkStyle.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\Misc\TBDragOrbit.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TerrainSideWallOptions.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\DragableDirectionWaypoint.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\PCA.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\PinchRotationSample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ContourApproximationModes.cs" />
     <Compile Include="Assets\Mapbox\Core\Plugins\Android\UniAndroidPermission\UniAndroidPermission.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\DataStabilizer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\Utility.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\MatExprRangeIndexer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\HomographyMethods.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\Win32API.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVec4f.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfInt32.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\SolvePnPFlags.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\Singleton.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_Feature2D.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\RangeTileProvider.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ImmediatePositionWithLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\GeometryExtrusionOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\LayerModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\Console.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ITerrainLayer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfDMatch.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\TelemetryConfigurationButton.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\UnwrappedTileId.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\KMeansFlags.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorDouble.cs" />
     <Compile Include="Assets\Mapbox\Unity\Styling\ScriptablePalette.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Veci.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\InputArray.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\ReverseGeocoderExample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfString.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IUnifiedMap.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\Runnable.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\photo\NativeMethods_photo_HDR.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_imgcodecs.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapExtentOptions.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARPrerequisiteInfo.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\CLAHE.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\KDTreeIndexParams.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\HierarchyFolder.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\MapImageFactory.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBTap.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_AKAZE.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\ITelemetryLibrary.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\LiveSketch_WebCam\LiveSketchScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_objdetect.cs" />
-    <Compile Include="Assets\Mapbox\Unity\DataContainers\ElevationModificationOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\SpawnPrefabOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\MatRowColExprIndexer.cs" />
+    <Compile Include="Assets\Mapbox\Unity\DataContainers\ElevationModificationOptions.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\CameraBillboard.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\AngleSmoothingNoOp.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\QuadTreeTileProvider.cs" />
@@ -615,30 +362,17 @@
     <Compile Include="Assets\Mapbox\Examples\1_DataExplorer\Scripts\TextMeshOutline.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tokens\MapboxTokenApi.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Waypoint.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\ChessboardFlags.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_imgproc.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MapMatchingResource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\AlgorithmParamType.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Face_Recognizer\FaceRecognizerScene.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Document_Scanner\Scripts\DocumentScannerScript.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\AutotunedIndexParams.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\BOWTrainer.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\FeatureUiMarker.cs" />
     <Compile Include="Assets\Mapbox\Examples\7_Globe\Scripts\DragRotate.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\Window.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\AddMonoBehavioursModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\Vector2d\RectD.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Grayscale\GrayscaleScript.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryFactory.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSONObjectVectorLayer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Vecs.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorInt.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\OCR.Alphabet\AlphabetOCRScene.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\ClassicRasterTile.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Enums\TilePropertyState.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IMap.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\MSER.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MapMatchingResponse.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Directions.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\SnapAlignmentStrategy.cs" />
@@ -647,114 +381,63 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\HeightModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\Vector2d\Mathd.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\BearingFilter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\face\NativeMethods_face_LBPHFaceRecognizer.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ObjectInspectorModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\OpenCvSharpException.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\calib3d\NativeMethods_calib3d.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\ColliderOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Delegate\CvTrackbarCallback.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Vecf.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\ArrayAddress.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfShort.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Subdiv2D.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\ManualSynchronizationContextBehaviour.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\GemmFlags.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfPoint3d.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfFloat.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\UnixTimestampUtils.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\ColliderModifier.cs" />
     <Compile Include="Assets\_Game\Scripts\MainMenuManager.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d.cs" />
+    <Compile Include="Assets\_Game\Scripts\MapBox\loadbundle.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\DirectionsResponse.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_optflow.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultElevation.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\aruco\Dictionary.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\EM.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVec6f.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\calib3d\Enum\StereoRectificationFlags.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Size2f.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\UnifiedMapOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_RTrees.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\superres\FrameSourceImpl.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorEntity.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\CovarFlags.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SmoothLineModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Enum\AGASTType.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\KDTree.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_highgui.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\JsonConverters.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\DirectionsExample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatIndexer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\ReplaceFeatureCollectionModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\IAngleSmoothing.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\IResource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Rect2d.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\RoutingProfile.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\GeneralizedHough.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\FlatTerrainStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\PolygonUtils.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Model\LineSegmentPolar.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerLineGeometryOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\GeoCoordinateBounds.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\face\CvFace.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Constants.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\VectorFilterOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\LineMeshModifier.cs" />
     <Compile Include="Assets\_Game\Scripts\MapBox\UIController.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\RangeAroundTransformTileProvider.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\RawPngRasterTile.cs" />
+    <Compile Include="Assets\_Game\Scripts\MapBox\RotateObject.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\AdvancedPinchRotationSample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\Platform.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\KAZE.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\Conversions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\ICvPtrHolder.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfPoint3f.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\TemplateMatchModes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\bgsegm\BackgroundSubtractorGMG.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\video\NativeMethods_video_BackgroundSubtractor.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\LayerPerformanceOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\AndroidSettings.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\MapVisualizerPerformance.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\LerpAlignmentStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Document_Scanner\Scripts\PaperScanner.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\RelocateMapByGPS.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyleTiled.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Moments.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\ElevatedTerrainWithSidesStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Rect.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Model\HierarchyIndex.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\RangeTileProviderOptions.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\Mapbox\Examples\2_AstronautGame\AstronautGame\Astronaut\AstronautDirections.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\NoiseOffsetModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\OpenUrlOnButtonClick.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\video\NativeMethods_video.cs" />
-    <Compile Include="Assets\Mapbox\Unity\DataContainers\MapScalingOptions.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\superres\SuperResolutionImpl.cs" />
+    <Compile Include="Assets\Mapbox\Unity\DataContainers\MapScalingOptions.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\MultiFingerSwipeSample.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARTabletop\Scripts\UpdateShaderCoordinatesByARPlane.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\Enum\ButtonTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\CvTrackbar.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\HierarchyLocalData.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\DecompTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfPoint2d.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\KeyPointsFilter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_xphoto.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Enum\AKAZEDescriptorType.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\MapboxLocationInfoMock.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\Geometry.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ConnectedComponentsTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\BackgroundSubtractorMog2.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\ml\NativeMethods_ml_KNearest.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\VectorLayerProperties.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerFantasyStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfByte3.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultStyles.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\FileSource.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\UvModifier.cs" />
@@ -762,38 +445,22 @@
     <Compile Include="Assets\Mapbox\Core\probe-extractor-cs\ProbeExtractor.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\PrefabItemOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryFallback.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\objdetect\HistogramNormType.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_KAZE.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\imgproc\NativeMethods_imgproc_CLAHE.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
     <Compile Include="Assets\SimpleJSON.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Size.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\xfeatures2d\SIFT.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorERStat.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfPoint3i.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryWebgl.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\CustomRowItem.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshGenerationBase.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBLongPress.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\TextureSelector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\FastFeatureDetector.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\AbstractMap.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Unity\Unity.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\DescriptorMatcher.cs" />
     <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\CheapRuler.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SnapTerrainModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\IndexParams\LinearIndexParams.cs" />
     <Compile Include="Assets\Hierarchy 2\Runtime\UIElements.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\shape\ShapeContextDistanceExtractor.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ReloadMap.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyleAtlas.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfDMatch.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Overview.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\RNG.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IMapPlacementStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_BRISK.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\VectorLayer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Vecb.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyleOptions.cs" />
     <Compile Include="Assets\Mapbox\Examples\2_AstronautGame\AstronautGame\Astronaut\CharacterMovement.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\HighlightFeature.cs" />
@@ -801,160 +468,81 @@
     <Compile Include="Assets\_Game\Scripts\Intro Animations\StarsLensFlare.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\Camera\ManualTouchCamera.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\QuadTreeCameraMovement.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\EnumerableEx.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\CircularBuffer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVec6d.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfFloat6.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\AbstractLayer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\GrabCutModes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\aruco\DetectorParameters.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\imgproc\NativeMethods_imgproc_LineSegmentDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\core\NativeMethods_core_SparseMat.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_aruco.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_SimpleBlobDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\imgproc\NativeMethods_imgproc_GeneralizedHough.cs" />
     <Compile Include="Assets\Mapbox\Unity\Constants.cs" />
     <Compile Include="Assets\Mapbox\Core\probe-extractor-cs\Probe.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\AddToCollectionModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\face\NativeMethods_face.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerColorStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Scalar.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\ChamferHeightModifier.cs" />
     <Compile Include="Assets\_Game\Scripts\Intro Animations\MainMenuIntro.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\UpdateMapWithLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\TransformLocationProvider.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\Enum\SampleTypes.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\FourCC.cs" />
     <Compile Include="Assets\FingerGestures\Samples\TouchPhaseVisualizer.cs" />
-    <Compile Include="Assets\RotateObject.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\GrabCutClasses.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\ModifierStackBase.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\SparseMat.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\PolygonMeshModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Resource.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\RasterTileExample.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\DynamicInvoker.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\TextureModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_xfeatures2d.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\DescriptionAttribute.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryIos.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\LineTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\StatModel.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\RetinaRasterTile.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\flann\FlannDistance.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgcodecs\ImageEncodingParam.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\RotateFlags.cs" />
     <Compile Include="Assets\CharacterCreator\Scripts\CameraController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\DLib\PInvoke\NativeMethods_dlib.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\CriteriaType.cs" />
+    <Compile Include="Assets\_Game\Scripts\MapBox\ViewController.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\UnityTile.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\Internal\DragTrail.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\FileStorage.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\face\LBPHFaceRecognizer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfT.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerBehaviorModifiers.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\aruco\CvAruco.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\InputOutputArray.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCoreOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\BackgroundSubtractorKNN.cs" />
     <Compile Include="Assets\Mapbox\Examples\6_ZoomableMap\Scripts\SetCameraHeight.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\SparseMatIndexer.cs" />
     <Compile Include="Assets\FingerGestures\Samples\Scripts\ToolboxOneFingerGestureSample.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\ModifierBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\LineGeometryOptions.cs" />
     <Compile Include="Assets\FingerGestures\Toolbox\TBFingerUp.cs" />
     <Compile Include="Assets\Mapbox\Examples\8_VoxelMap\Scripts\VoxelFetcher.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\imgproc\NativeMethods_imgproc_LineIterator.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\xfeatures2d\BriefDescriptorExtractor.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\ErrorCode.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerBehaviorModifiers.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Point3i.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\BackgroundSubtractor.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfInt4.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\ml\ANN_MLP.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\CachingWebFileSource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_superres.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapboxEnums.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\photo\EdgePreservingMethods.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorVec2i.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\IMapboxLocationService.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\DirectionsFactory.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\SVD.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\ElevationRequiredOptions.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_tracking.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\ExtentOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\DirectionResource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\Enum\FASTType.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\MinHeap.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\IAsyncRequestFactory.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\MatRowColIndexer.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\PolylineToGeoCoordinateListConverter.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\Logging\LocationLogWriter.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\InOutArrayKind.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\FaceProcessor.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\DistributionType.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerFantasyStyle.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfPoint2f.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\ReduceTypes.cs" />
     <Compile Include="Assets\CharacterCreator\Scripts\setTextToTMP.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\LoadingPanelController.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\objdetect\LatendSvmDetector.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\TextureMonoBehaviourModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\LayerVisualizers\LocationPrefabsLayerVisualizer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_optflow.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\GeocodeResource.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\photo\InpaintMethod.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\WebCamera.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Enum\CmpTypes.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ForwardGeocodeUserInput.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\ReplaceFeatureModifier.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\OutputArray.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Rectf.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\HoughMethods.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTreeCollection.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\highgui\Enum\MouseEvent.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\MapVisualizer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\DisposableCvObject.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\EditorLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\Earcut.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_features2d.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TileJsonData.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfInt.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\IVec.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfPoint3f.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\NativeMethods_highgui.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\DistanceTypes.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Mat\MatOfDouble3.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\SQLiteCache\SQLiteCache.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\AngleSmoothingLowPass.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Ptr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgcodecs\Enum\ImreadModes.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\GlobeTileProvider.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\WindowsLibraryLoader.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\ElevatedTerrainStrategy.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\Range.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\core\Struct\KeyPoint.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\GFTTDetector.cs" />
     <Compile Include="Assets\Mapbox\Examples\1_DataExplorer\HighlightBuildings.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\RasterTile.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Util\PlatformUtil.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\DeviceLocationProviderAndroidNative.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
-    <Compile Include="Assets\_Game\Scripts\AR Seeds Spawner\SeedSpawner.cs" />
-    <Compile Include="Assets\_Game\Scripts\AR Seeds Spawner\SeedCollect.cs" />
-    <Compile Include="Assets\Rotation2DImg.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\OpenCV+Unity\Plugins\Windows\x86\OpenCvSharpExtern.dll" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.Geometry.dll" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -963,27 +551,22 @@
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\ClipBox\LICENSE.txt" />
     <None Include="Assets\Mapbox\Unity\Location\ExampleGpsTraces\LocationProviderAndroidNative.txt" />
     <None Include="Assets\StreamingAssets\WrldResources\WelcomeConfig.txt" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_eye.xml" />
     <None Include="Assets\Mapbox\Examples\2_AstronautGame\AstronautGame\Building\CharacterBuildingShader.shader" />
     <None Include="Assets\LeanTween\ReadMe.txt" />
     <None Include="Assets\UnityFileDebug\README.txt" />
     <None Include="Assets\Mapbox\Shaders\MapboxStylesPerRenderer.shader" />
     <None Include="Assets\Mapbox\Unity\Location\ExampleGpsTraces\LocationProviderUnity.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\OpenCV+Unity\Documentation\Third-Party Licenses.txt" />
     <None Include="Assets\Mapbox\link.xml" />
     <None Include="Assets\StreamingAssets\WrldResources\v0.8.17+unity-editor-wrld.txt" />
     <None Include="Assets\Mapbox\Core\Plugins\sqlite\x64\sqlite3.dll" />
-    <None Include="Assets\_Game\Scripts\Tree Detection\Text to Speech\Plugins\X86\world_dll.dll" />
     <None Include="Assets\LeanTween\License.txt" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\sqlite\x86\sqlite3.dll" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\Clip_MapBoxStylesPerRenderer.shader" />
-    <None Include="Assets\OpenCV+Unity\smcs.rsp" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\MapboxAccounts\net35\MapboxAccountsUnity.dll" />
     <None Include="Assets\UMA\InternalDataStore\InGame\Resources\Shader\NormalShader.compute" />
     <None Include="Assets\_Game\Materials\UI-Default-No-Alpha.shader" />
-    <None Include="Assets\OpenCV+Unity\gmcs.rsp" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\portable-net45+uap10\Mapbox.VectorTile.Geometry.dll" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Mapbox\Shaders\MapboxStyles.shader" />
@@ -992,13 +575,10 @@
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.IO.Compression\net35\Mapbox.IO.Compression.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.VectorTileReader.dll" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\OpenCV+Unity\Documentation\OpenCV+Unity_Notes.txt" />
     <None Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\PlaceholderAssetsREADME.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_eye_tree_eyeglasses.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\OpenCV+Unity\Plugins\Windows\x86_64\OpenCvSharpExtern.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll" />
     <None Include="Assets\UMA\InternalDataStore\AssetVersion.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
@@ -1007,14 +587,10 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Mapbox\README.txt" />
     <None Include="Assets\MapboxAR\link.xml" />
-    <None Include="Assets\UMA\Whats New in UMA.txt" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Recognizer\face-recognizer.xml" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\portable-net45+uap10\Mapbox.VectorTile.ExtensionMethods.dll" />
-    <None Include="Assets\_Game\Scripts\Tree Detection\Text to Speech\Plugins\X86_64\world_dll.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\portable-net45+uap10\Mapbox.VectorTile.VectorTileReader.dll" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_frontalface_default.xml" />
     <None Include="Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\link.xml" />
     <None Include="Assets\Mapbox\Shaders\RasterWithTransparencyShader.shader" />
@@ -1028,223 +604,222 @@
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.IO.Compression\uap10\Mapbox.IO.Compression.dll" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\Clip_MapboxStyles.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\OpenCV+Unity\mcs.rsp" />
     <None Include="Assets\Mapbox\Unity\Location\ExampleGpsTraces\LocationProviderAndroidNative-2.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ARModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AndroidJNIModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AndroidJNIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClothModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DSPGraphModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.DSPGraphModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.DSPGraphModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.DirectorModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.DirectorModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GIModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.GIModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.GIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GridModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HotReloadModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.HotReloadModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.HotReloadModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ProfilerModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.ProfilerModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.ProfilerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteShapeModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteShapeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StreamingModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.StreamingModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.StreamingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubstanceModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubsystemsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TLSModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsNativeModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsNativeModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsNativeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UNETModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UNETModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UNETModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UmbraModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UmbraModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityCurlModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityCurlModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityCurlModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityTestProtocolModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityTestProtocolModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VFXModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VRModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VideoModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.WindModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XRModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.CoreModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.GraphViewModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphViewModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.GraphViewModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.PackageManagerUIModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.PackageManagerUIModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.PackageManagerUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SceneTemplateModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneTemplateModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.SceneTemplateModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UIElementsModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UIElementsSamplesModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsSamplesModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsSamplesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UIServiceModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIServiceModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.UIServiceModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="MapboxAccountsUnity">
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\MapboxAccounts\net35\MapboxAccountsUnity.dll</HintPath>
@@ -1271,352 +846,352 @@
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.Geometry.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Runtime.Serialization.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.Linq.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics.Vectors">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.Vectors.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.Vectors.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Net.Http.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.IO.Compression.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.IO.Compression.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Microsoft.CSharp.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Microsoft.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System.Data">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Data.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\Microsoft.Win32.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\netstandard.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\netstandard.dll</HintPath>
     </Reference>
     <Reference Include="System.AppContext">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.AppContext.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.AppContext.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Concurrent">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Concurrent.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Concurrent.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.NonGeneric">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.NonGeneric.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.NonGeneric.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Specialized">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Specialized.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Specialized.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Annotations.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.EventBasedAsync">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.EventBasedAsync.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.EventBasedAsync.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.TypeConverter">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.TypeConverter.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.TypeConverter.dll</HintPath>
     </Reference>
     <Reference Include="System.Console">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Console.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Console.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Common">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Data.Common.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Data.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Contracts">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Contracts.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Debug">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Debug.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Debug.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.FileVersionInfo">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.FileVersionInfo.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Process">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Process.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Process.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.StackTrace">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.StackTrace.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.StackTrace.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.TextWriterTraceListener">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Tools">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Tools.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Tools.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.TraceSource">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TraceSource.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TraceSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Drawing.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Drawing.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Dynamic.Runtime">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Dynamic.Runtime.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Dynamic.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System.Globalization.Calendars">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Calendars.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Calendars.dll</HintPath>
     </Reference>
     <Reference Include="System.Globalization">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.dll</HintPath>
     </Reference>
     <Reference Include="System.Globalization.Extensions">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Extensions.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression.ZipFile">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Compression.ZipFile.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Compression.ZipFile.dll</HintPath>
     </Reference>
     <Reference Include="System.IO">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem.DriveInfo">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.DriveInfo.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.DriveInfo.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem.Watcher">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Watcher.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Watcher.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.IsolatedStorage">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.IsolatedStorage.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.IsolatedStorage.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.MemoryMappedFiles">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.MemoryMappedFiles.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.MemoryMappedFiles.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Pipes">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Pipes.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Pipes.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.UnmanagedMemoryStream">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.UnmanagedMemoryStream.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.UnmanagedMemoryStream.dll</HintPath>
     </Reference>
     <Reference Include="System.Linq">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Linq.Expressions">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Expressions.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Expressions.dll</HintPath>
     </Reference>
     <Reference Include="System.Linq.Parallel">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Parallel.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Parallel.dll</HintPath>
     </Reference>
     <Reference Include="System.Linq.Queryable">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Queryable.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Queryable.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Rtc">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Http.Rtc.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Http.Rtc.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.NameResolution">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NameResolution.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NameResolution.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.NetworkInformation">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NetworkInformation.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NetworkInformation.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Ping">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Ping.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Ping.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Requests">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Requests.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Requests.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Security">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Security.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Security.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Sockets">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Sockets.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Sockets.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.WebHeaderCollection">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebHeaderCollection.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebHeaderCollection.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.WebSockets.Client">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.Client.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.Client.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.WebSockets">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.dll</HintPath>
     </Reference>
     <Reference Include="System.ObjectModel">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ObjectModel.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection.Emit">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection.Emit.ILGeneration">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.ILGeneration.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.ILGeneration.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection.Emit.Lightweight">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.Lightweight.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection.Extensions">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Extensions.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Resources.Reader">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Reader.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Reader.dll</HintPath>
     </Reference>
     <Reference Include="System.Resources.ResourceManager">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.ResourceManager.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Resources.Writer">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Writer.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Writer.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.VisualC">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.CompilerServices.VisualC.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.CompilerServices.VisualC.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Extensions">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Extensions.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Handles">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Handles.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Handles.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Numerics">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Numerics.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization.Formatters">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Formatters.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization.Json">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Json.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization.Xml">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Xml.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Xml.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Claims">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Claims.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Claims.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Algorithms.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Csp">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Csp.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Csp.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Encoding">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Encoding.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.X509Certificates">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Principal">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Principal.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Principal.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.SecureString">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.SecureString.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.SecureString.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.Duplex">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Duplex.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Duplex.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.Http">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Http.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.NetTcp">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.NetTcp.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.NetTcp.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.Primitives">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Primitives.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.Security">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Security.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Security.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encoding">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encoding.Extensions">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.Extensions.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.RegularExpressions">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.RegularExpressions.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.RegularExpressions.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Overlapped">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Overlapped.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Overlapped.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Parallel">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.Parallel.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.Parallel.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Thread">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Thread.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Thread.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.ThreadPool">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.ThreadPool.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.ThreadPool.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Timer">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Timer.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Timer.dll</HintPath>
     </Reference>
     <Reference Include="System.ValueTuple">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ValueTuple.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.ReaderWriter">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.ReaderWriter.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.ReaderWriter.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XDocument">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XDocument.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XmlDocument">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlDocument.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlDocument.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XmlSerializer">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlSerializer.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlSerializer.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XPath">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XPath.XDocument">
-      <HintPath>F:\Unity Setups\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
+      <HintPath>D:\Softwares\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualEffectGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
@@ -1732,31 +1307,31 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{AB5AC18D-7A29-6C7C-2730-320E2085B380}</Project>
+      <Project>{3FC14E3D-F759-CA18-EC5E-1D2BF8F028A1}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Examples_Editor.csproj">
-      <Project>{E2EF8DC9-7361-06B4-CBE9-2555A1F473DB}</Project>
+      <Project>{DF4F070A-3B5C-37C0-4A22-42156942874A}</Project>
       <Name>UMA_Examples_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Content.csproj">
-      <Project>{3E372343-813F-665C-65EE-78EB130B7194}</Project>
+      <Project>{1F668E0E-B5E4-4AEA-1F1D-C0061C20BD20}</Project>
       <Name>UMA_Content</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Examples.csproj">
-      <Project>{48D3EAD3-C49F-9711-552E-C2A28834869E}</Project>
+      <Project>{19CFD48C-BDEE-0D34-1A64-9F1BDA4DDB81}</Project>
       <Name>UMA_Examples</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Core.csproj">
-      <Project>{4F4D88A0-BDFA-7961-4CDF-D663FBB97658}</Project>
+      <Project>{08EFFA24-63A4-15E4-CB4B-8EFBCAA0E525}</Project>
       <Name>UMA_Core</Name>
     </ProjectReference>
     <ProjectReference Include="Addressable_Editor.csproj">
-      <Project>{4685495A-DFC7-277C-ACC3-AF71E9862D90}</Project>
+      <Project>{A93F7737-D7E3-D6F9-106E-13D32ECF5034}</Project>
       <Name>Addressable_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UMA_Core_Editor.csproj">
-      <Project>{650F0FF7-8C59-8515-F11A-DC30634C210C}</Project>
+      <Project>{4C5A1F24-12B0-1DE0-B578-087F1183B65A}</Project>
       <Name>UMA_Core_Editor</Name>
     </ProjectReference>
   </ItemGroup>
