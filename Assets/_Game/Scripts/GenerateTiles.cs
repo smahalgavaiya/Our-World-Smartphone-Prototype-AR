@@ -22,7 +22,7 @@ public class GenerateTiles : MonoBehaviour
             {
                 Transform tile = (Transform)Instantiate(tile_prefab_, new Vector3(x, 0, z), Quaternion.Euler(90,0,0));
                 tile.name = "Tile" + x + z;
-                tile.parent = board.transform;
+                tile.parent = gameObject.transform;
             }
         }
     }
