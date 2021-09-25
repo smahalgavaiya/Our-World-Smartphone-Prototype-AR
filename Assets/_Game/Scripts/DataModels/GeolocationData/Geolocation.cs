@@ -1,4 +1,5 @@
 using System.Globalization;
+using Mapbox.Utils;
 
 namespace OurWorld.Scripts.DataModels.GeolocationData
 {
@@ -17,9 +18,11 @@ namespace OurWorld.Scripts.DataModels.GeolocationData
             Latitude = latitude;
         }
 
-          public override string ToString()
-          {
-               return $"{Longitude.ToString(CultureInfo.InvariantCulture)},{Latitude.ToString(CultureInfo.InvariantCulture)}";
-          }
+        public override string ToString()
+        {
+            return $"{Longitude.ToString(CultureInfo.InvariantCulture)},{Latitude.ToString(CultureInfo.InvariantCulture)}";
+        }
+
+        public static implicit operator Vector2d(Geolocation location) => new Vector2d(location.Latitude,location.Longitude);
      }
 }
