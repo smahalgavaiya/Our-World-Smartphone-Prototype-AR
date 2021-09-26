@@ -24,5 +24,8 @@ namespace OurWorld.Scripts.DataModels.GeolocationData
         }
 
         public static implicit operator Vector2d(Geolocation location) => new Vector2d(location.Latitude,location.Longitude);
+
+        //Assumes LonLat order.
+        public static explicit operator Geolocation(Vector2d location) => new Geolocation(location.y,location.x);
      }
 }
