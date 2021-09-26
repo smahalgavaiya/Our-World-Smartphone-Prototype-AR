@@ -6,7 +6,7 @@ using OurWorld.Scripts.Interfaces.MapAPI;
 
 namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
-    public class WRLD3DAPIProvider : IMapAPIProvidder
+    public class WRLD3DAPIProvider : IMapAPIProvider
     {
         public UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
         {

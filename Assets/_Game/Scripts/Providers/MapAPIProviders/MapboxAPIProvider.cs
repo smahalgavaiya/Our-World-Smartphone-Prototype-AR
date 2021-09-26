@@ -16,7 +16,7 @@ using OurWorld.Scripts.Extensions;
 
 namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
-    public class MapboxAPIProvider : IMapAPIProvidder
+    public class MapboxAPIProvider : IMapAPIProvider
     {
         private const string _apiToken = "pk.eyJ1IjoiYmxhY3F2dmUiLCJhIjoiY2t0cTNlbDdsMHNueDJvcXUzNGFtMmI5aiJ9.d3FBlEYgLcTn-bfqV2uXrQ";
         private const string _parkSearchKeyword = "park";

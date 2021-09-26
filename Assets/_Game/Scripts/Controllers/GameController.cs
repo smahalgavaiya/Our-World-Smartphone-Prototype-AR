@@ -11,10 +11,10 @@ namespace OurWorld.Scripts.Controllers
     public class GameController : MonoBehaviour
     {
         public static event Action GameInitialized;
-        private IMapAPIProvidder _mapApiProvider;
+        private IMapAPIProvider _mapApiProvider;
         private bool _initialized;
         public bool Initialized => _initialized;
-        public IMapAPIProvidder MapAPIProvidder => _mapApiProvider;
+        public IMapAPIProvider MapAPIProvidder => _mapApiProvider;
         private void Awake()
         {
             Initialize();
