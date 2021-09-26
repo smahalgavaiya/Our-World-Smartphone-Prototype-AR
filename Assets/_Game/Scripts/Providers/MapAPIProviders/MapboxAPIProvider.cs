@@ -6,12 +6,13 @@ using Mapbox.Geocoding;
 using Mapbox.Utils;
 using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
-using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Helpers;
 using OurWorld.Scripts.Helpers.DataMappers;
 using OurWorld.Scripts.Interfaces;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Utilities.DataSerializers;
+using Mapbox.CheapRulerCs;
+using OurWorld.Scripts.Extensions;
 
 namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
@@ -48,20 +49,13 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 
             var result = await _webRequestHelper.GetAsync<ForwardGeocodeResponse>(uriBuilder.Uri);
 
-            IDataMapper<Feature, ParkData> parkDataMapper = new ParkDataMapper();
-
             List<ParkData> parkDataList = new List<ParkData>();
 
             if (!result.Success) return parkDataList;
 
             var parksList = ExtractParksFromGeocodingResponse(result.Data);
 
-            foreach (var feature in parksList)
-            {
-                parkDataList.Add(parkDataMapper.MapObject(feature));
-            }
-
-            return parkDataList;
+            return PopulateParkDataFromFeatures(parksList,playerLocation);
         }
 
 
@@ -80,6 +74,24 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
                 }
                 return false;
             }).ToList();
+        }
+
+        private List<ParkData> PopulateParkDataFromFeatures(List<Feature> features,Geolocation playerLocation)
+        {
+            IDataMapper<Feature, ParkData> parkDataMapper = new ParkDataMapper();
+
+            var ruler = new CheapRuler(playerLocation.Latitude, CheapRulerUnits.Kilometers);
+
+            List<ParkData> parkDataList = new List<ParkData>();
+
+             foreach (var feature in features)
+            {
+                var parkData = parkDataMapper.MapObject(feature);
+                parkData.Distance = (float)ruler.Distance(playerLocation.ToLonLatArray(), parkData.Geolocation.ToLonLatArray());
+                parkDataList.Add(parkData);
+            }
+
+            return parkDataList;
         }
         #endregion
 
