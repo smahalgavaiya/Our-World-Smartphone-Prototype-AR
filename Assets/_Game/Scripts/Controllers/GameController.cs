@@ -11,6 +11,9 @@ namespace OurWorld.Scripts.Controllers
     public class GameController : MonoBehaviour
     {
         public static event Action GameInitialized;
+
+        [SerializeField] private ParkQuestController _parkQuestController;
+
         private IMapAPIProvider _mapApiProvider;
         private bool _initialized;
         public bool Initialized => _initialized;
@@ -20,11 +23,11 @@ namespace OurWorld.Scripts.Controllers
             Initialize();
         }
 
-        private async void Initialize()
+        private void Initialize()
         {
             _mapApiProvider = new MapboxAPIProvider();
 
-            await _mapApiProvider.GetNearbyParksAsync(new Geolocation(32.707270, 39.995767), 1f);
+            _parkQuestController.Initialize(_mapApiProvider);
 
             _initialized = true;
 

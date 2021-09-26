@@ -33,11 +33,13 @@ namespace OurWorld.Scripts.Views.ParksList
         {
             _data = data;
             _onClickAction = onClickAction;
+            SetVisuals(_data);
         }
-
         private void SetVisuals(ParkData data)
         {
             _placeNameText.text = data.Name;
+            var distanceText = data.Distance < 1 ? $"{(data.Distance * 1000):F0}m" : $"{data.Distance:F2}Km"; 
+            _distanceText.text = distanceText;
         }
         private void OnButtonPressed()
         {
