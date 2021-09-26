@@ -11,7 +11,7 @@ namespace OurWorld.Scripts.Helpers.DataMappers
         {
             string placeName = sourceObject.PlaceName.Split(',')[0];
 
-            Geolocation centerCordinates = new Geolocation(sourceObject.Center[0],sourceObject.Center[0]);
+            Geolocation centerCordinates = new Geolocation(sourceObject.Center.y,sourceObject.Center.x);
 
             return new ParkData(placeName,centerCordinates);
         }
