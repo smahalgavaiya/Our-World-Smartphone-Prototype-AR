@@ -1,3 +1,4 @@
+using System;
 using Mapbox.Utils;
 using OurWorld.Scripts.DataModels;
 using TMPro;
@@ -8,10 +9,14 @@ namespace OurWorld.Scripts.Views.ParksList
 {
     public class ParkDisplayElement : MonoBehaviour
     {
+
         [SerializeField] private TMP_Text _placeNameText, _distanceText;
         [SerializeField] private Button _interactionButton;
 
         private ParkData _data;
+
+        private Action<ParkData> _onClickAction;
+
 
         #region Engine Methods
         private void OnEnable()
@@ -24,15 +29,19 @@ namespace OurWorld.Scripts.Views.ParksList
         }
         #endregion
 
-        public void Initialize(ParkData data)
+        public void Initialize(ParkData data, Action<ParkData> onClickAction)
         {
             _data = data;
+            _onClickAction = onClickAction;
         }
 
         private void SetVisuals(ParkData data)
         {
             _placeNameText.text = data.Name;
         }
-        private void OnButtonPressed() { }
+        private void OnButtonPressed()
+        {
+            _onClickAction?.Invoke(_data);
+        }
     }
 }

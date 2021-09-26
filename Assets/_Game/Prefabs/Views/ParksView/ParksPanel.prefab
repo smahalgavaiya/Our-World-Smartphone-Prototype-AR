@@ -160,7 +160,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.000012918562}
-  m_SizeDelta: {x: 0, y: 583}
+  m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6288939734805319680
 MonoBehaviour:
@@ -223,7 +223,7 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8897587985475497688}
   m_HandleRect: {fileID: 8259992053691246127}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.8284734
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -563,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _elementPrefab: {fileID: 6736467657311408947, guid: 581d8548e04369044ae47f944d06a219, type: 3}
   _targetScrollRect: {fileID: 3406329093854763527}
+  _closeButton: {fileID: 1835946902302026052}
   _animationProperties:
     OpeningTime: 1
     ClosingTime: 0.5
@@ -698,7 +699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &395301170090098842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -839,7 +840,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -973,7 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 6918793758920886419}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -983,7 +984,7 @@ MonoBehaviour:
   m_Viewport: {fileID: 217342201042961526}
   m_HorizontalScrollbar: {fileID: 7974126848838799386}
   m_VerticalScrollbar: {fileID: 5752393777955074298}
-  m_HorizontalScrollbarVisibility: 2
+  m_HorizontalScrollbarVisibility: 0
   m_VerticalScrollbarVisibility: 2
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3

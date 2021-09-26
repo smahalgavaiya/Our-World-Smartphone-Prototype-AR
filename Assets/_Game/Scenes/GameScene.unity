@@ -567,6 +567,17 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &308604174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1683664617, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+  m_PrefabInstance: {fileID: 1024355852534915827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a470e8b9a0fe4cab93fe29e6b3441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!21 &345932556
 Material:
   serializedVersion: 6
@@ -688,6 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769552133}
   - component: {fileID: 769552132}
+  - component: {fileID: 769552134}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -721,6 +733,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &769552134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769552131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4722ca87364ceea4bbe7c91fa24d4c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parkListElement: {fileID: 308604174}
 --- !u!21 &804753981
 Material:
   serializedVersion: 6
@@ -1381,6 +1406,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1956317401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1956317401, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+  m_PrefabInstance: {fileID: 1024355852534915827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1956317402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956317401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5b5727101c43e43b5eca870f6bd4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _element: {fileID: 308604174}
 --- !u!21 &1960087452
 Material:
   serializedVersion: 6
@@ -2484,6 +2527,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 199876455062301500, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199876455062301500, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1024355850585036097, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_Name
       value: ParksCanvas
@@ -2574,7 +2625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244110137753108589, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.666097
+      value: 0.000016832795
       objectReference: {fileID: 0}
     - target: {fileID: 3797980213183444496, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2590,6 +2641,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4584798273998368465, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223470706056726628, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223470706056726628, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621966968097721480, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621966968097721480, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621966968097721480, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621966968097721480, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
