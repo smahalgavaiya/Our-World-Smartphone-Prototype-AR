@@ -3,7 +3,7 @@ using OurWorld.Scripts.DataModels.GeolocationData;
 
 namespace OurWorld.Scripts.Extensions
 {
-    public static class MapPointExtensions
+    public static class GeolocationExtensions
     {
         // Semi-axes of WGS-84 geoidal reference
         private const double WGS84_a = 6378137.0; // Major semiaxis [m]
@@ -35,6 +35,11 @@ namespace OurWorld.Scripts.Extensions
                 MaxPoint = new Geolocation { Latitude = Rad2deg(latMax), Longitude = Rad2deg(lonMax) }
             };
         }
+
+        public static double[] ToLatLonArray(this Geolocation geolocation) => new []{geolocation.Latitude,geolocation.Longitude};
+
+        public static double[] ToLonLatArray(this Geolocation geolocation) => new []{geolocation.Longitude,geolocation.Latitude};
+
 
         // degrees to radians
         private static double Deg2rad(double degrees)
