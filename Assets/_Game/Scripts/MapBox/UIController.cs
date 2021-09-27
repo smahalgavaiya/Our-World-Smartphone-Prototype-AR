@@ -17,6 +17,9 @@ namespace Amar
 
 		private Coroutine _readyco;
 
+
+		
+
 		private void OnEnable()
 		{
 
