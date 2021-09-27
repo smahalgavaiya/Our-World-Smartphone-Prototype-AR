@@ -277,6 +277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   initialselGrid: {fileID: 0}
+  lastGrid: {fileID: 0}
+  generateTiles: {fileID: 1405316589}
 --- !u!1 &1408738047
 GameObject:
   m_ObjectHideFlags: 0
