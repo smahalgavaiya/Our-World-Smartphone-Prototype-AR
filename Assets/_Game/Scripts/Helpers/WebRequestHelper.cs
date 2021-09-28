@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using OurWorld.Scripts.Interfaces;
 using OurWorld.Scripts.Interfaces.Serialization;
 using UnityEngine.Networking;
+using System.Linq;
 
 namespace OurWorld.Scripts.Helpers
 {
@@ -29,7 +31,7 @@ namespace OurWorld.Scripts.Helpers
             if (asyncOperation.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Get request failed. Error : {asyncOperation.error}");
-                return new RequestResponse<T>(false,asyncOperation.error,default);
+                return new RequestResponse<T>(false, asyncOperation.error, default);
             }
 
             var result = _serializationOptions.Deserialize<T>(asyncOperation.downloadHandler.text);
@@ -37,32 +39,48 @@ namespace OurWorld.Scripts.Helpers
             return new RequestResponse<T>(true, "", result);
         }
 
-        public async UniTask<RequestResponse<string>> PostAsync<T>(string url,string data)
+        public async UniTask<RequestResponse<string>> PostAsync<T>(string url, string data)
         {
-            return await InternalPost(new Uri(url),data);
+            return await InternalPost(new Uri(url), data);
         }
-        public async UniTask<RequestResponse<string>> PostAsync<T>(Uri uri,string data)
+        public async UniTask<RequestResponse<string>> PostAsync<T>(Uri uri, string data)
         {
-            return await InternalPost(uri,data);
+            return await InternalPost(uri, data);
         }
 
-        private async UniTask<RequestResponse<string>> InternalPost(Uri uri,string data){
+        private async UniTask<RequestResponse<string>> InternalPost(Uri uri, string data)
+        {
 
-            using var request = UnityWebRequest.Post(uri,data);
+            using var request = UnityWebRequest.Post(uri, data);
 
-            request.SetRequestHeader("Content-Type","application/json");
+            request.SetRequestHeader("Content-Type", "application/json");
 
             var asyncOperation = await request.SendWebRequest();
 
-            if(asyncOperation.result != UnityWebRequest.Result.Success)
+            if (asyncOperation.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Post request failed. Error : {asyncOperation.error}");
-                return new RequestResponse<string>(false,asyncOperation.error,"");
+                return new RequestResponse<string>(false, asyncOperation.error, "");
             }
 
-            return new RequestResponse<string>(true,"",asyncOperation.downloadHandler.text);
+            return new RequestResponse<string>(true, "", asyncOperation.downloadHandler.text);
+        }
+
+        public static string EncodeQueryStringParameters(Dictionary<string, string> parameters)
+        {
+            var encodedParameters = parameters.Select(x =>
+            {
+                var key = UnityWebRequest.EscapeURL(x.Key);
+                var value = UnityWebRequest.EscapeURL(x.Value);
+                return string.IsNullOrEmpty(value) ? key : $"{key}={value}";
+            }).ToArray();
+
+            if (encodedParameters.Length == 0) return string.Empty;
+
+            return $"?{string.Join("&", encodedParameters)}";
         }
     }
+
 
     public class RequestResponse<T>
     {

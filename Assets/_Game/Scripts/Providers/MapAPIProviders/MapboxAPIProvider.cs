@@ -1,125 +1,103 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Newtonsoft.Json;
+using Mapbox.Geocoding;
+using Mapbox.Utils;
 using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
-using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Helpers;
+using OurWorld.Scripts.Helpers.DataMappers;
 using OurWorld.Scripts.Interfaces;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Utilities.DataSerializers;
+using Mapbox.CheapRulerCs;
+using OurWorld.Scripts.Extensions;
 
-public class MapboxAPIProvider : IMapAPIProvidder
+namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
-    private const string _apiToken = "pk.eyJ1IjoiYmxhY3F2dmUiLCJhIjoiY2t0cTNlbDdsMHNueDJvcXUzNGFtMmI5aiJ9.d3FBlEYgLcTn-bfqV2uXrQ";
-    private const string _baseUrl = "https://api.mapbox.com/geocoding/v5/";
-
-    private const string _parkSearchKeyword = "park";
-    private readonly IWebRequestHelper _webRequestHelper;
-
-    private readonly Uri _baseUri;
-
-    public MapboxAPIProvider()
+    public class MapboxAPIProvider : IMapAPIProvider
     {
-        _webRequestHelper = new WebRequestHelper(new NewtonsoftJsonSerializerOption());
-        _baseUri = new Uri(_baseUrl);
-    }
-    public async UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation,float radius)
-    {
-        var parksUri = new Uri(_baseUri,$"mapbox.places/{_parkSearchKeyword}.json");
+        private const string _apiToken = "pk.eyJ1IjoiYmxhY3F2dmUiLCJhIjoiY2t0cTNlbDdsMHNueDJvcXUzNGFtMmI5aiJ9.d3FBlEYgLcTn-bfqV2uXrQ";
+        private const string _parkSearchKeyword = "park";
+        private readonly IWebRequestHelper _webRequestHelper;
 
-        var uriBuildder = new UriBuilder(parksUri);
-
-        var queryParams = new Dictionary<string,string>{
-            {"access_token",Uri.EscapeDataString(_apiToken)},
-            {"types",Uri.EscapeDataString("poi")},
-            {"proximity",Uri.EscapeDataString(playerLocation.ToString())},
-            {"bbox",Uri.EscapeDataString(playerLocation.GetBoundingBox(radius).ToString())}
-        };
-
-        foreach (var kvp in queryParams)
+        public MapboxAPIProvider()
         {
-            if(uriBuildder.Query != null && uriBuildder.Query.Length > 1)
-                uriBuildder.Query = uriBuildder.Query.Substring(1) + "&" + $"{kvp.Key}={kvp.Value}";
+            _webRequestHelper = new WebRequestHelper(new MapBoxNewtonsoftJsonSerializerOption());
+        }
+        public async UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
+        {
+            var forwardGeocodeResource = new ForwardGeocodeResource(_parkSearchKeyword);
+
+            forwardGeocodeResource.Types = new string[] { "poi" };
+
+            var boundingBox = playerLocation.GetBoundingBox(radius);
+
+            forwardGeocodeResource.Bbox = new Vector2dBounds(boundingBox.MinPoint, boundingBox.MaxPoint);
+
+            forwardGeocodeResource.Proximity = playerLocation;
+
+            var uriBuilder = new UriBuilder(forwardGeocodeResource.GetUrl());
+
+            var tokenQueryParameter = $"access_token={_apiToken}";
+
+            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
+                uriBuilder.Query = $"{uriBuilder.Query.Substring(1)}&{tokenQueryParameter}";
             else
-                uriBuildder.Query = $"{kvp.Key}={kvp.Value}";
+                uriBuilder.Query = $"?{tokenQueryParameter}";
+
+            var result = await _webRequestHelper.GetAsync<ForwardGeocodeResponse>(uriBuilder.Uri);
+
+            List<ParkData> parkDataList = new List<ParkData>();
+
+            if (!result.Success) return parkDataList;
+
+            var parksList = ExtractParksFromGeocodingResponse(result.Data);
+
+            return PopulateParkDataFromFeatures(parksList,playerLocation);
         }
 
-        parksUri = uriBuildder.Uri;
 
-        Debug.Log(parksUri.AbsoluteUri);
-        Debug.Log(parksUri.AbsolutePath);
+        #region Helpers
+        private List<Feature> ExtractParksFromGeocodingResponse(ForwardGeocodeResponse response)
+        {
+            return response.Features.Where(x =>
+            {
+                if (x.Properties == null) return false;
 
-        var result = await _webRequestHelper.GetAsync<MapboxSearchResult>(parksUri);
+                if (x.Properties.TryGetValue("category", out object value))
+                {
+                    var categories = ((string)value).Split(',');
 
-        return null;
+                    return categories.Contains(_parkSearchKeyword);
+                }
+                return false;
+            }).ToList();
+        }
+
+        private List<ParkData> PopulateParkDataFromFeatures(List<Feature> features,Geolocation playerLocation)
+        {
+            IDataMapper<Feature, ParkData> parkDataMapper = new ParkDataMapper();
+
+            var ruler = new CheapRuler(playerLocation.Latitude, CheapRulerUnits.Kilometers);
+
+            List<ParkData> parkDataList = new List<ParkData>();
+
+             foreach (var feature in features)
+            {
+                var parkData = parkDataMapper.MapObject(feature);
+                parkData.Distance = (float)ruler.Distance(playerLocation.ToLonLatArray(), parkData.Geolocation.ToLonLatArray());
+                parkDataList.Add(parkData);
+            }
+
+            return parkDataList;
+        }
+        #endregion
+
+
     }
 }
-    public class Properties
-    {
-        [JsonProperty("foursquare")]
-        public string Foursquare { get; set; }
 
-        [JsonProperty("landmark")]
-        public bool Landmark { get; set; }
-
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("category")]
-        public string Category { get; set; }
-    }
-
-    public class Geometry
-    {
-        [JsonProperty("coordinates")]
-        public List<double> Coordinates { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class Feature
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("place_type")]
-        public List<string> PlaceType { get; set; }
-
-        [JsonProperty("relevance")]
-        public int Relevance { get; set; }
-
-        [JsonProperty("properties")]
-        public Properties Properties { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("place_name")]
-        public string PlaceName { get; set; }
-
-        [JsonProperty("center")]
-        public List<double> Center { get; set; }
-
-        [JsonProperty("geometry")]
-        public Geometry Geometry { get; set; }
-    }
-
-    public class MapboxSearchResult
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("query")]
-        public List<string> Query { get; set; }
-
-        [JsonProperty("features")]
-        public List<Feature> Features { get; set; }
-    }
 
 

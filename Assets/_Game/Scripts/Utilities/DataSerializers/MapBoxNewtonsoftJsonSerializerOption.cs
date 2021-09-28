@@ -1,18 +1,17 @@
-using Newtonsoft.Json;
+using Mapbox.Json;
+using Mapbox.Utils.JsonConverters;
 using OurWorld.Scripts.Interfaces.Serialization;
 
 namespace OurWorld.Scripts.Utilities.DataSerializers
 {
-    public class NewtonsoftJsonSerializerOption : ISerializationOption
+    public class MapBoxNewtonsoftJsonSerializerOption : ISerializationOption
     {
         public string ContentType => "application/json";
 
-        protected virtual JsonConverter[] Converters {get;} = new JsonConverter[0];
-
         public T Deserialize<T>(string textToSerialize)
         {
-            try{
-                var deserialized = JsonConvert.DeserializeObject<T>(textToSerialize,Converters);
+             try{
+                var deserialized = JsonConvert.DeserializeObject<T>(textToSerialize,JsonConverters.Converters);
 
                 Debug.Log($"Deserialization Success : {textToSerialize}");
 

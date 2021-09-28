@@ -5,7 +5,7 @@ using OurWorld.Scripts.DataModels.GeolocationData;
 
 namespace OurWorld.Scripts.Interfaces.MapAPI
 {
-    public interface IMapAPIProvidder
+    public interface IMapAPIProvider
     {
         UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation,float radius);
     }

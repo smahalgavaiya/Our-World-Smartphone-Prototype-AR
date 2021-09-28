@@ -4,10 +4,13 @@ using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
 using OurWorld.Scripts.Interfaces.MapAPI;
 
-public class WRLD3DAPIProvider : IMapAPIProvidder
+namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
-    public UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation,float radius)
+    public class WRLD3DAPIProvider : IMapAPIProvider
     {
-        throw new System.NotImplementedException();
+        public UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
