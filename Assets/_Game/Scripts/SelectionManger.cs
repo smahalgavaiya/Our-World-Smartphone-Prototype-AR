@@ -65,7 +65,6 @@ public class SelectionManger : MonoBehaviour
                 if (last.Length == 2
                     &&
                     first.Length == 2)
-
                 {
                     x_first = first[0];
                     y_first = first[1];
@@ -75,9 +74,75 @@ public class SelectionManger : MonoBehaviour
 
 
 
-                    //case one north 
+                    //case 1 north 
 
-                    if (x_first > x_last && y_first == y_last)
+                    if (y_last > y_first && x_first == x_last)
+                    {
+                        for (int i = y_first; i <= y_last; ++i)
+                        {
+                            generateTiles.allGrids[x_last, i].GetComponent<singleGrid>().Gridselected();
+                        }
+                    }
+
+                    //case 2  north-east 
+                    else if (x_first < x_last && y_first < y_last)
+                    {
+                        for (int i = x_first; i <= x_last; ++i)
+                        {
+                            for (int j = y_first; j <= y_last; ++j)
+                            {
+                                generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                            }
+                          
+                        }
+                    }
+
+                    //case 3 east 
+                    else if ( x_last> x_first && y_first == y_last)
+                    {
+                        for (int i = x_first; i <= x_last; ++i)
+                        {
+                            generateTiles.allGrids[i, y_first].GetComponent<singleGrid>().Gridselected();
+                        }
+                    }
+
+                    //case 4 south-east 
+                    else if (x_first < x_last && y_first > y_last)
+                    {
+                        for (int i = x_first; i <= x_last; ++i)
+                        {
+                            for (int j = y_last; j <= y_first; ++j)
+                            {
+                                generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                            }
+
+                        }
+                    }
+                   
+                    //case 5 south
+                    else if (y_first > y_last && x_first == x_last)
+                    {
+                        for (int i = y_last; i <= y_first; ++i)
+                        {
+                            generateTiles.allGrids[x_last, i].GetComponent<singleGrid>().Gridselected();
+                        }
+                    }
+
+                    //case 6 south-west
+                    else if (x_first > x_last && y_first > y_last)
+                    {
+                        for (int i = x_last; i <= x_first; ++i)
+                        {
+                            for (int j = y_last; j <= y_first; ++j)
+                            {
+                                generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                            }
+
+                        }
+                    }
+
+                    //case 7 west 
+                    else if (x_first > x_last && y_first == y_last)
                     {
                         for (int i = x_last; i <= x_first; ++i)
                         {
@@ -85,19 +150,18 @@ public class SelectionManger : MonoBehaviour
                         }
                     }
 
-                    //case two  north-east 
-
-                    //case three east 
-
-                    //case four south-east 
-
-                    //case five south
-
-                    //case six south-west
-
-                    //case seven west 
-
                     //case 8  north-west
+                    else if (x_first > x_last && y_first < y_last)
+                    {
+                        for (int i = x_last; i <= x_first; ++i)
+                        {
+                            for (int j = y_first; j <= y_last; ++j)
+                            {
+                                generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                            }
+
+                        }
+                    }
                 }
             }
         }
