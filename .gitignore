@@ -10,11 +10,13 @@
 [Bb]uilds
 [Uu]nityGenerated
 [Ll]ocal[Cc]ache
+[Ll]ogs
+[Uu]serSettings
 
 # Auto-generated Visual Studio or MonoDevelop solution and project files
-.csproj
+*.csproj
 .unityproj
-.sln
+*.sln
 .suo
 .tmp
 .user
@@ -28,7 +30,8 @@
 .pdb
 .meta
 .opendb
-
+.vsconfig
+.vscode
 # Unity3D generated meta files
 .pidb.meta
 .pdb.meta
@@ -59,4 +62,7 @@ Logs/shadercompiler-UnityShaderCompiler.exe0.log
 Logs/shadercompiler-AssetImportWorker0.log
 Logs/AssetImportWorker0.log
 *.log
+*.log
+*.csproj
+*.csproj
 *.log
