@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectionManger : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class SelectionManger : MonoBehaviour
     public GenerateTiles generateTiles;
     public int[] first, last;
     public int x_first, y_first, x_last, y_last;
+    public List<GameObject> currentSelection;
+    public Button clearAllButton;
     // Start is called before the first frame update
     void Start()
     {
         generateTiles = GetComponent<GenerateTiles>();
+        clearAllButton.onClick.AddListener(clearAllSelection);
     }
 
     // Update is called once per frame
@@ -26,11 +30,12 @@ public class SelectionManger : MonoBehaviour
             {
                 isSelected = false;
                 initialselGrid = null;
-
+                currentSelection.Clear();
             }
 
             else
             {
+                currentSelection.Clear();
                 isSelected = true;
 
                 RaycastHit hit;
@@ -73,25 +78,29 @@ public class SelectionManger : MonoBehaviour
                     y_last = last[1];
 
 
-
+                    
                     //case 1 north 
 
                     if (y_last > y_first && x_first == x_last)
                     {
+                        clearSelection();
                         for (int i = y_first; i <= y_last; ++i)
                         {
                             generateTiles.allGrids[x_last, i].GetComponent<singleGrid>().Gridselected();
+                            addToSelection(generateTiles.allGrids[x_last, i]);
                         }
                     }
 
                     //case 2  north-east 
                     else if (x_first < x_last && y_first < y_last)
                     {
+                        clearSelection();
                         for (int i = x_first; i <= x_last; ++i)
                         {
                             for (int j = y_first; j <= y_last; ++j)
                             {
                                 generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                                addToSelection(generateTiles.allGrids[i, j]);
                             }
                           
                         }
@@ -100,20 +109,24 @@ public class SelectionManger : MonoBehaviour
                     //case 3 east 
                     else if ( x_last> x_first && y_first == y_last)
                     {
+                        clearSelection();
                         for (int i = x_first; i <= x_last; ++i)
                         {
                             generateTiles.allGrids[i, y_first].GetComponent<singleGrid>().Gridselected();
+                            addToSelection(generateTiles.allGrids[i, y_first]);
                         }
                     }
 
                     //case 4 south-east 
                     else if (x_first < x_last && y_first > y_last)
                     {
+                        clearSelection();
                         for (int i = x_first; i <= x_last; ++i)
                         {
                             for (int j = y_last; j <= y_first; ++j)
                             {
                                 generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                                addToSelection(generateTiles.allGrids[i, j]);
                             }
 
                         }
@@ -122,20 +135,24 @@ public class SelectionManger : MonoBehaviour
                     //case 5 south
                     else if (y_first > y_last && x_first == x_last)
                     {
+                        clearSelection();
                         for (int i = y_last; i <= y_first; ++i)
                         {
                             generateTiles.allGrids[x_last, i].GetComponent<singleGrid>().Gridselected();
+                            addToSelection(generateTiles.allGrids[x_last, i]);
                         }
                     }
 
                     //case 6 south-west
                     else if (x_first > x_last && y_first > y_last)
                     {
+                        clearSelection();
                         for (int i = x_last; i <= x_first; ++i)
                         {
                             for (int j = y_last; j <= y_first; ++j)
                             {
                                 generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                                addToSelection(generateTiles.allGrids[i, j]);
                             }
 
                         }
@@ -144,20 +161,24 @@ public class SelectionManger : MonoBehaviour
                     //case 7 west 
                     else if (x_first > x_last && y_first == y_last)
                     {
+                        clearSelection();
                         for (int i = x_last; i <= x_first; ++i)
                         {
                             generateTiles.allGrids[i, y_first].GetComponent<singleGrid>().Gridselected();
+                            addToSelection(generateTiles.allGrids[i, y_first]);
                         }
                     }
 
                     //case 8  north-west
                     else if (x_first > x_last && y_first < y_last)
                     {
+                        clearSelection();
                         for (int i = x_last; i <= x_first; ++i)
                         {
                             for (int j = y_first; j <= y_last; ++j)
                             {
                                 generateTiles.allGrids[i, j].GetComponent<singleGrid>().Gridselected();
+                                addToSelection(generateTiles.allGrids[i, j]);
                             }
 
                         }
@@ -167,6 +188,32 @@ public class SelectionManger : MonoBehaviour
         }
     }
 
+    void addToSelection(GameObject selectedGB)
+    {
+        currentSelection.Add(selectedGB);
+    }
+    void clearSelection()
+    {
+        foreach (GameObject item in currentSelection)
+        {
+            item.GetComponent<singleGrid>().Gridunselected();
+        }
+       
+        currentSelection.Clear();
+    }
+
+    void clearAllSelection()
+    {
+        for (int x = 0; x < generateTiles.board_size_x_; x++)
+        {
+            for (int z = 0; z < generateTiles.board_size_z_; z++)
+            {
+
+                generateTiles.allGrids[x,z].GetComponent<singleGrid>().Gridunselected();
+            }
+        }
+        currentSelection.Clear();
+    }
     public int[] CoordinatesOf(GameObject[,] matrix, GameObject value)
     {
         if(value==null)
