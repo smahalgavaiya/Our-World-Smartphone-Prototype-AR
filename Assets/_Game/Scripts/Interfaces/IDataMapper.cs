@@ -1,4 +1,4 @@
-namespace Our_World_Smartphone_Prototype_AR.Assets._Game.Scripts.Interfaces
+namespace OurWorld.Scripts.Interfaces
 {
     public interface IDataMapper<TOrigin,TTarget>
     {
