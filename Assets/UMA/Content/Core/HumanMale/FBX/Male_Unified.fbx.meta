@@ -1844,7 +1844,7 @@ ModelImporter:
     legStretch: 0.056
     feetSpacing: 0
     globalScale: 100
-    rootMotionBoneName: 
+    rootMotionBoneName: Hips
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
