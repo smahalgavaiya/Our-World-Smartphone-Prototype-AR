@@ -11,5 +11,11 @@ namespace OurWorld.Scripts.DataModels.MapAPIResponses.DirectionsResponseModels
 
         public readonly double DistanceInMeters;
 
+        public Route(List<Geolocation> geometry, double durationInSecond, double distanceInMeters)
+        {
+            Geometry = geometry;
+            DurationInSecond = durationInSecond;
+            DistanceInMeters = distanceInMeters;
+        }
     }
 }
