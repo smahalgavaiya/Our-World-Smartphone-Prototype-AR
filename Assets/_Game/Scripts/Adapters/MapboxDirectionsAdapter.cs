@@ -25,7 +25,7 @@ namespace OurWorld.Scripts.Adapters
             _directionsResponseMapper = new MapboxDirectionsResponseMapper();
         }
 
-        public async UniTask<DirectionsResponse> GetDirectionsAsync(DirectionsRequest request, RoutingType routingType = RoutingType.Walking)
+        public async UniTask<DirectionsResponse> GetDirectionsAsync(DirectionsRequest request)
         {
             Directions directions = MapboxAccess.Instance.Directions;
 
