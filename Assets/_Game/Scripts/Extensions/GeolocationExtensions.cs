@@ -1,4 +1,5 @@
 using System;
+using Mapbox.Utils;
 using OurWorld.Scripts.DataModels.GeolocationData;
 
 namespace OurWorld.Scripts.Extensions
@@ -36,10 +37,9 @@ namespace OurWorld.Scripts.Extensions
             };
         }
 
-        public static double[] ToLatLonArray(this Geolocation geolocation) => new []{geolocation.Latitude,geolocation.Longitude};
+        public static double[] ToLatLonArray(this Geolocation geolocation) => new[] { geolocation.Latitude, geolocation.Longitude };
 
-        public static double[] ToLonLatArray(this Geolocation geolocation) => new []{geolocation.Longitude,geolocation.Latitude};
-
+        public static double[] ToLonLatArray(this Geolocation geolocation) => new[] { geolocation.Longitude, geolocation.Latitude };
 
         // degrees to radians
         private static double Deg2rad(double degrees)
