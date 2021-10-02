@@ -39,11 +39,11 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
             var boundingBox = playerLocation.GetBoundingBox(radius);
 
             forwardGeocodeResource.Bbox = new Vector2dBounds(
-                LocationTypeConverter.GeolocationToVector2d(boundingBox.MinPoint,false),
-                LocationTypeConverter.GeolocationToVector2d(boundingBox.MaxPoint,false)
+                LocationTypeConverter.GeolocationToVector2d(boundingBox.MinPoint),
+                LocationTypeConverter.GeolocationToVector2d(boundingBox.MaxPoint)
                  );
 
-            forwardGeocodeResource.Proximity = LocationTypeConverter.GeolocationToVector2d(playerLocation,false);
+            forwardGeocodeResource.Proximity = LocationTypeConverter.GeolocationToVector2d(playerLocation);
 
             var uriBuilder = new UriBuilder(forwardGeocodeResource.GetUrl());
 

@@ -48,7 +48,7 @@ namespace OurWorld.Scripts.Adapters
         }
         private DirectionResource CreateResourceFromRequest(DirectionsRequest request)
         {
-            Vector2d[] coordinates = request.Coordinates.Select(x => LocationTypeConverter.GeolocationToVector2d(x, false)).ToArray();
+            Vector2d[] coordinates = request.Coordinates.Select(x => LocationTypeConverter.GeolocationToVector2d(x)).ToArray();
 
             RoutingProfile routingProfile = GetRoutingProfileFromEnum(request.RoutingType);
 

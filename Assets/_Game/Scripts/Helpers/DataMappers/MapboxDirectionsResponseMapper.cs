@@ -36,7 +36,7 @@ namespace OurWorld.Scripts.Helpers.DataMappers
             {
                 Waypoint waypoint = new Waypoint(
                     mbWaypoint.Name,
-                     LocationTypeConverter.Vector2ddToGeolocation(mbWaypoint.Location, false)
+                     LocationTypeConverter.Vector2ddToGeolocation(mbWaypoint.Location)
                      );
                 waypoints.Add(waypoint);
             }
@@ -50,7 +50,7 @@ namespace OurWorld.Scripts.Helpers.DataMappers
             return mbRouteGeometry
             .Select(x =>
             {
-                return LocationTypeConverter.Vector2ddToGeolocation(x, false);
+                return LocationTypeConverter.Vector2ddToGeolocation(x);
             })
             .ToList();
         }
