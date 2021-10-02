@@ -24,7 +24,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
         private readonly IWebRequestHelper _webRequestHelper;
         private readonly IDirectionsAPIProvider _directionsAPIProvider;
 
-        public IDirectionsAPIProvider Directions => _directionsAPIProvider;
+        public IDirectionsAPIProvider DirectionsAPI => _directionsAPIProvider;
         public MapboxAPIProvider()
         {
             _webRequestHelper = new WebRequestHelper(new MapBoxNewtonsoftJsonSerializerOption());

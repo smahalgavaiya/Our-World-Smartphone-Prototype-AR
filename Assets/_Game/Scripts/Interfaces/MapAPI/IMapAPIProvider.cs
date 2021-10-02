@@ -7,6 +7,8 @@ namespace OurWorld.Scripts.Interfaces.MapAPI
 {
     public interface IMapAPIProvider
     {
-        UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation,float radius);
+        IDirectionsAPIProvider DirectionsAPI { get; }
+        
+        UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius);
     }
 }
