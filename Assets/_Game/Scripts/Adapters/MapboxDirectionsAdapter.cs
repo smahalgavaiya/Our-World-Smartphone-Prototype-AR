@@ -52,7 +52,8 @@ namespace OurWorld.Scripts.Adapters
 
             RoutingProfile routingProfile = GetRoutingProfileFromEnum(request.RoutingType);
 
-            return new DirectionResource(coordinates, routingProfile){
+            return new DirectionResource(coordinates, routingProfile)
+            {
                 Alternatives = request.AlternateRoutes
             };
         }
