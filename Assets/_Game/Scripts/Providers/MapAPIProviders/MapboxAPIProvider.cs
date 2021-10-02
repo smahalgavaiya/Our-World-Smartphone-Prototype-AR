@@ -18,13 +18,17 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
     public class MapboxAPIProvider : IMapAPIProvider
     {
-        private const string _apiToken = "pk.eyJ1IjoiYmxhY3F2dmUiLCJhIjoiY2t0cTNlbDdsMHNueDJvcXUzNGFtMmI5aiJ9.d3FBlEYgLcTn-bfqV2uXrQ";
+        public const string ApiToken = "pk.eyJ1IjoiYmxhY3F2dmUiLCJhIjoiY2t0cTNlbDdsMHNueDJvcXUzNGFtMmI5aiJ9.d3FBlEYgLcTn-bfqV2uXrQ";
+        
         private const string _parkSearchKeyword = "park";
         private readonly IWebRequestHelper _webRequestHelper;
+        private readonly IDirectionsAPIProvider _directionsAPIProvider;
 
+        public IDirectionsAPIProvider Directions => _directionsAPIProvider;
         public MapboxAPIProvider()
         {
             _webRequestHelper = new WebRequestHelper(new MapBoxNewtonsoftJsonSerializerOption());
+            _directionsAPIProvider = new MapboxDirectionsAPIProvider();
         }
         public async UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
         {
@@ -34,13 +38,16 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 
             var boundingBox = playerLocation.GetBoundingBox(radius);
 
-            forwardGeocodeResource.Bbox = new Vector2dBounds(boundingBox.MinPoint, boundingBox.MaxPoint);
+            forwardGeocodeResource.Bbox = new Vector2dBounds(
+                LocationTypeConverter.GeolocationToVector2d(boundingBox.MinPoint,false),
+                LocationTypeConverter.GeolocationToVector2d(boundingBox.MaxPoint,false)
+                 );
 
-            forwardGeocodeResource.Proximity = playerLocation;
+            forwardGeocodeResource.Proximity = LocationTypeConverter.GeolocationToVector2d(playerLocation,false);
 
             var uriBuilder = new UriBuilder(forwardGeocodeResource.GetUrl());
 
-            var tokenQueryParameter = $"access_token={_apiToken}";
+            var tokenQueryParameter = $"access_token={ApiToken}";
 
             if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
                 uriBuilder.Query = $"{uriBuilder.Query.Substring(1)}&{tokenQueryParameter}";
@@ -55,7 +62,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 
             var parksList = ExtractParksFromGeocodingResponse(result.Data);
 
-            return PopulateParkDataFromFeatures(parksList,playerLocation);
+            return PopulateParkDataFromFeatures(parksList, playerLocation);
         }
 
 
@@ -76,7 +83,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
             }).ToList();
         }
 
-        private List<ParkData> PopulateParkDataFromFeatures(List<Feature> features,Geolocation playerLocation)
+        private List<ParkData> PopulateParkDataFromFeatures(List<Feature> features, Geolocation playerLocation)
         {
             IDataMapper<Feature, ParkData> parkDataMapper = new ParkDataMapper();
 
@@ -84,7 +91,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 
             List<ParkData> parkDataList = new List<ParkData>();
 
-             foreach (var feature in features)
+            foreach (var feature in features)
             {
                 var parkData = parkDataMapper.MapObject(feature);
                 parkData.Distance = (float)ruler.Distance(playerLocation.ToLonLatArray(), parkData.Geolocation.ToLonLatArray());
