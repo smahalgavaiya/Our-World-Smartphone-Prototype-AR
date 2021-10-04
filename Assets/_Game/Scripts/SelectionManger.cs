@@ -202,8 +202,9 @@ public class SelectionManger : MonoBehaviour
         currentSelection.Clear();
     }
 
-    void clearAllSelection()
+    public void clearAllSelection()
     {
+        Debug.Log("clear all seelction ");
         for (int x = 0; x < generateTiles.board_size_x_; x++)
         {
             for (int z = 0; z < generateTiles.board_size_z_; z++)
