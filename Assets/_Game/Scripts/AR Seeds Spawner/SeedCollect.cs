@@ -53,7 +53,7 @@ public class SeedCollect : MonoBehaviour
         {
            float distX = PlayerModel.transform.position.x - Litter.transform.position.x;
            float distZ = PlayerModel.transform.position.z - Litter.transform.position.z;
-            if (distX > 1.5f || distZ>1.5)
+            if (distX > 0.3f )
             {
                 float step = speed * Time.deltaTime;
                 Vector3 dir = Litter.transform.position - PlayerModel.transform.position;
