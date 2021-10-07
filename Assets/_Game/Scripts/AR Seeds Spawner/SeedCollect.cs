@@ -51,28 +51,39 @@ public class SeedCollect : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (litterFound)
         {
-            dist = Vector3.Distance(PlayerModel.transform.position, Litter.transform.position);
-            if (dist > 2)
+           float distX = PlayerModel.transform.position.x - Litter.transform.position.x;
+           float distZ = PlayerModel.transform.position.z - Litter.transform.position.z;
+            if (distX > 0.3f )
             {
                 float step = speed * Time.deltaTime;
-                Vector3 directionToFaceLitter = Litter.transform.position - PlayerModel.transform.position;
-                Quaternion rotation = Quaternion.LookRotation(directionToFaceLitter);
-                PlayerModel.transform.rotation = rotation;/*
-                PlayerModel.transform.LookAt(Litter.transform);*/
-                
+                Vector3 dir = Litter.transform.position - PlayerModel.transform.position;
+                /*float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                PlayerModel.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
+              
+                Vector3 targetPostition = new Vector3(Litter.transform.position.x,
+                                        PlayerModel.transform.position.y,
+                                        Litter.transform.position.z);
+                PlayerModel.transform.LookAt(targetPostition);
+
+              /*  Quaternion rotation = Quaternion.LookRotation(dir);
+                PlayerModel.transform.rotation = Quaternion.EulerAngles(0, (dir) rotation.y, 0);*/
+
+                /*PlayerModel.transform.LookAt(Litter.transform);*/
+
                 Vector3 updatedPos = new Vector3(Litter.transform.position.x,startingY, Litter.transform.position.z);
+                if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
                 animator.Play("Walk");
-                PlayerModel.transform.position = Vector3.MoveTowards(PlayerModel.transform.position, updatedPos - new Vector3(1f, 0, 0), step);
-               
+                PlayerModel.transform.position = Vector3.MoveTowards(PlayerModel.transform.position, updatedPos - new Vector3(0f, 0, 0), step);
+
 
             }
             else
             {
                 animator.Play("Pickup");
-                litterFound = false;
+/*                litterFound = false;*/
             }
         }
-     if (Input.GetMouseButton(0))
+     if (Input.GetMouseButton(0) && !litterFound)
             {
              startingY = PlayerModel.transform.position.y;
 
@@ -108,8 +119,8 @@ public class SeedCollect : MonoBehaviour
     }
     public void PickupComplete()
     {
-        litterFound = false;
         PlayerModel.transform.position = new Vector3(Random.Range(0, 10), startingY, Random.Range(0, 10));
         Destroy(Litter, 0.5f);
+        litterFound = false;
     }
 }

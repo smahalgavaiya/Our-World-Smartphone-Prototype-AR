@@ -4,7 +4,7 @@ using UnityEngine;
 using OpenCvSharp;
 public class FACEDETECTION : MonoBehaviour
 {
-    WebCamTexture _webCamTexture;
+   public WebCamTexture _webCamTexture;
     CascadeClassifier cascade;
     OpenCvSharp.Rect FaceRect;
     // Start is called before the first frame update
