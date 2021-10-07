@@ -23,7 +23,7 @@ public class GenerateTiles : MonoBehaviour
         {
             for (int z = 0; z < board_size_z_; z++)
             {
-                Transform tile = (Transform)Instantiate(tile_prefab_, new Vector3(x, 0, z), Quaternion.Euler(90,0,0));
+                Transform tile = (Transform)Instantiate(tile_prefab_, new Vector3(x*1.1f, 0, z*1.1f), Quaternion.Euler(90,0,0));
                 allGrids[x, z] = tile.gameObject;
                 tile.name = "Tile" + x + z;
                 tile.parent = gameObject.transform;
