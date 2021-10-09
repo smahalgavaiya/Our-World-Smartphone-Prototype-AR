@@ -73,5 +73,5 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EarthBrightness: {r: 1, g: 1, b: 1, a: 1}
+    - _EarthBrightness: {r: 0.61654174, g: 0.61654174, b: 0.61654174, a: 0.61654174}
   m_BuildTextureStacks: []

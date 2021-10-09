@@ -12,6 +12,7 @@ public class Authentication : MonoBehaviour
     private const string OASIS_REGISTER_AVATAR = "https://api.oasisplatform.world/api/avatar/register";
     private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/avatar/GetTerms";
     private const string OASIS_AUTHENTICATE = "https://api.oasisplatform.world/api/avatar/authenticate";
+    private const string OASIS_AUTO_LOGIN = "https://www.staging.api.oasisplatform.world/api/avatar/GetAvatarByJwt/";
 
     [Header("Authentication")]
     public TMP_InputField _signUpFirstName;
@@ -39,6 +40,7 @@ public class Authentication : MonoBehaviour
 
     [Header("Warning/Info")]
     public GameObject _warningInfoHolder;
+    public GameObject _manualLogin;
     public GameObject _authenticationHolder;
     public GameObject _laodingText;
     public GameObject _loadingHolder;
@@ -145,7 +147,7 @@ public class Authentication : MonoBehaviour
     }
     #endregion
     #region Warning/Info
-    private void ShowWarningInfoPanel(bool value)
+    public void ShowWarningInfoPanel(bool value)
     {
         _warningInfoHolder.SetActive(value);
         _authenticationHolder.SetActive(!value);
@@ -204,8 +206,37 @@ public class Authentication : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GetTerms());
+        AutoLogin();
     }
+
+    private void AutoLogin()
+    {
+        if (PlayerPrefs.GetString("JWT", "") != "")
+            StartCoroutine(AutoLoginRequest(PlayerPrefs.GetString("JWT")));
+        else
+            StartCoroutine(GetTerms());
+    }
+    private IEnumerator AutoLoginRequest(string jwtToken)
+    {
+        ShowWarningInfoPanel(true);
+        _manualLogin.SetActive(true);
+        using var request = new UnityWebRequest(OASIS_AUTO_LOGIN);
+        request.method = UnityWebRequest.kHttpVerbGET;
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+        yield return request.SendWebRequest();
+
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        Debug.Log(request.downloadHandler.text);
+        if (data["status"].Value.StartsWith("4") || data["status"].Value.StartsWith("5"))
+        {
+            SetInfo(ShowWarning.SignInFail, data["title"].Value);
+            ShowWarningInfoPanel(false);
+        }
+        else
+            SetInfo(ShowWarning.SignInSuccess, data["message"].Value);
+    }
+
     private IEnumerator GetTerms()
     {
         using var request = UnityWebRequest.Get(OASIS_GET_TERMS);
@@ -283,7 +314,7 @@ public class Authentication : MonoBehaviour
         yield return request.SendWebRequest();
 
         JSONNode data = JSON.Parse(request.downloadHandler.text);
-        if (data["status"].Value.StartsWith("4") || data["status"].Value.StartsWith("4"))
+        if (data["status"].Value.StartsWith("4") || data["status"].Value.StartsWith("5"))
             SetInfo(ShowWarning.SignUpFail, data["title"].Value);
         else
             SetInfo(ShowWarning.SignUpSuccess, data["message"].Value);
@@ -350,7 +381,10 @@ public class Authentication : MonoBehaviour
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["avatar"]["fullName"].Value, data["avatar"]["level"].Value);
+            PlayerPrefs.SetString("JWT", data["avatar"]["jwtToken"].Value);
+            PlayerPrefs.SetString("AvatarName", data["avatar"]["fullName"].Value);
+            PlayerPrefs.SetString("AvatarLevel", data["avatar"]["level"].Value);
+            PlayerPrefs.SetString("AvatarId", data["avatar"]["id"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }
