@@ -1,7 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
-using OurWorld.Scripts.DataModels.GeolocationData;
-using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Providers.MapAPIProviders;
 using OurWorld.Scripts.Utilities;
