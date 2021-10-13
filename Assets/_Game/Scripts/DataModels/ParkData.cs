@@ -1,7 +1,9 @@
 using OurWorld.Scripts.DataModels.GeolocationData;
+using System;
 
 namespace OurWorld.Scripts.DataModels
 {
+    [Serializable]
     public class ParkData
     {
         public readonly string Name;

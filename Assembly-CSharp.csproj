@@ -1289,16 +1289,15 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_frontalface_default.xml" />
     <None Include="Assets\Wrld\Plugins\x86_64\libeay32.dll" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libjpeg-turbo.txt" />
     <None Include="Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\Mapbox\Core\Plugins\link.xml" />
     <None Include="Assets\Mapbox\Shaders\RasterWithTransparencyShader.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Net35\Mapbox.Json.dll" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\rapidxml.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Wrld\Shaders\StencilReflectionFloor.shader" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\Mapbox\Fonts\OpenSansLic.txt" />
     <None Include="Assets\Wrld\Shaders\StandardWithVertexColor.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\MapboxAccounts\net4x\MapboxAccountsUnity.dll" />
@@ -1316,6 +1315,7 @@
     <None Include="Assets\Wrld\Plugins\x86_64\libEGL.dll" />
     <None Include="Assets\OpenCV+Unity\mcs.rsp" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libpng.txt" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Mapbox\Unity\Location\ExampleGpsTraces\LocationProviderAndroidNative-2.txt" />
     <None Include="Assets\Wrld\Shaders\UnityVC.cginc" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libcurl.txt" />
