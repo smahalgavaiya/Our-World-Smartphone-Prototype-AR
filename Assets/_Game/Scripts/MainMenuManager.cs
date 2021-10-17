@@ -163,8 +163,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        //SceneManager.LoadScene("UnityWorldSpace");
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene("UnityWorldSpace");
     }
 
     public void AutoSwitchToggle(bool value)
