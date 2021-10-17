@@ -42,9 +42,7 @@ namespace OurWorld.Scripts.Extensions
 
         public static Geolocation ToRadianGeolocation(this Geolocation geolocation)
         {
-            geolocation.Latitude = Deg2rad(geolocation.Latitude);
-            geolocation.Longitude = Deg2rad(geolocation.Longitude);
-            return geolocation;
+            return new Geolocation(Deg2rad(geolocation.Longitude),Deg2rad(geolocation.Latitude));
         }
 
         /// <summary>
@@ -52,15 +50,15 @@ namespace OurWorld.Scripts.Extensions
         /// </summary>
         public static float DistanceTo(this Geolocation rh, Geolocation lh)
         {
-            rh = rh.ToRadianGeolocation();
-            lh = lh.ToRadianGeolocation();
+            Geolocation rhRad = rh.ToRadianGeolocation();
+            Geolocation lhRad = lh.ToRadianGeolocation();
 
-            double distanceLongtitue = lh.Longitude - rh.Longitude;
-            double distanceLatitude = lh.Latitude - rh.Latitude;
+            double distanceLongtitue = lhRad.Longitude - rhRad.Longitude;
+            double distanceLatitude = lhRad.Latitude - rhRad.Latitude;
 
             double haversine = Math.Pow(Math.Sin(distanceLatitude / 2), 2) +
-                Math.Cos(rh.Latitude) *
-                Math.Cos(lh.Latitude) *
+                Math.Cos(rhRad.Latitude) *
+                Math.Cos(lhRad.Latitude) *
                 Math.Pow(Math.Sin(distanceLongtitue / 2), 2);
 
             double rawDistance = 2 * Math.Asin(Math.Sqrt(haversine));
