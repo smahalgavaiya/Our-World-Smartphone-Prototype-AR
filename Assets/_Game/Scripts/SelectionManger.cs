@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectionManger : MonoBehaviour
@@ -14,6 +15,13 @@ public class SelectionManger : MonoBehaviour
     public List<GameObject> currentSelection;
     public Button clearAllButton;
     // Start is called before the first frame update
+
+
+    [SerializeField] GraphicRaycaster m_Raycaster;
+    PointerEventData m_PointerEventData;
+    [SerializeField] EventSystem m_EventSystem;
+    [SerializeField] RectTransform canvasRect;
+
     void Start()
     {
         generateTiles = GetComponent<GenerateTiles>();
@@ -22,7 +30,18 @@ public class SelectionManger : MonoBehaviour
 
     // Update is called once per frame
     void Update() 
-    { 
+    {
+        //Set up the new Pointer Event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        //Set the Pointer Event Position to that of the game object
+        m_PointerEventData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        //Raycast using the Graphics Raycaster and mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -38,13 +57,8 @@ public class SelectionManger : MonoBehaviour
                 currentSelection.Clear();
                 isSelected = true;
 
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
-                    if (hit.collider != null)
-                    {
-                        initialselGrid = hit.transform.gameObject;
-                    }
+                if (results.Count > 0) initialselGrid=results[0].gameObject;
+               
             }
                 
 
@@ -53,16 +67,11 @@ public class SelectionManger : MonoBehaviour
 
         if (isSelected)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-                if (hit.collider != null)
-                {
-                    lastGrid = hit.transform.gameObject;
-                }
-            
 
-             first = CoordinatesOf(generateTiles.allGrids, initialselGrid);
+            if (results.Count > 0) lastGrid= results[0].gameObject;
+
+
+            first = CoordinatesOf(generateTiles.allGrids, initialselGrid);
              last = CoordinatesOf(generateTiles.allGrids, lastGrid);
 
             if (first != null && last != null)
