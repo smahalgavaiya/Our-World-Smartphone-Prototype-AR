@@ -1,4 +1,4 @@
-using OurWorld.Scripts.Controllers;
+using OurWorld.Scripts.Navigation.Directions;
 using OurWorld.Scripts.Providers.MapAPIProviders;
 using UnityEditor;
 using UnityEngine;

@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Mapbox.Unity.Map;
 using OurWorld.Scripts.DataModels.GeolocationData;
 using OurWorld.Scripts.Extensions;
-using OurWorld.Scripts.Helpers;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using UnityEngine;
 
-namespace OurWorld.Scripts.Controllers
+namespace OurWorld.Scripts.Navigation.Directions
 {
     public class DirectionsController : MonoBehaviour
     {
@@ -45,7 +42,7 @@ namespace OurWorld.Scripts.Controllers
                 return;
             }
 
-            _activeNavigation = new LineRendererNavigationStrategy();
+            _activeNavigation = new LineRendererNavigationBehaviour();
 
             _activeNavigation.StartNavigation(waypoints, LocationSolver);
         }
@@ -58,91 +55,6 @@ namespace OurWorld.Scripts.Controllers
         private Vector3 LocationSolver(Geolocation location)
         {
             return new Vector3(0,0.5f,0) + _map.GeoToWorldPosition(new Mapbox.Utils.Vector2d(location.Latitude,location.Longitude));
-        }
-    }
-    public class LineRendererNavigationStrategy : IDirectionsDisplayStrategy
-    {
-        private Geolocation[] _waypoints;
-        private WaypointStep[] _steps;
-        private LineRenderer _lineRenderer;
-        private Func<Geolocation, Vector3> _locationSolver;
-
-        public bool Active => _lineRenderer;
-
-        public void StartNavigation(List<Geolocation> waypoints, Func<Geolocation, Vector3> locationSolver)
-        {
-            _locationSolver = locationSolver;
-
-            _waypoints = waypoints.ToArray();
-
-            CreateSteps(waypoints, ref _steps);
-
-            _lineRenderer = CreateLineRenderer();
-
-            Vector3[] lineRendrerPoisitons = new Vector3[_steps.Length + 1];
-
-            lineRendrerPoisitons[0] = locationSolver(Geolocation.TempPlayerPosition);
-
-            for (int i = 0; i < _steps.Length; i++)
-            {
-                lineRendrerPoisitons[i + 1] = locationSolver(_steps[i].Location);
-            }
-
-            _lineRenderer.positionCount = _steps.Length;
-            _lineRenderer.SetPositions(lineRendrerPoisitons);
-
-        }
-        public void DisposeActiveNavigation()
-        {
-            UnityEngine.Object.Destroy(_lineRenderer.gameObject);
-            _lineRenderer = null;
-        }
-        public void UpdateRoute(List<Geolocation> waypoints)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        #region Helpers
-        private void CreateSteps(List<Geolocation> waypoints, ref WaypointStep[] steps)
-        {
-            steps = new WaypointStep[waypoints.Count];
-
-            Geolocation currentPosition = Geolocation.TempPlayerPosition;
-
-            for (int i = 0; i < waypoints.Count; i++)
-            {
-                Geolocation waypoint = waypoints[i];
-                float distance = currentPosition.DistanceTo(waypoint);
-                steps[i] = new WaypointStep(waypoint, i, distance);
-            }
-        }
-        private LineRenderer CreateLineRenderer()
-        {
-            GameObject lineRendererObject = new GameObject("DirectionsLineRendere");
-
-            LineRenderer lr = lineRendererObject.AddComponent<LineRenderer>();
-            
-            lr.useWorldSpace = true;
-
-            return lr;
-        }
-        #endregion
-    }
-    internal struct WaypointStep
-    {
-        public readonly Geolocation Location;
-        public readonly int StepIndex;
-        public float Distance;
-
-        public WaypointStep(Geolocation location, int stepIndex, float distance)
-        {
-            Location = location;
-            StepIndex = stepIndex;
-            Distance = distance;
-        }
-        public WaypointStep(Geolocation location, int stepIndex) : this(location, stepIndex, -1)
-        {
-
         }
     }
 }
