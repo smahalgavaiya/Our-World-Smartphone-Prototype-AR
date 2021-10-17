@@ -1,3 +1,4 @@
+using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Views.ParksList;
@@ -16,7 +17,12 @@ namespace OurWorld.Scripts.Controllers
 
             var nearbyParks = await _mapApiProvider.GetNearbyParksAsync(new Geolocation(32.707270, 39.995767), 1f);
 
-            _parkListElement.Initialize(nearbyParks);
+            _parkListElement.Initialize(nearbyParks,OnParkSelected);
+        }
+
+        private void OnParkSelected(ParkData parkData)
+        {
+
         }
     }
 }

@@ -26,6 +26,8 @@ namespace OurWorld.Scripts.Views.ParksList
 
         private bool _active;
 
+        private Action<ParkData> _onParkSelected;
+
         private RectTransform RectTransform => transform as RectTransform;
 
         public bool Active => _active;
@@ -39,8 +41,9 @@ namespace OurWorld.Scripts.Views.ParksList
             _closeButton.onClick.RemoveListener(Close);
         }
 
-        public void Initialize(List<ParkData> nearbyParks)
+        public void Initialize(List<ParkData> nearbyParks, Action<ParkData> onParkSelected)
         {
+            _onParkSelected = onParkSelected;
             foreach (var parkData in nearbyParks)
             {
                 var element = Instantiate(_elementPrefab, _targetScrollRect.content);
@@ -81,7 +84,7 @@ namespace OurWorld.Scripts.Views.ParksList
         }
         private void OnParkButtonClick(ParkData elementData)
         {
-
+            _onParkSelected?.Invoke(elementData);
         }
 
         #region Panel Animations
