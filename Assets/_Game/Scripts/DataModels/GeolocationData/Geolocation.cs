@@ -5,6 +5,7 @@ namespace OurWorld.Scripts.DataModels.GeolocationData
 {
     public class Geolocation
     {
+        public static Geolocation TempPlayerPosition = new Geolocation(32.707270, 39.995767);
         public double Longitude { get; set; } // In Degrees
         public double Latitude { get; set; } // In Degrees
 
