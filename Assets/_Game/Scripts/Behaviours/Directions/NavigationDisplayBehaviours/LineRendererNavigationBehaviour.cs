@@ -59,8 +59,12 @@ namespace OurWorld.Scripts.Navigation.Directions
             for (int i = 0; i < waypoints.Count; i++)
             {
                 Geolocation waypoint = waypoints[i];
-                float distance = currentPosition.DistanceTo(waypoint);
-                steps[i] = new WaypointStep(waypoint, i, distance);
+                if (i == 0)
+                {
+                    float distance = currentPosition.DistanceTo(waypoint);
+                     steps[i] = new WaypointStep(waypoint, i, distance);
+                }
+                steps[i] = new WaypointStep(waypoint, i);
             }
         }
         private LineRenderer CreateLineRenderer()
