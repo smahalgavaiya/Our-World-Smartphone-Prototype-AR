@@ -1,7 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
-using OurWorld.Scripts.DataModels.GeolocationData;
-using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Providers.MapAPIProviders;
 using OurWorld.Scripts.Utilities;
@@ -14,10 +11,11 @@ namespace OurWorld.Scripts.Controllers
 
         [SerializeField] private ParkQuestController _parkQuestController;
 
-        private IMapAPIProvider _mapApiProvider;
-        private bool _initialized;
+        private bool _initialized;     
         public bool Initialized => _initialized;
-        public IMapAPIProvider MapAPIProvidder => _mapApiProvider;
+        
+        private static IMapAPIProvider _mapApiProvider;
+        public static IMapAPIProvider MapAPIProvidder => _mapApiProvider;
         private void Awake()
         {
             Initialize();

@@ -1,5 +1,4 @@
 using System;
-using Mapbox.Utils;
 using OurWorld.Scripts.DataModels.GeolocationData;
 
 namespace OurWorld.Scripts.Extensions
@@ -40,6 +39,32 @@ namespace OurWorld.Scripts.Extensions
         public static double[] ToLatLonArray(this Geolocation geolocation) => new[] { geolocation.Latitude, geolocation.Longitude };
 
         public static double[] ToLonLatArray(this Geolocation geolocation) => new[] { geolocation.Longitude, geolocation.Latitude };
+
+        public static Geolocation ToRadianGeolocation(this Geolocation geolocation)
+        {
+            return new Geolocation(Deg2rad(geolocation.Longitude),Deg2rad(geolocation.Latitude));
+        }
+
+        /// <summary>
+        /// Returns direct distance between 2 points on earth in kilometers
+        /// </summary>
+        public static float DistanceTo(this Geolocation rh, Geolocation lh)
+        {
+            Geolocation rhRad = rh.ToRadianGeolocation();
+            Geolocation lhRad = lh.ToRadianGeolocation();
+
+            double distanceLongtitue = lhRad.Longitude - rhRad.Longitude;
+            double distanceLatitude = lhRad.Latitude - rhRad.Latitude;
+
+            double haversine = Math.Pow(Math.Sin(distanceLatitude / 2), 2) +
+                Math.Cos(rhRad.Latitude) *
+                Math.Cos(lhRad.Latitude) *
+                Math.Pow(Math.Sin(distanceLongtitue / 2), 2);
+
+            double rawDistance = 2 * Math.Asin(Math.Sqrt(haversine));
+
+            return (float)(rawDistance * 6371f);
+        }
 
         // degrees to radians
         private static double Deg2rad(double degrees)
