@@ -2992,7 +2992,7 @@ GameObject:
   - component: {fileID: 526376040}
   - component: {fileID: 526376042}
   m_Layer: 5
-  m_Name: Title Text
+  m_Name: selection_info_tb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4699,7 +4699,7 @@ GameObject:
   - component: {fileID: 899511406}
   - component: {fileID: 899511408}
   m_Layer: 5
-  m_Name: Title Text (1)
+  m_Name: no_tiles_tb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5312,6 +5312,7 @@ GameObject:
   - component: {fileID: 1216313886}
   - component: {fileID: 1216313885}
   - component: {fileID: 1216313884}
+  - component: {fileID: 1216313888}
   m_Layer: 5
   m_Name: LandBuy
   m_TagString: Untagged
@@ -5356,7 +5357,6 @@ MonoBehaviour:
   clearAllButton: {fileID: 34019147}
   m_Raycaster: {fileID: 466826430}
   m_EventSystem: {fileID: 1788581404}
-  canvasRect: {fileID: 466826433}
 --- !u!114 &1216313886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5391,6 +5391,25 @@ RectTransform:
   m_AnchoredPosition: {x: 25, y: 18}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1216313888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216313883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07dac6428b7c9f4aa36243d33aa010f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noOfGridsSelected: 1
+  CouponCode: minimeu
+  total: {fileID: 1370806033}
+  per_tile: {fileID: 1902420769}
+  address: {fileID: 2030061744}
+  tile_count: {fileID: 899511406}
+  selection_info: {fileID: 526376040}
 --- !u!1 &1221864645
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,7 +5878,7 @@ GameObject:
   - component: {fileID: 1370806033}
   - component: {fileID: 1370806035}
   m_Layer: 5
-  m_Name: Title Text (4)
+  m_Name: total_price_tb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8318,7 +8337,7 @@ GameObject:
   - component: {fileID: 1902420769}
   - component: {fileID: 1902420771}
   m_Layer: 5
-  m_Name: Title Text (3)
+  m_Name: price_per_tile_tb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8649,7 +8668,7 @@ GameObject:
   - component: {fileID: 2030061744}
   - component: {fileID: 2030061746}
   m_Layer: 5
-  m_Name: Title Text (2)
+  m_Name: address_tb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

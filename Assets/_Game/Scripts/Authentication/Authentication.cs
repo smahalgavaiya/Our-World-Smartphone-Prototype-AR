@@ -346,11 +346,12 @@ public class Authentication : MonoBehaviour
         yield return request.SendWebRequest();
 
         JSONNode data = JSON.Parse(request.downloadHandler.text);
+        Debug.Log(data);
         if (data["isError"].Value == "true")
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["avatar"]["fullName"].Value, data["avatar"]["level"].Value);
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value,data["result"]["avatar"]["jwtToken"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }
