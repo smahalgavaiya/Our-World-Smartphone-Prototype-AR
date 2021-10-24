@@ -4,6 +4,7 @@ public class AvatarInfoManager : MonoBehaviour
 {
     private string _avatarName;
     private string _avatarLevel;
+    public string _jwtToken;
 
     public static AvatarInfoManager Instance = null;
     private void Start()
@@ -31,9 +32,18 @@ public class AvatarInfoManager : MonoBehaviour
         }
     }
 
-    public void SetAvatarNameAndLevel(string name, string level)
+    public string JwtToken
+    {
+        get
+        {
+            return _jwtToken;
+        }
+    }
+
+    public void SetAvatarNameAndLevel(string name, string level,string jwtToken)
     {
         _avatarName = name;
         _avatarLevel = level;
+        _jwtToken = jwtToken;
     }
 }

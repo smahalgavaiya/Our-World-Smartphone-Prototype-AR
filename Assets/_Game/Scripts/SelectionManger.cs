@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,23 +15,34 @@ public class SelectionManger : MonoBehaviour
     public int x_first, y_first, x_last, y_last;
     public List<GameObject> currentSelection;
     public Button clearAllButton;
-    // Start is called before the first frame update
+    int currentTilesCount = 0;
+   
 
 
     [SerializeField] GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     [SerializeField] EventSystem m_EventSystem;
-    [SerializeField] RectTransform canvasRect;
 
+    getLandPrice _getLandPrice;
+
+    // Start is called before the first frame update
     void Start()
     {
         generateTiles = GetComponent<GenerateTiles>();
+        _getLandPrice = GetComponent<getLandPrice>();
         clearAllButton.onClick.AddListener(clearAllSelection);
     }
 
     // Update is called once per frame
     void Update() 
     {
+        if (currentSelection.Count != currentTilesCount && isSelected)
+        {
+            _getLandPrice.StopAllCoroutines();
+            currentTilesCount = currentSelection.Count;
+            _getLandPrice.getPrice(currentTilesCount);
+        }
+
         //Set up the new Pointer Event
         m_PointerEventData = new PointerEventData(m_EventSystem);
         //Set the Pointer Event Position to that of the game object
@@ -200,6 +212,7 @@ public class SelectionManger : MonoBehaviour
     void addToSelection(GameObject selectedGB)
     {
         currentSelection.Add(selectedGB);
+       
     }
     void clearSelection()
     {
