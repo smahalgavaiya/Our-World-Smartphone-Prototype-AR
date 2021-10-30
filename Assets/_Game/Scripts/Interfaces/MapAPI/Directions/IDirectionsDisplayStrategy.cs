@@ -1,18 +1,22 @@
-using System;
-using System.Collections.Generic;
-using OurWorld.Scripts.DataModels.GeolocationData;
+using OurWorld.Scripts.Navigation.Directions;
 using UnityEngine;
 
-namespace OurWorld.Scripts.Interfaces.MapAPI
+namespace OurWorld.Scripts.Interfaces.MapAPI.Directions
 {
     public interface IDirectionsDisplayStrategy
     {
         public bool Active { get; }
 
-        public void StartNavigation(List<Geolocation> waypoints,Func<Geolocation,Vector3> locationSolver);
+        public void InitializeNavigationDisplay(WaypointStep[] steps,Vector3 startingPosition);
 
-        public void DisposeActiveNavigation();
+        public void StartNavigationDisplay();
 
-        public void UpdateRoute(List<Geolocation> waypoints);
+        public void StopNavigationDisplay();
+
+        public void DisposeActiveNavigationDisplay();
+
+        public void UpdateDisplayedRoute(WaypointStep[] steps, Vector3 startingPosition);
+
+        public void Update();
     }
 }

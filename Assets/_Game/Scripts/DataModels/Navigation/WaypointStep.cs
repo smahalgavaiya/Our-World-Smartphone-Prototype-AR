@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OurWorld.Scripts.Navigation.Directions
 {
-    internal struct WaypointStep
+    public struct WaypointStep
     {
         public readonly Geolocation Location;
         public readonly Vector3 UnityLocation;
