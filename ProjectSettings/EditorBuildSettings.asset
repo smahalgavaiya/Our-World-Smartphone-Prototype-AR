@@ -5,24 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/Authentication.unity
     guid: 6351a1a4fb0bb3940a0081922255b6ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/Menu 3D.unity
     guid: fa0913115ac1d4fba8b9d10280f4b04d
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/UMACC.unity
     guid: 3850a2397ae651b4f836f4621bc362d8
   - enabled: 1
     path: Assets/_Game/Scenes/Map.unity
     guid: 2c7147d54825142878b256c67aae5704
-  - enabled: 1
-    path: Assets/_Game/Scenes/Zoom2d.unity
-    guid: 7468556194a276e4993ae7933b4cde96
-  - enabled: 1
-    path: Assets/_Game/Scenes/Zoom3d.unity
-    guid: fca2b133bf44e2c409866754ad258716
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 7c5b79265873c2e42b6c5ad634bfa200, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f5e52bd8cdd3c464a9f849a660a79640, type: 2}

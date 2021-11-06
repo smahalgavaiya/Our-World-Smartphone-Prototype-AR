@@ -1,12 +1,18 @@
+using SimpleJSON;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UMA;
 using UMA.CharacterSystem;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class CharacterCreatorScript : MonoBehaviour
 {
+    private const string OASIS_UPDATE_UMAJSON = "https://api.oasisplatform.world/api/avatar/Update/";
+
     public DynamicCharacterAvatar dynamicCharacterAvatarScript;
     public CameraController cameraControllerScript;
     public Dictionary<string, DnaSetter> dNAmodule;
@@ -163,10 +169,6 @@ public class CharacterCreatorScript : MonoBehaviour
         }
         else
         {
-            //use if using normal text
-            //dNAmodule[DNAModuleStrings[valueDNA]].Set(DNAModuleSliders[valueDNA].value);
-
-            ///use if using TMP
             dNAmodule[DNAModuleStrings[valueDNA]].Set(DNAModuleSlidersTMP[valueDNA].value);
 
 
@@ -1074,15 +1076,36 @@ public class CharacterCreatorScript : MonoBehaviour
 
     #region Save/Load 
 
+    public void GoBack()
+    {
+        FindObjectOfType<MainMenuManager>().GetSceneBack();
+    }
     public void SaveCharacter()
     {
         CharacterData = dynamicCharacterAvatarScript.GetCurrentRecipe();
         DNAmodulesSliderUpdate();
-        Debug.Log(CharacterData);
+        for (int i = 0; i < DNASliderValuesTMP.Count; i++)
+        {
+            PlayerPrefs.SetFloat("DNASlider" + i, DNASliderValuesTMP[i]);
+        }
+        StartCoroutine(SaveUMARequest(CharacterData));
+    }
 
-        // you have all the slider values here below
+    private IEnumerator SaveUMARequest(string UMAData)
+    {
+        Debug.Log(UMAData);
+        using var request = new UnityWebRequest(OASIS_UPDATE_UMAJSON + PlayerPrefs.GetString("AvatarId"));
+        request.method = UnityWebRequest.kHttpVerbPOST;
+        request.uploadHandler = new UploadHandlerRaw(Encoding.ASCII.GetBytes(UMAData));
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.SendWebRequest();
 
-        //DNASliderValuesTMP[];
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        if (data["isError"].Value == "true")
+            Debug.Log("UMA Saving Error");
+        else
+            Debug.Log("UMA Saving Success");
     }
 
     public void LoadCharacter()
@@ -1091,11 +1114,5 @@ public class CharacterCreatorScript : MonoBehaviour
         RecognizeGender();
         DNAmoduleSliderMatch();
     }
-
-    public void GoBack()
-    {
-        FindObjectOfType<MainMenuManager>().GetSceneBack();
-    }
-
     #endregion
 }
