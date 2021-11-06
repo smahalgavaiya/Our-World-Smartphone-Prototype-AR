@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - base
+  - Seed
+  - Litter
+  - rHand
   layers:
   - Default
   - TransparentFX

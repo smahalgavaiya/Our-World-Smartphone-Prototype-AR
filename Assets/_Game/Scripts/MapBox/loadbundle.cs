@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using UnityEngine;
 
 public class loadbundle : MonoBehaviour
@@ -70,3 +70,4 @@ public class loadbundle : MonoBehaviour
         www.Dispose();
     }
 }
+*/

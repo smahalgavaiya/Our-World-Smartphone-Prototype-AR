@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Game/Scripts/GenerateTiles.cs.meta
+guid: 18ac6a75e8f63eb4490ee28abe1011ec
+=======
+guid: fca98ab9df958c6489a17956ac77735e
+>>>>>>> upstream/master:Assets/_Game/Scripts/MapBox/loadbundle.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
