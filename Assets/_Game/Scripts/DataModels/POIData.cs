@@ -1,8 +1,9 @@
 using OurWorld.Scripts.DataModels.GeolocationData;
+using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 
 namespace OurWorld.Scripts.DataModels
 {
-    public class POIData
+    public class POIData : IPointOfInterest
     {
         public readonly string Name;
         public readonly string Type;
@@ -19,5 +20,7 @@ namespace OurWorld.Scripts.DataModels
             Type = type;
             Geolocation = geolocation;
         }
+
+        public Geolocation GetGeolocation() => Geolocation;
     }
 }
