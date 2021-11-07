@@ -20,13 +20,13 @@ namespace OurWorld.Scripts.Views.ParksList
 
         [Space, SerializeField] private AnimationProperties _animationProperties;
 
-        private Dictionary<ParkData, ParkDisplayElement> _elementsDictionary = new Dictionary<ParkData, ParkDisplayElement>();
+        private Dictionary<POIData, ParkDisplayElement> _elementsDictionary = new Dictionary<POIData, ParkDisplayElement>();
 
         private Tween _panelTween;
 
         private bool _active;
 
-        private Action<ParkData> _onParkSelected;
+        private Action<POIData> _onParkSelected;
 
         private RectTransform RectTransform => transform as RectTransform;
 
@@ -41,7 +41,7 @@ namespace OurWorld.Scripts.Views.ParksList
             _closeButton.onClick.RemoveListener(Close);
         }
 
-        public void Initialize(List<ParkData> nearbyParks, Action<ParkData> onParkSelected)
+        public void Initialize(List<POIData> nearbyParks, Action<POIData> onParkSelected)
         {
             _onParkSelected = onParkSelected;
             foreach (var parkData in nearbyParks)
@@ -82,7 +82,7 @@ namespace OurWorld.Scripts.Views.ParksList
         {
 
         }
-        private void OnParkButtonClick(ParkData elementData)
+        private void OnParkButtonClick(POIData elementData)
         {
             _onParkSelected?.Invoke(elementData);
         }

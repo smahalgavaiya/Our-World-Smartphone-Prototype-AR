@@ -10,7 +10,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
     {
         public IDirectionsAPIProvider DirectionsAPI => throw new System.NotImplementedException();
 
-        public UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
+        public UniTask<List<POIData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
         {
             throw new System.NotImplementedException();
         }

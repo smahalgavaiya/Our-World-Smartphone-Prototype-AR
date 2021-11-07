@@ -9,6 +9,6 @@ namespace OurWorld.Scripts.Interfaces.MapAPI
     {
         IDirectionsAPIProvider DirectionsAPI { get; }
         
-        UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius);
+        UniTask<List<POIData>> GetNearbyParksAsync(Geolocation playerLocation, float radius);
     }
 }

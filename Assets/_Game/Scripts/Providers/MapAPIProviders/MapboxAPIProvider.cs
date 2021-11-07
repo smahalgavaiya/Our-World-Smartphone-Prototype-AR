@@ -19,7 +19,6 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
     public class MapboxAPIProvider : IMapAPIProvider
     {
         public const string ApiToken = "pk.eyJ1IjoiYmxhY3F2dmUiLCJhIjoiY2t0cTNlbDdsMHNueDJvcXUzNGFtMmI5aiJ9.d3FBlEYgLcTn-bfqV2uXrQ";
-        
         private const string _parkSearchKeyword = "park";
         private readonly IWebRequestHelper _webRequestHelper;
         private readonly IDirectionsAPIProvider _directionsAPIProvider;
@@ -30,7 +29,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
             _webRequestHelper = new WebRequestHelper(new MapBoxNewtonsoftJsonSerializerOption());
             _directionsAPIProvider = new MapboxDirectionsAPIProvider();
         }
-        public async UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
+        public async UniTask<List<POIData>> GetNearbyParksAsync(Geolocation playerLocation, float radius)
         {
             var forwardGeocodeResource = new ForwardGeocodeResource(_parkSearchKeyword);
 
@@ -56,7 +55,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 
             var result = await _webRequestHelper.GetAsync<ForwardGeocodeResponse>(uriBuilder.Uri);
 
-            List<ParkData> parkDataList = new List<ParkData>();
+            List<POIData> parkDataList = new List<POIData>();
 
             if (!result.Success) return parkDataList;
 
@@ -83,22 +82,22 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
             }).ToList();
         }
 
-        private List<ParkData> PopulateParkDataFromFeatures(List<Feature> features, Geolocation playerLocation)
+        private List<POIData> PopulateParkDataFromFeatures(List<Feature> features, Geolocation playerLocation)
         {
-            IDataMapper<Feature, ParkData> parkDataMapper = new ParkDataMapper();
+            IDataMapper<Feature, POIData> poiDataMapper = new POIDataMapper();
 
             var ruler = new CheapRuler(playerLocation.Latitude, CheapRulerUnits.Kilometers);
 
-            List<ParkData> parkDataList = new List<ParkData>();
+            List<POIData> poiDataList = new List<POIData>();
 
             foreach (var feature in features)
             {
-                var parkData = parkDataMapper.MapObject(feature);
+                var parkData = poiDataMapper.MapObject(feature);
                 parkData.Distance = (float)ruler.Distance(playerLocation.ToLonLatArray(), parkData.Geolocation.ToLonLatArray());
-                parkDataList.Add(parkData);
+                poiDataList.Add(parkData);
             }
 
-            return parkDataList;
+            return poiDataList;
         }
         #endregion
 

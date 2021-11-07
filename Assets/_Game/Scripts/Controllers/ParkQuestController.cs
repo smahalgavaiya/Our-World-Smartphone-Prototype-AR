@@ -20,7 +20,7 @@ namespace OurWorld.Scripts.Controllers
             _parkListElement.Initialize(nearbyParks,OnParkSelected);
         }
 
-        private void OnParkSelected(ParkData parkData)
+        private void OnParkSelected(POIData parkData)
         {
 
         }
