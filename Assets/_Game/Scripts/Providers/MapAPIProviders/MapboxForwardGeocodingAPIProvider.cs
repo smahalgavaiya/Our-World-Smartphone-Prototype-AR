@@ -13,6 +13,7 @@ using OurWorld.Scripts.Interfaces;
 using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 using Mapbox.Geocoding;
 using OurWorld.Scripts.DataModels.MapAPIRequests;
+using OurWorld.Scripts.Helpers;
 
 namespace OurWorld.Scripts.Providers.MapAPIProviders
 {
@@ -27,19 +28,41 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
         {
             _webRequestHelper = webRequestHelper;
         }
+        public async UniTask<ForwardGeocodingResponse<IPointOfInterest>> BatchPOISearchAsync(IBatchRequest request)
+        {
+            List<UniTask<RequestResponse<MBForwardGeocodeResponse>>> tasks = new List<UniTask<RequestResponse<MBForwardGeocodeResponse>>>();
 
+            foreach (string urlParameters in request.GetRequestMultipleURLParameters())
+            {
+                UriBuilder uriBuilder = new UriBuilder($"{BaseAPIUrl}{urlParameters}");
+                AddAccessTokenToUriBuilder(uriBuilder);
+                tasks.Add(_webRequestHelper.GetAsync<MBForwardGeocodeResponse>(uriBuilder.Uri));
+            }
+
+            var results = await UniTask.WhenAll(tasks);
+
+            List<IPointOfInterest> places = new List<IPointOfInterest>();
+
+            bool isBatchOperationSucceeded = true;
+
+            foreach (var result in results)
+            {
+                if (!result.Success){
+                    isBatchOperationSucceeded = false;
+                    break;
+                }
+                places.AddRange(PopulatePOIDataFromFeatures(result.Data.Features,Geolocation.TempPlayerPosition));
+            }
+
+            return new ForwardGeocodingResponse<IPointOfInterest>(isBatchOperationSucceeded,places);
+        }
         public async UniTask<ForwardGeocodingResponse<IPointOfInterest>> POISearchAsync(IRequest request)
         {
             var forwardGeocodeRequest = (MapBoxForwardGeocodingRequest)request;
 
             UriBuilder uriBuilder = new UriBuilder($"{BaseAPIUrl}{forwardGeocodeRequest.GetRequestURLParameters()}");
 
-            var tokenQueryParameter = $"access_token={APIToken}";
-
-            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
-                uriBuilder.Query = $"{uriBuilder.Query.Substring(1)}&{tokenQueryParameter}";
-            else
-                uriBuilder.Query = $"?{tokenQueryParameter}";
+            AddAccessTokenToUriBuilder(uriBuilder);
 
             var result = await _webRequestHelper.GetAsync<MBForwardGeocodeResponse>(uriBuilder.Uri);
 
@@ -49,6 +72,15 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
         }
 
         #region Helpers
+        private void AddAccessTokenToUriBuilder(UriBuilder uriBuilder)
+        {
+            var tokenQueryParameter = $"access_token={APIToken}";
+
+            if (uriBuilder.Query != null && uriBuilder.Query.Length > 1)
+                uriBuilder.Query = $"{uriBuilder.Query.Substring(1)}&{tokenQueryParameter}";
+            else
+                uriBuilder.Query = $"?{tokenQueryParameter}";
+        }
         private List<IPointOfInterest> PopulatePOIDataFromFeatures(List<Feature> features, Geolocation playerLocation)
         {
             IDataMapper<Feature, POIData> poiDataMapper = new POIDataMapper();

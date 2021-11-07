@@ -10,5 +10,8 @@ namespace OurWorld.Scripts.Interfaces.MapAPI.Geocoding
     {
         UniTask<ForwardGeocodingResponse<IPointOfInterest>> POISearchAsync(IRequest request);
 
+        UniTask<ForwardGeocodingResponse<IPointOfInterest>> BatchPOISearchAsync(IBatchRequest request);
+        
+
     }
 }

@@ -9,6 +9,9 @@ namespace OurWorld.Scripts.DataModels.MapAPIRequests
 {
     public class MapBoxForwardGeocodingRequest : IRequest
     {
+        public readonly static string ApiEndpoint = "geocoding/v5/";
+        public readonly static string Mode = "mapbox.places/";
+
         public readonly Geolocation Proximity;
 
         public readonly BoundingBox BoundingBox;
@@ -17,10 +20,6 @@ namespace OurWorld.Scripts.DataModels.MapAPIRequests
 
         public readonly string Query;
 
-        private readonly string _apiEndpoint = "geocoding/v5/";
-
-		private readonly string _mode = "mapbox.places/";
-
         public MapBoxForwardGeocodingRequest(Geolocation proximity, BoundingBox boundingBox, string[] searchTypes, string query)
         {
             Proximity = proximity;
@@ -28,21 +27,20 @@ namespace OurWorld.Scripts.DataModels.MapAPIRequests
             SearchTypes = searchTypes;
             Query = query;
         }
-
-        public string GetRequestURLParameters()
+        public virtual string GetRequestURLParameters()
         {
-            Dictionary<string,string> options = new Dictionary<string, string>();
+            Dictionary<string, string> options = new Dictionary<string, string>();
 
-            options.Add("bbox",new Vector2dBounds(
+            options.Add("bbox", new Vector2dBounds(
                 LocationTypeConverter.GeolocationToVector2d(BoundingBox.MinPoint),
                 LocationTypeConverter.GeolocationToVector2d(BoundingBox.MaxPoint)
             ).ToString());
 
-            options.Add("proximity",LocationTypeConverter.GeolocationToVector2d(Proximity).ToString());
+            options.Add("proximity", LocationTypeConverter.GeolocationToVector2d(Proximity).ToString());
 
-            options.Add("types",string.Join(",",SearchTypes));
+            options.Add("types", string.Join(",", SearchTypes));
 
-            return $"{_apiEndpoint}{_mode}{Uri.EscapeUriString(Query)}.json{WebRequestHelper.EncodeQueryStringParameters(options)}"; 
+            return $"{ApiEndpoint}{Mode}{Uri.EscapeUriString(Query)}.json{WebRequestHelper.EncodeQueryStringParameters(options)}";
         }
     }
 }
