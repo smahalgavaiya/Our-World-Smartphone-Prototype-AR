@@ -1,8 +1,11 @@
 using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
+using OurWorld.Scripts.DataModels.MapAPIRequests;
+using OurWorld.Scripts.Interfaces;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Views.ParksList;
 using UnityEngine;
+using OurWorld.Scripts.Extensions;
 
 namespace OurWorld.Scripts.Controllers
 {
@@ -15,9 +18,13 @@ namespace OurWorld.Scripts.Controllers
         {
             _mapApiProvider = mapAPIProvider;
 
-            var nearbyParks = await _mapApiProvider.GetNearbyParksAsync(Geolocation.TempPlayerPosition, 1f);
+            var playerPosition = Geolocation.TempPlayerPosition;
 
-            _parkListElement.Initialize(nearbyParks,OnParkSelected);
+            IRequest request = new MapBoxForwardGeocodingRequest(playerPosition, playerPosition.GetBoundingBox(1f), new string[] { "poi" }, "park");
+
+            var response = await _mapApiProvider.GeocodingProvider.POISearchAsync(request);
+
+            _parkListElement.Initialize(response.Places, OnParkSelected);
         }
 
         private void OnParkSelected(POIData parkData)

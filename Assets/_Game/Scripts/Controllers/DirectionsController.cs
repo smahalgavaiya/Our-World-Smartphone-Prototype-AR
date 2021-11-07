@@ -76,5 +76,12 @@ namespace OurWorld.Scripts.Navigation.Directions
         {
             return new Vector3(0, 0.5f, 0) + _map.GeoToWorldPosition(new Mapbox.Utils.Vector2d(location.Latitude, location.Longitude));
         }
+
+        private void OnDrawGizmos() {
+            if(_activeNavigation == null) return;
+
+            var defaultNav = _activeNavigation as DefaultNavigationBehaviour;
+            Gizmos.DrawWireCube(defaultNav.StepBounds.center,defaultNav.StepBounds.size);
+        }
     }
 }

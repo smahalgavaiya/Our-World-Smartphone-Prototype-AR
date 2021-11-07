@@ -1,6 +1,6 @@
 using OurWorld.Scripts.Interfaces.MapAPI;
 
-namespace OurWorlds.Scripts.Factories
+namespace OurWorld.Scripts.Factories
 {
     public class MapAPIProviderFactory : IMapAPIProviderFactory
     {
