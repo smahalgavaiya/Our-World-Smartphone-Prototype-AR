@@ -6,7 +6,7 @@ namespace OurWorld.Scripts.Views.ParksList
     [RequireComponent(typeof(Button))]
     public class ParkListToggleButton : MonoBehaviour
     {
-        [SerializeField] private ParkListElement _element;
+        [SerializeField] private NearbyPlacesListElement _element;
 
         private Button _toggleButton;
 

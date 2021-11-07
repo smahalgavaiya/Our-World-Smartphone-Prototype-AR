@@ -1,4 +1,3 @@
-using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
 using OurWorld.Scripts.DataModels.MapAPIRequests;
 using OurWorld.Scripts.Interfaces;
@@ -6,12 +5,13 @@ using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Views.ParksList;
 using UnityEngine;
 using OurWorld.Scripts.Extensions;
+using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 
 namespace OurWorld.Scripts.Controllers
 {
-    public class ParkQuestController : MonoBehaviour
+    public class NearbyPlacesController : MonoBehaviour
     {
-        [SerializeField] private ParkListElement _parkListElement;
+        [SerializeField] private NearbyPlacesListElement _nearbyPlacesListElement;
         private IMapAPIProvider _mapApiProvider;
 
         public async void Initialize(IMapAPIProvider mapAPIProvider)
@@ -24,10 +24,10 @@ namespace OurWorld.Scripts.Controllers
 
             var response = await _mapApiProvider.GeocodingProvider.POISearchAsync(request);
 
-            _parkListElement.Initialize(response.Places, OnParkSelected);
+            _nearbyPlacesListElement.Initialize(response.Places, OnPlaceSelected);
         }
 
-        private void OnParkSelected(POIData parkData)
+        private void OnPlaceSelected(IPointOfInterest placeData)
         {
 
         }

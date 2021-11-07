@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 
 namespace OurWorld.Scripts.DataModels.MapAPIResponses
 {
-    public class ForwardGeocodingResponse<T> where T : POIData
+    public class ForwardGeocodingResponse<T> where T : IPointOfInterest
     {
         public readonly List<T> Places;
 

@@ -28,7 +28,7 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
             _webRequestHelper = webRequestHelper;
         }
 
-        public async UniTask<ForwardGeocodingResponse<POIData>> POISearchAsync(IRequest request)
+        public async UniTask<ForwardGeocodingResponse<IPointOfInterest>> POISearchAsync(IRequest request)
         {
             var forwardGeocodeRequest = (MapBoxForwardGeocodingRequest)request;
 
@@ -43,19 +43,19 @@ namespace OurWorld.Scripts.Providers.MapAPIProviders
 
             var result = await _webRequestHelper.GetAsync<MBForwardGeocodeResponse>(uriBuilder.Uri);
 
-            var forwardGeocodeResponse = new ForwardGeocodingResponse<POIData>(result.Success, PopulatePOIDataFromFeatures(result.Data.Features, forwardGeocodeRequest.Proximity));
+            var forwardGeocodeResponse = new ForwardGeocodingResponse<IPointOfInterest>(result.Success, PopulatePOIDataFromFeatures(result.Data.Features, forwardGeocodeRequest.Proximity));
 
             return forwardGeocodeResponse;
         }
 
         #region Helpers
-        private List<POIData> PopulatePOIDataFromFeatures(List<Feature> features, Geolocation playerLocation)
+        private List<IPointOfInterest> PopulatePOIDataFromFeatures(List<Feature> features, Geolocation playerLocation)
         {
             IDataMapper<Feature, POIData> poiDataMapper = new POIDataMapper();
 
             var ruler = new CheapRuler(playerLocation.Latitude, CheapRulerUnits.Kilometers);
 
-            List<POIData> poiDataList = new List<POIData>();
+            List<IPointOfInterest> poiDataList = new List<IPointOfInterest>();
 
             foreach (var feature in features)
             {
