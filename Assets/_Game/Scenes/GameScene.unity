@@ -575,7 +575,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a470e8b9a0fe4cab93fe29e6b3441, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c2319e9ea6549409e7db0ae59628eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!21 &345932556
@@ -699,8 +699,8 @@ GameObject:
   m_Component:
   - component: {fileID: 769552133}
   - component: {fileID: 769552132}
-  - component: {fileID: 769552134}
   - component: {fileID: 769552135}
+  - component: {fileID: 769552134}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8609f1ba4b9877b49bc27f579e79b588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parkQuestController: {fileID: 769552134}
+  _nearbyPlacesController: {fileID: 769552134}
 --- !u!4 &769552133
 Transform:
   m_ObjectHideFlags: 0
@@ -744,10 +744,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 769552131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4722ca87364ceea4bbe7c91fa24d4c58, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dd14f9de1c6555468caee927de6df4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parkListElement: {fileID: 308604174}
+  _nearbyPlacesListElement: {fileID: 308604174}
 --- !u!114 &769552135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,6 +760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4a4d795825ac24ab2127cc1e13cc5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _updateInterval: 2
+  _avatar: {fileID: 0}
 --- !u!21 &804753981
 Material:
   serializedVersion: 6
@@ -2559,9 +2561,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710803772, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_Text
+      value: Display Nearby Places
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956317401, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_Name
+      value: NearbyPlacesButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1024355850585036097, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_Name
-      value: ParksCanvas
+      value: PlacesCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1024355850585036101, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_Pivot.x
@@ -2647,9 +2657,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1024355850987572251, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_Name
+      value: PlacesPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 3244110137753108589, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00037448824
+      value: 0.00011966196
       objectReference: {fileID: 0}
     - target: {fileID: 4584798273998368465, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchorMax.x

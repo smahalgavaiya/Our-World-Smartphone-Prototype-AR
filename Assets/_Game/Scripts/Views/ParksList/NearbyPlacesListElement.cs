@@ -2,17 +2,18 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using OurWorld.Scripts.DataModels;
+using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OurWorld.Scripts.Views.ParksList
 {
-    public class ParkListElement : MonoBehaviour
+    public class NearbyPlacesListElement : MonoBehaviour
     {
         public event Action OnOpenedEvent;
         public event Action OnClosedEvent;
 
-        [SerializeField] private ParkDisplayElement _elementPrefab;
+        [SerializeField] private PlaceDisplayElement _elementPrefab;
 
         [SerializeField] private ScrollRect _targetScrollRect;
 
@@ -20,13 +21,13 @@ namespace OurWorld.Scripts.Views.ParksList
 
         [Space, SerializeField] private AnimationProperties _animationProperties;
 
-        private Dictionary<ParkData, ParkDisplayElement> _elementsDictionary = new Dictionary<ParkData, ParkDisplayElement>();
+        private Dictionary<IPointOfInterest, PlaceDisplayElement> _elementsDictionary = new Dictionary<IPointOfInterest, PlaceDisplayElement>();
 
         private Tween _panelTween;
 
         private bool _active;
 
-        private Action<ParkData> _onParkSelected;
+        private Action<IPointOfInterest> _onPlaceSelected;
 
         private RectTransform RectTransform => transform as RectTransform;
 
@@ -41,14 +42,14 @@ namespace OurWorld.Scripts.Views.ParksList
             _closeButton.onClick.RemoveListener(Close);
         }
 
-        public void Initialize(List<ParkData> nearbyParks, Action<ParkData> onParkSelected)
+        public void Initialize(List<IPointOfInterest> nearbyParks, Action<IPointOfInterest> onPlaceSelected)
         {
-            _onParkSelected = onParkSelected;
+            _onPlaceSelected = onPlaceSelected;
             foreach (var parkData in nearbyParks)
             {
                 var element = Instantiate(_elementPrefab, _targetScrollRect.content);
 
-                element.Initialize(parkData, OnParkButtonClick);
+                element.Initialize(parkData, OnPlaceButtonClick);
 
                 _elementsDictionary.Add(parkData, element);
             }
@@ -82,9 +83,9 @@ namespace OurWorld.Scripts.Views.ParksList
         {
 
         }
-        private void OnParkButtonClick(ParkData elementData)
+        private void OnPlaceButtonClick(IPointOfInterest elementData)
         {
-            _onParkSelected?.Invoke(elementData);
+            _onPlaceSelected?.Invoke(elementData);
         }
 
         #region Panel Animations

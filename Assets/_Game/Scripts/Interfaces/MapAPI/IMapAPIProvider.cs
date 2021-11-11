@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
+using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 
 namespace OurWorld.Scripts.Interfaces.MapAPI
 {
     public interface IMapAPIProvider
     {
         IDirectionsAPIProvider DirectionsAPI { get; }
-        
-        UniTask<List<ParkData>> GetNearbyParksAsync(Geolocation playerLocation, float radius);
+
+        IForwardGeocodingProvider GeocodingProvider {get;}
     }
 }

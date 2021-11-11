@@ -5,15 +5,20 @@ using Feature =  Mapbox.Geocoding.Feature;
 
 namespace OurWorld.Scripts.Helpers.DataMappers
 {
-    public class ParkDataMapper : IDataMapper<Feature, ParkData>
+    public class POIDataMapper : IDataMapper<Feature, POIData>
     {
-        public ParkData MapObject(Feature sourceObject)
+        public POIData MapObject(Feature sourceObject)
         {
             string placeName = sourceObject.PlaceName.Split(',')[0];
 
             Geolocation centerCordinates = new Geolocation(sourceObject.Center.y,sourceObject.Center.x);
 
-            return new ParkData(placeName,centerCordinates);
+            string type = "";
+            if(sourceObject.Properties.TryGetValue("category",out object categories))
+            {
+                type = (string)categories;
+            }
+            return new POIData(placeName,type,centerCordinates);
         }
     }
 }

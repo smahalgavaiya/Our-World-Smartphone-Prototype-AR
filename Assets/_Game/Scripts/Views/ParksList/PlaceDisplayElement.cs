@@ -1,21 +1,21 @@
 using System;
-using Mapbox.Utils;
 using OurWorld.Scripts.DataModels;
+using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OurWorld.Scripts.Views.ParksList
 {
-    public class ParkDisplayElement : MonoBehaviour
+    public class PlaceDisplayElement : MonoBehaviour
     {
 
         [SerializeField] private TMP_Text _placeNameText, _distanceText;
         [SerializeField] private Button _interactionButton;
 
-        private ParkData _data;
+        private POIData _data;
 
-        private Action<ParkData> _onClickAction;
+        private Action<POIData> _onClickAction;
 
 
         #region Engine Methods
@@ -29,13 +29,13 @@ namespace OurWorld.Scripts.Views.ParksList
         }
         #endregion
 
-        public void Initialize(ParkData data, Action<ParkData> onClickAction)
+        public void Initialize(IPointOfInterest data, Action<IPointOfInterest> onClickAction)
         {
-            _data = data;
+            _data = data as POIData;
             _onClickAction = onClickAction;
             SetVisuals(_data);
         }
-        private void SetVisuals(ParkData data)
+        private void SetVisuals(POIData data)
         {
             _placeNameText.text = data.Name;
             var distanceText = data.Distance < 1 ? $"{(data.Distance * 1000):F0}m" : $"{data.Distance:F2}Km"; 

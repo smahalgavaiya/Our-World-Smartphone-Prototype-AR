@@ -9,7 +9,7 @@ namespace OurWorld.Scripts.Controllers
     {
         public static event Action GameInitialized;
 
-        [SerializeField] private ParkQuestController _parkQuestController;
+        [SerializeField] private NearbyPlacesController _nearbyPlacesController;
 
         private bool _initialized;     
         public bool Initialized => _initialized;
@@ -25,7 +25,7 @@ namespace OurWorld.Scripts.Controllers
         {
             _mapApiProvider = new MapboxAPIProvider();
 
-            _parkQuestController.Initialize(_mapApiProvider);
+            _nearbyPlacesController.Initialize(_mapApiProvider);
 
             _initialized = true;
 

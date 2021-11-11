@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000012918562}
+  m_AnchoredPosition: {x: 0, y: 0.00005201074}
   m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6288939734805319680
@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 4843098613034435815}
   - component: {fileID: 5548745624141522455}
   m_Layer: 5
-  m_Name: ParksPanel
+  m_Name: PlacePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -558,19 +558,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4843098613034435813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a470e8b9a0fe4cab93fe29e6b3441, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c2319e9ea6549409e7db0ae59628eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _elementPrefab: {fileID: 6736467657311408947, guid: 581d8548e04369044ae47f944d06a219, type: 3}
+  _elementPrefab: {fileID: 3725174914216906807, guid: 581d8548e04369044ae47f944d06a219, type: 3}
   _targetScrollRect: {fileID: 3406329093854763527}
   _closeButton: {fileID: 1835946902302026052}
   _animationProperties:
-    OpeningTime: 1
+    OpeningTime: 0.5
     ClosingTime: 0.5
     OpeningEase: 2
     ClosingEase: 2
     OpenedPosition: {x: 0, y: 0, z: 0}
-    ClosedPosition: {x: 0, y: 0, z: 0}
+    ClosedPosition: {x: 0, y: 600, z: 0}
 --- !u!1 &4897226348059319955
 GameObject:
   m_ObjectHideFlags: 0
