@@ -40,10 +40,13 @@ public class AvatarInfoManager : MonoBehaviour
         }
     }
 
-    public void SetAvatarNameAndLevel(string name, string level,string jwtToken)
+    public void SetAvatarNameAndLevel(string name, string level, string jwtToken)
     {
         _avatarName = name;
         _avatarLevel = level;
         _jwtToken = jwtToken;
+
+        PlayerPrefs.SetString("AvatarName", name);
+        PlayerPrefs.SetString("AvatarLevel", level);
     }
 }

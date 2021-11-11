@@ -12,6 +12,7 @@ public class Authentication : MonoBehaviour
     private const string OASIS_REGISTER_AVATAR = "https://api.oasisplatform.world/api/avatar/register";
     private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/avatar/GetTerms";
     private const string OASIS_AUTHENTICATE = "https://api.oasisplatform.world/api/avatar/authenticate";
+    private const string OASIS_AUTOLOGIN = "https://api.oasisplatform.world/api/Avatar/GetAvatarByJwt";
 
     [Header("Authentication")]
     public TMP_InputField _signUpFirstName;
@@ -204,8 +205,37 @@ public class Authentication : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GetTerms());
+        AutoLogin();
     }
+
+    private void AutoLogin()
+    {
+        if (PlayerPrefs.GetString("JWTToken", "") != "")
+            StartCoroutine(LoginWithJWT(PlayerPrefs.GetString("JWTToken")));
+        else
+            GetTerms();
+    }
+
+    public IEnumerator LoginWithJWT(string jwt)
+    {
+        using var request = new UnityWebRequest(OASIS_AUTOLOGIN);
+        request.method = UnityWebRequest.kHttpVerbGET;
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Authorization", $"Bearer {jwt}");
+        ShowWarningInfoPanel(true);
+        yield return request.SendWebRequest();
+
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        if (data["isError"].Value == "true")
+            SetInfo(ShowWarning.SignInFail, data["message"].Value);
+        else
+        {
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value);
+            SetInfo(ShowWarning.SignInSuccess);
+        }
+    }
+
     private IEnumerator GetTerms()
     {
         using var request = UnityWebRequest.Get(OASIS_GET_TERMS);
@@ -215,7 +245,7 @@ public class Authentication : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
             Debug.Log(request.error);
         else
-            _termsText.text = data["termsText"].Value;
+            _termsText.text = data["result"].Value;
     }
 
     //Sign Up
@@ -346,12 +376,12 @@ public class Authentication : MonoBehaviour
         yield return request.SendWebRequest();
 
         JSONNode data = JSON.Parse(request.downloadHandler.text);
-        Debug.Log(data);
         if (data["isError"].Value == "true")
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value,data["result"]["avatar"]["jwtToken"].Value);
+            PlayerPrefs.SetString("JWTToken", data["result"]["avatar"]["jwtToken"].Value);
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }
