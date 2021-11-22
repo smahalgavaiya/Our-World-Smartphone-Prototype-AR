@@ -231,7 +231,6 @@ public class Authentication : MonoBehaviour
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }
@@ -381,7 +380,7 @@ public class Authentication : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("JWTToken", data["result"]["avatar"]["jwtToken"].Value);
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value);
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value, data["result"]["avatar"]["avatarId"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }

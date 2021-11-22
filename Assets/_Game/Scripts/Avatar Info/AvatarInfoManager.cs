@@ -40,7 +40,7 @@ public class AvatarInfoManager : MonoBehaviour
         }
     }
 
-    public void SetAvatarNameAndLevel(string name, string level, string jwtToken)
+    public void SetAvatarNameAndLevel(string name, string level, string jwtToken, string avatarId)
     {
         _avatarName = name;
         _avatarLevel = level;
@@ -48,5 +48,6 @@ public class AvatarInfoManager : MonoBehaviour
 
         PlayerPrefs.SetString("AvatarName", name);
         PlayerPrefs.SetString("AvatarLevel", level);
+        PlayerPrefs.SetString("AvatarId", avatarId);
     }
 }
