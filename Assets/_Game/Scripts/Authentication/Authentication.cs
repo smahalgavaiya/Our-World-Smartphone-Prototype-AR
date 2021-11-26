@@ -47,6 +47,8 @@ public class Authentication : MonoBehaviour
     public TextMeshProUGUI _headerText;
     public TextMeshProUGUI _bodyText;
 
+    string avatarId;
+
     private struct RegisterData
     {
         public string title;
@@ -351,7 +353,9 @@ public class Authentication : MonoBehaviour
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value,data["result"]["avatar"]["jwtToken"].Value);
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value,data["result"]["avatar"]["jwtToken"].Value, data["result"]["avatar"]["avatarId"].Value);
+            avatarId = data["result"]["avatar"]["avatarId"].Value;
+            StartCoroutine(GetAvatarDetial());
             SetInfo(ShowWarning.SignInSuccess);
         }
     }
@@ -363,5 +367,26 @@ public class Authentication : MonoBehaviour
             password = _signInPassword.text
         };
         return System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(authenticateData));
+    }
+
+    private IEnumerator GetAvatarDetial()
+    {
+        string GetAvatarDetialApi = "https://api.oasisplatform.world/api/Avatar/GetAvatarDetail/id=" + avatarId;
+        Debug.Log(GetAvatarDetialApi);
+        using var request = new UnityWebRequest(GetAvatarDetialApi);
+        request.SetRequestHeader("Authorization", "Bearer " + AvatarInfoManager.Instance.JwtToken);
+        request.method = UnityWebRequest.kHttpVerbGET;
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.SendWebRequest();
+
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        Debug.Log(data);
+        if (data["isError"].Value == "true")
+            SetInfo(ShowWarning.SignInFail, data["message"].Value);
+        else
+        {
+            AvatarInfoManager.Instance.SetAvatarWalletAddress(data["result"]["avatar"]["avatarId"].Value);
+        }
     }
 }

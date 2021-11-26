@@ -5,6 +5,9 @@ public class AvatarInfoManager : MonoBehaviour
     private string _avatarName;
     private string _avatarLevel;
     public string _jwtToken;
+    public string _walletAddress;
+    public string _avatarId;
+
 
     public static AvatarInfoManager Instance = null;
     private void Start()
@@ -15,6 +18,22 @@ public class AvatarInfoManager : MonoBehaviour
             Instance = this;
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    public string WalletAddress
+    {
+        get
+        {
+            return _walletAddress;
+        }
+    }
+
+    public string AvatarId
+    {
+        get
+        {
+            return _avatarId;
+        }
     }
 
     public string AvatarName
@@ -40,10 +59,16 @@ public class AvatarInfoManager : MonoBehaviour
         }
     }
 
-    public void SetAvatarNameAndLevel(string name, string level,string jwtToken)
+    public void SetAvatarNameAndLevel(string name, string level,string jwtToken,string avatarId)
     {
         _avatarName = name;
         _avatarLevel = level;
         _jwtToken = jwtToken;
+        _avatarId = avatarId;
+    }
+
+    public void SetAvatarWalletAddress(string walletAddress)
+    {
+        _walletAddress = walletAddress;
     }
 }
