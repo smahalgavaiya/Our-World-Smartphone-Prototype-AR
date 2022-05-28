@@ -32,7 +32,10 @@ namespace GoogleARCore
         OK,
 
         /// <summary>
-        /// The <cref="ARCoreRecordingConfig"> was null or invalid.
+        /// When using <see cref="Session.StartRecording(ARCoreRecordingConfig)"/>, this means the
+        /// <see cref="ARCoreRecordingConfig"/> was null or invalid.
+        /// When using <see cref="Session.RecordTrackData(Guid, byte[])"/>, this means the track id
+        /// or sample given are null or invalid.
         /// </summary>
         ErrorInvalidArgument,
 
@@ -42,7 +45,13 @@ namespace GoogleARCore
         ErrorRecordingFailed,
 
         /// <summary>
-        /// A recording is already in progress.
+        /// When using <see cref="Frame.StartRecording(ARCoreRecordingConfig)"/>, this means a
+        /// recording is already in progress.
+        /// When using <see cref="Frame.RecordTrackData(Guid, byte[])"/>, this means either
+        /// <see cref="RecordingStatus"/> is not currently <c>RecordingStatus.OK</c> or the system
+        /// is currently under excess load for images to be produced. The system should not be under
+        /// such excess load for more than a few frames and an app should try to record the data
+        /// again during  the next frame.
         /// </summary>
         ErrorIllegalState,
     }

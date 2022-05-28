@@ -31,9 +31,8 @@ namespace GoogleARCoreInternal
     using GoogleARCore;
     using UnityEditor;
     using UnityEditor.Build;
-    using UnityEditor.SceneManagement;
+    using UnityEditor.Callbacks;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
 
     internal class ManifestModificationPreprocessBuild : PreprocessBuildBase
     {
@@ -65,6 +64,27 @@ namespace GoogleARCoreInternal
             return new XDocument(mergedRoot);
         }
 
+        /// <summary>
+        /// Callback after the build is done.
+        /// </summary>
+        /// <param name="target">Build target platform.</param>
+        /// <param name="pathToBuiltProject">Path to build project.</param>
+        [PostProcessBuild(1)]
+        public static void OnPostprocessBuild(
+            UnityEditor.BuildTarget target, string pathToBuiltProject)
+        {
+            if (target == UnityEditor.BuildTarget.Android)
+            {
+                Debug.Log("Cleaning generated aar for customized manifest.");
+                string cachedCurrentDirectory = Directory.GetCurrentDirectory();
+                string pluginsFolderPath = Path.Combine(cachedCurrentDirectory,
+                    AssetDatabase.GUIDToAssetPath(_pluginsFolderGuid));
+                string customizedManifestAarPath =
+                    Path.Combine(pluginsFolderPath, "customized_manifest.aar");
+                File.Delete(customizedManifestAarPath);
+            }
+        }
+
         public override void OnPreprocessBuild(BuildTarget target, string path)
         {
             if (target == BuildTarget.Android)
@@ -92,44 +112,6 @@ namespace GoogleARCoreInternal
                     }
                 }
             }
-        }
-
-        private static Dictionary<ARCoreSessionConfig, string> GetAllSessionConfigs()
-        {
-            Dictionary<ARCoreSessionConfig, string> sessionToPathMap =
-                new Dictionary<ARCoreSessionConfig, string>();
-            EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
-            foreach (EditorBuildSettingsScene editorScene in EditorBuildSettings.scenes)
-            {
-                if (editorScene.enabled)
-                {
-                    Scene scene = SceneManager.GetSceneByPath(editorScene.path);
-                    if (!scene.isLoaded)
-                    {
-                        scene = EditorSceneManager.OpenScene(
-                            editorScene.path, OpenSceneMode.Additive);
-                    }
-
-                    foreach (GameObject gameObject in scene.GetRootGameObjects())
-                    {
-                        ARCoreSession sessionComponent =
-                            (ARCoreSession)gameObject.GetComponentInChildren(
-                                typeof(ARCoreSession));
-                        if (sessionComponent != null)
-                        {
-                            if (!sessionToPathMap.ContainsKey(sessionComponent.SessionConfig))
-                            {
-                                sessionToPathMap.Add(
-                                    sessionComponent.SessionConfig, editorScene.path);
-                            }
-
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return sessionToPathMap;
         }
 
         private static XDocument GetDefaultAndroidManifest()
@@ -184,7 +166,7 @@ namespace GoogleARCoreInternal
             // This function causes build error in 2020.2 if the current directory is changed.
             // So do the check first here.
             CheckCompatibilityWithAllSesssionConfigs(
-                        ARCoreProjectSettings.Instance, GetAllSessionConfigs());
+                ARCoreProjectSettings.Instance, AndroidDependenciesHelper.GetAllSessionConfigs());
 
             string cachedCurrentDirectory = Directory.GetCurrentDirectory();
             string pluginsFolderPath = Path.Combine(cachedCurrentDirectory,

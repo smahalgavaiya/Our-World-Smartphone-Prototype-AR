@@ -40,6 +40,23 @@ namespace GoogleARCore
         //// @endcond
 
         /// <summary>
+        /// Gets the timestamp of the frame.
+        /// </summary>
+        public static long Timestamp
+        {
+            get
+            {
+                var nativeSession = LifecycleManager.Instance.NativeSession;
+                if (nativeSession == null)
+                {
+                    return 0L;
+                }
+
+                return nativeSession.FrameApi.GetTimestamp();
+            }
+        }
+
+        /// <summary>
         /// Gets the pose of the ARCore device for the frame in Unity world coordinates.
         /// </summary>
         public static Pose Pose
@@ -89,10 +106,10 @@ namespace GoogleARCore
         /// <param name="x">Horizontal touch position in Unity screen coordinates.</param>
         /// <param name="y">Vertical touch position in Unity screen coordinates.</param>
         /// <param name="filter">A filter bitmask where each set bit in
-        /// <see cref="TrackableHitFlags"/>
+        /// <c><see cref="TrackableHitFlags"/></c>
         /// represents a category of raycast hits the method call should consider valid.</param>
-        /// <param name="hitResult">A <see cref="TrackableHit"/> that will be set if the raycast is
-        /// successful.</param>
+        /// <param name="hitResult">A <c><see cref="TrackableHit"/></c> that will be set if the
+        /// raycast is successful.</param>
         /// <returns><c>true</c> if the raycast had a hit, otherwise <c>false</c>.</returns>
         [SuppressMemoryAllocationError(IsWarning = true, Reason = "List could be resized")]
         public static bool Raycast(float x, float y, TrackableHitFlags filter,
@@ -118,17 +135,74 @@ namespace GoogleARCore
         }
 
         /// <summary>
+        /// Writes a data sample in the specified external data track. The external samples recorded
+        /// using this API will be muxed into the recorded MP4 dataset in a corresponding additional
+        /// MP4 stream.
+        ///
+        /// For smooth playback of the MP4 on video players and for future compatibility
+        /// of the MP4 datasets with ARCore's playback of external data tracks it is
+        /// recommended that the external samples are recorded at a frequency no higher
+        /// than 90kHz.
+        ///
+        /// Additionally, if the external samples are recorded at a frequency lower than
+        /// 1Hz, empty padding samples will be automatically recorded at approximately
+        /// one second intervals to fill in the gaps.
+        ///
+        /// Recording external samples introduces additional CPU and/or I/O overhead and
+        /// may affect app performance.
+        /// </summary>
+        /// <param name="trackId">The unique ID of the track being recorded to. This will be
+        /// the <see cref="TrackData.Id"/> used to configure the track.</param>
+        /// <param name="data">The data being recorded at current time.</param>
+        /// <returns><see cref="RecordingResult"/>.<c>OK</c> if the data was recorded successfully,
+        /// or a different <see cref="RecordingResult"/> if there was an error.
+        /// </returns>
+        public static RecordingResult RecordTrackData(Guid trackId, byte[] data)
+        {
+            var nativeSession = LifecycleManager.Instance.NativeSession;
+            if (nativeSession == null)
+            {
+                return RecordingResult.ErrorRecordingFailed;
+            }
+
+            return nativeSession.FrameApi.RecordTrackData(trackId, data);
+        }
+
+        /// <summary>
+        /// Gets the set of data recorded to the given track available during playback on this
+        /// <c><see cref="Frame"/></c>.
+        /// Note, currently playback continues internally while the session is paused. Therefore, on
+        /// pause/resume track data discovered internally will be discarded to prevent stale track
+        /// data from flowing through when the session resumed.
+        /// Note, if the app's frame rate is higher than ARCore's frame rate, subsequent
+        /// <c><see cref="Frame"/></c> objects may reference the same underlying ARCore Frame, which
+        /// would mean the list of <c><see cref="TrackData"/></c> returned on those Frame objects
+        /// would be the same. Use <c><see cref="TrackData.FrameTimestamp"/></c> to determine
+        /// whether two Frame objects represent the same underlying ARCore frame.
+        /// </summary>
+        /// <param name="trackId">The ID of the track being queried.</param>
+        /// <returns>Returns a list of <see cref="TrackData"/>. Will be empty if
+        /// none are available.
+        /// </returns>
+        public static List<TrackData> GetUpdatedTrackData(Guid trackId)
+        {
+            var nativeSession = LifecycleManager.Instance.NativeSession;
+            return nativeSession.FrameApi.GetUpdatedTrackData(trackId);
+        }
+
+        /// <summary>
         /// Performs a ray cast that can return a result before ARCore establishes full tracking.
         ///
         /// The pose and apparent scale of attached objects depends on the <see
         /// cref="InstantPlacementPoint"/> tracking method and the provided
         /// approximateDistanceMeters. A discussion of the different tracking methods and the
-        /// effects of apparent object scale are described in <see cref="InstantPlacementPoint"/>.
+        /// effects of apparent object scale are described in
+        /// <c><see cref="InstantPlacementPoint"/></c>.
         ///
-        /// This function will succeed only if <see cref="InstantPlacementMode"/> is
+        /// This function will succeed only if <c><see cref="InstantPlacementMode"/></c> is
         /// <c>InstantPlacementMode.LocalYUp</c> in the ARCore session configuration, the ARCore
-        /// session status is <see cref="SessionStatus"/>.<c>Tracking</c>, and there are sufficient
-        /// feature points to track the point in screen space.
+        /// session status is <c><see cref="SessionStatus"/></c>.<c>Tracking</c>, and there are
+        /// sufficient feature points to track the point in screen space.
         ///
         /// </summary>
         /// <param name="x">Horizontal touch position in Unity screen coordinates.</param>
@@ -137,8 +211,8 @@ namespace GoogleARCore
         /// cref="InstantPlacementPoint"/>. This is only used while the tracking method for the
         /// returned point is
         /// <c>InstantPlacementPointTrackingMethod.ScreenspaceWithApproximateDistance</c>.</param>
-        /// <param name="hitResult">If successful a <see cref="HitResult"/> with a trackable of type
-        /// <see cref="InstantPlacementPoint"/>.</param>
+        /// <param name="hitResult">If successful a <c><see cref="HitResult"/></c> with a trackable
+        /// of type <c><see cref="InstantPlacementPoint"/></c>.</param>
         /// <returns><c>true</c> if successful, otherwise <c>false</c>.</returns>
         [SuppressMemoryAllocationError(IsWarning = true, Reason = "List could be resized")]
         public static bool RaycastInstantPlacement(float x, float y,
@@ -168,11 +242,11 @@ namespace GoogleARCore
         /// </summary>
         /// <param name="origin">The starting point of the ray in world coordinates.</param>
         /// <param name="direction">The direction of the ray.</param>
-        /// <param name="hitResult">A <see cref="TrackableHit"/> that will be set if the raycast is
-        /// successful.</param>
+        /// <param name="hitResult">A <c><see cref="TrackableHit"/></c> that will be set if the
+        /// raycast is successful.</param>
         /// <param name="maxDistance">The max distance the ray should check for collisions.</param>
         /// <param name="filter">A filter bitmask where each set bit in
-        /// <see cref="TrackableHitFlags"/>
+        /// <c><see cref="TrackableHitFlags"/></c>
         /// represents a category of raycast hits the method call should consider valid.</param>
         /// <returns><c>true</c> if the raycast had a hit, otherwise <c>false</c>.</returns>
         [SuppressMemoryAllocationError(IsWarning = true, Reason = "List could be resized")]
@@ -210,10 +284,10 @@ namespace GoogleARCore
         /// <param name="x">Horizontal touch position in Unity screen coordinates.</param>
         /// <param name="y">Vertical touch position in Unity screen coordinates.</param>
         /// <param name="filter">A filter bitmask where each set bit in
-        /// <see cref="TrackableHitFlags"/>
+        /// <c><see cref="TrackableHitFlags"/></c>
         /// represents a category of raycast hits the method call should consider valid.</param>
-        /// <param name="hitResults">A list of <see cref="TrackableHit"/> that will be set if the
-        /// raycast is successful.</param>
+        /// <param name="hitResults">A list of <c><see cref="TrackableHit"/></c> that will be set
+        /// if the raycast is successful.</param>
         /// <returns><c>true</c> if the raycast had a hit, otherwise <c>false</c>.</returns>
         [SuppressMemoryAllocationError(IsWarning = true, Reason = "List could be resized")]
         public static bool RaycastAll(
@@ -236,11 +310,11 @@ namespace GoogleARCore
         /// </summary>
         /// <param name="origin">The starting point of the ray in world coordinates.</param>
         /// <param name="direction">The direction of the ray.</param>
-        /// <param name="hitResults">A list of <see cref="TrackableHit"/> that will be set if the
-        /// raycast is successful.</param>
+        /// <param name="hitResults">A list of <c><see cref="TrackableHit"/></c> that will be set
+        /// if the raycast is successful.</param>
         /// <param name="maxDistance">The max distance the ray should check for collisions.</param>
         /// <param name="filter">A filter bitmask where each set bit in
-        /// <see cref="TrackableHitFlags"/> represents a category
+        /// <c><see cref="TrackableHitFlags"/></c> represents a category
         /// of raycast hits the method call should consider valid.</param>
         /// <returns><c>true</c> if the raycast had a hit, otherwise <c>false</c>.</returns>
         [SuppressMemoryAllocationError(IsWarning = true, Reason = "List could be resized")]
@@ -479,7 +553,7 @@ namespace GoogleARCore
 
             /// <summary>
             /// Gets UVs that map the orientation and aspect ratio of
-            /// <see cref="Frame.CameraImage.Texture"/> to those of the device's display.
+            /// <c><see cref="Frame.CameraImage.Texture"/></c> to those of the device's display.
             /// </summary>
             public static DisplayUvCoords TextureDisplayUvs
             {
@@ -526,7 +600,8 @@ namespace GoogleARCore
 
             /// <summary>
             /// Gets UVs that map the orientation and aspect ratio of the image returned by
-            /// <see cref="Frame.CameraImage.AcquireCameraImageBytes"/> to that of the device's display.
+            /// <c><see cref="Frame.CameraImage.AcquireCameraImageBytes"/></c> to that of the
+            /// device's display.
             /// </summary>
             public static DisplayUvCoords ImageDisplayUvs
             {
@@ -688,11 +763,15 @@ namespace GoogleARCore
             /// <summary>
             /// Updates the input texture with the latest depth data from ARCore.
             /// If there is no new data, or an error occurs, the contents of the
-            /// texture will remain unchanged. See <see cref="DepthStatus"/> for a
+            /// texture will remain unchanged. See <c><see cref="DepthStatus"/></c> for a
             /// complete list of reasons.
+            ///
+            /// The actual resolution of the depth image depends on the device and its display
+            /// aspect ratio, with sizes typically around 160x120 pixels, with higher resolutions up
+            /// to 640x480 on some devices. These sizes may change in the future.
             /// </summary>
             /// <param name="depthTexture">The texture to hold the depth data.</param>
-            /// <returns><see cref="DepthStatus"/>.<c>Success</c> if
+            /// <returns><c><see cref="DepthStatus"/></c>.<c>Success</c> if
             /// successful.</returns>
             public static DepthStatus UpdateDepthTexture(ref Texture2D depthTexture)
             {
@@ -705,6 +784,94 @@ namespace GoogleARCore
                 }
 
                 return nativeSession.FrameApi.UpdateDepthTexture(ref depthTexture);
+            }
+
+            /// <summary>
+            /// Attempts to acquire a "raw", mostly unfiltered, depth image that corresponds to the
+            /// current frame.
+            ///
+            /// The raw depth image is sparse and does not provide valid depth for all pixels.
+            /// Pixels without a valid depth estimate have a pixel value of 0 and a corresponding
+            /// confidence value of 0 (see <c><see cref="UpdateRawDepthConfidenceTexture"/></c>).
+            ///
+            /// The depth image has a single 16-bit plane at index 0, stored in little-endian
+            /// format. Each pixel contains the distance in millimeters to the camera plane.
+            /// Currently, the three most significant bits are always set to 000.
+            /// The remaining thirteen bits express values ranging from 0 millimeters to 8191
+            /// millimeters.
+            ///
+            /// The actual resolution of the depth image depends on the device and its display
+            /// aspect ratio, with sizes typically around 160x120 pixels, with higher resolutions up
+            /// to 640x480 on some devices. These sizes may change in the future. The resolution of
+            /// the textures set by <c><see cref="UpdateDepthTexture"/></c>,
+            /// <c><see cref="UpdateRawDepthTexture"/></c> and <c><see
+            /// cref="UpdateRawDepthConfidenceTexture"/></c> will be the same on a device.
+            ///
+            /// The output depth image can express depth values from 0 millimeters to 8191
+            /// millimeters. Optimal depth accuracy is achieved between 50 millimeters and 5000
+            /// millimeters from the camera. Error increases quadratically as distance from the
+            /// camera increases. Depth captured on each frame is used to improve the accuracy for
+            /// subsequent frames, reducing the error introduced by camera distance.
+            ///
+            /// If an up-to-date depth image isn't ready for the current frame, a 3D reprojection
+            /// of the most recent depth image to the current frame will be given instead. An
+            /// up-to-date depth image should typically become available again within a few frames.
+            ///
+            /// The timestamp of this image is equal to the timestamp of the latest camera image
+            /// that contributed to the depth estimation. If the timestamp of the raw depth image is
+            /// different from the timestamp of the frame, it means that the camera image of this
+            /// frame did not take part in the depth estimation and the depth has been reprojected
+            /// from a previous frame.
+            /// </summary>
+            /// <param name="depthTexture">The texture to hold the depth data.</param>
+            /// <returns><c><see cref="DepthStatus"/></c>.<c>Success</c> if successful.</returns>
+            public static DepthStatus UpdateRawDepthTexture(ref Texture2D depthTexture)
+            {
+                var nativeSession = LifecycleManager.Instance.NativeSession;
+                var sessionComponent = LifecycleManager.Instance.SessionComponent;
+                if (nativeSession == null || sessionComponent == null ||
+                    sessionComponent.SessionConfig.DepthMode == DepthMode.Disabled)
+                {
+                    return DepthStatus.InternalError;
+                }
+
+                return nativeSession.FrameApi.UpdateRawDepthTexture(ref depthTexture);
+            }
+
+            /// <summary>
+            /// Attempts to acquire the confidence image corresponding to the raw depth image of the
+            /// current frame.
+            ///
+            /// Each pixel is an 8-bit unsigned integer representing the estimated confidence of the
+            /// corresponding pixel in the raw depth image. The confidence value is between 0 and
+            /// 255, inclusive, with 0 representing the lowest confidence and 255 representing the
+            /// highest confidence in the measured depth value. Pixels without a valid depth
+            /// estimate have a confidence value of 0 and a corresponding depth value of 0 (see <see
+            /// cref="UpdateRawDepthTexture"/>).
+            ///
+            /// The actual resolution of the depth image depends on the device and its display
+            /// aspect ratio, with sizes typically around 160x120 pixels, with higher resolutions up
+            /// to 640x480 on some devices. These sizes may change in the future. The resolution of
+            /// the textures set by <c><see cref="UpdateDepthTexture"/></c>,
+            /// <c><see cref="UpdateRawDepthTexture"/></c> and <see
+            /// cref="UpdateRawDepthConfidenceTexture"/> will be the same on a device.
+            ///
+            /// </summary>
+            /// <param name="confidenceTexture">The texture to hold the depth data.</param>
+            /// <returns><c><see cref="DepthStatus"/></c>.<c>Success</c> if successful.</returns>
+            public static DepthStatus UpdateRawDepthConfidenceTexture(
+                ref Texture2D confidenceTexture)
+            {
+                var nativeSession = LifecycleManager.Instance.NativeSession;
+                var sessionComponent = LifecycleManager.Instance.SessionComponent;
+                if (nativeSession == null || sessionComponent == null ||
+                    sessionComponent.SessionConfig.DepthMode == DepthMode.Disabled)
+                {
+                    return DepthStatus.InternalError;
+                }
+
+                return nativeSession.FrameApi.UpdateRawDepthConfidenceTexture(
+                    ref confidenceTexture);
             }
         }
 

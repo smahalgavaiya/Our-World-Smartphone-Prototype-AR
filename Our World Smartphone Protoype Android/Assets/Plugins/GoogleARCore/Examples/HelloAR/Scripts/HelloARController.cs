@@ -74,6 +74,11 @@ namespace GoogleARCore.Examples.HelloAR
         public GameObject GameObjectPointPrefab;
 
         /// <summary>
+        /// A prefab to place when a raycast from a user touch hits a depth point.
+        /// </summary>
+        public GameObject GameObjectDepthPointPrefab;
+
+        /// <summary>
         /// The rotation in degrees need to apply to prefab when it is placed.
         /// </summary>
         private const float _prefabRotation = 180.0f;
@@ -133,23 +138,21 @@ namespace GoogleARCore.Examples.HelloAR
             // Raycast against the location the player touched to search for planes.
             TrackableHit hit;
             bool foundHit = false;
-            if (InstantPlacementMenu.IsInstantPlacementEnabled())
+            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
+                TrackableHitFlags.FeaturePointWithSurfaceNormal;
+            // Allows the depth image to be queried for hit tests.
+            raycastFilter |= TrackableHitFlags.Depth;
+            foundHit = Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit);
+            if (!foundHit && InstantPlacementMenu.IsInstantPlacementEnabled())
             {
                 foundHit = Frame.RaycastInstantPlacement(
                     touch.position.x, touch.position.y, 1.0f, out hit);
             }
-            else
-            {
-                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-                    TrackableHitFlags.FeaturePointWithSurfaceNormal;
-                foundHit = Frame.Raycast(
-                    touch.position.x, touch.position.y, raycastFilter, out hit);
-            }
 
             if (foundHit)
             {
-                // Use hit pose and camera pose to check if hittest is from the
-                // back of the plane, if it is, no need to create the anchor.
+                // Use hit pose and camera pose to check if hit test is from the
+                // back of the plane, if it is, there is no need to create the anchor.
                 if ((hit.Trackable is DetectedPlane) &&
                     Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position,
                         hit.Pose.rotation * Vector3.up) < 0)
@@ -173,6 +176,10 @@ namespace GoogleARCore.Examples.HelloAR
                     else if (hit.Trackable is FeaturePoint)
                     {
                         prefab = GameObjectPointPrefab;
+                    }
+                    else if (hit.Trackable is DepthPoint)
+                    {
+                        prefab = GameObjectDepthPointPrefab;
                     }
                     else if (hit.Trackable is DetectedPlane)
                     {

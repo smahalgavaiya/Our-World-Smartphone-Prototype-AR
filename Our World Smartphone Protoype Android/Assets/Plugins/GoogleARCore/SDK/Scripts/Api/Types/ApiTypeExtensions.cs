@@ -101,6 +101,8 @@ namespace GoogleARCoreInternal
                     return SessionStatus.ErrorCameraNotAvailable;
                 case ApiPrestoStatus.ErrorIllegalState:
                     return SessionStatus.ErrorIllegalState;
+                case ApiPrestoStatus.ErrorInvalidCameraConfig:
+                    return SessionStatus.ErrorInvalidCameraConfig;
                 default:
                     Debug.LogErrorFormat("Unexpected presto status {0}", prestoStatus);
                     return SessionStatus.FatalError;
@@ -156,19 +158,6 @@ namespace GoogleARCoreInternal
                     return LostTrackingReason.CameraUnavailable;
                 default:
                     return LostTrackingReason.None;
-            }
-        }
-
-        public static DeviceCameraDirection ToDeviceCameraDirection(
-            this ApiCameraConfigFacingDirection direction)
-        {
-            switch (direction)
-            {
-                case ApiCameraConfigFacingDirection.Front:
-                    return DeviceCameraDirection.FrontFacing;
-                case ApiCameraConfigFacingDirection.Back:
-                default:
-                    return DeviceCameraDirection.BackFacing;
             }
         }
 
@@ -395,13 +384,33 @@ namespace GoogleARCoreInternal
             }
         }
 
+        public static RecordingResult ToRecordingResult(
+            this ApiArStatus recordingResult)
+        {
+            switch (recordingResult)
+            {
+                case ApiArStatus.Success:
+                    return RecordingResult.OK;
+                case ApiArStatus.ErrorIllegalState:
+                    return RecordingResult.ErrorIllegalState;
+                case ApiArStatus.ErrorInvalidArgument:
+                    return RecordingResult.ErrorInvalidArgument;
+                case ApiArStatus.ErrorRecordingFailed:
+                    return RecordingResult.ErrorRecordingFailed;
+                default:
+                    Debug.LogErrorFormat("Attempt to record failed with unexpected " +
+                        "status: {0}", recordingResult);
+                    return RecordingResult.ErrorRecordingFailed;
+            }
+        }
+
         public static PlaybackStatus ToPlaybackStatus(
             this ApiPlaybackStatus playbackStatus)
         {
             switch (playbackStatus)
             {
                 case ApiPlaybackStatus.None:
-                  return PlaybackStatus.None;
+                    return PlaybackStatus.None;
                 case ApiPlaybackStatus.OK:
                     return PlaybackStatus.OK;
                 case ApiPlaybackStatus.IOError:
