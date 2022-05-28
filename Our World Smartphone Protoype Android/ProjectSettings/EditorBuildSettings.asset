@@ -17,11 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Wrld/Scenes/UnityWorldSpace.unity
     guid: 091eb113e53a5b041a195b9f93dffce5
-  - enabled: 1
+  - enabled: 0
     path: Assets/DeviceConsole/PrebuiltConsoles/Dark/Dark.unity
     guid: 89bb97f076dbc43ca848babd38d5ece2
-  - enabled: 1
-    path: Assets/Wrld SDK Samples/ARCore Sample/Scene/ARCore Sample Scene.unity
+  - enabled: 0
+    path: Assets/Wrld/Wrld SDK Samples/ARCore Sample/Scene/ARCore Sample Scene.unity
     guid: 12529c56d360346bab669a10743f1217
   - enabled: 0
     path: Assets/Scenes/OASIS Avatar2.unity
@@ -30,13 +30,11 @@ EditorBuildSettings:
     path: Assets/Scenes/OASIS Avatar.unity
     guid: bcaea8e0338d36c4382cd723408704ce
   - enabled: 0
-    path: Assets/Wrld SDK Samples/ARCore Sample/Scene/ARCore Sample Scene With ManoMotion.unity
+    path: Assets/Wrld/Wrld SDK Samples/ARCore Sample/Scene/ARCore Sample Scene With
+      ManoMotion.unity
     guid: 8975b3e5d3f669b40909693d2903bad2
-  - enabled: 1
-    path: Assets/ManoMotionARCore/Scenes/ARCoreManoMotion.unity
-    guid: 1fb5410e2e6e96d42bba1e473d9b14b6
-  - enabled: 1
-    path: Assets/Wrld SDK Samples/ARCore Sample/Scene/ManyEarths.unity
+  - enabled: 0
+    path: Assets/Wrld/Wrld SDK Samples/ARCore Sample/Scene/ManyEarths.unity
     guid: 6455f7bef49872941aced81ab9cf4938
   - enabled: 0
     path: 
