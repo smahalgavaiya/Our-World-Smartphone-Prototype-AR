@@ -68,7 +68,8 @@ namespace OurWorld.Scripts.Navigation.Directions
             while(_activeNavigation != null && _activeNavigation.Active)
             {
                 yield return wait;
-                _activeNavigation.Update();
+                if(_activeNavigation != null)
+                    _activeNavigation.Update();
             }
         }
 
@@ -80,8 +81,8 @@ namespace OurWorld.Scripts.Navigation.Directions
         private void OnDrawGizmos() {
             if(_activeNavigation == null) return;
 
-            var defaultNav = _activeNavigation as DefaultNavigationBehaviour;
-            Gizmos.DrawWireCube(defaultNav.StepBounds.center,defaultNav.StepBounds.size);
+            DefaultNavigationBehaviour defaultNav = _activeNavigation as DefaultNavigationBehaviour;
+           // Gizmos.DrawWireCube(defaultNav.StepBounds.center,defaultNav.StepBounds.size);
         }
     }
 }

@@ -3,6 +3,9 @@ using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.Interfaces.MapAPI.Geocoding;
 using TMPro;
 using UnityEngine;
+
+using OurWorld.Scripts.Navigation.Directions;
+using OurWorld.Scripts.Providers.MapAPIProviders;
 using UnityEngine.UI;
 
 namespace OurWorld.Scripts.Views.ParksList
@@ -13,6 +16,9 @@ namespace OurWorld.Scripts.Views.ParksList
         [SerializeField] private TMP_Text _placeNameText, _distanceText;
         [SerializeField] private Button _interactionButton;
 
+
+        [SerializeField] private DirectionsController TargetScript;
+
         private POIData _data;
 
         private Action<POIData> _onClickAction;
@@ -22,6 +28,10 @@ namespace OurWorld.Scripts.Views.ParksList
         private void OnEnable()
         {
             _interactionButton.onClick.AddListener(OnButtonPressed);
+
+            TargetScript = GameObject.FindObjectOfType<DirectionsController>();
+
+            TargetScript.Initialize(new MapboxDirectionsAPIProvider());
         }
         private void OnDisable()
         {
@@ -44,6 +54,19 @@ namespace OurWorld.Scripts.Views.ParksList
         private void OnButtonPressed()
         {
             _onClickAction?.Invoke(_data);
+
+            Debug.Log("button pressed"+ _data.Geolocation);
+            if (TargetScript.IsNavigating)
+            {
+                Debug.Log("Disposed called and new nav");
+                TargetScript.Dispose();
+                TargetScript.CreateDirectionsForTarget(_data.Geolocation);
+            }
+            else
+            {
+                Debug.Log("New navigation called");
+                TargetScript.CreateDirectionsForTarget(_data.Geolocation);
+            }
         }
     }
 }

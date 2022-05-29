@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _updateInterval: 2
-  _avatar: {fileID: 0}
+  _avatar: {fileID: 969864641}
 --- !u!21 &804753981
 Material:
   serializedVersion: 6
@@ -1126,6 +1126,11 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _WindowColor: {r: 0.23529412, g: 0.41911763, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!4 &969864641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4961856903295740, guid: 35ce2bb4caba9434db5e656796b632b1, type: 3}
+  m_PrefabInstance: {fileID: 1976683903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!21 &1287623930
 Material:
   serializedVersion: 6
@@ -2661,9 +2666,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlacesPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1893719530191378686, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_Spacing
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893719530191378686, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: m_ChildAlignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3244110137753108589, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00011966196
+      value: -0.0000016021936
       objectReference: {fileID: 0}
     - target: {fileID: 4584798273998368465, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchorMax.x
