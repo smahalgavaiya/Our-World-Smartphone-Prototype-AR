@@ -31,15 +31,15 @@ namespace OurWorld.Scripts.DataModels.MapAPIRequests
         {
             Dictionary<string, string> options = new Dictionary<string, string>();
 
-            options.Add("bbox", new Vector2dBounds(
+           /* options.Add("bbox", new Vector2dBounds(
                 LocationTypeConverter.GeolocationToVector2d(BoundingBox.MinPoint),
                 LocationTypeConverter.GeolocationToVector2d(BoundingBox.MaxPoint)
-            ).ToString());
+            ).ToString());*/
 
             options.Add("proximity", LocationTypeConverter.GeolocationToVector2d(Proximity).ToString());
 
             options.Add("types", string.Join(",", SearchTypes));
-
+            Debug.Log($"{ApiEndpoint}{Mode}{Uri.EscapeUriString(Query)}.json{WebRequestHelper.EncodeQueryStringParameters(options)}");
             return $"{ApiEndpoint}{Mode}{Uri.EscapeUriString(Query)}.json{WebRequestHelper.EncodeQueryStringParameters(options)}";
         }
     }

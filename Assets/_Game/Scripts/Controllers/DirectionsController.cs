@@ -34,6 +34,7 @@ namespace OurWorld.Scripts.Navigation.Directions
                 return;
             }
 
+
             if (Geolocation.TempPlayerPosition.DistanceTo(targetLocation) < 0.1f)
             {
                 Debug.Log("Target distance is lower than 100 meters");

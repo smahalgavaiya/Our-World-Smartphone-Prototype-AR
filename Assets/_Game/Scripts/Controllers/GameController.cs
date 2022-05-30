@@ -18,6 +18,10 @@ namespace OurWorld.Scripts.Controllers
         public static IMapAPIProvider MapAPIProvidder => _mapApiProvider;
         private void Awake()
         {
+           // Initialize();
+        }
+        private void Start()
+        {
             Initialize();
         }
 
