@@ -13,7 +13,7 @@ namespace OurWorld.Scripts.Views.ParksList
     public class PlaceDisplayElement : MonoBehaviour
     {
 
-        [SerializeField] private TMP_Text _placeNameText, _distanceText;
+        [SerializeField] private TMP_Text _placeNameText, _distanceText,_timeText;
         [SerializeField] private Button _interactionButton;
 
 
@@ -50,6 +50,9 @@ namespace OurWorld.Scripts.Views.ParksList
             _placeNameText.text = data.Name;
             var distanceText = data.Distance < 1 ? $"{(data.Distance * 1000):F0}m" : $"{data.Distance:F2}Km"; 
             _distanceText.text = distanceText;
+            float time = data.Distance / 5;//General Walking speed of humans 
+            var timeText = time < 1 ? $"{(time * 60):F0} min" : $"{time:F2} Hours";
+            _timeText.text = timeText;
         }
         private void OnButtonPressed()
         {
