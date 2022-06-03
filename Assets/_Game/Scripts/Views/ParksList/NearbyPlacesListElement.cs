@@ -35,6 +35,8 @@ namespace OurWorld.Scripts.Views.ParksList
 
         public bool Active => _active;
 
+        public Text cycleTime, drivingTime;
+
         private void Awake()
         {
             _closeButton.onClick.AddListener(Close);
@@ -73,7 +75,8 @@ namespace OurWorld.Scripts.Views.ParksList
         public void Close()
         {
             Debug.Log("Closing Panel");
-
+            cycleTime.text = "";
+            drivingTime.text = "";
             CloseAnimation(OnClosed);
 
             void OnClosed()

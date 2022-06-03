@@ -1037,10 +1037,10 @@ RectTransform:
   m_Father: {fileID: 607127863}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 4.28, y: -132.53}
-  m_SizeDelta: {x: 234.601, y: 87.155}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 4.28, y: 45.25}
+  m_SizeDelta: {x: 234.601, y: 87.15503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464328731
 MonoBehaviour:
@@ -2060,10 +2060,10 @@ RectTransform:
   m_Father: {fileID: 607127863}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 4.28, y: -43.577}
-  m_SizeDelta: {x: 234.601, y: 87.155}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 4.28, y: 137.75}
+  m_SizeDelta: {x: 234.601, y: 87.15503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959326239
 MonoBehaviour:
@@ -4390,7 +4390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
+  m_AnchoredPosition: {x: 0, y: -0.000049591064}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &1024355852534915827
@@ -4400,6 +4400,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1683664617, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
+      propertyPath: cycleTime
+      value: 
+      objectReference: {fileID: 959326239}
     - target: {fileID: 1683664617, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: cyclingTime
       value: 
@@ -4606,7 +4610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244110137753108589, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00045260604
+      value: 0.00010660291
       objectReference: {fileID: 0}
     - target: {fileID: 4482973394329495578, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_Color.b
