@@ -8,11 +8,13 @@ using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Interfaces.MapAPI.Directions;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace OurWorld.Scripts.Navigation.Directions
 {
     public class DirectionsController : MonoBehaviour
     {
+        public Text cyclingTime, drivingTime;
         [SerializeField] private float _updateInterval = 2f;
         [SerializeField] private Transform _avatar;
         private IDirectionsAPIProvider _directionsAPIProvider;

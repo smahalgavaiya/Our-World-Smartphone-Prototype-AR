@@ -13,6 +13,8 @@ namespace OurWorld.Scripts.Views.ParksList
         public event Action OnOpenedEvent;
         public event Action OnClosedEvent;
 
+        
+
         [SerializeField] private PlaceDisplayElement _elementPrefab;
 
         [SerializeField] private ScrollRect _targetScrollRect;
@@ -47,6 +49,7 @@ namespace OurWorld.Scripts.Views.ParksList
             _onPlaceSelected = onPlaceSelected;
             foreach (var parkData in nearbyParks)
             {
+                
                 var element = Instantiate(_elementPrefab, _targetScrollRect.content);
 
                 element.Initialize(parkData, OnPlaceButtonClick);

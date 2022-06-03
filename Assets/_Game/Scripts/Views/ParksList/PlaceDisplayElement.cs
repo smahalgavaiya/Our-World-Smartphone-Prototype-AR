@@ -59,6 +59,8 @@ namespace OurWorld.Scripts.Views.ParksList
             _onClickAction?.Invoke(_data);
 
             Debug.Log("button pressed"+ _data.Geolocation);
+            TargetScript.cyclingTime.text = "Cycling" + (_data.Distance / 20).ToString();
+            TargetScript.drivingTime.text = "Driving" + (_data.Distance / 50).ToString();
             if (TargetScript.IsNavigating)
             {
                 Debug.Log("Disposed called and new nav");

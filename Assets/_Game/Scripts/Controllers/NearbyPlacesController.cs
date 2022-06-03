@@ -23,7 +23,7 @@ namespace OurWorld.Scripts.Controllers
             Geolocation playerPosition = Geolocation.TempPlayerPosition;
             Debug.Log(playerPosition);
 
-            IRequest request = new MapBoxForwardGeocodingRequest(playerPosition, playerPosition.GetBoundingBox(1f), new string[] { "poi" }, "park");
+            IRequest request = new MapBoxForwardGeocodingRequest(playerPosition, playerPosition.GetBoundingBox(100f), new string[] { "poi" }, "park");
 
             var response = await _mapApiProvider.GeocodingProvider.POISearchAsync(request);
             _nearbyPlacesListElement.Initialize(response.Places, OnPlaceSelected);
