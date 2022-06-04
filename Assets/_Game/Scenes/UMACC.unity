@@ -57640,7 +57640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   context: {fileID: 759431430}
   umaData: {fileID: 0}
-  defaultRendererAsset: {fileID: 0}
+  defaultRendererAsset: {fileID: 11400000, guid: 21009ec2c0284ac46a3ec05cdc982028, type: 2}
   umaRecipe: {fileID: 11400000, guid: 1d97eb041589729479af9716fd5b42b3, type: 2}
   umaAdditionalRecipes:
   - {fileID: 11400000, guid: 1f292487d7383514f97c491cadfb0442, type: 2}
@@ -57699,7 +57699,7 @@ MonoBehaviour:
   defaultChangeRaceOptions: 8
   cacheCurrentState: 1
   rebuildSkeleton: 0
-  alwaysRebuildSkeleton: 0
+  alwaysRebuildSkeleton: 1
   preloadWardrobeRecipes:
     loadDefaultRecipes: 1
     recipes:
@@ -57719,7 +57719,7 @@ MonoBehaviour:
       animatorController: {fileID: 0}
     - raceName: HumanMaleDCS
       animatorControllerName: Locomotion with Head
-      animatorController: {fileID: 0}
+      animatorController: {fileID: 9100000, guid: ae859d58fdf844b73863d3833f955cdf, type: 2}
     - raceName: HumanFemaleResources
       animatorControllerName: Locomotion with Head
       animatorController: {fileID: 0}
@@ -57817,6 +57817,24 @@ MonoBehaviour:
       _metallicGloss: {r: 0, g: 0, b: 0, a: 0}
       Raw: 0
       valuesConverted: 0
+    - name: Lipstick
+      channelMask:
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      channelAdditiveMask:
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      PropertyBlock:
+        alwaysUpdate: 0
+        serializedProperties: []
+      foldout: 0
+      _name: 
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _metallicGloss: {r: 0, g: 0, b: 0, a: 0}
+      Raw: 0
+      valuesConverted: 0
   predefinedDNA:
     PreloadValues: []
   loadPathType: 2
@@ -57840,7 +57858,7 @@ MonoBehaviour:
   customModel: {fileID: 0}
   customRotation: {x: 0, y: 0, z: 0}
   previewColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _buildCharacterEnabled: 1
+  _buildCharacterEnabled: 0
 --- !u!114 &4398484136676425501
 MonoBehaviour:
   m_ObjectHideFlags: 0

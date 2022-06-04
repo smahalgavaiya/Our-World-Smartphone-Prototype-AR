@@ -13,7 +13,7 @@ namespace UMA.CharacterSystem.Editors
         // public DynamicCharacterSystem thisDCS;
         public DynamicCharacterAvatar thisDCA;
 		public bool changed = false;
-		static bool defaultOpen = true;
+		static bool defaultOpen = false;
         Texture warningIcon;
 		int wardrobeRecipePickerID = -1;
         bool recipesIndexed = false;
