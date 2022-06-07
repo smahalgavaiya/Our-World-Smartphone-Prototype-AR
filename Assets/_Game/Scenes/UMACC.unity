@@ -57839,15 +57839,15 @@ MonoBehaviour:
     PreloadValues: []
   loadPathType: 2
   loadPath: CharacterRecipes
-  loadFilename: 
+  loadFilename: data
   loadString: 
   loadFileOnStart: 1
   ForceSlotMaterials: 0
   AtlasResolutionScale: 1
   defaultLoadOptions: 31
-  savePathType: 0
+  savePathType: 2
   savePath: CharacterRecipes
-  saveFilename: 
+  saveFilename: data
   makeUniqueFilename: 0
   ensureSharedColors: 0
   defaultSaveOptions: 15
@@ -57858,7 +57858,7 @@ MonoBehaviour:
   customModel: {fileID: 0}
   customRotation: {x: 0, y: 0, z: 0}
   previewColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _buildCharacterEnabled: 0
+  _buildCharacterEnabled: 1
 --- !u!114 &4398484136676425501
 MonoBehaviour:
   m_ObjectHideFlags: 0
