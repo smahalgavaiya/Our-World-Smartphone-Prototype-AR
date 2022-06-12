@@ -93,6 +93,7 @@ namespace UniversalInventorySystem
 
         public void Start()
         {
+            Cursor.visible = true;
             //inv.AddItem(item, 1);
             if (isCraftInventory)
             {
