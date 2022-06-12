@@ -6,16 +6,17 @@ public class DefaultDropBehaviour : DropBehaviour
 
     public override void OnDropItem(object sender, InventoryHandler.DropItemEventArgs e)
     {
-        //if (droppedItemObj == null) droppedItemObj = new GameObject();
-        var dur = e.inv[e.slot].durability;
+        switch (e.item.itemName)
+        {
+            case "Portal":
+                Instantiate(droppedItemObj, e.positionDropped + (Vector3.forward * 5), Quaternion.identity);
+                break;
+            case "shrink":
+                Debug.Log("Todo Add shrink functionality");
+                break;
+        }
         e.inv.RemoveItemInSlot(e.slot, e.amount);
-             Instantiate(droppedItemObj, new Vector3(0, 2, 0), Quaternion.identity);
-        /*DroppedItem droppedItem = b.GetComponent<DroppedItem>();
-        if(e.item.hasDurability)
-            droppedItem.SetSprite(InventoryUI.GetNearestSprite(e.item, dur));
-        else
-            droppedItem.SetSprite(e.item.sprite);
-        droppedItem.SetAmount(e.amount);*/
+
     }
 }
 
