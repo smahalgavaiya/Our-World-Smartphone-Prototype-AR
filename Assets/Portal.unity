@@ -3550,7 +3550,7 @@ GameObject:
   - component: {fileID: 506863144}
   m_Layer: 0
   m_Name: ColliderPlane
-  m_TagString: Untagged
+  m_TagString: Portal_B
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3583,6 +3583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2143197229}
   reciever: {fileID: 63226735}
+  isB: 1
 --- !u!65 &506863145
 BoxCollider:
   m_ObjectHideFlags: 0

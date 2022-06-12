@@ -98,7 +98,7 @@ namespace UniversalInventorySystem
             if (isCraftInventory)
             {
                 inv.AddItem(InventoryHandler.current.GetItem(0, 0), 1);
-
+                inv.AddItem(InventoryHandler.current.GetItem(0, 1), 1);
                 inv.slotAmounts += productSlots.Length;
                 for(int i = 0; i < productSlots.Length; i++)
                     inv.slots.Add(Slot.nullSlot);

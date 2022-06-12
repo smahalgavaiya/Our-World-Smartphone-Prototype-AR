@@ -7,10 +7,22 @@ public class PortalTeleporter : MonoBehaviour {
 	public Transform player;
 	public Transform reciever;
 
+	public bool isB = false;
+
 	private bool playerIsOverlapping = false;
 
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+		if (reciever == null)
+		{
+			reciever = GameObject.FindGameObjectWithTag("Portal_B").transform;
+			GameObject.FindGameObjectWithTag("Portal_B").GetComponent<PortalTeleporter>().reciever = transform;
+		}
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (playerIsOverlapping)
 		{
 			Vector3 portalToPlayer = player.position - transform.position;
