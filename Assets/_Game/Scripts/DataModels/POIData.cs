@@ -9,6 +9,7 @@ namespace OurWorld.Scripts.DataModels
         public readonly string Type;
         public readonly Geolocation Geolocation;
 
+
         /// <summary>
         /// Distance from player to poi in kilometers
         /// </summary>
@@ -16,9 +17,12 @@ namespace OurWorld.Scripts.DataModels
         
         public POIData(string name, string type, Geolocation geolocation)
         {
+           
+
             Name = name;
             Type = type;
             Geolocation = geolocation;
+
         }
 
         public Geolocation GetGeolocation() => Geolocation;

@@ -13,6 +13,8 @@ namespace OurWorld.Scripts.Views.ParksList
         public event Action OnOpenedEvent;
         public event Action OnClosedEvent;
 
+        
+
         [SerializeField] private PlaceDisplayElement _elementPrefab;
 
         [SerializeField] private ScrollRect _targetScrollRect;
@@ -33,6 +35,8 @@ namespace OurWorld.Scripts.Views.ParksList
 
         public bool Active => _active;
 
+        public Text cycleTime, drivingTime;
+
         private void Awake()
         {
             _closeButton.onClick.AddListener(Close);
@@ -47,6 +51,7 @@ namespace OurWorld.Scripts.Views.ParksList
             _onPlaceSelected = onPlaceSelected;
             foreach (var parkData in nearbyParks)
             {
+                
                 var element = Instantiate(_elementPrefab, _targetScrollRect.content);
 
                 element.Initialize(parkData, OnPlaceButtonClick);
@@ -70,7 +75,8 @@ namespace OurWorld.Scripts.Views.ParksList
         public void Close()
         {
             Debug.Log("Closing Panel");
-
+            cycleTime.text = "";
+            drivingTime.text = "";
             CloseAnimation(OnClosed);
 
             void OnClosed()

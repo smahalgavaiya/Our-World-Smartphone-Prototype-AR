@@ -8,11 +8,13 @@ using OurWorld.Scripts.Extensions;
 using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Interfaces.MapAPI.Directions;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace OurWorld.Scripts.Navigation.Directions
 {
     public class DirectionsController : MonoBehaviour
     {
+        public Text cyclingTime, drivingTime;
         [SerializeField] private float _updateInterval = 2f;
         [SerializeField] private Transform _avatar;
         private IDirectionsAPIProvider _directionsAPIProvider;
@@ -33,6 +35,7 @@ namespace OurWorld.Scripts.Navigation.Directions
                 Debug.Log("There is an active navigation, if you want do start new navigation you should first dispose active one");
                 return;
             }
+
 
             if (Geolocation.TempPlayerPosition.DistanceTo(targetLocation) < 0.1f)
             {
@@ -68,7 +71,8 @@ namespace OurWorld.Scripts.Navigation.Directions
             while(_activeNavigation != null && _activeNavigation.Active)
             {
                 yield return wait;
-                _activeNavigation.Update();
+                if(_activeNavigation != null)
+                    _activeNavigation.Update();
             }
         }
 
@@ -80,8 +84,8 @@ namespace OurWorld.Scripts.Navigation.Directions
         private void OnDrawGizmos() {
             if(_activeNavigation == null) return;
 
-            var defaultNav = _activeNavigation as DefaultNavigationBehaviour;
-            Gizmos.DrawWireCube(defaultNav.StepBounds.center,defaultNav.StepBounds.size);
+            DefaultNavigationBehaviour defaultNav = _activeNavigation as DefaultNavigationBehaviour;
+           // Gizmos.DrawWireCube(defaultNav.StepBounds.center,defaultNav.StepBounds.size);
         }
     }
 }
