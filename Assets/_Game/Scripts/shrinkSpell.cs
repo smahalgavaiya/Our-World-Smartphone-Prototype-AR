@@ -9,7 +9,7 @@ public class shrinkSpell : MonoBehaviour
     void Start()
     {
 
-       // StartCoroutine(shrinkCoroutine());
+        //StartCoroutine(shrinkCoroutine());
     }
 
     IEnumerator shrinkCoroutine()
