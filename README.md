@@ -9,7 +9,7 @@ Also check out the main website:<br>
 http://www.ourworldthegame.com
 
 This is built on top of the OASIS API, which can be found here:<br>
-http://oasisplatform.world/swagger
+http://api.oasisplatform.world
 
 And also on the Unity package: 
 https://github.com/NextGenSoftwareUK/OASIS-API-Unity-Package
