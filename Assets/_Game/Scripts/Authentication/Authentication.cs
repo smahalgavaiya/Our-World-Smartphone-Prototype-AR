@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class Authentication : MonoBehaviour
 {
     private const string OASIS_REGISTER_AVATAR = "https://api.oasisplatform.world/api/avatar/register";
-    private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/avatar/GetTerms";
+    private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/Avatar/get-terms";
     private const string OASIS_AUTHENTICATE = "https://api.oasisplatform.world/api/avatar/authenticate";
 
     [Header("Authentication")]
@@ -61,7 +61,7 @@ public class Authentication : MonoBehaviour
     }
     private struct AuthenticateData
     {
-        public string email;
+        public string username;
         public string password;
     }
     private enum ShowWarning
@@ -211,11 +211,11 @@ public class Authentication : MonoBehaviour
         using var request = UnityWebRequest.Get(OASIS_GET_TERMS);
         yield return request.SendWebRequest();
 
-        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        JSONNode data = JSON.Parse(request.downloadHandler.text)["result"];
         if (request.result != UnityWebRequest.Result.Success)
             Debug.Log(request.error);
         else
-            _termsText.text = data["termsText"].Value;
+            _termsText.text = data["result"].Value;
     }
 
     //Sign Up
@@ -345,7 +345,7 @@ public class Authentication : MonoBehaviour
         ShowWarningInfoPanel(true);
         yield return request.SendWebRequest();
 
-        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        JSONNode data = JSON.Parse(request.downloadHandler.text)["result"];
         if (data["isError"].Value == "true")
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
@@ -358,7 +358,7 @@ public class Authentication : MonoBehaviour
     {
         var authenticateData = new AuthenticateData
         {
-            email = _signInEmail.text,
+            username = _signInEmail.text,
             password = _signInPassword.text
         };
         return System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(authenticateData));

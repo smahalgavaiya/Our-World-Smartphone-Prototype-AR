@@ -30,11 +30,17 @@ namespace OurWorld.Scripts.DataModels.MapAPIRequests
         public virtual string GetRequestURLParameters()
         {
             Dictionary<string, string> options = new Dictionary<string, string>();
-
-           options.Add("bbox", new Vector2dBounds(
-                LocationTypeConverter.GeolocationToVector2d(BoundingBox.MinPoint),
-                LocationTypeConverter.GeolocationToVector2d(BoundingBox.MaxPoint)
-            ).ToString());
+            #if UNITY_EDITOR
+            /*options.Add("bbox", new Vector2dBounds(
+                 LocationTypeConverter.GeolocationToVector2d(BoundingBox.MinPoint),
+                 LocationTypeConverter.GeolocationToVector2d(BoundingBox.MaxPoint)
+             ).ToString());*/
+            #else
+            options.Add("bbox", new Vector2dBounds(
+                             LocationTypeConverter.GeolocationToVector2d(BoundingBox.MinPoint),
+                             LocationTypeConverter.GeolocationToVector2d(BoundingBox.MaxPoint)
+                         ).ToString());
+            #endif
 
             options.Add("proximity", LocationTypeConverter.GeolocationToVector2d(Proximity).ToString());
 
