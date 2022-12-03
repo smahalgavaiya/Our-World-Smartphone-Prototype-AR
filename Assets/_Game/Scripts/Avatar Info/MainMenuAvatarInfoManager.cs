@@ -12,7 +12,7 @@ public class MainMenuAvatarInfoManager : MonoBehaviour
 
     private void UpdateDetails()
     {
-        _avatarName.text = AvatarInfoManager.Instance.AvatarName;
-        _avatarLevel.text = AvatarInfoManager.Instance.AvatarLevel;
+        _avatarName.text = PlayerPrefs.GetString("AvatarName");
+        _avatarLevel.text = PlayerPrefs.GetString("AvatarLevel");
     }
 }

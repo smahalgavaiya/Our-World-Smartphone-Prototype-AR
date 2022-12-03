@@ -10,8 +10,8 @@
 [Bb]uilds
 [Uu]nityGenerated
 [Ll]ocal[Cc]ache
-[Ll]ogs
 [Uu]serSettings
+[Ll]ogs
 
 # Auto-generated Visual Studio or MonoDevelop solution and project files
 *.csproj

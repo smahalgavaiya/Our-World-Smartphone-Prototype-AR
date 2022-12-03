@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 20ae43e9815d11e4d9cc8ae78e21b009
+<<<<<<<< HEAD:Assets/UMA/Addressables - Read Me Now.pdf.meta
+guid: 6f9212004b89b014e926b2a150d92d94
+========
+guid: e892df5c6bb99114c9c891cb7a17ee0d
+>>>>>>>> upstream/master:Assets/StreamingAssets/WrldResources/sourceDetails.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

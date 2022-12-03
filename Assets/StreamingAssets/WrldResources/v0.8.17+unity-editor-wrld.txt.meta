@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StreamingAssets/WrldResources/v0.8.17+unity-editor-wrld.txt.meta
 guid: ac38db407caa1e047a659fb7599939cf
+========
+guid: 37b71e51b8b7d614ca008a4dc5852a55
+>>>>>>>> upstream/master:Assets/StreamingAssets/WrldResources/Resources/Labels/label_style_sheet.json.meta
 TextScriptImporter:
   externalObjects: {}
   userData: 

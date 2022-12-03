@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class CharacterCreatorScript : MonoBehaviour
 {
+    private const string OASIS_UPDATE_UMAJSON = "https://api.oasisplatform.world/api/avatar/Update/";
+    private const string OASIS_GET_UMAJSON = "https://api.oasisplatform.world/api/Avatar/GetUMAJsonById/";
+
     public DynamicCharacterAvatar dynamicCharacterAvatarScript;
     public CameraController cameraControllerScript;
     public Dictionary<string, DnaSetter> dNAmodule;
@@ -163,10 +166,6 @@ public class CharacterCreatorScript : MonoBehaviour
         }
         else
         {
-            //use if using normal text
-            //dNAmodule[DNAModuleStrings[valueDNA]].Set(DNAModuleSliders[valueDNA].value);
-
-            ///use if using TMP
             dNAmodule[DNAModuleStrings[valueDNA]].Set(DNAModuleSlidersTMP[valueDNA].value);
 
 
@@ -1074,28 +1073,65 @@ public class CharacterCreatorScript : MonoBehaviour
 
     #region Save/Load 
 
-    public void SaveCharacter()
-    {
-        CharacterData = dynamicCharacterAvatarScript.GetCurrentRecipe();
-        DNAmodulesSliderUpdate();
-        Debug.Log(CharacterData);
-
-        // you have all the slider values here below
-
-        //DNASliderValuesTMP[];
-    }
-
-    public void LoadCharacter()
-    {
-        dynamicCharacterAvatarScript.LoadFromRecipeString(CharacterData);
-        RecognizeGender();
-        DNAmoduleSliderMatch();
-    }
-
     public void GoBack()
     {
         FindObjectOfType<MainMenuManager>().GetSceneBack();
     }
+    public void SaveCharacter()
+    {
+        CharacterData = dynamicCharacterAvatarScript.GetCurrentRecipe();
+        DNAmodulesSliderUpdate();
+        for (int i = 0; i < DNASliderValuesTMP.Count; i++)
+        {
+            PlayerPrefs.SetFloat("DNASlider" + i, DNASliderValuesTMP[i]);
+        }
+        PlayerPrefs.SetString("UMAJSON", CharacterData);
+    }
 
+    /*    private IEnumerator SaveUMARequest(string UMAData)
+        {
+            using var request = new UnityWebRequest(OASIS_UPDATE_UMAJSON + PlayerPrefs.GetString("AvatarId"));
+            request.method = UnityWebRequest.kHttpVerbPOST;
+            request.uploadHandler = new UploadHandlerRaw(Encoding.ASCII.GetBytes(UMAData));
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+            yield return request.SendWebRequest();
+
+            JSONNode data = JSON.Parse(request.downloadHandler.text);
+            if (data["isError"].Value == "true")
+                Debug.Log("UMA Saving Error");
+            else
+                Debug.Log("UMA Saving Success");
+        }*/
+
+    private void LoadCharacter()
+    {
+        for (int i = 0; i < DNASliderValuesTMP.Count; i++)
+        {
+            DNASliderValuesTMP[i] = PlayerPrefs.GetFloat("DNASlider" + i);
+        }
+
+        /*        using var request = new UnityWebRequest(OASIS_GET_UMAJSON + PlayerPrefs.GetString("AvatarId"));
+                request.method = UnityWebRequest.kHttpVerbGET;
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+                yield return request.SendWebRequest();
+
+                JSONNode data = JSON.Parse(request.downloadHandler.text);
+                if (data["isError"].Value == "true")
+                    Debug.Log("UMA Saving Error");
+                else
+                    CharacterData = data["result"].Value;
+
+                Debug.Log(request.downloadHandler.text);*/
+        dynamicCharacterAvatarScript.LoadFromRecipeString(PlayerPrefs.GetString("UMAJSON", "") == "" ? CharacterData : PlayerPrefs.GetString("UMAJSON"));
+        RecognizeGender();
+        DNAmoduleSliderMatch();
+    }
     #endregion
+
+    private void Start()
+    {
+        LoadCharacter();
+    }
 }
