@@ -24,7 +24,7 @@ public class SeedSpawner : MonoBehaviour
         spawnPoint = Vector3.zero;
         StartCoroutine(StartSpawning());
 
-        Spawn_Seeds(await _mapApiProvider.GetNearbyParksAsync(new Geolocation(32.707270, 39.995767), 0.5f));
+        //Spawn_Seeds(await _mapApiProvider.GetNearbyParksAsync(new Geolocation(32.707270, 39.995767), 0.5f));
     }
 
 

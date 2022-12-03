@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.164
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18680781, g: 0.1872266, b: 0.19657493, a: 0.164}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.164}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -13541,6 +13541,9 @@ MonoBehaviour:
   _skyboxMat: {fileID: 2100000, guid: 474ef41583c324545b8600d22a27c923, type: 2}
   _earthMat: {fileID: 2100000, guid: 53e004da287b01d488e49bd5e9e91d64, type: 2}
   _mMM: {fileID: 1247998354}
+  ChangeDesignToggle: {fileID: 362971290}
+  ChangeDesignTime: {fileID: 2117192051}
+  ChangeDesignTimeText: {fileID: 2131277325}
 --- !u!1 &928959011
 GameObject:
   m_ObjectHideFlags: 0
