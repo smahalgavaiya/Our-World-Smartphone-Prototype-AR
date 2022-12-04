@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54815864}
-  - component: {fileID: 54815863}
+  - component: {fileID: 54815865}
   m_Layer: 0
   m_Name: Character Info
   m_TagString: Untagged
@@ -140,18 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &54815863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54815862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78cadb4c13575a64f8f5ddaf891955a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &54815864
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +155,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &54815865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54815862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8755fc7397fad4943a95186859efa6d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jwtToken: 
+  _avatarId: 
+  KarmaPoints: 0
+  HealthPoints: 0
+  ManaPoints: 0
 --- !u!1 &60480303
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,7 +4605,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: smahalgavaiya@gmail.com
+  m_Text: smahalgavaiya@yahoo.com
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -5418,7 +5423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "smahalgavaiya@gmail.com\u200B"
+  m_text: "smahalgavaiya@yahoo.com\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e15f46f55da41e40961de4c5f9a9e78, type: 2}
   m_sharedMaterial: {fileID: -8276409665533886465, guid: 4e15f46f55da41e40961de4c5f9a9e78, type: 2}
@@ -10617,7 +10622,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: test12345
+  m_Text: test@12345
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -10725,7 +10730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "*********\u200B"
+  m_text: "**********\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e15f46f55da41e40961de4c5f9a9e78, type: 2}
   m_sharedMaterial: {fileID: -8276409665533886465, guid: 4e15f46f55da41e40961de4c5f9a9e78, type: 2}

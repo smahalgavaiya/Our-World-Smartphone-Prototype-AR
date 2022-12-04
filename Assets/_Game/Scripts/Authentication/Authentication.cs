@@ -12,7 +12,7 @@ public class Authentication : MonoBehaviour
     private const string OASIS_REGISTER_AVATAR = "https://api.oasisplatform.world/api/avatar/register";
     private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/Avatar/get-terms";
     private const string OASIS_AUTHENTICATE = "https://api.oasisplatform.world/api/avatar/authenticate";
-    private const string OASIS_AUTOLOGIN = "https://api.oasisplatform.world/api/Avatar/GetAvatarByJwt";
+    private const string OASIS_AUTOLOGIN = "https://api.oasisplatform.world/api/Avatar/get-logged-in-avatar";
 
     [Header("Authentication")]
     public TMP_InputField _signUpFirstName;
@@ -227,11 +227,13 @@ public class Authentication : MonoBehaviour
         yield return request.SendWebRequest();
 
         JSONNode data = JSON.Parse(request.downloadHandler.text);
-        if (data["isError"].Value == "true")
-            SetInfo(ShowWarning.SignInFail, data["message"].Value);
+        if (data["IsError"].Value == "true")
+            SetInfo(ShowWarning.SignInFail, data["Message"].Value);
         else
         {
             SetInfo(ShowWarning.SignInSuccess);
+            AvatarInfoManager.Instance.getAvatarDetailsById();
+
         }
     }
 
@@ -379,8 +381,8 @@ public class Authentication : MonoBehaviour
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            PlayerPrefs.SetString("JWTToken", data["result"]["avatar"]["jwtToken"].Value);
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value, data["result"]["avatar"]["avatarId"].Value);
+            PlayerPrefs.SetString("JWTToken", data["result"]["jwtToken"].Value);
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["fullName"].Value, data["result"]["avatarType"]["value"].Value, data["result"]["jwtToken"].Value, data["result"]["avatarId"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }

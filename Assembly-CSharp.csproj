@@ -1320,6 +1320,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Mapbox\Shaders\MapboxStyles.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libktx.txt" />
+    <None Include="Assets\StreamingAssets\WrldResources\WelcomeConfig.txt" />
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Portable\Mapbox.Json.dll" />
     <None Include="Assets\Resources\Mapbox\MapboxConfiguration.txt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\poly2tri.txt" />
@@ -1344,7 +1345,6 @@
     <None Include="Assets\UMA\InternalDataStore\AssetVersion.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Wrld\AssetData\iOS\opensans_semibold_sdf.fnt" />
-    <None Include="Assets\StreamingAssets\WrldResources\WelcomeConfig.txt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libcares.txt" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\ClipBox\Clip_Box.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
@@ -1366,13 +1366,13 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_frontalface_default.xml" />
     <None Include="Assets\Wrld\Plugins\x86_64\libeay32.dll" />
+    <None Include="Assets\StreamingAssets\WrldResources\v0.8.17+unity-editor-wrld.txt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libjpeg-turbo.txt" />
     <None Include="Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\link.xml" />
     <None Include="Assets\Mapbox\Shaders\RasterWithTransparencyShader.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Net35\Mapbox.Json.dll" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\rapidxml.txt" />
-    <None Include="Assets\StreamingAssets\WrldResources\v0.8.17+unity-editor-wrld.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Wrld\Shaders\StencilReflectionFloor.shader" />
     <None Include="Assets\Mapbox\Fonts\OpenSansLic.txt" />

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/UMA/Whats New in UMA.txt.meta
-guid: 09de97254ab549f44bf3286f85b87aa5
-========
-guid: 18276f5ce85e3fa4c97c6be98d3ac2f9
->>>>>>>> upstream/master:Assets/StreamingAssets/WrldResources/WelcomeConfig.txt.meta
+guid: 16f2c9206d36a984c9c6f7b92b0d35e0
 TextScriptImporter:
   externalObjects: {}
   userData: 
