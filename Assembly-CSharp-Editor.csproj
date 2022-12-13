@@ -217,6 +217,7 @@
     <Compile Include="Assets\Mapbox\Unity\Editor\LayerModifierEditor.cs" />
     <Compile Include="Assets\Mapbox\Unity\Editor\PropertyDrawers\ColliderOptionsDrawer.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Monitors\VectorscopeMonitor.cs" />
+    <Compile Include="Assets\OASIS API\Editor\OASISAPIBaseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

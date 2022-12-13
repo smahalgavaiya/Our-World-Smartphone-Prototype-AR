@@ -83,8 +83,10 @@ public class AvatarInfoManager : MonoBehaviour
     {
         _avatarId = PlayerPrefs.GetString("AvatarId");
         _jwtToken = PlayerPrefs.GetString("JWTToken");
-        StartCoroutine(getAvatarDetailsByIdRequest());
-       // RemoveKarma("DropLitter", "AndroidApp", "SEEDS", "SEEDS");
+       // StartCoroutine(getAvatarDetailsByIdRequest());
+         RemoveKarma("DropLitter", "AndroidApp", "SEEDS", "SEEDS");
+       // AddKarma("BeAHero", "Game", "helppeoplegame222", "greatgame222");
+
     }
     private IEnumerator getAvatarDetailsByIdRequest()
     {
@@ -105,9 +107,9 @@ public class AvatarInfoManager : MonoBehaviour
         else
         {
             data = data["result"];
-            KarmaPoints = int.Parse(data["result"]["karma"]);
-            HealthPoints = int.Parse(data["result"]["stats"]["hp"]);
-            ManaPoints = int.Parse(data["result"]["stats"]["mana"]);
+            KarmaPoints = int.Parse(data["result"]["karma"].Value);
+            HealthPoints = int.Parse(data["result"]["stats"]["hp"]["current"].Value);
+            ManaPoints = int.Parse(data["result"]["stats"]["mana"]["current"].Value);
 
             PlayerPrefs.SetInt("KarmaPoints", KarmaPoints);
             PlayerPrefs.SetInt("HealthPoints", HealthPoints);
@@ -151,6 +153,8 @@ public class AvatarInfoManager : MonoBehaviour
             KarmaPoints = int.Parse(data["result"]["totalKarma"].Value);
             Debug.Log("Karma points:" + KarmaPoints);
             PlayerPrefs.SetInt("KarmaPoints", KarmaPoints);
+            //Update the UI
+            StartCoroutine(getAvatarDetailsByIdRequest());
         }
     }
     private byte[] GetAddKarmaDataJsonByte(string _KarmaType, string karmaSourceType
@@ -201,6 +205,8 @@ public class AvatarInfoManager : MonoBehaviour
             data = data["result"];
             KarmaPoints = int.Parse(data["result"]["totalKarma"]);
             PlayerPrefs.SetInt("KarmaPoints", KarmaPoints);
+            //Update the UI
+            StartCoroutine(getAvatarDetailsByIdRequest());
         }
     }
     private byte[] GetRequestKarmaDataJsonByte(string _KarmaType, string karmaSourceType
