@@ -19,6 +19,8 @@ public class AvatarInfoManager : MonoBehaviour
     public int HealthPoints;
     public int ManaPoints;
 
+    public MainMenuAvatarInfoManager mainMenuAvatarInfoManager;
+
     private struct AddKarmaData
     {
         public string karmaType;
@@ -75,6 +77,23 @@ public class AvatarInfoManager : MonoBehaviour
         //fetching avatar details 
         getAvatarDetailsById();
     }
+     void Update()
+    {
+#if UNITY_EDITOR       
+        //Add and remove karma testing code only works in unity editor
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Add karma called");
+            AddKarma("BeAHero", "Game", "helppeoplegame222", "greatgame222");
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("RemoveKarma called");
+            RemoveKarma("DropLitter", "AndroidApp", "SEEDS", "SEEDS");
+        }
+#endif
+    }
 
     //Get avatar details by id
     public void getAvatarDetailsById()
@@ -83,8 +102,8 @@ public class AvatarInfoManager : MonoBehaviour
     {
         _avatarId = PlayerPrefs.GetString("AvatarId");
         _jwtToken = PlayerPrefs.GetString("JWTToken");
-       // StartCoroutine(getAvatarDetailsByIdRequest());
-         RemoveKarma("DropLitter", "AndroidApp", "SEEDS", "SEEDS");
+        StartCoroutine(getAvatarDetailsByIdRequest());
+        // RemoveKarma("DropLitter", "AndroidApp", "SEEDS", "SEEDS");
        // AddKarma("BeAHero", "Game", "helppeoplegame222", "greatgame222");
 
     }
@@ -110,10 +129,14 @@ public class AvatarInfoManager : MonoBehaviour
             KarmaPoints = int.Parse(data["result"]["karma"].Value);
             HealthPoints = int.Parse(data["result"]["stats"]["hp"]["current"].Value);
             ManaPoints = int.Parse(data["result"]["stats"]["mana"]["current"].Value);
+            _avatarLevel= data["result"]["level"].Value;
 
+            PlayerPrefs.SetString("AvatarLevel", _avatarLevel);
             PlayerPrefs.SetInt("KarmaPoints", KarmaPoints);
             PlayerPrefs.SetInt("HealthPoints", HealthPoints);
             PlayerPrefs.SetInt("ManaPoints", ManaPoints);
+            if (mainMenuAvatarInfoManager != null)
+                mainMenuAvatarInfoManager.UpdateDetails();
         }
     }
 

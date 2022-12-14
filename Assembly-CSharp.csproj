@@ -352,6 +352,7 @@
     <Compile Include="Assets\Wrld\Scripts\FPS.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\FollowTargetTransform.cs" />
     <Compile Include="Assets\MapboxAR\Examples\ARTabletop\Scripts\SnapMapToTargetTransform.cs" />
+    <Compile Include="Assets\OASIS API\Wrapper\JSON Classes\OASISAvatarJSONInputStructs.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\PixelConnectivity.cs" />
     <Compile Include="Assets\Wrld\Scripts\Resources\IndoorMaps\InstancedIndoorMapRenderable.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\SQLite\SQLite.cs" />
@@ -447,6 +448,7 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\ClassicRasterTile.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Enums\TilePropertyState.cs" />
     <Compile Include="Assets\Wrld\Scripts\Resources\Props\PropOptions.cs" />
+    <Compile Include="Assets\_Game\Scripts\Avatar Info\LevelProgressUI.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MapMatchingResponse.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\SnapAlignmentStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\FeatureBehaviourModifier.cs" />
@@ -517,6 +519,7 @@
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\features2d\KeyPointsFilter.cs" />
     <Compile Include="Assets\Wrld\Scripts\Paths\PointOnPath.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Cv2\Cv2_xphoto.cs" />
+    <Compile Include="Assets\OASIS API\Wrapper\OASISBaseREST.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\Geometry.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\imgproc\Enum\ConnectedComponentsTypes.cs" />
@@ -605,6 +608,7 @@
     <Compile Include="Assets\Wrld\Scripts\Resources\IndoorMaps\IndoorMapStreamedTextureObserver.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
     <Compile Include="Assets\Wrld\Scripts\Transport\TransportWayId.cs" />
+    <Compile Include="Assets\OASIS API\Examples\Scripts\APIUIManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerBehaviorModifiers.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\modules\video\BackgroundSubtractor.cs" />
     <Compile Include="Assets\Wrld\Scripts\Resources\IndoorMaps\IIndoorMapTextureFetcher.cs" />
@@ -1021,6 +1025,7 @@
     <Compile Include="Assets\Wrld\Scripts\Space\EnvironmentFlattening\EnvironmentFlatteningApi.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapExtentOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\MapImageFactory.cs" />
+    <Compile Include="Assets\OASIS API\Wrapper\OASISAvatar.cs" />
     <Compile Include="Assets\Wrld\Scripts\Transport\TransportPositionerOptionsBuilder.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\PInvoke\features2d\NativeMethods_features2d_AKAZE.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\ITelemetryLibrary.cs" />
@@ -1272,10 +1277,6 @@
     <Compile Include="Assets\Wrld\Scripts\Transport\TransportWay.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
     <Compile Include="Assets\Wrld\Demo\IndoorMaps\Scripts\HighlightingIndoors.cs" />
-    <Compile Include="Assets\OASIS API\Examples\Scripts\APIUIManager.cs" />
-    <Compile Include="Assets\OASIS API\Wrapper\OASISAvatar.cs" />
-    <Compile Include="Assets\OASIS API\Wrapper\OASISBaseREST.cs" />
-    <Compile Include="Assets\OASIS API\Wrapper\JSON Classes\OASISAvatarJSONInputStructs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\OpenCV+Unity\Plugins\Windows\x86\OpenCvSharpExtern.dll" />
