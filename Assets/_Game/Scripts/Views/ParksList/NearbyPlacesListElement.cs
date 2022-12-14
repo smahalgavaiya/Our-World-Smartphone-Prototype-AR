@@ -60,6 +60,16 @@ namespace OurWorld.Scripts.Views.ParksList
             }
         }
 
+        public void clearOldElements()
+        {
+            foreach (var element in _elementsDictionary)
+            {
+                if(element.Value.gameObject!=null)
+                    Destroy(element.Value.gameObject);
+            }
+            _elementsDictionary.Clear();
+        }
+
         public void Open()
         {
             Debug.Log("Opening Panel");
@@ -74,6 +84,7 @@ namespace OurWorld.Scripts.Views.ParksList
         }
         public void Close()
         {
+            clearOldElements();
             Debug.Log("Closing Panel");
             cycleTime.text = "";
             drivingTime.text = "";

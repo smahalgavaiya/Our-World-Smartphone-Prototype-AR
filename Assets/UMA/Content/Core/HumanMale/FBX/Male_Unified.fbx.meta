@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 472310cd57da9d74598dcd478b2d023b
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       1: 100000
@@ -966,47 +966,12 @@ ModelImporter:
   - first:
       137: 13700000
     second: UMA_Human_Male
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Eyes
-    second: {fileID: 2100000, guid: 4c5837a29b0c34042ac64b9b6bdc6625, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Face
-    second: {fileID: 2100000, guid: 831f3c9a963d9714790f4f105283d9f8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Feet
-    second: {fileID: 2100000, guid: e09a381da7a072a44a87bc13a4487ae7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hands
-    second: {fileID: 2100000, guid: 698f5cb542fc9944996905ed7bd6cc04, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: InnerMouth
-    second: {fileID: 2100000, guid: ecec0d497f73dc748a6153dc05230e8b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Legs
-    second: {fileID: 2100000, guid: 5e17746f31e0af944b47c28bee10198e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Torso
-    second: {fileID: 2100000, guid: 81e40e58f413793478f0bebbf84788d4, type: 2}
+  externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
-    materialSearch: 0
-    materialLocation: 1
+    materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -1047,7 +1012,6 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -1057,9 +1021,6 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -1574,7 +1535,8 @@ ModelImporter:
     - name: LeftLegAdjust
       parentName: LeftLeg
       position: {x: -0.11892719, y: 0.000000031199306, z: 0.000000044703484}
-      rotation: {x: 0.000000026077032, y: -0.000000026077032, z: -0.0000000041909516, w: 1}
+      rotation: {x: 0.000000026077032, y: -0.000000026077032, z: -0.0000000041909516,
+        w: 1}
       scale: {x: 1.0000001, y: 0.99999994, z: 1}
     - name: LeftUpLegAdjust
       parentName: LeftUpLeg
@@ -1594,7 +1556,8 @@ ModelImporter:
     - name: LowerBackBelly
       parentName: LowerBackAdjust
       position: {x: -0.034965567, y: 0.000000002639832, z: 0.000000022351745}
-      rotation: {x: 0.000000059587457, y: -0.000000037252903, z: -0.0000000014303447, w: 1}
+      rotation: {x: 0.000000059587457, y: -0.000000037252903, z: -0.0000000014303447,
+        w: 1}
       scale: {x: 1.0000005, y: 1.0000005, z: 0.99999994}
     - name: Spine
       parentName: LowerBack
@@ -1649,7 +1612,8 @@ ModelImporter:
     - name: LeftForeArmTwistAdjust
       parentName: LeftForeArmTwist
       position: {x: -0.035069004, y: 0.00000009563519, z: -0.000000029802322}
-      rotation: {x: -0.000000040978247, y: -0.000000007450599, z: -0.000000045169134, w: 1}
+      rotation: {x: -0.000000040978247, y: -0.000000007450599, z: -0.000000045169134,
+        w: 1}
       scale: {x: 0.9999999, y: 1.0000001, z: 0.99999994}
     - name: LeftHand
       parentName: LeftForeArm
@@ -1754,7 +1718,8 @@ ModelImporter:
     - name: HeadAdjust
       parentName: Head
       position: {x: -0.051950034, y: 0.000000003922105, z: 0.000000033527613}
-      rotation: {x: -0.000000029801402, y: -0.000000014901158, z: -2.2618968e-10, w: 1}
+      rotation: {x: -0.000000029801402, y: -0.000000014901158, z: -2.2618968e-10,
+        w: 1}
       scale: {x: 1.0000001, y: 0.99999994, z: 1}
     - name: LeftCheek
       parentName: Head
@@ -1764,7 +1729,8 @@ ModelImporter:
     - name: LeftCheekAdjust
       parentName: LeftCheek
       position: {x: 0.00000004551967, y: 0.000000001862645, z: -0.00000006271148}
-      rotation: {x: -0.00000013411044, y: -0.000000059604638, z: -0.0000000745058, w: -1}
+      rotation: {x: -0.00000013411044, y: -0.000000059604638, z: -0.0000000745058,
+        w: -1}
       scale: {x: 1.0000001, y: 0.9999999, z: 1}
     - name: LeftEar
       parentName: Head
@@ -1774,7 +1740,8 @@ ModelImporter:
     - name: LeftEarAdjust
       parentName: LeftEar
       position: {x: -0.000000002793968, y: -0.000000015832484, z: 0.000000016065314}
-      rotation: {x: -0.00000017136331, y: 0.00000014901158, z: 0.000000014901158, w: 1}
+      rotation: {x: -0.00000017136331, y: 0.00000014901158, z: 0.000000014901158,
+        w: 1}
       scale: {x: 0.9999999, y: 1.0000005, z: 1.0000001}
     - name: LeftEye
       parentName: Head
@@ -1784,7 +1751,8 @@ ModelImporter:
     - name: LeftEyeAdjust
       parentName: LeftEye
       position: {x: 0.000000110966646, y: -0.0000001574491, z: -0.0000010318676}
-      rotation: {x: -0.0000019087638, y: -0.00000017881557, z: -0.000000047179345, w: -1}
+      rotation: {x: -0.0000019087638, y: -0.00000017881557, z: -0.000000047179345,
+        w: -1}
       scale: {x: 1.0000002, y: 1.0000004, z: 1.0000006}
     - name: LeftEyeGlobe
       parentName: LeftEye
@@ -1819,7 +1787,8 @@ ModelImporter:
     - name: LeftEyebrowLowAdjust
       parentName: LeftEyebrowLow
       position: {x: -0.000000057428526, y: -0.000000001343547, z: 0.00000018911307}
-      rotation: {x: -0.00000006366759, y: 0.00000005960466, z: 0.000000032427817, w: -1}
+      rotation: {x: -0.00000006366759, y: 0.00000005960466, z: 0.000000032427817,
+        w: -1}
       scale: {x: 0.99999994, y: 0.9999997, z: 1.0000002}
     - name: LeftEyebrowMiddle
       parentName: Head
@@ -1829,7 +1798,8 @@ ModelImporter:
     - name: LeftEyebrowMiddleAdjust
       parentName: LeftEyebrowMiddle
       position: {x: 0.000000009357903, y: -3.56321e-10, z: 0.000000004834882}
-      rotation: {x: -0.00000009624478, y: -0.000000059604606, z: 0.000000044068504, w: -1}
+      rotation: {x: -0.00000009624478, y: -0.000000059604606, z: 0.000000044068504,
+        w: -1}
       scale: {x: 1.0000005, y: 1.000001, z: 1.0000007}
     - name: LeftEyebrowUp
       parentName: Head
@@ -1859,7 +1829,8 @@ ModelImporter:
     - name: LeftLowCheekAdjust
       parentName: LeftLowCheek
       position: {x: -0.000000037252903, y: -0.000000013038516, z: 0.000000049078835}
-      rotation: {x: 0.000000089406946, y: -0.00000013783571, z: 0.000000014901158, w: 1}
+      rotation: {x: 0.000000089406946, y: -0.00000013783571, z: 0.000000014901158,
+        w: 1}
       scale: {x: 1.0000004, y: 1.0000007, z: 1.0000005}
     - name: LeftNose
       parentName: Head
@@ -1879,7 +1850,8 @@ ModelImporter:
     - name: LipsSuperiorAdjust
       parentName: LipsSuperior
       position: {x: 0.00000001489442, y: 5.434e-12, z: 0.00000005769348}
-      rotation: {x: -0.00000072097384, y: 0.00000011920936, z: 0.000000009991907, w: 1}
+      rotation: {x: -0.00000072097384, y: 0.00000011920936, z: 0.000000009991907,
+        w: 1}
       scale: {x: 1.0000008, y: 1.0000004, z: 1.0000011}
     - name: Mandible
       parentName: Head
@@ -1904,7 +1876,8 @@ ModelImporter:
     - name: LeftLipsInferiorAdjust
       parentName: LeftLipsInferior
       position: {x: -0.000000053318217, y: -0.000000002793968, z: 0.000000007123163}
-      rotation: {x: 0.0000005736945, y: -0.000000059604623, z: 0.000000009313222, w: 1}
+      rotation: {x: 0.0000005736945, y: -0.000000059604623, z: 0.000000009313222,
+        w: 1}
       scale: {x: 1.0000008, y: 1.0000014, z: 1.0000002}
     - name: LeftLowMaxilar
       parentName: Mandible
@@ -1914,7 +1887,8 @@ ModelImporter:
     - name: LeftLowMaxilarAdjust
       parentName: LeftLowMaxilar
       position: {x: -0.00000010430813, y: 0.000000067055225, z: 0.00000008440111}
-      rotation: {x: -0.00000049173815, y: 0.000000111758666, z: -0.000000050524232, w: 1}
+      rotation: {x: -0.00000049173815, y: 0.000000111758666, z: -0.000000050524232,
+        w: 1}
       scale: {x: 1.0000008, y: 1.0000006, z: 0.9999998}
     - name: LipsInferior
       parentName: Mandible
@@ -1924,12 +1898,14 @@ ModelImporter:
     - name: LipsInferiorAdjust
       parentName: LipsInferior
       position: {x: 0.000000007439353, y: 2.858e-12, z: 0.000000033526238}
-      rotation: {x: -0.00000039331678, y: 0.00000013411041, z: 0.000000030241612, w: 1}
+      rotation: {x: -0.00000039331678, y: 0.00000013411041, z: 0.000000030241612,
+        w: 1}
       scale: {x: 1.0000004, y: 1.0000002, z: 0.99999976}
     - name: MandibleAdjust
       parentName: Mandible
       position: {x: -0.00000011920712, y: 7.393e-12, z: -0.00000003119662}
-      rotation: {x: -0.00000004828186, y: 0.000000029802308, z: -0.000000035736438, w: 1}
+      rotation: {x: -0.00000004828186, y: 0.000000029802308, z: -0.000000035736438,
+        w: 1}
       scale: {x: 1.0000002, y: 1.0000006, z: 1.0000001}
     - name: RightLips
       parentName: Mandible
@@ -1939,7 +1915,8 @@ ModelImporter:
     - name: RightLipsAdjust
       parentName: RightLips
       position: {x: -0.000000008140205, y: 0.000000006766665, z: -0.00000016986974}
-      rotation: {x: -0.0000009927896, y: 0.000000029802315, z: -0.0000000018626447, w: 1}
+      rotation: {x: -0.0000009927896, y: 0.000000029802315, z: -0.0000000018626447,
+        w: 1}
       scale: {x: 1.0000014, y: 1.0000007, z: 1}
     - name: RightLipsInferior
       parentName: Mandible
@@ -2009,7 +1986,8 @@ ModelImporter:
     - name: RightCheekAdjust
       parentName: RightCheek
       position: {x: 0.000000041325194, y: 0.000000012107193, z: 0.0000001863882}
-      rotation: {x: -0.00000005960463, y: -0.00000010430811, z: 0.00000019371505, w: -1}
+      rotation: {x: -0.00000005960463, y: -0.00000010430811, z: 0.00000019371505,
+        w: -1}
       scale: {x: 1.0000017, y: 1.0000013, z: 1.0000014}
     - name: RightEar
       parentName: Head
@@ -2029,7 +2007,8 @@ ModelImporter:
     - name: RightEyeAdjust
       parentName: RightEye
       position: {x: 0.00000010325148, y: 0.00000009111068, z: -0.00000116833}
-      rotation: {x: -0.0000019920649, y: -0.000000089405724, z: -0.0000000075904145, w: 1}
+      rotation: {x: -0.0000019920649, y: -0.000000089405724, z: -0.0000000075904145,
+        w: 1}
       scale: {x: 0.9999997, y: 1, z: 1.0000001}
     - name: RightEyeGlobe
       parentName: RightEye
@@ -2084,7 +2063,8 @@ ModelImporter:
     - name: RightEyebrowUpAdjust
       parentName: RightEyebrowUp
       position: {x: -0.000000007545168, y: 0.000000007574272, z: 0.000000037542463}
-      rotation: {x: -0.000000114319846, y: -0.00000011933912, z: 0.000000062340405, w: 1}
+      rotation: {x: -0.000000114319846, y: -0.00000011933912, z: 0.000000062340405,
+        w: 1}
       scale: {x: 1.0000006, y: 1.0000008, z: 1.0000008}
     - name: RightLipsSuperiorMiddle
       parentName: Head
@@ -2104,7 +2084,8 @@ ModelImporter:
     - name: RightLowCheekAdjust
       parentName: RightLowCheek
       position: {x: -0.000000044703484, y: 0.000000007450581, z: 0.00000008483971}
-      rotation: {x: -0.000000044703473, y: -0.000000081956365, z: -0.00000020861621, w: 1}
+      rotation: {x: -0.000000044703473, y: -0.000000081956365, z: -0.00000020861621,
+        w: 1}
       scale: {x: 1.000002, y: 1.0000021, z: 1.0000013}
     - name: RightNose
       parentName: Head
@@ -2114,7 +2095,8 @@ ModelImporter:
     - name: RightNoseAdjust
       parentName: RightNose
       position: {x: -0.00000003047171, y: -0.000000016385457, z: -0.00000019672734}
-      rotation: {x: -0.000002485234, y: 0.000000023964272, z: -0.000000041269228, w: -1}
+      rotation: {x: -0.000002485234, y: 0.000000023964272, z: -0.000000041269228,
+        w: -1}
       scale: {x: 1.0000001, y: 1.0000005, z: 1.0000001}
     - name: UpperLips
       parentName: Head
@@ -2124,12 +2106,14 @@ ModelImporter:
     - name: UpperLipsAdjust
       parentName: UpperLips
       position: {x: -0.000000013031427, y: -3.49e-13, z: 0.000000168584}
-      rotation: {x: -0.00000015128457, y: -0.000000059604616, z: -0.00000018214733, w: -1}
+      rotation: {x: -0.00000015128457, y: -0.000000059604616, z: -0.00000018214733,
+        w: -1}
       scale: {x: 1.0000002, y: 1, z: 1}
     - name: NeckAdjust
       parentName: Neck
       position: {x: -0.035558783, y: 0.000000002684608, z: 0.000000070780516}
-      rotation: {x: 0.00000041689458, y: 0.000000029802319, z: -0.00000014157611, w: 1}
+      rotation: {x: 0.00000041689458, y: 0.000000029802319, z: -0.00000014157611,
+        w: 1}
       scale: {x: 1.0000002, y: 1.0000005, z: 1.0000002}
     - name: RightOuterBreast
       parentName: Spine1
@@ -2164,17 +2148,20 @@ ModelImporter:
     - name: RightForeArmAdjust
       parentName: RightForeArm
       position: {x: -0.035068974, y: -0.00000021187589, z: -0.00000010803342}
-      rotation: {x: -0.00000018626449, y: 0.00000002235174, z: -0.000000061932944, w: 1}
+      rotation: {x: -0.00000018626449, y: 0.00000002235174, z: -0.000000061932944,
+        w: 1}
       scale: {x: 1.0000005, y: 1.0000001, z: 0.9999999}
     - name: RightForeArmTwist
       parentName: RightForeArm
       position: {x: -0.14027604, y: -0.00000036379788, z: -0.000000063329935}
-      rotation: {x: -0.0000003613531, y: 0.000000029802319, z: -0.000000020954756, w: 1}
+      rotation: {x: -0.0000003613531, y: 0.000000029802319, z: -0.000000020954756,
+        w: 1}
       scale: {x: 0.9999999, y: 1.0000002, z: 0.9999999}
     - name: RightForeArmTwistAdjust
       parentName: RightForeArmTwist
       position: {x: -0.03506889, y: -0.00000013626413, z: -0.000000020489097}
-      rotation: {x: 0.00000009313224, y: 0.000000007450594, z: -0.00000003306194, w: 1}
+      rotation: {x: 0.00000009313224, y: 0.000000007450594, z: -0.00000003306194,
+        w: 1}
       scale: {x: 1.0000006, y: 1.0000005, z: 1.0000001}
     - name: RightHand
       parentName: RightForeArm
@@ -2304,7 +2291,8 @@ ModelImporter:
     - name: RightLegAdjust
       parentName: RightLeg
       position: {x: -0.11892757, y: 0.000000030267984, z: -0.000000029802322}
-      rotation: {x: 0.000000096857555, y: -0.0000000037252907, z: 0.000000011525118, w: 1}
+      rotation: {x: 0.000000096857555, y: -0.0000000037252907, z: 0.000000011525118,
+        w: 1}
       scale: {x: 1.0000007, y: 1.0000006, z: 0.9999998}
     - name: RightUpLegAdjust
       parentName: RightUpLeg
@@ -2328,7 +2316,6 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

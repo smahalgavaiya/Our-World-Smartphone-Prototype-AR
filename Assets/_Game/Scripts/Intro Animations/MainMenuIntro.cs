@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class MainMenuIntro : MonoBehaviour
 {
@@ -28,12 +29,16 @@ public class MainMenuIntro : MonoBehaviour
     public Material _skyboxMat;
     public Material _earthMat;
     public MainMenuManager _mMM;
+    public Toggle ChangeDesignToggle;
+    public Slider ChangeDesignTime;
+    public TextMeshProUGUI ChangeDesignTimeText;
 
     private ObjectRotation[] OR;
 
     private void Start()
     {
         OR = FindObjectsOfType<ObjectRotation>();
+        SetUpMenu();
         DoIntro();
     }
 
@@ -48,6 +53,7 @@ public class MainMenuIntro : MonoBehaviour
     #region Design 1
     private void Intro1()
     {
+        PlayerPrefs.SetInt("CurrentDesign", 1);
         _skyboxMat.SetFloat("_Exposure", 0);
         _earthMat.SetVector("_EarthBrightness", new Vector4(0, 0, 0, 0));
         LeanTween.moveLocalY(_earth, -0.53f, 4).setEaseOutSine().setOnComplete(() =>
@@ -191,6 +197,7 @@ public class MainMenuIntro : MonoBehaviour
     #region Design 2
     private void Intro2()
     {
+        PlayerPrefs.SetInt("CurrentDesign", 2);
         _skyboxMat.SetFloat("_Exposure", 0);
         _earthMat.SetVector("_EarthBrightness", new Vector4(0, 0, 0, 0));
         LeanTween.moveLocalY(_earth, -0.53f, 4).setEaseOutSine().setOnComplete(() =>
@@ -267,60 +274,106 @@ public class MainMenuIntro : MonoBehaviour
     #region Design 2 To 1
     public void Design2To1()
     {
-        ObjectRotationState(false);
-        SwapLensFlareSprite(_newLensFlare, false);
-        LeanTween.rotateLocal(_sceneHolder, new Vector3(26.7f, 173.5f, -4.36f), 2).setEaseOutSine();
-        LeanTween.rotateLocal(_earthModel, new Vector3(0f, 0f, 0f), 3).setEaseOutSine().setOnComplete(() =>
+        if (PlayerPrefs.GetInt("CurrentDesign") != 1)
         {
-            ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.UP);
-            ObjectRotationState(true);
-        });
-        LeanTween.moveLocal(_earth, new Vector3(-0.65f, -0.4f, -1.57f), 3).setEaseOutSine();
-        LeanTween.moveLocalZ(_stars, -45, 3).setEaseOutSine();
-        LeanTween.moveLocalZ(_starFlare, 0, 3).setEaseOutSine();
-        LeanTween.moveLocal(_SunLensFlareHolder, new Vector3(-1.85f, -0.36f, -16f), 3).setEaseOutSine();
-        LeanTween.scale(_SunLensFlare1.gameObject, new Vector3(1, 1, 1), 3f).setEaseOutSine();
-        LeanTween.scale(_SunLensFlare2.gameObject, new Vector3(1, 1, 1), 3f).setEaseOutSine();
-        LeanTween.scale(_SunLensFlare3.gameObject, new Vector3(1, 1, 1), 3f).setEaseOutSine();
-        LeanTween.value(22f, 35f, 3).setEaseOutSine().setOnUpdate((float value) =>
-        {
-            _cam.fieldOfView = value;
-        });
-        LeanTween.value(1, 0, 3).setEaseOutSine().setOnUpdate((float value) =>
-        {
-            _introVolume.weight = value;
-            _finalVolume.weight = 1 - value;
-        });
+            PlayerPrefs.SetInt("CurrentDesign", 1);
+            ObjectRotationState(false);
+            SwapLensFlareSprite(_newLensFlare, false);
+            LeanTween.rotateLocal(_sceneHolder, new Vector3(26.7f, 173.5f, -4.36f), 2).setEaseOutSine();
+            LeanTween.rotateLocal(_earthModel, new Vector3(0f, 0f, 0f), 3).setEaseOutSine().setOnComplete(() =>
+            {
+                ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.UP);
+                ObjectRotationState(true);
+            });
+            LeanTween.moveLocal(_earth, new Vector3(-0.65f, -0.4f, -1.57f), 3).setEaseOutSine();
+            LeanTween.moveLocalZ(_stars, -45, 3).setEaseOutSine();
+            LeanTween.moveLocalZ(_starFlare, 0, 3).setEaseOutSine();
+            LeanTween.moveLocal(_SunLensFlareHolder, new Vector3(-1.85f, -0.36f, -16f), 3).setEaseOutSine();
+            LeanTween.scale(_SunLensFlare1.gameObject, new Vector3(1, 1, 1), 3f).setEaseOutSine();
+            LeanTween.scale(_SunLensFlare2.gameObject, new Vector3(1, 1, 1), 3f).setEaseOutSine();
+            LeanTween.scale(_SunLensFlare3.gameObject, new Vector3(1, 1, 1), 3f).setEaseOutSine();
+            LeanTween.value(22f, 35f, 3).setEaseOutSine().setOnUpdate((float value) =>
+            {
+                _cam.fieldOfView = value;
+            });
+            LeanTween.value(1, 0, 3).setEaseOutSine().setOnUpdate((float value) =>
+            {
+                _introVolume.weight = value;
+                _finalVolume.weight = 1 - value;
+            });
+        }
     }
     #endregion
 
     #region Design 1 To 2
     public void Design1To2()
     {
-        ObjectRotationState(false);
-        SwapLensFlareSprite(_introLensFlare, true);
-        LeanTween.rotateLocal(_sceneHolder, new Vector3(23f, 179.93f, -4.36f), 2).setEaseOutSine();
-        LeanTween.rotateLocal(_earthModel, new Vector3(0f, 0f, 0f), 3).setEaseOutSine();
-        LeanTween.moveLocal(_earth, new Vector3(-0.02f, -0.53f, -1.45f), 3).setEaseOutSine();
-        LeanTween.moveLocalZ(_stars, -65, 3).setEaseOutSine();
-        LeanTween.moveLocalZ(_starFlare, -6.82f, 3).setEaseOutSine();
-        LeanTween.moveLocal(_SunLensFlareHolder, new Vector3(0f, 3.9f, -60f), 3).setEaseOutSine();
-        LeanTween.scale(_SunLensFlare1.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 3f).setEaseOutSine();
-        LeanTween.scale(_SunLensFlare2.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 3f).setEaseOutSine();
-        LeanTween.scale(_SunLensFlare3.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 3f).setEaseOutSine();
-        LeanTween.value(35f, 22f, 3).setEaseOutSine().setOnUpdate((float value) =>
+        if (PlayerPrefs.GetInt("CurrentDesign") != 2)
         {
-            _cam.fieldOfView = value;
-        });
-        LeanTween.value(1, 0, 3).setEaseOutSine().setOnUpdate((float value) =>
-        {
-            _introVolume.weight = 1 - value;
-            _finalVolume.weight = value;
-        }).setOnComplete(() =>
-        {
-            ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.RIGHT);
-            ObjectRotationState(true);
-        });
+            PlayerPrefs.SetInt("CurrentDesign", 2);
+            ObjectRotationState(false);
+            SwapLensFlareSprite(_introLensFlare, true);
+            LeanTween.rotateLocal(_sceneHolder, new Vector3(23f, 179.93f, -4.36f), 2).setEaseOutSine();
+            LeanTween.rotateLocal(_earthModel, new Vector3(0f, 0f, 0f), 3).setEaseOutSine();
+            LeanTween.moveLocal(_earth, new Vector3(-0.02f, -0.53f, -1.45f), 3).setEaseOutSine();
+            LeanTween.moveLocalZ(_stars, -65, 3).setEaseOutSine();
+            LeanTween.moveLocalZ(_starFlare, -6.82f, 3).setEaseOutSine();
+            LeanTween.moveLocal(_SunLensFlareHolder, new Vector3(0f, 3.9f, -60f), 3).setEaseOutSine();
+            LeanTween.scale(_SunLensFlare1.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 3f).setEaseOutSine();
+            LeanTween.scale(_SunLensFlare2.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 3f).setEaseOutSine();
+            LeanTween.scale(_SunLensFlare3.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 3f).setEaseOutSine();
+            LeanTween.value(35f, 22f, 3).setEaseOutSine().setOnUpdate((float value) =>
+            {
+                _cam.fieldOfView = value;
+            });
+            LeanTween.value(1, 0, 3).setEaseOutSine().setOnUpdate((float value) =>
+            {
+                _introVolume.weight = 1 - value;
+                _finalVolume.weight = value;
+            }).setOnComplete(() =>
+            {
+                ChangeEarthRotationAxis(ObjectRotation.AxisToRotateIn.RIGHT);
+                ObjectRotationState(true);
+            });
+        }
     }
     #endregion
+
+    private int TimeToChange;
+    private bool ChangeDesign;
+
+    private void SetUpMenu()
+    {
+        ChangeDesign = PlayerPrefs.GetInt("ChangeDesign", 0) == 0 ? false : true;
+        TimeToChange = PlayerPrefs.GetInt("TTC", 10);
+        ChangeDesignTimeText.text = TimeToChange.ToString();
+        ChangeDesignToggle.isOn = ChangeDesign;
+        ChangeDesignTime.value = TimeToChange;
+        DoChangeDesign(ChangeDesign);
+    }
+
+    public void DoChangeDesign(bool value)
+    {
+        PlayerPrefs.SetInt("ChangeDesign", value == false ? 0 : 1);
+        ChangeDesign = value;
+        if (ChangeDesign)
+            InvokeRepeating("ChangeDesignAuto", 30, TimeToChange);
+        else
+            CancelInvoke();
+    }
+
+    public void TimeToChangeFunc(float value)
+    {
+        TimeToChange = (int)value;
+        PlayerPrefs.SetInt("TTC", (int)value);
+        ChangeDesignTimeText.text = value.ToString();
+    }
+
+    private void ChangeDesignAuto()
+    {
+        if (PlayerPrefs.GetInt("CurrentDesign") == 1)
+            Design1To2();
+        else if (PlayerPrefs.GetInt("CurrentDesign") == 2)
+            Design2To1();
+    }
 }

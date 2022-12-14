@@ -17,16 +17,21 @@ namespace OurWorld.Scripts.Controllers
 
         public LocationProviderFactory locationProviderFactory;
 
-        public async void Initialize(IMapAPIProvider mapAPIProvider)
+        public void Initialize(IMapAPIProvider mapAPIProvider)
         {
             _mapApiProvider = mapAPIProvider;
+
+             searchNewPlacesNearbyAndClearOld("park");
+        }
+
+        public async void searchNewPlacesNearbyAndClearOld(string placeSearchType)
+        {
             Geolocation playerPosition = Geolocation.TempPlayerPosition;
             Debug.Log(playerPosition);
-
-            IRequest request = new MapBoxForwardGeocodingRequest(playerPosition, playerPosition.GetBoundingBox(100f), new string[] { "poi" }, "park");
-
+            IRequest request = new MapBoxForwardGeocodingRequest(playerPosition, playerPosition.GetBoundingBox(100f), new string[] { "poi" }, placeSearchType);
             var response = await _mapApiProvider.GeocodingProvider.POISearchAsync(request);
             _nearbyPlacesListElement.Initialize(response.Places, OnPlaceSelected);
+
         }
 
         private void OnPlaceSelected(IPointOfInterest placeData)
