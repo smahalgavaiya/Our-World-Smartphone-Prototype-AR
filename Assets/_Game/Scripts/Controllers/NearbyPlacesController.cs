@@ -28,6 +28,7 @@ namespace OurWorld.Scripts.Controllers
         {
             Geolocation playerPosition = Geolocation.TempPlayerPosition;
             Debug.Log(playerPosition);
+            AvatarInfoManager.Instance.currentplaceSearchType = placeSearchType;
             IRequest request = new MapBoxForwardGeocodingRequest(playerPosition, playerPosition.GetBoundingBox(100f), new string[] { "poi" }, placeSearchType);
             var response = await _mapApiProvider.GeocodingProvider.POISearchAsync(request);
             _nearbyPlacesListElement.Initialize(response.Places, OnPlaceSelected);

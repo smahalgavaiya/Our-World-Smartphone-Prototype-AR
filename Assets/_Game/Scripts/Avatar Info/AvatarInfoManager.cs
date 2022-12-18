@@ -1,5 +1,6 @@
 using SimpleJSON;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -21,6 +22,8 @@ public class AvatarInfoManager : MonoBehaviour
 
     public MainMenuAvatarInfoManager mainMenuAvatarInfoManager;
 
+    public string currentplaceSearchType;
+
     private struct AddKarmaData
     {
         public string karmaType;
@@ -30,6 +33,10 @@ public class AvatarInfoManager : MonoBehaviour
     }
 
     public static AvatarInfoManager Instance = null;
+
+
+    public List<string> LocationsVisited;
+
     private void Start()
     {
         if (Instance != null)
@@ -38,6 +45,33 @@ public class AvatarInfoManager : MonoBehaviour
             Instance = this;
 
         DontDestroyOnLoad(gameObject);
+        LoadLocationsVisitedList();
+    }
+
+    public void LoadLocationsVisitedList()
+    {
+        if (PlayerPrefs.HasKey("LocationsVisited_Count"))
+        {
+            int listCount = PlayerPrefs.GetInt("LocationsVisited_Count");
+
+            for (var i = 0; i < listCount; i++)
+            {
+                LocationsVisited[i] = PlayerPrefs.GetString("LocationsVisited_" + i);
+            }
+        }
+ 
+    }
+
+    public bool isThisLocationOnLocationVisitedCollection(string element)
+    {
+        return LocationsVisited.Contains(element);
+    }
+
+    public void AddLocationToVistied(string element)
+    {
+        LocationsVisited.Add(element);
+        PlayerPrefs.SetString("LocationsVisited_" + (LocationsVisited.Count-1), element);
+        PlayerPrefs.SetInt("LocationsVisited_Count", LocationsVisited.Count);
     }
 
     public string AvatarName
