@@ -201,6 +201,7 @@ public class AvatarInfoManager : MonoBehaviour
         yield return request.SendWebRequest();
 
         JSONNode data = JSON.Parse(request.downloadHandler.text);
+        Debug.Log(data);
         if (data["isError"] != null && data["isError"].Value == "true")
             // SetInfo(ShowWarning.SignInFail, data["message"].Value);
             Debug.Log(data["message"].Value);

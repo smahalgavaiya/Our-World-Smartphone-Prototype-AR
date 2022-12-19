@@ -14,16 +14,16 @@ namespace OASIS.AVATAR
 
         private string GetBaseURL()
         {
-            if (EditorPrefs.GetInt("OASISVersion") == 0)
+            //if (EditorPrefs.GetInt("OASISVersion") == 0)
                 return BASE_LIVE_URL;
-            else if (EditorPrefs.GetInt("OASISVersion") == 1)
+            /*else if (EditorPrefs.GetInt("OASISVersion") == 1)
                 return BASE_STAGING_URL;
             else
-                return "DLL";
+                return "DLL";*/
         }
         public string GetCurrentProviderType()
         {
-            return OASIS_Provider_Options[EditorPrefs.GetInt("OASISProviderType")];
+            return OASIS_Provider_Options[PlayerPrefs.GetInt("OASISProviderType")];
         }
 
         //Get without Authorization

@@ -1304,11 +1304,11 @@
     <None Include="Assets\Wrld\Shaders\StencilledGeometry.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\zlib.txt" />
     <None Include="Assets\Mapbox\link.xml" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Wrld\AssetData\Windows\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libuv.txt" />
     <None Include="Assets\Wrld\3rd Party Licenses\fonts\IPA_font.txt" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libssl.txt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
@@ -1328,6 +1328,7 @@
     <None Include="Assets\UMA\InternalDataStore\InGame\Resources\Shader\NormalShader.compute" />
     <None Include="Assets\data.txt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\_Game\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\OpenCV+Unity\gmcs.rsp" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\portable-net45+uap10\Mapbox.VectorTile.Geometry.dll" />
@@ -1396,7 +1397,6 @@
     <None Include="Assets\Mapbox\Shaders\RasterWithTransparencyShader.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Net35\Mapbox.Json.dll" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\rapidxml.txt" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Wrld\Shaders\StencilReflectionFloor.shader" />
     <None Include="Assets\Mapbox\Fonts\OpenSansLic.txt" />

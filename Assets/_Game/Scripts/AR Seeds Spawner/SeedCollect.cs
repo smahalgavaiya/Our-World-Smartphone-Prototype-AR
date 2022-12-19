@@ -30,12 +30,18 @@ public class SeedCollect : MonoBehaviour
                 PlayerModel.SetActive(true);
                 Destroy(hit.transform.gameObject, 0.5f);
                 Instantiate(Particle, hit.point, Quaternion.LookRotation(hit.normal));
+                //found and collected seed give 20 karma
+                AvatarInfoManager.Instance.AddKarma("SeedCollected", "Game", "SeedCollected20", "SeedCollected20");
+
             }
         }
-        if (Physics.Raycast(arCam.transform.position, arCam.transform.forward, out hit))
+       /* if (Physics.Raycast(arCam.transform.position, arCam.transform.forward, out hit))
         {
             if (hit.transform.tag == "Litter")
             {
+                //found and collected litter give 20 karma
+                AvatarInfoManager.Instance.AddKarma("LitterCollected", "Game", "LitterCollected20", "LitterCollected20");
+
                 PlayerModel.SetActive(true);
                 Transform hand = PlayerModel.transform.Find("Hand");
                 hit.transform.gameObject.transform.SetParent(hand);
@@ -43,7 +49,7 @@ public class SeedCollect : MonoBehaviour
                 Destroy(hit.transform.gameObject, 0.5f);
                 Instantiate(Particle, hit.point, Quaternion.LookRotation(hit.normal));
             }
-        }
+        }*/
     }
     private void Update()
     {
@@ -122,5 +128,9 @@ public class SeedCollect : MonoBehaviour
         PlayerModel.transform.position = new Vector3(Random.Range(0, 10), startingY, Random.Range(0, 10));
         Destroy(Litter, 0.5f);
         litterFound = false;
+
+        //found and collected litter give 20 karma
+        AvatarInfoManager.Instance.AddKarma("LitterCollected", "Game", "LitterCollected20", "LitterCollected20");
+
     }
 }

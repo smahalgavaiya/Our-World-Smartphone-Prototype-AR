@@ -3,6 +3,8 @@ using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Providers.MapAPIProviders;
 using OurWorld.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace OurWorld.Scripts.Controllers
 {
     public class GameController : MonoBehaviour
@@ -34,6 +36,11 @@ namespace OurWorld.Scripts.Controllers
             _initialized = true;
 
             GameInitialized?.Invoke();
+        }
+
+        public void openSeedsParkScene()
+        {
+            SceneManager.LoadScene("Seed Spawn");
         }
 
         public void DoAfterInitialize(Action callBack)
