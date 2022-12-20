@@ -29,6 +29,20 @@ namespace OurWorld.Scripts.Controllers
 
         private void Initialize()
         {
+            //Uncomment below when WRLD3D is ready
+          /*  int mapNum = PlayerPrefs.GetInt("PreferredMap");
+            //Mapbox
+            if (mapNum == 0)
+            {
+
+                _mapApiProvider = new MapboxAPIProvider();
+            }
+            //WRLD3D
+            else if (mapNum == 1)
+            {
+                _mapApiProvider = new WRLD3DAPIProvider();
+            }*/
+
             _mapApiProvider = new MapboxAPIProvider();
 
             _nearbyPlacesController.Initialize(_mapApiProvider);
