@@ -95,12 +95,12 @@ namespace OurWorld.Scripts.Navigation.Directions
                 if (AvatarInfoManager.Instance.isThisLocationOnLocationVisitedCollection(_targetLocation.ToString()))
                 {
                     //Give 100 karma new location
-                    AvatarInfoManager.Instance.AddKarma("TargetReached", "Game", "TargetReached100", _targetLocation.ToString());
+                    AvatarInfoManager.Instance.AddKarma("ContributingToTheOASISWithFunding", "AndroidApp", "TargetReached100", _targetLocation.ToString());
                     AvatarInfoManager.Instance.AddLocationToVistied(_targetLocation.ToString());
                 }
                 else
                 { //give 50 karma old location 
-                    AvatarInfoManager.Instance.AddKarma("TargetReached", "Game", "TargetReached50", _targetLocation.ToString());
+                    AvatarInfoManager.Instance.AddKarma("HelpingTheEnvironment", "AndroidApp", "TargetReached50", _targetLocation.ToString());
                 }
 
                 StopCoroutine(UpdateCoroutine());
@@ -113,7 +113,7 @@ namespace OurWorld.Scripts.Navigation.Directions
             while (Geolocation.TempPlayerPosition.DistanceTo(_targetLocation) < 0.1f)
             {
                 yield return wait;
-                AvatarInfoManager.Instance.AddKarma("TargetStaying", "Game", "TargetStaying1", _targetLocation.ToString());
+                AvatarInfoManager.Instance.AddKarma("OurWorld", "AndroidApp", "TargetStaying1", _targetLocation.ToString());
             }
             StopCoroutine(onStayingNaturePlacesReward());
         }

@@ -31,7 +31,7 @@ public class SeedCollect : MonoBehaviour
                 Destroy(hit.transform.gameObject, 0.5f);
                 Instantiate(Particle, hit.point, Quaternion.LookRotation(hit.normal));
                 //found and collected seed give 20 karma
-                AvatarInfoManager.Instance.AddKarma("SeedCollected", "Game", "SeedCollected20", "SeedCollected20");
+                AvatarInfoManager.Instance.AddKarma("RewardWithSeeds", "AndroidApp", "SeedCollected20", "SeedCollected20");
 
             }
         }
@@ -130,7 +130,7 @@ public class SeedCollect : MonoBehaviour
         litterFound = false;
 
         //found and collected litter give 20 karma
-        AvatarInfoManager.Instance.AddKarma("LitterCollected", "Game", "LitterCollected20", "LitterCollected20");
+        AvatarInfoManager.Instance.AddKarma("PickupLitter", "AndroidApp", "LitterCollected20", "LitterCollected20");
 
     }
 }
