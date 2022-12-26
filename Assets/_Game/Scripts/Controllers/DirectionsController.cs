@@ -25,6 +25,8 @@ namespace OurWorld.Scripts.Navigation.Directions
 
         private Geolocation _targetLocation;
 
+        public Button ArParkButton;
+
         public void Initialize(IDirectionsAPIProvider directionsAPIProvider)
         {
             _directionsAPIProvider = directionsAPIProvider;
@@ -65,6 +67,16 @@ namespace OurWorld.Scripts.Navigation.Directions
             if (_activeNavigation == null) return;
             _activeNavigation.DisposeActiveNavigation();
             _activeNavigation = null;
+        }
+
+        private void FixedUpdate()
+        {
+
+            ArParkButton.gameObject.SetActive(AvatarInfoManager.Instance.playerIsInPark);
+            if (AvatarInfoManager.Instance.playerIsInPark)
+            {
+                StartCoroutine(onStayingNaturePlacesReward());
+            }
         }
 
         private IEnumerator UpdateCoroutine()
@@ -110,7 +122,8 @@ namespace OurWorld.Scripts.Navigation.Directions
         {
             var wait = new WaitForSeconds(60f);
 
-            while (Geolocation.TempPlayerPosition.DistanceTo(_targetLocation) < 0.1f)
+            while (Geolocation.TempPlayerPosition.DistanceTo(_targetLocation) < 0.1f 
+                || AvatarInfoManager.Instance.playerIsInPark)
             {
                 yield return wait;
                 AvatarInfoManager.Instance.AddKarma("OurWorld", "AndroidApp", "TargetStaying1", _targetLocation.ToString());

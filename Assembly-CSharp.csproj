@@ -1304,7 +1304,6 @@
     <None Include="Assets\Wrld\Shaders\StencilledGeometry.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\zlib.txt" />
     <None Include="Assets\Mapbox\link.xml" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Wrld\AssetData\Windows\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libuv.txt" />
@@ -1321,6 +1320,7 @@
     <None Include="Assets\Wrld\Shaders\UnityVCShadow.cginc" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\sqlite\x86\sqlite3.dll" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\Clip_MapBoxStylesPerRenderer.shader" />
     <None Include="Assets\OpenCV+Unity\smcs.rsp" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\mt19937ar.c.txt" />
@@ -1328,7 +1328,6 @@
     <None Include="Assets\UMA\InternalDataStore\InGame\Resources\Shader\NormalShader.compute" />
     <None Include="Assets\data.txt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\_Game\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\OpenCV+Unity\gmcs.rsp" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\portable-net45+uap10\Mapbox.VectorTile.Geometry.dll" />
@@ -1336,6 +1335,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Mapbox\Shaders\MapboxStyles.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libktx.txt" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Portable\Mapbox.Json.dll" />

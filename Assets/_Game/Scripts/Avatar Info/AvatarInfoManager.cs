@@ -10,6 +10,7 @@ public class AvatarInfoManager : MonoBehaviour
     private const string OASIS_ADD_KARMA = "https://api.oasisplatform.world/api/avatar/add-karma-to-avatar/";
     private const string OASIS_REMOVE_KARMA = "https://api.oasisplatform.world/api/avatar/remove-karma-from-avatar/";
     private const string OASIS_GET_AVATAR_DETAIL_BY_ID = "https://api.oasisplatform.world/api/avatar/get-avatar-detail-by-id/";
+    private const string OASIS_REFRESH_TOKEN = "https://api.oasisplatform.world/api/avatar/refresh-token";
 
     private string _avatarName;
     private string _avatarLevel;
@@ -36,6 +37,8 @@ public class AvatarInfoManager : MonoBehaviour
 
 
     public List<string> LocationsVisited;
+
+    public bool playerIsInPark = false;
 
     private void Start()
     {
@@ -110,8 +113,42 @@ public class AvatarInfoManager : MonoBehaviour
 
         //fetching avatar details 
         getAvatarDetailsById();
+       
+
     }
-     void Update()
+    IEnumerator startRefershEach10sec()
+    {
+        while (true)
+        {
+            
+            yield return new WaitForSeconds(10f);
+            StartCoroutine(refershToken());
+        }
+    }
+    private IEnumerator refershToken()
+    {
+        using var request = new UnityWebRequest(OASIS_REFRESH_TOKEN );
+        request.method = UnityWebRequest.kHttpVerbPOST;
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Authorization", $"Bearer {PlayerPrefs.GetString("JWTToken")}");
+        // ShowWarningInfoPanel(true);
+        yield return request.SendWebRequest();
+
+        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        Debug.Log(data);
+        //write stuffs to show results over unity UI
+        if (data["isError"] != null && data["isError"].Value == "true")
+            // SetInfo(ShowWarning.SignInFail, data["message"].Value);
+            Debug.Log(data["message"].Value);
+        else
+        {
+            data = data["result"];
+            _jwtToken = data["result"]["jwtToken"].Value;
+            PlayerPrefs.SetString("JWTToken", _jwtToken);
+        }
+    }
+    void Update()
     {
 #if UNITY_EDITOR       
         //Add and remove karma testing code only works in unity editor
@@ -136,6 +173,7 @@ public class AvatarInfoManager : MonoBehaviour
     {
         _avatarId = PlayerPrefs.GetString("AvatarId");
         _jwtToken = PlayerPrefs.GetString("JWTToken");
+        StartCoroutine(startRefershEach10sec());
         StartCoroutine(getAvatarDetailsByIdRequest());
         // RemoveKarma("DropLitter", "AndroidApp", "SEEDS", "SEEDS");
        // AddKarma("BeAHero", "Game", "helppeoplegame222", "greatgame222");
