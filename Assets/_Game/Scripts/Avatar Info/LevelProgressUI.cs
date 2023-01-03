@@ -18,9 +18,9 @@ public class LevelProgressUI : MonoBehaviour {
 
 
    public void SetLevelTexts (int currentKarmaPoints) {
-      uiStartText.text = "Lvl "+Mathf.FloorToInt(PlayerPrefs.GetInt("KarmaPoints") / 100f).ToString () ;
+      uiStartText.text = "L"+Mathf.FloorToInt(PlayerPrefs.GetInt("KarmaPoints") / 100f).ToString () ;
         int pointsNeedeForLevelUp = 100-(currentKarmaPoints % 100);
-      uiEndText.text = pointsNeedeForLevelUp+" More";
+      uiEndText.text = pointsNeedeForLevelUp+"+";
    }
 
     private IEnumerator fillAnim(float duration)
