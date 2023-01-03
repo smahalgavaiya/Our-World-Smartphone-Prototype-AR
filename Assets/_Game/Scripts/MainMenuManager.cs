@@ -32,7 +32,7 @@ public class MainMenuManager : MonoBehaviour
         MapboxButton.onClick.AddListener(delegate { SetPreferredMap(0); });
         WRLD3DButton.onClick.AddListener(delegate { SetPreferredMap(1); });
         //Uncomment Below line when WRLD3D is ready
-        //ConfigurePreferredMap();
+        ConfigurePreferredMap();
     }
 
     private void ConfigureMenu()
@@ -196,7 +196,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("PreferredMap", mapNumber);
         //Uncomment Below line when WRLD3D is ready
-        // ConfigurePreferredMap();
+         ConfigurePreferredMap();
     }
 
     public void NewGame()
