@@ -7368,7 +7368,7 @@ RectTransform:
   - {fileID: 574454926}
   - {fileID: 2117192050}
   m_Father: {fileID: 1074748199}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -18963,7 +18963,7 @@ RectTransform:
   - {fileID: 1611970820}
   - {fileID: 65659398}
   m_Father: {fileID: 1074748199}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -24829,8 +24829,8 @@ RectTransform:
   - {fileID: 1551924228}
   - {fileID: 1814130773}
   - {fileID: 474672751}
-  - {fileID: 963450301}
   - {fileID: 664932912}
+  - {fileID: 963450301}
   m_Father: {fileID: 1728694586}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25325,7 +25325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1173831737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50844,7 +50844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1551924228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52318,7 +52318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1814130773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53981,11 +53981,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1527847801110309273, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1527847801336446357, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3185892862104352016, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
       propertyPath: m_Pivot.x
@@ -54075,13 +54075,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Avatar Info Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 3185892862104352019, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4242260862431481912, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4242260862473782324, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5910618779092721718, guid: 64eef62f5946d0347a5130363ae0ec32, type: 3}
       propertyPath: m_SizeDelta.y
