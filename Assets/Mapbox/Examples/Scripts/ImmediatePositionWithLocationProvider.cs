@@ -36,7 +36,7 @@
 			{
 				var map = LocationProviderFactory.Instance.mapManager;
 				transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
-				Debug.Log(LocationProvider.CurrentLocation.LatitudeLongitude);
+				//Debug.Log(LocationProvider.CurrentLocation.LatitudeLongitude);
 			}
 		}
 	}
