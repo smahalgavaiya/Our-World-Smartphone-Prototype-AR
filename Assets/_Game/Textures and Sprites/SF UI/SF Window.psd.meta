@@ -38,7 +38,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 2
     aniso: 16
-    mipBias: 0
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -59,8 +59,6 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -164,7 +162,7 @@ TextureImporter:
         height: 235
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 239, y: 116, z: 239, w: 116}
+      border: {x: 170, y: 90, z: 170, w: 100}
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -178,7 +176,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ce26d96349d5314439feca8ec38399df
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
