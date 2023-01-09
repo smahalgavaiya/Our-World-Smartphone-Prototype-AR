@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/UMA/Cloth_upgrade_from_UMA28.pdf.meta
 guid: e0591d0f2b651e649aee4e430f6bccbe
+========
+guid: 6f9212004b89b014e926b2a150d92d94
+>>>>>>>> upstream/master:Assets/UMA/Addressables - Read Me Now.pdf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

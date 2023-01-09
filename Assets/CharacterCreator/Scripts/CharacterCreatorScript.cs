@@ -1,15 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 using UMA;
 using UMA.CharacterSystem;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterCreatorScript : MonoBehaviour
 {
-    private const string OASIS_UPDATE_UMAJSON = "https://api.oasisplatform.world/api/avatar/Update/";
-    private const string OASIS_GET_UMAJSON = "https://api.oasisplatform.world/api/Avatar/GetUMAJsonById/";
-
     public DynamicCharacterAvatar dynamicCharacterAvatarScript;
     public CameraController cameraControllerScript;
     public Dictionary<string, DnaSetter> dNAmodule;
@@ -28,7 +26,6 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public List<Slider> DNAModuleSliders;
     public List<Slider> DNAModuleSlidersTMP;
-    public List<float> DNASliderValuesTMP;
 
     public List<string> DNAModuleStrings;
 
@@ -61,19 +58,6 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public TMP_Text guiseModuleText;
     public TMP_Text guiseSubModuleText;
-    public int hairModulevalueMale;
-    public int beardModulevalueMale;
-    public int eyesModulevalueMale;
-    public int eyebrowsModulevalueMale;
-    public int chestModulevalueMale;
-    public int LegModulevalueMale;
-    public int feetModulevalueMale;
-
-    public int hairModulevalueFemale;
-    public int underwearModulevalueFemale;
-    public int chestModulevalueFemale;
-    public int LegModulevalueFemale;
-    public int feetModulevalueFemale;
 
     [Space(10)]
 
@@ -105,24 +89,10 @@ public class CharacterCreatorScript : MonoBehaviour
             genderMale = true;
             cameraControllerScript.genderMale = true;
         }
-        else if (!genderState && dynamicCharacterAvatarScript.activeRace.name != femaleRaceName)
+        else if(!genderState && dynamicCharacterAvatarScript.activeRace.name!=femaleRaceName)
         {
             dynamicCharacterAvatarScript.ChangeRace(femaleRaceName);
             dynamicCharacterAvatarScript.BuildCharacter();
-            genderMale = false;
-            cameraControllerScript.genderMale = false;
-        }
-    }
-
-    public void RecognizeGender()
-    {
-        if (dynamicCharacterAvatarScript.activeRace.name == maleRaceName)
-        {
-            genderMale = true;
-            cameraControllerScript.genderMale = true;
-        }
-        else if (dynamicCharacterAvatarScript.activeRace.name == femaleRaceName)
-        {
             genderMale = false;
             cameraControllerScript.genderMale = false;
         }
@@ -143,6 +113,16 @@ public class CharacterCreatorScript : MonoBehaviour
         dNAmodule = dynamicCharacterAvatarScript.GetDNA();
     }
     #endregion
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+       
+    }
+
+
 
     #region DNAModule
 
@@ -166,6 +146,10 @@ public class CharacterCreatorScript : MonoBehaviour
         }
         else
         {
+            //use if using normal text
+            //dNAmodule[DNAModuleStrings[valueDNA]].Set(DNAModuleSliders[valueDNA].value);
+
+            ///use if using TMP
             dNAmodule[DNAModuleStrings[valueDNA]].Set(DNAModuleSlidersTMP[valueDNA].value);
 
 
@@ -174,22 +158,6 @@ public class CharacterCreatorScript : MonoBehaviour
         }
     }
 
-    private void DNAmoduleSliderMatch()
-    {
-        for (int i = 0; i < DNAModuleSlidersTMP.Count; i++)
-        {
-            DNAModuleSlidersTMP[i].value = DNASliderValuesTMP[i];
-        }
-
-    }
-
-    private void DNAmodulesSliderUpdate()
-    {
-        for (int i = 0; i < DNAModuleSlidersTMP.Count; i++)
-        {
-            DNASliderValuesTMP[i] = DNAModuleSlidersTMP[i].value;
-        }
-    }
 
     #endregion
 
@@ -200,7 +168,7 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public void ColorItemIncrement()
     {
-        if (ColorModuleValue < ColorModuleStrings.Count - 1)
+        if(ColorModuleValue < ColorModuleStrings.Count-1)
         {
             ColorModuleValue++;
             colorModuleText.text = ColorModuleStrings[ColorModuleValue];
@@ -213,7 +181,7 @@ public class CharacterCreatorScript : MonoBehaviour
                 cameraControllerScript.FocusFullbodyView();
             }
         }
-
+        
         else
         {
             ColorModuleValue = 0;
@@ -235,7 +203,7 @@ public class CharacterCreatorScript : MonoBehaviour
         {
             ColorModuleValue--;
             colorModuleText.text = ColorModuleStrings[ColorModuleValue];
-            if (ColorModuleValue == 1 || ColorModuleValue == 2)
+            if(ColorModuleValue == 1 || ColorModuleValue == 2)
             {
                 cameraControllerScript.FocusFaceView();
             }
@@ -264,15 +232,15 @@ public class CharacterCreatorScript : MonoBehaviour
     public void ColorModuleAdjustments(Color col)
     {
         Debug.Log("Changing Colors");
-
+        
         dynamicCharacterAvatarScript.SetColor(ColorModuleStrings[ColorModuleValue], col);
         dynamicCharacterAvatarScript.UpdateColors(true);
     }
     #endregion
 
     #region GuiseModule
-
-    //Deals with guise UI navigation
+    
+//Deals with guise UI navigation
     private void UpdateguiseModuleMale()
     {
         guiseSubModuleText.text = "None";
@@ -307,7 +275,7 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public void GuiseModuleIncrement()
     {
-        if (genderMale)
+        if(genderMale)
         {
             if (guiseModuleValue < GuiseModuleStringsMale.Count - 1)
             {
@@ -339,7 +307,7 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public void GuiseModuleDecrement()
     {
-        if (genderMale)
+        if(genderMale)
         {
             if (guiseModuleValue > 0)
             {
@@ -372,7 +340,7 @@ public class CharacterCreatorScript : MonoBehaviour
     //updates slots with respective recipies
     public void UpdateHairModuleMale()
     {
-        if (guiseSubModuleValue == 0)
+        if(guiseSubModuleValue == 0)
         {
             dynamicCharacterAvatarScript.ClearSlot(GuiseModuleStringsMale[guiseModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
@@ -382,9 +350,8 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.SetSlot(GuiseModuleStringsMale[guiseModuleValue], hairModuleMale[guiseSubModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
         }
-        hairModulevalueMale = guiseSubModuleValue;
         guiseSubModuleText.text = hairModuleMale[guiseSubModuleValue];
-
+       
     }
 
     public void UpdateBeardModuleMale()
@@ -400,8 +367,7 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.BuildCharacter();
         }
         guiseSubModuleText.text = beardModuleMale[guiseSubModuleValue];
-        beardModulevalueMale = guiseSubModuleValue;
-
+        
     }
 
     public void UpdateEyesModuleMale()
@@ -416,9 +382,8 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.SetSlot(GuiseModuleStringsMale[guiseModuleValue], eyesModuleMale[guiseSubModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
         }
-        eyesModulevalueMale = guiseSubModuleValue;
         guiseSubModuleText.text = eyesModuleMale[guiseSubModuleValue];
-
+        
     }
 
     public void UpdateEyeBrowsModuleMale()
@@ -433,9 +398,8 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.SetSlot(GuiseModuleStringsMale[guiseModuleValue], eyeBrowsModuleMale[guiseSubModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
         }
-        eyebrowsModulevalueMale = guiseSubModuleValue;
         guiseSubModuleText.text = eyeBrowsModuleMale[guiseSubModuleValue];
-
+        
     }
 
     public void UpdateChestModuleMale()
@@ -450,9 +414,8 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.SetSlot(GuiseModuleStringsMale[guiseModuleValue], chestModuleMale[guiseSubModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
         }
-        chestModulevalueMale = guiseSubModuleValue;
         guiseSubModuleText.text = chestModuleMale[guiseSubModuleValue];
-
+        
     }
 
     public void UpdateLegsModuleMale()
@@ -467,9 +430,8 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.SetSlot(GuiseModuleStringsMale[guiseModuleValue], legsModuleMale[guiseSubModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
         }
-        LegModulevalueMale = guiseSubModuleValue;
         guiseSubModuleText.text = legsModuleMale[guiseSubModuleValue];
-
+       
     }
 
     public void UpdateFeetModuleMale()
@@ -484,9 +446,8 @@ public class CharacterCreatorScript : MonoBehaviour
             dynamicCharacterAvatarScript.SetSlot(GuiseModuleStringsMale[guiseModuleValue], feetModuleMale[guiseSubModuleValue]);
             dynamicCharacterAvatarScript.BuildCharacter();
         }
-        feetModulevalueMale = guiseSubModuleValue;
         guiseSubModuleText.text = feetModuleMale[guiseSubModuleValue];
-
+       
     }
 
     //replicate the funtion if you need to add your own slot here
@@ -494,7 +455,7 @@ public class CharacterCreatorScript : MonoBehaviour
 
     #region Female Guise SubModules
 
-    // deals with female UMA race as you add race you need to replicate this modules accordingly.
+        // deals with female UMA race as you add race you need to replicate this modules accordingly.
     public void UpdateHairModuleFemale()
     {
         if (guiseSubModuleValue == 0)
@@ -563,7 +524,7 @@ public class CharacterCreatorScript : MonoBehaviour
     {
         if (guiseSubModuleValue == 0)
         {
-
+            
         }
         else
         {
@@ -577,7 +538,7 @@ public class CharacterCreatorScript : MonoBehaviour
     public void GuiseSubModuleIncrement()
     {
         //deals with selection of recipes and implements the recipe to the character creator
-        if (genderMale)
+        if(genderMale)
         {
             switch (guiseModuleValue)
             {
@@ -782,7 +743,7 @@ public class CharacterCreatorScript : MonoBehaviour
 
     public void GuiseSubModuleDecrement()
     {
-        if (genderMale)
+        if(genderMale)
         {
             switch (guiseModuleValue)
             {
@@ -971,167 +932,27 @@ public class CharacterCreatorScript : MonoBehaviour
                     }
                     break;
 
-
+                
             }
         }
-
+        
 
     }
 
-    public void GuiseSubModuleUpdate()
-    {
-        //deals with selection of recipes and implements the recipe to the character creator
-        if (genderMale)
-        {
-            switch (guiseModuleValue)
-            {
-
-                case 0:
-                    guiseSubModuleValue = hairModulevalueMale;
-                    UpdateHairModuleMale();
-
-                    break;
-
-                case 1:
-                    guiseSubModuleValue = beardModulevalueMale;
-                    UpdateBeardModuleMale();
-
-                    break;
-
-                case 2:
-                    guiseSubModuleValue = eyesModulevalueMale;
-                    UpdateEyesModuleMale();
-
-                    break;
-
-                case 3:
-                    guiseSubModuleValue = eyebrowsModulevalueMale;
-                    UpdateEyeBrowsModuleMale();
-
-                    break;
-
-                case 4:
-                    guiseSubModuleValue = chestModulevalueMale;
-                    UpdateChestModuleMale();
-                    break;
-
-                case 5:
-                    guiseSubModuleValue = LegModulevalueMale;
-                    UpdateLegsModuleMale();
-
-                    break;
-
-                case 6:
-                    guiseSubModuleValue = feetModulevalueMale;
-                    UpdateFeetModuleMale();
-
-                    break;
-
-                    //Add a new case after adding the slot name to the guisemodulelist to get the slot functional as earlier recipes replicate this step wherver necessary
-            }
-        }
-        else
-        {
-            switch (guiseModuleValue)
-            {
-
-                case 0:
-                    guiseSubModuleValue = hairModulevalueFemale;
-                    UpdateHairModuleFemale();
-
-                    break;
-
-                case 1:
-                    guiseSubModuleValue = chestModulevalueFemale;
-                    UpdateChestModuleFemale();
-
-                    break;
-
-                case 2:
-                    guiseSubModuleValue = LegModulevalueFemale;
-                    UpdateLegsModuleFemale();
-
-                    break;
-
-                case 3:
-                    guiseSubModuleValue = feetModulevalueFemale;
-                    UpdateFeetModuleFemale();
-
-                    break;
-
-                case 4:
-                    guiseSubModuleValue = underwearModulevalueFemale;
-                    UpdateUnderwearModuleFemale();
-
-                    break;
-            }
-        }
-    }
 
     #endregion
 
+    #region Save/Load
 
-    #region Save/Load 
-
-    public void GoBack()
-    {
-        FindObjectOfType<MainMenuManager>().GetSceneBack();
-    }
     public void SaveCharacter()
     {
         CharacterData = dynamicCharacterAvatarScript.GetCurrentRecipe();
-        DNAmodulesSliderUpdate();
-        for (int i = 0; i < DNASliderValuesTMP.Count; i++)
-        {
-            PlayerPrefs.SetFloat("DNASlider" + i, DNASliderValuesTMP[i]);
-        }
-        PlayerPrefs.SetString("UMAJSON", CharacterData);
     }
 
-    /*    private IEnumerator SaveUMARequest(string UMAData)
-        {
-            using var request = new UnityWebRequest(OASIS_UPDATE_UMAJSON + PlayerPrefs.GetString("AvatarId"));
-            request.method = UnityWebRequest.kHttpVerbPOST;
-            request.uploadHandler = new UploadHandlerRaw(Encoding.ASCII.GetBytes(UMAData));
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
-            yield return request.SendWebRequest();
-
-            JSONNode data = JSON.Parse(request.downloadHandler.text);
-            if (data["isError"].Value == "true")
-                Debug.Log("UMA Saving Error");
-            else
-                Debug.Log("UMA Saving Success");
-        }*/
-
-    private void LoadCharacter()
+    public void LoadCharacter()
     {
-        for (int i = 0; i < DNASliderValuesTMP.Count; i++)
-        {
-            DNASliderValuesTMP[i] = PlayerPrefs.GetFloat("DNASlider" + i);
-        }
-
-        /*        using var request = new UnityWebRequest(OASIS_GET_UMAJSON + PlayerPrefs.GetString("AvatarId"));
-                request.method = UnityWebRequest.kHttpVerbGET;
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-                yield return request.SendWebRequest();
-
-                JSONNode data = JSON.Parse(request.downloadHandler.text);
-                if (data["isError"].Value == "true")
-                    Debug.Log("UMA Saving Error");
-                else
-                    CharacterData = data["result"].Value;
-
-                Debug.Log(request.downloadHandler.text);*/
-        dynamicCharacterAvatarScript.LoadFromRecipeString(PlayerPrefs.GetString("UMAJSON", "") == "" ? CharacterData : PlayerPrefs.GetString("UMAJSON"));
-        RecognizeGender();
-        DNAmoduleSliderMatch();
+        dynamicCharacterAvatarScript.LoadFromRecipeString(CharacterData);
     }
+
     #endregion
-
-    private void Start()
-    {
-        LoadCharacter();
-    }
 }

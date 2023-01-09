@@ -12,7 +12,6 @@ public class ArTapToPlaceObject : MonoBehaviour
 {
 	public static ArTapToPlaceObject Instance;
 	public GameObject objectToPlace;
-	public GameObject _MapCamera;
 	public GameObject placementIndicator;
 	public GameObject _placedObj;
 
@@ -90,21 +89,11 @@ public class ArTapToPlaceObject : MonoBehaviour
 		Debug.Log("Placed object" + ButtonID);
 	}
 
-	public void SetMap()
-	{
-		if (objectToPlace.activeInHierarchy)
-		{
-			//objectToPlace.transform.rotation = placementPose.rotation;
-		}
-		
-	}
-
 	public void SetObject()
 	{
 		if (placementPoseIsValid && objectToPlace != null)
 		{
 			objectToPlace.SetActive(true);
-			_MapCamera.SetActive(true);
 			objectToPlace.transform.position = placementPose.position;
 			objectToPlace.transform.rotation = placementPose.rotation;
 		}

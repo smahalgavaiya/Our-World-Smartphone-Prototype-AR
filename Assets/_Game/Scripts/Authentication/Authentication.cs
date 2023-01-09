@@ -10,9 +10,9 @@ using UnityEngine.UI;
 public class Authentication : MonoBehaviour
 {
     private const string OASIS_REGISTER_AVATAR = "https://api.oasisplatform.world/api/avatar/register";
-    private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/avatar/GetTerms";
+    private const string OASIS_GET_TERMS = "https://api.oasisplatform.world/api/Avatar/get-terms";
     private const string OASIS_AUTHENTICATE = "https://api.oasisplatform.world/api/avatar/authenticate";
-    private const string OASIS_AUTOLOGIN = "https://api.oasisplatform.world/api/Avatar/GetAvatarByJwt";
+    private const string OASIS_AUTOLOGIN = "https://api.oasisplatform.world/api/Avatar/get-logged-in-avatar";
 
     [Header("Authentication")]
     public TMP_InputField _signUpFirstName;
@@ -62,7 +62,7 @@ public class Authentication : MonoBehaviour
     }
     private struct AuthenticateData
     {
-        public string email;
+        public string username;
         public string password;
     }
     private enum ShowWarning
@@ -227,11 +227,13 @@ public class Authentication : MonoBehaviour
         yield return request.SendWebRequest();
 
         JSONNode data = JSON.Parse(request.downloadHandler.text);
-        if (data["isError"].Value == "true")
-            SetInfo(ShowWarning.SignInFail, data["message"].Value);
+        if (data["IsError"].Value == "true")
+            SetInfo(ShowWarning.SignInFail, data["Message"].Value);
         else
         {
             SetInfo(ShowWarning.SignInSuccess);
+            AvatarInfoManager.Instance.getAvatarDetailsById();
+
         }
     }
 
@@ -240,7 +242,7 @@ public class Authentication : MonoBehaviour
         using var request = UnityWebRequest.Get(OASIS_GET_TERMS);
         yield return request.SendWebRequest();
 
-        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        JSONNode data = JSON.Parse(request.downloadHandler.text)["result"];
         if (request.result != UnityWebRequest.Result.Success)
             Debug.Log(request.error);
         else
@@ -374,13 +376,13 @@ public class Authentication : MonoBehaviour
         ShowWarningInfoPanel(true);
         yield return request.SendWebRequest();
 
-        JSONNode data = JSON.Parse(request.downloadHandler.text);
+        JSONNode data = JSON.Parse(request.downloadHandler.text)["result"];
         if (data["isError"].Value == "true")
             SetInfo(ShowWarning.SignInFail, data["message"].Value);
         else
         {
-            PlayerPrefs.SetString("JWTToken", data["result"]["avatar"]["jwtToken"].Value);
-            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["avatar"]["fullName"].Value, data["result"]["avatar"]["level"].Value, data["result"]["avatar"]["jwtToken"].Value, data["result"]["avatar"]["avatarId"].Value);
+            PlayerPrefs.SetString("JWTToken", data["result"]["jwtToken"].Value);
+            AvatarInfoManager.Instance.SetAvatarNameAndLevel(data["result"]["fullName"].Value, data["result"]["avatarType"]["value"].Value, data["result"]["jwtToken"].Value, data["result"]["avatarId"].Value);
             SetInfo(ShowWarning.SignInSuccess);
         }
     }
@@ -388,7 +390,7 @@ public class Authentication : MonoBehaviour
     {
         var authenticateData = new AuthenticateData
         {
-            email = _signInEmail.text,
+            username = _signInEmail.text,
             password = _signInPassword.text
         };
         return System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(authenticateData));

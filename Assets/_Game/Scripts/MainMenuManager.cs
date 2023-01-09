@@ -24,9 +24,15 @@ public class MainMenuManager : MonoBehaviour
 
     private string _activeOption;
 
+    public Button MapboxButton, WRLD3DButton;
+
     private void Start()
     {
         ConfigureMenu();
+        MapboxButton.onClick.AddListener(delegate { SetPreferredMap(0); });
+        WRLD3DButton.onClick.AddListener(delegate { SetPreferredMap(1); });
+        //Uncomment Below line when WRLD3D is ready
+        ConfigurePreferredMap();
     }
 
     private void ConfigureMenu()
@@ -161,10 +167,42 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    public void ConfigurePreferredMap()
+    {
+
+        int mapNum= PlayerPrefs.GetInt("PreferredMap");
+        //Mapbox
+        if (mapNum == 0)
+        {
+
+            MapboxButton.interactable = false;
+            WRLD3DButton.interactable = true;
+        }
+        //WRLD3D
+        else if (mapNum == 1)
+        {
+            MapboxButton.interactable = true;
+            WRLD3DButton.interactable = false;
+        }
+            
+    }
+
+    public int GetPreferredMap()
+    {
+        return PlayerPrefs.GetInt("PreferredMap");
+    }
+
+    public void SetPreferredMap(int mapNumber)
+    {
+        PlayerPrefs.SetInt("PreferredMap", mapNumber);
+        //Uncomment Below line when WRLD3D is ready
+         ConfigurePreferredMap();
+    }
+
     public void NewGame()
     {
-        //SceneManager.LoadScene("UnityWorldSpace");
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene("UnityWorldSpace");
+       // SceneManager.LoadScene("Map");
     }
 
     public void AutoSwitchToggle(bool value)

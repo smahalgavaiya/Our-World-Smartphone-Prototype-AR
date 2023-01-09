@@ -3,13 +3,15 @@ using OurWorld.Scripts.Interfaces.MapAPI;
 using OurWorld.Scripts.Providers.MapAPIProviders;
 using OurWorld.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace OurWorld.Scripts.Controllers
 {
     public class GameController : MonoBehaviour
     {
         public static event Action GameInitialized;
 
-        [SerializeField] private ParkQuestController _parkQuestController;
+        [SerializeField] private NearbyPlacesController _nearbyPlacesController;
 
         private bool _initialized;     
         public bool Initialized => _initialized;
@@ -18,18 +20,41 @@ namespace OurWorld.Scripts.Controllers
         public static IMapAPIProvider MapAPIProvidder => _mapApiProvider;
         private void Awake()
         {
+           // Initialize();
+        }
+        private void Start()
+        {
             Initialize();
         }
 
         private void Initialize()
         {
-            _mapApiProvider = new MapboxAPIProvider();
+            //Uncomment below when WRLD3D is ready
+            int mapNum = PlayerPrefs.GetInt("PreferredMap");
+            //Mapbox
+            if (mapNum == 0)
+            {
 
-            _parkQuestController.Initialize(_mapApiProvider);
+                _mapApiProvider = new MapboxAPIProvider();
+            }
+            //WRLD3D
+            else if (mapNum == 1)
+            {
+                _mapApiProvider = new WRLD3DAPIProvider();
+            }
+
+           // _mapApiProvider = new MapboxAPIProvider();
+
+            _nearbyPlacesController.Initialize(_mapApiProvider);
 
             _initialized = true;
 
             GameInitialized?.Invoke();
+        }
+
+        public void openSeedsParkScene()
+        {
+            SceneManager.LoadScene("Seed Spawn");
         }
 
         public void DoAfterInitialize(Action callBack)

@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - base
-  - Seed
-  - Litter
-  - rHand
+  - Drop
+  - Portal_B
   layers:
   - Default
   - TransparentFX
