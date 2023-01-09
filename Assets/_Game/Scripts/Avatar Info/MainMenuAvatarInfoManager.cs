@@ -28,7 +28,9 @@ public class MainMenuAvatarInfoManager : MonoBehaviour
 
 
 
-        karmaValueLabelText.text = "Karma: " + PlayerPrefs.GetInt("KarmaPoints") + "/"+ (100 - (PlayerPrefs.GetInt("KarmaPoints") % 100));
+        karmaValueLabelText.text = 
+            "Karma: " + PlayerPrefs.GetInt("KarmaPoints") + "/"+ 
+            ((100 - (PlayerPrefs.GetInt("KarmaPoints") % 100))+ PlayerPrefs.GetInt("KarmaPoints"));
         HealthValueLabelText.text = "Health: " +PlayerPrefs.GetInt("HealthPoints")  + "/100";
         ManaValueLabelText.text = "Mana: " + PlayerPrefs.GetInt("ManaPoints") + "/100";
     }
