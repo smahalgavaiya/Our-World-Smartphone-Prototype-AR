@@ -7,12 +7,13 @@ namespace Mapbox.Unity.Location
 	using UnityEngine;
 	using Mapbox.Unity.Map;
 	using System.Text.RegularExpressions;
+    using OurWorld.Scripts.DataModels.GeolocationData;
 
-	/// <summary>
-	/// Singleton factory to allow easy access to various LocationProviders.
-	/// This is meant to be attached to a game object.
-	/// </summary>
-	public class LocationProviderFactory : MonoBehaviour
+    /// <summary>
+    /// Singleton factory to allow easy access to various LocationProviders.
+    /// This is meant to be attached to a game object.
+    /// </summary>
+    public class LocationProviderFactory : MonoBehaviour
 	{
 		[SerializeField]
 		public AbstractMap mapManager;
@@ -54,23 +55,29 @@ namespace Mapbox.Unity.Location
 
 		ILocationProvider _defaultLocationProvider;
 
-		/// <summary>
-		/// The default location provider. 
-		/// Outside of the editor, this will be a <see cref="T:Mapbox.Unity.Location.DeviceLocationProvider"/>.
-		/// In the Unity editor, this will be an <see cref="T:Mapbox.Unity.Location.EditorLocationProvider"/>
-		/// </summary>
-		/// <example>
-		/// Fetch location to set a transform's position:
-		/// <code>
-		/// void Update()
-		/// {
-		///     var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
-		///     transform.position = Conversions.GeoToWorldPosition(locationProvider.Location,
-		///                                                         MapController.ReferenceTileRect.Center,
-		///                                                         MapController.WorldScaleFactor).ToVector3xz();
-		/// }
-		/// </code>
-		/// </example>
+        /// <summary>
+        /// The default location provider. 
+        /// Outside of the editor, this will be a <see cref="T:Mapbox.Unity.Location.DeviceLocationProvider"/>.
+        /// In the Unity editor, this will be an <see cref="T:Mapbox.Unity.Location.EditorLocationProvider"/>
+        /// </summary>
+        /// <example>
+        /// Fetch location to set a transform's position:
+        /// <code>
+        /// void Update()
+        /// {
+        ///     var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+        ///     transform.position = Conversions.GeoToWorldPosition(locationProvider.Location,
+        ///                                                         MapController.ReferenceTileRect.Center,
+        ///                                                         MapController.WorldScaleFactor).ToVector3xz();
+        /// }
+        /// </code>
+        /// </example>
+        /// 
+        private void FixedUpdate()
+        {
+			Geolocation.TempPlayerPosition = new Geolocation(_deviceLocationProviderAndroid.CurrentLocation.LatitudeLongitude.y
+			   , _deviceLocationProviderAndroid.CurrentLocation.LatitudeLongitude.x);
+		}
 		public ILocationProvider DefaultLocationProvider
 		{
 			get
@@ -135,6 +142,8 @@ namespace Mapbox.Unity.Location
 
 			InjectEditorLocationProvider();
 			InjectDeviceLocationProvider();
+			Geolocation.TempPlayerPosition = new Geolocation(_deviceLocationProviderAndroid.CurrentLocation.LatitudeLongitude.y
+			   , _deviceLocationProviderAndroid.CurrentLocation.LatitudeLongitude.x);
 		}
 
 		/// <summary>
