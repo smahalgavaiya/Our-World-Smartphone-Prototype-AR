@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/StreamingAssets/WrldResources/Resources/FrankBold50_A8_icons.fnt.meta
-guid: 99d15d96683fa6141ae9a39b6edc5244
-========
-guid: a528135d770e00f4f81c1677a67a4cd5
->>>>>>>> 9b0d0f1411dbf21f9b2df450b37ace4198b62c1f:Assets/StreamingAssets/WrldResources/Resources/Interiors/label_category_mapping.json.meta
+guid: 5b214b604d83ffe4bb55ed9adb0f5b8d
 TextScriptImporter:
   externalObjects: {}
   userData: 

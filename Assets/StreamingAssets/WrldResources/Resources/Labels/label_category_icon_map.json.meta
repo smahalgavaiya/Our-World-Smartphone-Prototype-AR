@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/StreamingAssets/WrldResources/Resources/Interiors/label_category_mapping.json.meta
-guid: 5b214b604d83ffe4bb55ed9adb0f5b8d
-========
-guid: aef8baf3580311e48860cb5b0dcd815b
->>>>>>>> 9b0d0f1411dbf21f9b2df450b37ace4198b62c1f:Assets/StreamingAssets/WrldResources/Resources/Labels/label_category_icon_map.json.meta
+guid: fa1c02bd2cedceb4dbc83729728e33bc
 TextScriptImporter:
   externalObjects: {}
   userData: 

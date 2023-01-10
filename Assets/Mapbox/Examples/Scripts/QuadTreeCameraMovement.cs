@@ -57,6 +57,8 @@
 			{
 				_dragStartedOnUI = false;
 			}
+			ViewController.Instance._currentLatlong = _mapManager.CenterLatitudeLongitude;
+			ViewController.Instance._zoomvalue = _mapManager.AbsoluteZoom;
 		}
 
 

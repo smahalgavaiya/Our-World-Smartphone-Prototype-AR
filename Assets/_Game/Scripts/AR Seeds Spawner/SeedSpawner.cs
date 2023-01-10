@@ -5,7 +5,6 @@ using OurWorld.Scripts.DataModels;
 using OurWorld.Scripts.DataModels.GeolocationData;
 using Cysharp.Threading.Tasks;
 using OurWorld.Scripts.Interfaces.MapAPI;
-using UnityEngine.SceneManagement;
 
 public class SeedSpawner : MonoBehaviour
 {
@@ -27,12 +26,6 @@ public class SeedSpawner : MonoBehaviour
 
         //Spawn_Seeds(await _mapApiProvider.GetNearbyParksAsync(new Geolocation(32.707270, 39.995767), 0.5f));
     }
-
-    public void openUnityWorldSpace()
-    {
-        SceneManager.LoadScene("UnityWorldSpace");
-    }
-
 
 
     IEnumerator StartSpawning()
