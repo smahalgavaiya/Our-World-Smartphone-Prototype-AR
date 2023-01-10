@@ -46,22 +46,22 @@ namespace OpenCVForUnityExample
         /// <summary>
         /// LBP_CASCADE_FILENAME
         /// </summary>
-        protected static readonly string LBP_CASCADE_FILENAME = "objdetect/lbpcascade_frontalface.xml";
+        protected static readonly string LBP_CASCADE_FILENAME = "treecascade.xml";
 
         /// <summary>
         /// The lbp cascade filepath.
         /// </summary>
-        string lbp_cascade_filepath;
+        string lbp_cascade_filepath = "@Assets/StreamingAssets/treecascade.xml";
 
         /// <summary>
         /// HAAR_CASCADE_FILENAME
         /// </summary>
-        protected static readonly string HAAR_CASCADE_FILENAME = "objdetect/haarcascade_frontalface_alt.xml";
+        protected static readonly string HAAR_CASCADE_FILENAME = "treecascade.xml";
 
         /// <summary>
         /// The haar_cascade_filepath.
         /// </summary>
-        string haar_cascade_filepath;
+        string haar_cascade_filepath = "@Assets/StreamingAssets/treecascade.xml";
 
         /// <summary>
         /// The rects where regions.
@@ -207,18 +207,18 @@ namespace OpenCVForUnityExample
             weightsSizesSmoothing.Add(0.3f);
             weightsSizesSmoothing.Add(0.2f);
 
-            //parameters.minObjectSize = 96;
-            //parameters.maxObjectSize = int.MaxValue;
-            //parameters.scaleFactor = 1.1f;
-            //parameters.minNeighbors = 2;
-            parameters.maxTrackLifetime = 5;
+            //parameters.minObjectSize = 0.3f;
+            //parameters.maxObjectSize = 3;
+            //parameters.scaleFactor = 0.22f;
+            //parameters.minNeighbors = 1;
+            parameters.maxTrackLifetime = 300;
 
             innerParameters.numLastPositionsToTrack = 4;
             innerParameters.numStepsToWaitBeforeFirstShow = 6;
             innerParameters.numStepsToTrackWithoutDetectingIfObjectHasNotBeenShown = 3;
             innerParameters.numStepsToShowWithoutDetecting = 3;
             innerParameters.coeffTrackingWindowSize = 2.0f;
-            innerParameters.coeffObjectSizeToTrack = 0.85f;
+            innerParameters.coeffObjectSizeToTrack = 0.5f;
             innerParameters.coeffObjectSpeedUsingInPrediction = 0.8f;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -570,8 +570,8 @@ namespace OpenCVForUnityExample
         {
             MatOfRect objects = new MatOfRect();
             if (cascade4Thread != null)
-                cascade4Thread.detectMultiScale(grayMat4Thread, objects, 1.1, 2, Objdetect.CASCADE_SCALE_IMAGE, // TODO: objdetect.CV_HAAR_SCALE_IMAGE
-                    new Size(grayMat4Thread.height() * 0.2, grayMat4Thread.height() * 0.2), new Size());
+                cascade4Thread.detectMultiScale(grayMat4Thread, objects, 1.2, 2, Objdetect.CASCADE_SCALE_IMAGE, // TODO: objdetect.CV_HAAR_SCALE_IMAGE
+                    new Size(grayMat4Thread.height() * 0.55, grayMat4Thread.height() * 0.55), new Size());
 
             //Thread.Sleep(200);
 
