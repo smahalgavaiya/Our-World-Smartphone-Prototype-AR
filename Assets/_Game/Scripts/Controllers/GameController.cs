@@ -18,6 +18,8 @@ namespace OurWorld.Scripts.Controllers
         
         private static IMapAPIProvider _mapApiProvider;
         public static IMapAPIProvider MapAPIProvidder => _mapApiProvider;
+
+        public GameObject MapboxGO, WRLD3dGO;
         private void Awake()
         {
            // Initialize();
@@ -36,10 +38,12 @@ namespace OurWorld.Scripts.Controllers
             {
 
                 _mapApiProvider = new MapboxAPIProvider();
+                MapboxGO.SetActive(true);
             }
             //WRLD3D
             else if (mapNum == 1)
             {
+                WRLD3dGO.SetActive(true);
                 _mapApiProvider = new WRLD3DAPIProvider();
             }
 

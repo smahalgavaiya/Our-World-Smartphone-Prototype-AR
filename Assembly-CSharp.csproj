@@ -1279,6 +1279,7 @@
     <Compile Include="Assets\Wrld\Demo\IndoorMaps\Scripts\HighlightingIndoors.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\OpenCV+Unity\Plugins\Windows\x86\OpenCvSharpExtern.dll" />
     <None Include="Assets\Wrld\Plugins\x86_64\msvcr110.dll" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -1303,6 +1304,7 @@
     <None Include="Assets\OpenCV+Unity\Documentation\Third-Party Licenses.txt" />
     <None Include="Assets\Wrld\Shaders\StencilledGeometry.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\zlib.txt" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Mapbox\link.xml" />
     <None Include="Assets\OASIS API\Examples\_ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Wrld\AssetData\Windows\FrankBold50_A8_icons.fnt" />
@@ -1320,7 +1322,6 @@
     <None Include="Assets\Wrld\Shaders\UnityVCShadow.cginc" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\sqlite\x86\sqlite3.dll" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\Clip_MapBoxStylesPerRenderer.shader" />
     <None Include="Assets\OpenCV+Unity\smcs.rsp" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\mt19937ar.c.txt" />
@@ -1412,7 +1413,6 @@
     <None Include="Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.IO.Compression\uap10\Mapbox.IO.Compression.dll" />
     <None Include="Assets\MapboxAR\Examples\ARTabletop\Shaders\Clip_MapboxStyles.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\pthread.txt" />
-    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Wrld\Plugins\x86_64\libEGL.dll" />
     <None Include="Assets\OpenCV+Unity\mcs.rsp" />

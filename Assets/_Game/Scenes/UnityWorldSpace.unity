@@ -929,6 +929,69 @@ Transform:
   m_Father: {fileID: 1242902624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &144233689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144233690}
+  - component: {fileID: 144233691}
+  m_Layer: 0
+  m_Name: WrldMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &144233690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144233689}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4886152255913813}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144233691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144233689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e268decdf681504d94f82815d0551b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_streamingCamera: {fileID: 1161759792}
+  m_apiKey: 9d823033bb49a9492137c5719f021793
+  m_latitudeDegrees: 37.78580093383789
+  m_longitudeDegrees: -122.4010009765625
+  m_distanceToInterest: 1781
+  m_headingDegrees: 0
+  m_coordSystem: 0
+  m_streamingLodBasedOnDistance: 0
+  m_materialDirectory: WrldMaterials/
+  m_indoorMapMaterialDirectory: WrldMaterials/Archetypes
+  m_overrideLandmarkMaterial: {fileID: 0}
+  m_useBuiltInCameraControls: 1
+  m_terrainCollisions: 0
+  m_roadCollisions: 0
+  m_buildingCollisions: 0
+  m_enableLabels: 0
+  m_enableIndoorEntryMarkerEvents: 1
+  m_labelCanvas: {fileID: 0}
+  m_uploadMeshes: 0
 --- !u!1 &149370846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,6 +3658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nearbyPlacesController: {fileID: 769552134}
+  MapboxGO: {fileID: 1094527926601939}
+  WRLD3dGO: {fileID: 144233689}
 --- !u!4 &769552133
 Transform:
   m_ObjectHideFlags: 0
@@ -9897,12 +9962,12 @@ GameObject:
   - component: {fileID: 114105502029964143}
   - component: {fileID: 114086566895189801}
   m_Layer: 0
-  m_Name: Map
+  m_Name: MapBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1150655737325435
 GameObject:
   m_ObjectHideFlags: 0
@@ -10232,7 +10297,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4886152255913813}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4542948636292371
 Transform:
@@ -10267,7 +10332,7 @@ Transform:
   - {fileID: 4730854237053013}
   - {fileID: 4684201247072083}
   m_Father: {fileID: 4886152255913813}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4586255178466335
 Transform:
@@ -10392,6 +10457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 144233690}
   - {fileID: 4310657230361405}
   - {fileID: 4961856061210499}
   - {fileID: 4556514579281049}
@@ -10418,7 +10484,7 @@ Transform:
   - {fileID: 1180756266}
   - {fileID: 4367616246210217352}
   m_Father: {fileID: 4886152255913813}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23386009312805913
 MeshRenderer:
@@ -11478,7 +11544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244110137753108589, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00016216176
+      value: 0.00027600786
       objectReference: {fileID: 0}
     - target: {fileID: 4482973394329495578, guid: c5005f5c1f2518c4fbe5b13ab523f7ca, type: 3}
       propertyPath: m_Color.b
