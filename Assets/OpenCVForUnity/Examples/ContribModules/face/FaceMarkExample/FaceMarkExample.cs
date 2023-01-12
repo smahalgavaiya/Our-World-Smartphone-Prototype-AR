@@ -63,7 +63,7 @@ namespace OpenCVForUnityExample
         /// <summary>
         /// FACEMARK_CASCADE_FILENAME
         /// </summary>
-        protected static readonly string FACEMARK_CASCADE_FILENAME = "objdetect/lbpcascade_frontalface.xml";
+        protected static readonly string FACEMARK_CASCADE_FILENAME = "Assets/StreamingAssets/treecascade.xml";
 
         /// <summary>
         /// The facemark cascade filepath.
@@ -280,11 +280,11 @@ namespace OpenCVForUnityExample
 
                         DrawFaceLandmark(rgbaMat, ConvertArrayToPointList(lm_float), new Scalar(0, 255, 0, 255), 2);
 
-                        //for (int j = 0; j < lm_float.Length; j = j + 2)
-                        //{
-                        //    Point p = new Point(lm_float[j], lm_float[j + 1]);
-                        //    Imgproc.circle(rgbaMat, p, 2, new Scalar(255, 0, 0, 255), 1);
-                        //}
+                        for (int j = 0; j < lm_float.Length; j = j + 2)
+                        {
+                            Point p = new Point(lm_float[j], lm_float[j + 1]);
+                            Imgproc.circle(rgbaMat, p, 2, new Scalar(255, 0, 0, 255), 1);
+                        }
                     }
                 }
 
