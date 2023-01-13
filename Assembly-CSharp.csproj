@@ -1274,6 +1274,7 @@
     <Compile Include="Assets\Wrld\Demo\IndoorMaps\Scripts\HighlightingIndoors.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\opensans_semibold_sdf.fnt" />
     <None Include="Assets\OpenCV+Unity\Plugins\Windows\x86\OpenCvSharpExtern.dll" />
     <None Include="Assets\Wrld\Plugins\x86_64\msvcr110.dll" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -1296,6 +1297,7 @@
     <None Include="Assets\OpenCV+Unity\Documentation\Third-Party Licenses.txt" />
     <None Include="Assets\Wrld\Shaders\StencilledGeometry.shader" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\zlib.txt" />
+    <None Include="Assets\StreamingAssets\WrldResources\Resources\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Mapbox\link.xml" />
     <None Include="Assets\Wrld\AssetData\Windows\FrankBold50_A8_icons.fnt" />
     <None Include="Assets\Wrld\3rd Party Licenses\libs\libuv.txt" />
